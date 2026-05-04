@@ -75,6 +75,12 @@ If you need a different backend URL, pass it at build time:
 flutter run --dart-define=API_URL=http://localhost:8000
 ```
 
+For online deployment, build the web app with your deployed backend URL:
+
+```bash
+flutter build web --release --dart-define=API_URL=https://your-backend-domain.example
+```
+
 ## 3) Configure API URL
 
 Update backend URL in `frontend/lib/config/app_config.dart`:
@@ -84,6 +90,8 @@ Update backend URL in `frontend/lib/config/app_config.dart`:
 - Web/local desktop: `http://localhost:8000`
 
 If you run Flutter Web on a custom port, either keep the backend CORS origin as `*` or make the port match your `FRONTEND_ORIGIN` value.
+
+Important: if `API_URL` is not provided during an online build, the web app will fall back to the current browser origin. That works when your frontend and backend share the same domain or are proxied together, but you should set `API_URL` explicitly when they are hosted on different domains.
 
 ## 4) Google Maps setup
 
