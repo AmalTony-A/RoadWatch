@@ -24,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final MapController _mapController = MapController();
   bool _centeredOnLiveLocation = false;
   bool _mapEditingEnabled = false;
+  bool _manualDistrictSelection = false;
   String _selectedDistrict = 'ALL';
   String _roadSearchQuery = '';
 
@@ -82,6 +83,37 @@ class _HomeScreenState extends State<HomeScreen> {
     return roads.fold<int>(0, (sum, road) => sum + road.issues.length);
   }
 
+  void _syncLiveDistrict(AppState state) {
+    final suggested = state.liveSuggestedDistrict;
+    if (suggested == null || _manualDistrictSelection) {
+      return;
+    }
+
+    final roadsInSuggested = state.searchRoadsForDistrict(suggested, '');
+    final selected = state.selectedRoadNetwork;
+    final selectedInSuggested =
+        selected != null && roadsInSuggested.any((item) => item.id == selected.id);
+
+    if (_selectedDistrict == suggested && (selectedInSuggested || roadsInSuggested.isEmpty)) {
+      return;
+    }
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _manualDistrictSelection) {
+        return;
+      }
+
+      setState(() {
+        _selectedDistrict = suggested;
+        _roadSearchQuery = '';
+      });
+
+      if (roadsInSuggested.isNotEmpty) {
+        state.selectRoadNetworkItem(roadsInSuggested.first);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
@@ -89,6 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final selectedNetworkRoad = state.selectedRoadNetwork;
     final theme = Theme.of(context);
     _maybeCenterMap(state);
+    _syncLiveDistrict(state);
 
     final districtOptions = ['ALL', ...state.roadNetworkDistricts];
     final filteredNetworkRoads = state.searchRoadsForDistrict(_selectedDistrict, _roadSearchQuery);
@@ -239,6 +272,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             setState(() {
                               _selectedDistrict = value;
                               _roadSearchQuery = '';
+                              _manualDistrictSelection =
+                                  value != 'ALL' && value != state.liveSuggestedDistrict;
                             });
                             if (nextRoads.isNotEmpty) {
                               state.selectRoadNetworkItem(nextRoads.first);
