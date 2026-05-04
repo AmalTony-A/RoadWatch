@@ -1,0 +1,56 @@
+[
+  {
+    "road_id": "road-001",
+    "project_id": "CHN-2025-ADY-11",
+    "allocated_inr": 5000000,
+    "spent_inr": 4700000,
+    "contractor": "Metro CivilWorks Pvt Ltd",
+    "last_repair_date": "2025-12-03",
+    "expected_score": 78
+  },
+  {
+    "road_id": "road-002",
+    "project_id": "CHN-2025-PRG-07",
+    "allocated_inr": 3500000,
+    "spent_inr": 3260000,
+    "contractor": "South Corridor Infra LLP",
+    "last_repair_date": "2025-11-18",
+    "expected_score": 72
+  },
+  {
+    "road_id": "road-003",
+    "project_id": "CHN-2025-VLC-02",
+    "allocated_inr": 4200000,
+    "spent_inr": 4015000,
+    "contractor": "Urban Paving Consortium",
+    "last_repair_date": "2025-10-27",
+    "expected_score": 75
+  },
+  {
+    "road_id": "road-004",
+    "project_id": "CHN-2025-GDY-04",
+    "allocated_inr": 6300000,
+    "spent_inr": 5980000,
+    "contractor": "National Highway Repairs Co",
+    "last_repair_date": "2025-09-21",
+    "expected_score": 80
+  },
+  {
+    "road_id": "road-005",
+    "project_id": "CHN-2025-THR-09",
+    "allocated_inr": 2800000,
+    "spent_inr": 2410000,
+    "contractor": "Bayline Roads and Bridges",
+    "last_repair_date": "2026-01-09",
+    "expected_score": 76
+  },
+  {
+    "road_id": "road-006",
+    "project_id": "CHN-2025-KTP-05",
+    "allocated_inr": 2200000,
+    "spent_inr": 2050000,
+    "contractor": "Green Patch Engineering",
+    "last_repair_date": "2026-02-14",
+    "expected_score": 81
+  }
+]

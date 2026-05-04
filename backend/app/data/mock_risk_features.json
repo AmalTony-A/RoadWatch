@@ -1,0 +1,12 @@
+[
+  {"road_id": "road-001", "weather_index": 0.72, "traffic_index": 0.88, "complaint_count_30d": 12, "deteriorated": 1},
+  {"road_id": "road-002", "weather_index": 0.61, "traffic_index": 0.79, "complaint_count_30d": 8, "deteriorated": 1},
+  {"road_id": "road-003", "weather_index": 0.69, "traffic_index": 0.74, "complaint_count_30d": 9, "deteriorated": 1},
+  {"road_id": "road-004", "weather_index": 0.77, "traffic_index": 0.9, "complaint_count_30d": 15, "deteriorated": 1},
+  {"road_id": "road-005", "weather_index": 0.42, "traffic_index": 0.57, "complaint_count_30d": 3, "deteriorated": 0},
+  {"road_id": "road-006", "weather_index": 0.36, "traffic_index": 0.45, "complaint_count_30d": 2, "deteriorated": 0},
+  {"road_id": "road-x01", "weather_index": 0.55, "traffic_index": 0.68, "complaint_count_30d": 6, "deteriorated": 1},
+  {"road_id": "road-x02", "weather_index": 0.31, "traffic_index": 0.38, "complaint_count_30d": 1, "deteriorated": 0},
+  {"road_id": "road-x03", "weather_index": 0.81, "traffic_index": 0.91, "complaint_count_30d": 16, "deteriorated": 1},
+  {"road_id": "road-x04", "weather_index": 0.22, "traffic_index": 0.34, "complaint_count_30d": 1, "deteriorated": 0}
+]

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9cc7ef"/>
+      <stop offset="100%" stop-color="#edf5fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#sky2)"/>
+  <rect y="310" width="1280" height="410" fill="#7ea37b"/>
+  <polygon points="150,720 520,330 760,330 1140,720" fill="#434b56"/>
+  <rect x="636" y="360" width="12" height="330" fill="#f0f1f1"/>
+  <polyline points="410,460 510,475 560,468 640,488 720,472 790,496 860,490"
+    fill="none" stroke="#1a2026" stroke-width="18" stroke-linecap="round"/>
+  <polyline points="420,520 530,536 610,528 700,544 800,538"
+    fill="none" stroke="#252c34" stroke-width="12" stroke-linecap="round"/>
+  <text x="36" y="56" font-family="Arial, sans-serif" font-size="38" fill="#0d2236" font-weight="700">RoadWatch AI Demo - Cracks</text>
+</svg>

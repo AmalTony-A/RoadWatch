@@ -1,0 +1,120 @@
+[
+  {
+    "id": "cmp-2026-0001",
+    "road_id": "road-001",
+    "description": "Multiple deep potholes near bus stop causing bike skids.",
+    "image_ref": "demo_pothole_1.jpg",
+    "location": {"lat": 12.9946, "lng": 80.2371},
+    "timestamp": "2026-04-28T08:41:00Z",
+    "status": "In Progress",
+    "authority_ticket": "CCMC-11408",
+    "recommended_department": "Highways Department",
+    "routing_reason": "Pothole repair and road surfacing issues are handled by highways.",
+    "complaint_letter": "Please inspect and repair the potholes near the bus stop on Sardar Patel Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-04-28T09:05:00Z",
+    "delivered_at": "2026-04-28T09:15:00Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-28T08:41:00Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-28T09:05:00Z",
+        "note": "Complaint sent to Highways Department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-04-28T09:15:00Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "In Progress",
+        "at": "2026-04-29T11:22:00Z",
+        "note": "Zonal engineer assigned for inspection"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0002",
+    "road_id": "road-004",
+    "description": "Long transverse crack expanding after rain.",
+    "image_ref": "demo_crack_2.jpg",
+    "location": {"lat": 13.0024, "lng": 80.2017},
+    "timestamp": "2026-04-25T14:06:00Z",
+    "status": "Resolved",
+    "authority_ticket": "CCMC-11367",
+    "recommended_department": "Highways Department",
+    "routing_reason": "Surface crack repair and patch work are handled by highways.",
+    "complaint_letter": "Please review and permanently repair the expanding crack after rain.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-04-25T14:18:00Z",
+    "delivered_at": "2026-04-25T14:28:00Z",
+    "read_at": "2026-04-25T15:10:00Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-25T14:06:00Z",
+        "note": "Complaint submitted"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-25T14:18:00Z",
+        "note": "Complaint sent to Highways Department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-04-25T14:28:00Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-04-25T15:10:00Z",
+        "note": "Authority opened the complaint letter for review"
+      },
+      {
+        "status": "In Progress",
+        "at": "2026-04-26T09:11:00Z",
+        "note": "Temporary patch work started"
+      },
+      {
+        "status": "Resolved",
+        "at": "2026-04-27T16:34:00Z",
+        "note": "Patch completed and verified"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0003",
+    "road_id": "road-003",
+    "description": "Cluster of medium potholes near signal line.",
+    "image_ref": "demo_pothole_3.jpg",
+    "location": {"lat": 12.9767, "lng": 80.2188},
+    "timestamp": "2026-05-01T07:55:00Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-11470",
+    "recommended_department": "Highways Department",
+    "routing_reason": "Pothole repair and road surfacing issues are handled by highways.",
+    "complaint_letter": "Please inspect the pothole cluster near the signal line.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-01T07:55:00Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  }
+]

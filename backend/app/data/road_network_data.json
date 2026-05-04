@@ -1,0 +1,5589 @@
+[
+  {
+    "id": "nh-44",
+    "name": "NH 44",
+    "type": "NH",
+    "route": "Krishnagiri \u2013 Salem \u2013 Namakkal \u2013 Karur \u2013 Dindigul \u2013 Madurai \u2013 Virudhunagar \u2013 Tirunelveli \u2013 Kanyakumari (part of Srinagar\u2013Kanyakumari corridor)",
+    "districts": [
+      "Krishnagiri",
+      "Dharmapuri",
+      "Salem",
+      "Namakkal",
+      "Karur",
+      "Dindigul",
+      "Madurai",
+      "Virudhunagar",
+      "Tirunelveli",
+      "Tenkasi",
+      "Kanyakumari"
+    ],
+    "length_km": 627,
+    "year": 1960,
+    "contractor": "NHAI / L&T Construction Ltd.",
+    "budget_crore": 5643,
+    "condition": "Moderate",
+    "issues": [
+      "Heavy Traffic Congestion",
+      "Potholes (Madurai-TN stretch)",
+      "Widening Pending"
+    ],
+    "summary": "NH | Moderate | 627 km"
+  },
+  {
+    "id": "nh-45",
+    "name": "NH 45",
+    "type": "NH",
+    "route": "Chennai \u2013 Guduvanchery \u2013 Chengalpattu \u2013 Villupuram \u2013 Trichy \u2013 Dindigul (Grand Southern Trunk Road)",
+    "districts": [
+      "Chennai",
+      "Chengalpattu",
+      "Villupuram",
+      "Perambalur",
+      "Tiruchirappalli",
+      "Dindigul"
+    ],
+    "length_km": 368,
+    "year": 1956,
+    "contractor": "Dilip Buildcon Ltd.",
+    "budget_crore": 3312,
+    "condition": "Good",
+    "issues": [
+      "Urban Encroachments",
+      "Minor Cracks",
+      "Widening (Guduvanchery\u2013Mahindra City 8-lane)"
+    ],
+    "summary": "NH | Good | 368 km"
+  },
+  {
+    "id": "nh-45a",
+    "name": "NH 45A",
+    "type": "NH",
+    "route": "Villupuram \u2013 Pondicherry \u2013 Nagapattinam Road",
+    "districts": [
+      "Villupuram",
+      "Cuddalore",
+      "Nagapattinam"
+    ],
+    "length_km": 185,
+    "year": 1975,
+    "contractor": "ITD Cementation India Ltd.",
+    "budget_crore": 1665,
+    "condition": "Moderate",
+    "issues": [
+      "Coastal Flooding",
+      "Potholes",
+      "Bridge Work (Thenpennai River)"
+    ],
+    "summary": "NH | Moderate | 185 km"
+  },
+  {
+    "id": "nh-45b",
+    "name": "NH 45B",
+    "type": "NH",
+    "route": "Trichy \u2013 Madurai \u2013 Thoothukudi Road",
+    "districts": [
+      "Tiruchirappalli",
+      "Madurai",
+      "Virudhunagar",
+      "Thoothukudi"
+    ],
+    "length_km": 242,
+    "year": 1968,
+    "contractor": "Sadbhav Engineering Ltd.",
+    "budget_crore": 2178,
+    "condition": "Moderate",
+    "issues": [
+      "Traffic Overload",
+      "Road Narrowing",
+      "Cracks"
+    ],
+    "summary": "NH | Moderate | 242 km"
+  },
+  {
+    "id": "nh-47",
+    "name": "NH 47",
+    "type": "NH",
+    "route": "Salem \u2013 Coimbatore \u2013 Palakkad \u2013 Kochi (towards Kerala border)",
+    "districts": [
+      "Salem",
+      "Namakkal",
+      "Erode",
+      "Coimbatore"
+    ],
+    "length_km": 224,
+    "year": 1963,
+    "contractor": "KNR Constructions Ltd.",
+    "budget_crore": 2688,
+    "condition": "Good",
+    "issues": [
+      "Heavy Freight",
+      "Toll Bottleneck",
+      "Minor Shoulder Erosion"
+    ],
+    "summary": "NH | Good | 224 km"
+  },
+  {
+    "id": "nh-48",
+    "name": "NH 48",
+    "type": "NH",
+    "route": "Chennai \u2013 Ranipet \u2013 Vellore \u2013 Krishnagiri (towards Bengaluru)",
+    "districts": [
+      "Chennai",
+      "Tiruvallur",
+      "Vellore",
+      "Ranipet",
+      "Krishnagiri"
+    ],
+    "length_km": 210,
+    "year": 1955,
+    "contractor": "GR Infraprojects Ltd.",
+    "budget_crore": 2310,
+    "condition": "Good",
+    "issues": [
+      "Toll Plaza Queues",
+      "Faded Lane Markings"
+    ],
+    "summary": "NH | Good | 210 km"
+  },
+  {
+    "id": "nh-49",
+    "name": "NH 49",
+    "type": "NH",
+    "route": "Dindigul \u2013 Madurai \u2013 Theni \u2013 Kumily (towards Kerala border)",
+    "districts": [
+      "Dindigul",
+      "Madurai",
+      "Theni"
+    ],
+    "length_km": 186,
+    "year": 1970,
+    "contractor": "Ashoka Buildcon Ltd.",
+    "budget_crore": 1674,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Sections",
+      "Truck Overloading",
+      "ROB Works Pending"
+    ],
+    "summary": "NH | Moderate | 186 km"
+  },
+  {
+    "id": "nh-49-extn",
+    "name": "NH 49 Extn",
+    "type": "NH",
+    "route": "Theni \u2013 Kumily \u2013 Bodi (extension into Idukki border)",
+    "districts": [
+      "Theni"
+    ],
+    "length_km": 62,
+    "year": 1978,
+    "contractor": "HG Infra Engineering Ltd.",
+    "budget_crore": 620,
+    "condition": "Poor",
+    "issues": [
+      "Ghat Road Erosion",
+      "Bridge Gaps",
+      "Landslide Risk"
+    ],
+    "summary": "NH | Poor | 62 km"
+  },
+  {
+    "id": "nh-66",
+    "name": "NH 66",
+    "type": "NH",
+    "route": "Chennai \u2013 Villupuram \u2013 Cuddalore \u2013 Nagapattinam \u2013 Thanjavur \u2013 Ramanathapuram \u2013 Thoothukudi",
+    "districts": [
+      "Chennai",
+      "Villupuram",
+      "Cuddalore",
+      "Nagapattinam",
+      "Thanjavur",
+      "Pudukkottai",
+      "Ramanathapuram",
+      "Thoothukudi"
+    ],
+    "length_km": 490,
+    "year": 1962,
+    "contractor": "NCC Ltd.",
+    "budget_crore": 4410,
+    "condition": "Moderate",
+    "issues": [
+      "Coastal Flood Damage",
+      "Potholes",
+      "Shoulder Erosion"
+    ],
+    "summary": "NH | Moderate | 490 km"
+  },
+  {
+    "id": "nh-67",
+    "name": "NH 67",
+    "type": "NH",
+    "route": "Nagapattinam \u2013 Karur \u2013 Coimbatore \u2013 Gudalur \u2013 Mysore (old NH-67 corridor)",
+    "districts": [
+      "Nagapattinam",
+      "Tiruvarur",
+      "Thanjavur",
+      "Tiruchirappalli",
+      "Karur",
+      "Namakkal",
+      "Erode",
+      "Coimbatore",
+      "Nilgiris"
+    ],
+    "length_km": 379,
+    "year": 1960,
+    "contractor": "Dilip Buildcon Ltd.",
+    "budget_crore": 3411,
+    "condition": "Moderate",
+    "issues": [
+      "Overloaded Trucks",
+      "Ghat Sections",
+      "Potholes (Karur)"
+    ],
+    "summary": "NH | Moderate | 379 km"
+  },
+  {
+    "id": "nh-81",
+    "name": "NH 81",
+    "type": "NH",
+    "route": "Coimbatore \u2013 Karur Road (old NH-67 section; Mettupalayam\u2013Sulur\u2013Karur)",
+    "districts": [
+      "Coimbatore",
+      "Tiruppur",
+      "Erode",
+      "Karur"
+    ],
+    "length_km": 175,
+    "year": 1965,
+    "contractor": "KNR Constructions Ltd.",
+    "budget_crore": 1837,
+    "condition": "Good",
+    "issues": [
+      "Ghat Maintenance",
+      "Widening Work",
+      "Overloading"
+    ],
+    "summary": "NH | Good | 175 km"
+  },
+  {
+    "id": "nh-83",
+    "name": "NH 83",
+    "type": "NH",
+    "route": "Trichy \u2013 Pudukkottai \u2013 Rameswaram",
+    "districts": [
+      "Tiruchirappalli",
+      "Pudukkottai",
+      "Ramanathapuram"
+    ],
+    "length_km": 215,
+    "year": 1970,
+    "contractor": "HG Infra Engineering Ltd.",
+    "budget_crore": 1935,
+    "condition": "Moderate",
+    "issues": [
+      "Bridge Repair Due",
+      "Pothole Clusters",
+      "Narrow Width"
+    ],
+    "summary": "NH | Moderate | 215 km"
+  },
+  {
+    "id": "nh-85",
+    "name": "NH 85",
+    "type": "NH",
+    "route": "Hosur \u2013 Krishnagiri \u2013 Dharmapuri \u2013 Salem",
+    "districts": [
+      "Krishnagiri",
+      "Dharmapuri",
+      "Salem"
+    ],
+    "length_km": 145,
+    "year": 1980,
+    "contractor": "GVR Infra Projects Ltd.",
+    "budget_crore": 1305,
+    "condition": "Moderate",
+    "issues": [
+      "Heavy Granite Trucks",
+      "Potholes",
+      "Missing Signage"
+    ],
+    "summary": "NH | Moderate | 145 km"
+  },
+  {
+    "id": "nh-87",
+    "name": "NH 87",
+    "type": "NH",
+    "route": "Tirupur \u2013 Pollachi \u2013 Palani \u2013 Batlagundu",
+    "districts": [
+      "Tiruppur",
+      "Coimbatore",
+      "Dindigul"
+    ],
+    "length_km": 138,
+    "year": 1982,
+    "contractor": "Ramky Infrastructure Ltd.",
+    "budget_crore": 1380,
+    "condition": "Good",
+    "issues": [
+      "Textile Lorry Traffic",
+      "Speed Control Needed"
+    ],
+    "summary": "NH | Good | 138 km"
+  },
+  {
+    "id": "nh-136",
+    "name": "NH 136",
+    "type": "NH",
+    "route": "Walajapet \u2013 Kanchipuram \u2013 Chengalpattu",
+    "districts": [
+      "Ranipet",
+      "Kanchipuram",
+      "Chengalpattu"
+    ],
+    "length_km": 98,
+    "year": 1975,
+    "contractor": "PNC Infratech Ltd.",
+    "budget_crore": 980,
+    "condition": "Good",
+    "issues": [
+      "Urban Traffic",
+      "Pedestrian Issues",
+      "Temple Route Congestion"
+    ],
+    "summary": "NH | Good | 98 km"
+  },
+  {
+    "id": "nh-136b",
+    "name": "NH 136B",
+    "type": "NH",
+    "route": "Kanchipuram \u2013 Chengalpattu (upgraded from SH 64)",
+    "districts": [
+      "Kanchipuram",
+      "Chengalpattu"
+    ],
+    "length_km": 42,
+    "year": 2020,
+    "contractor": "PNC Infratech Ltd.",
+    "budget_crore": 504,
+    "condition": "Good",
+    "issues": [
+      "New Road \u2013 Minor Drainage Issues"
+    ],
+    "summary": "NH | Good | 42 km"
+  },
+  {
+    "id": "nh-138",
+    "name": "NH 138",
+    "type": "NH",
+    "route": "Coimbatore \u2013 Pollachi \u2013 Palani \u2013 Kodaikanal Road",
+    "districts": [
+      "Coimbatore",
+      "Tiruppur",
+      "Dindigul"
+    ],
+    "length_km": 188,
+    "year": 1968,
+    "contractor": "Ashoka Buildcon Ltd.",
+    "budget_crore": 1880,
+    "condition": "Moderate",
+    "issues": [
+      "Hairpin Bends",
+      "Landslides (monsoon)",
+      "Tourist Overload"
+    ],
+    "summary": "NH | Moderate | 188 km"
+  },
+  {
+    "id": "nh-179",
+    "name": "NH 179",
+    "type": "NH",
+    "route": "Salem \u2013 Namakkal \u2013 Karur \u2013 Dindigul Road",
+    "districts": [
+      "Salem",
+      "Namakkal",
+      "Karur",
+      "Dindigul"
+    ],
+    "length_km": 198,
+    "year": 1976,
+    "contractor": "Apco Infratech Pvt. Ltd.",
+    "budget_crore": 1782,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Truck Damage",
+      "Dust",
+      "Lane Markings Faded"
+    ],
+    "summary": "NH | Moderate | 198 km"
+  },
+  {
+    "id": "nh-179a",
+    "name": "NH 179A",
+    "type": "NH",
+    "route": "Salem \u2013 Tirupathur \u2013 Vaniyambadi Road (upgraded from SH 18)",
+    "districts": [
+      "Salem",
+      "Vellore",
+      "Ranipet"
+    ],
+    "length_km": 125,
+    "year": 2018,
+    "contractor": "NHAI / Dilip Buildcon Ltd.",
+    "budget_crore": 1250,
+    "condition": "Good",
+    "issues": [
+      "Widening to 4 Lane Completed",
+      "Minor Roadside Encroachments"
+    ],
+    "summary": "NH | Good | 125 km"
+  },
+  {
+    "id": "nh-181",
+    "name": "NH 181",
+    "type": "NH",
+    "route": "Coimbatore \u2013 Ooty \u2013 Gudalur \u2013 Nilgiris Road",
+    "districts": [
+      "Coimbatore",
+      "Nilgiris"
+    ],
+    "length_km": 124,
+    "year": 1971,
+    "contractor": "MEIL (Megha Engineering)",
+    "budget_crore": 1612,
+    "condition": "Moderate",
+    "issues": [
+      "Landslide Prone",
+      "Ghat Cracks",
+      "Fog & Visibility"
+    ],
+    "summary": "NH | Moderate | 124 km"
+  },
+  {
+    "id": "nh-205",
+    "name": "NH 205",
+    "type": "NH",
+    "route": "Chennai \u2013 Nellore \u2013 Chittor (TN section: Chennai \u2013 Tiruvallur \u2013 AP border)",
+    "districts": [
+      "Chennai",
+      "Tiruvallur"
+    ],
+    "length_km": 68,
+    "year": 1960,
+    "contractor": "L&T Construction Ltd.",
+    "budget_crore": 748,
+    "condition": "Good",
+    "issues": [
+      "Heavy Industrial Traffic",
+      "Outer Ring Road Merge Pending"
+    ],
+    "summary": "NH | Good | 68 km"
+  },
+  {
+    "id": "nh-208",
+    "name": "NH 208",
+    "type": "NH",
+    "route": "Tenkasi \u2013 Shencottah \u2013 Punalur \u2013 Kollam (TN stretch: Tenkasi region)",
+    "districts": [
+      "Tenkasi",
+      "Tirunelveli"
+    ],
+    "length_km": 92,
+    "year": 1975,
+    "contractor": "Southern Structurals Ltd.",
+    "budget_crore": 828,
+    "condition": "Poor",
+    "issues": [
+      "Flooding",
+      "ROB Work Pending (Tenkasi)",
+      "Potholes"
+    ],
+    "summary": "NH | Poor | 92 km"
+  },
+  {
+    "id": "nh-209",
+    "name": "NH 209",
+    "type": "NH",
+    "route": "Coimbatore \u2013 Dindigul \u2013 Karur \u2013 Bengaluru (TN stretch)",
+    "districts": [
+      "Coimbatore",
+      "Tiruppur",
+      "Dindigul",
+      "Karur",
+      "Salem",
+      "Krishnagiri"
+    ],
+    "length_km": 298,
+    "year": 1965,
+    "contractor": "IRB Infrastructure Developers Ltd.",
+    "budget_crore": 2980,
+    "condition": "Good",
+    "issues": [
+      "High Freight Volume",
+      "Minor Widening Stretches"
+    ],
+    "summary": "NH | Good | 298 km"
+  },
+  {
+    "id": "nh-210",
+    "name": "NH 210",
+    "type": "NH",
+    "route": "Thirumayam \u2013 Karaikudi \u2013 Devakottai \u2013 Devipattinam (upgraded from SH 28)",
+    "districts": [
+      "Pudukkottai",
+      "Sivaganga",
+      "Ramanathapuram"
+    ],
+    "length_km": 98,
+    "year": 2015,
+    "contractor": "Gayatri Projects Ltd.",
+    "budget_crore": 980,
+    "condition": "Good",
+    "issues": [
+      "Temple Circuit Route",
+      "Minor Potholes"
+    ],
+    "summary": "NH | Good | 98 km"
+  },
+  {
+    "id": "nh-219",
+    "name": "NH 219",
+    "type": "NH",
+    "route": "Krishnagiri \u2013 Varadhampalli \u2013 Kuppam (AP border) (upgraded from SH 16)",
+    "districts": [
+      "Krishnagiri"
+    ],
+    "length_km": 40,
+    "year": 2016,
+    "contractor": "GR Infraprojects Ltd.",
+    "budget_crore": 440,
+    "condition": "Good",
+    "issues": [
+      "Light Traffic",
+      "Some Encroachments"
+    ],
+    "summary": "NH | Good | 40 km"
+  },
+  {
+    "id": "nh-220",
+    "name": "NH 220",
+    "type": "NH",
+    "route": "Coimbatore \u2013 Palakkad \u2013 Thrissur (TN stretch: Coimbatore to Kerala border)",
+    "districts": [
+      "Coimbatore"
+    ],
+    "length_km": 48,
+    "year": 1968,
+    "contractor": "KNR Constructions Ltd.",
+    "budget_crore": 576,
+    "condition": "Good",
+    "issues": [
+      "Border Trade Traffic",
+      "Toll Delays"
+    ],
+    "summary": "NH | Good | 48 km"
+  },
+  {
+    "id": "nh-227",
+    "name": "NH 227",
+    "type": "NH",
+    "route": "Namakkal \u2013 Erode \u2013 Dharapuram \u2013 Palani \u2013 Trichy (upgraded from SH 24)",
+    "districts": [
+      "Namakkal",
+      "Erode",
+      "Tiruppur",
+      "Dindigul",
+      "Tiruchirappalli"
+    ],
+    "length_km": 285,
+    "year": 2014,
+    "contractor": "Apco Infratech Pvt. Ltd.",
+    "budget_crore": 2565,
+    "condition": "Good",
+    "issues": [
+      "Dust from Quarries",
+      "Speed Bump Issues",
+      "Some Cracks"
+    ],
+    "summary": "NH | Good | 285 km"
+  },
+  {
+    "id": "nh-234",
+    "name": "NH 234",
+    "type": "NH",
+    "route": "Chennai \u2013 Ranipet \u2013 Tirupathi (TN section via Ranipet)",
+    "districts": [
+      "Chennai",
+      "Tiruvallur",
+      "Ranipet",
+      "Vellore"
+    ],
+    "length_km": 142,
+    "year": 1970,
+    "contractor": "NCC Ltd.",
+    "budget_crore": 1420,
+    "condition": "Moderate",
+    "issues": [
+      "Pilgrimage Traffic",
+      "Heavy Lorries",
+      "ROB at Kannamangalam"
+    ],
+    "summary": "NH | Moderate | 142 km"
+  },
+  {
+    "id": "nh-332",
+    "name": "NH 332",
+    "type": "NH",
+    "route": "Pondicherry \u2013 Cuddalore \u2013 Chidambaram \u2013 Karaikal",
+    "districts": [
+      "Cuddalore",
+      "Nagapattinam"
+    ],
+    "length_km": 136,
+    "year": 1980,
+    "contractor": "GVR Infra Projects Ltd.",
+    "budget_crore": 1224,
+    "condition": "Poor",
+    "issues": [
+      "Severe Potholes",
+      "Flood Damage",
+      "No Street Lights"
+    ],
+    "summary": "NH | Poor | 136 km"
+  },
+  {
+    "id": "nh-332a",
+    "name": "NH 332A",
+    "type": "NH",
+    "route": "Chidambaram \u2013 Sirkazhi \u2013 Mayiladuthurai",
+    "districts": [
+      "Cuddalore",
+      "Mayiladuthurai"
+    ],
+    "length_km": 68,
+    "year": 1985,
+    "contractor": "Bridge & Roof Co. India",
+    "budget_crore": 680,
+    "condition": "Moderate",
+    "issues": [
+      "Delta Flooding",
+      "Potholes",
+      "Narrow Bridges"
+    ],
+    "summary": "NH | Moderate | 68 km"
+  },
+  {
+    "id": "nh-336",
+    "name": "NH 336",
+    "type": "NH",
+    "route": "Tiruvannamalai \u2013 Gingee \u2013 Villupuram",
+    "districts": [
+      "Tiruvannamalai",
+      "Villupuram"
+    ],
+    "length_km": 92,
+    "year": 1988,
+    "contractor": "Arss Infrastructure Projects Ltd.",
+    "budget_crore": 828,
+    "condition": "Good",
+    "issues": [
+      "Temple Traffic Peak Season",
+      "Speed Humps"
+    ],
+    "summary": "NH | Good | 92 km"
+  },
+  {
+    "id": "nh-381",
+    "name": "NH 381",
+    "type": "NH",
+    "route": "Avinashi \u2013 Tiruppur \u2013 Avinashipalayam Road",
+    "districts": [
+      "Tiruppur",
+      "Coimbatore"
+    ],
+    "length_km": 62,
+    "year": 2010,
+    "contractor": "Dilip Buildcon Ltd.",
+    "budget_crore": 744,
+    "condition": "Good",
+    "issues": [
+      "Textile Truck Overloading",
+      "Junction Congestion"
+    ],
+    "summary": "NH | Good | 62 km"
+  },
+  {
+    "id": "nh-381b",
+    "name": "NH 381B",
+    "type": "NH",
+    "route": "Trichy \u2013 Namakkal Road (upgraded from SH 25)",
+    "districts": [
+      "Tiruchirappalli",
+      "Namakkal"
+    ],
+    "length_km": 77,
+    "year": 2018,
+    "contractor": "Navayuga Engineering Co.",
+    "budget_crore": 847,
+    "condition": "Good",
+    "issues": [
+      "Industrial Traffic",
+      "Minor Roadside Issues"
+    ],
+    "summary": "NH | Good | 77 km"
+  },
+  {
+    "id": "nh-383",
+    "name": "NH 383",
+    "type": "NH",
+    "route": "Villupuram \u2013 Cuddalore \u2013 Chidambaram Road",
+    "districts": [
+      "Villupuram",
+      "Cuddalore"
+    ],
+    "length_km": 96,
+    "year": 1982,
+    "contractor": "BSCPL Infrastructure Ltd.",
+    "budget_crore": 864,
+    "condition": "Moderate",
+    "issues": [
+      "Seasonal Flooding",
+      "Potholes",
+      "Encroachments"
+    ],
+    "summary": "NH | Moderate | 96 km"
+  },
+  {
+    "id": "nh-532",
+    "name": "NH 532",
+    "type": "NH",
+    "route": "Cuddalore \u2013 Vridhachalam \u2013 Salem Road (upgraded from SH 10)",
+    "districts": [
+      "Cuddalore",
+      "Villupuram",
+      "Kallakurichi",
+      "Salem"
+    ],
+    "length_km": 192,
+    "year": 2019,
+    "contractor": "NHAI / GR Infraprojects Ltd.",
+    "budget_crore": 1920,
+    "condition": "Good",
+    "issues": [
+      "Widening Underway",
+      "Roadside Stalls"
+    ],
+    "summary": "NH | Good | 192 km"
+  },
+  {
+    "id": "nh-536",
+    "name": "NH 536",
+    "type": "NH",
+    "route": "Madurai \u2013 Ramanathapuram \u2013 Rameswaram Road",
+    "districts": [
+      "Madurai",
+      "Sivaganga",
+      "Ramanathapuram"
+    ],
+    "length_km": 175,
+    "year": 1972,
+    "contractor": "Sadbhav Engineering Ltd.",
+    "budget_crore": 1575,
+    "condition": "Moderate",
+    "issues": [
+      "Bridge at Pamban",
+      "Tourism Overload",
+      "Potholes"
+    ],
+    "summary": "NH | Moderate | 175 km"
+  },
+  {
+    "id": "nh-544",
+    "name": "NH 544",
+    "type": "NH",
+    "route": "Walajapet \u2013 Vellore \u2013 Salem \u2013 Coimbatore \u2013 Palakkad border (Chennai\u2013Mumbai corridor in TN)",
+    "districts": [
+      "Ranipet",
+      "Vellore",
+      "Salem",
+      "Erode",
+      "Coimbatore"
+    ],
+    "length_km": 335,
+    "year": 1958,
+    "contractor": "IRB Infrastructure Developers Ltd.",
+    "budget_crore": 4020,
+    "condition": "Good",
+    "issues": [
+      "Heavy Freight Corridor",
+      "Widening in Progress"
+    ],
+    "summary": "NH | Good | 335 km"
+  },
+  {
+    "id": "nh-544a",
+    "name": "NH 544A",
+    "type": "NH",
+    "route": "Coimbatore \u2013 Perundurai \u2013 Erode Road",
+    "districts": [
+      "Coimbatore",
+      "Erode"
+    ],
+    "length_km": 72,
+    "year": 1988,
+    "contractor": "KMB Infra Ltd.",
+    "budget_crore": 720,
+    "condition": "Good",
+    "issues": [
+      "Textile Lorries",
+      "Minor Wear"
+    ],
+    "summary": "NH | Good | 72 km"
+  },
+  {
+    "id": "nh-544c",
+    "name": "NH 544C",
+    "type": "NH",
+    "route": "Coimbatore \u2013 Mettupalayam \u2013 Nilgiris spur",
+    "districts": [
+      "Coimbatore",
+      "Nilgiris"
+    ],
+    "length_km": 52,
+    "year": 1990,
+    "contractor": "Hindustan Construction Co.",
+    "budget_crore": 624,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Sections",
+      "Fog",
+      "Wildlife Crossings"
+    ],
+    "summary": "NH | Moderate | 52 km"
+  },
+  {
+    "id": "nh-544h",
+    "name": "NH 544H",
+    "type": "NH",
+    "route": "Thoppur \u2013 Mettur \u2013 Bhavani \u2013 Erode Road",
+    "districts": [
+      "Salem",
+      "Erode"
+    ],
+    "length_km": 85,
+    "year": 1983,
+    "contractor": "NHAI / Gawar Construction Ltd.",
+    "budget_crore": 935,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Truck Load",
+      "Cracking",
+      "Widening Ongoing (4 packages)"
+    ],
+    "summary": "NH | Moderate | 85 km"
+  },
+  {
+    "id": "nh-716",
+    "name": "NH 716",
+    "type": "NH",
+    "route": "Chennai \u2013 Tiruvallur \u2013 Tiruttani \u2013 Renigunta (upgraded from SH 3)",
+    "districts": [
+      "Chennai",
+      "Tiruvallur",
+      "Vellore",
+      "Ranipet"
+    ],
+    "length_km": 130,
+    "year": 2017,
+    "contractor": "L&T Construction Ltd.",
+    "budget_crore": 1430,
+    "condition": "Good",
+    "issues": [
+      "Tiruttani Temple Traffic",
+      "Border Crossing Delays"
+    ],
+    "summary": "NH | Good | 130 km"
+  },
+  {
+    "id": "nh-716a",
+    "name": "NH 716A",
+    "type": "NH",
+    "route": "Korathalaiyar Bridge \u2013 Puthur \u2013 AP Border (upgraded from SH 51)",
+    "districts": [
+      "Tiruvallur"
+    ],
+    "length_km": 32,
+    "year": 2019,
+    "contractor": "Ramky Infrastructure Ltd.",
+    "budget_crore": 352,
+    "condition": "Good",
+    "issues": [
+      "Low Traffic Volume",
+      "Maintenance Required"
+    ],
+    "summary": "NH | Good | 32 km"
+  },
+  {
+    "id": "nh-732",
+    "name": "NH 732",
+    "type": "NH",
+    "route": "Madurai \u2013 Sivaganga \u2013 Ramanathapuram \u2013 Thoothukudi",
+    "districts": [
+      "Madurai",
+      "Sivaganga",
+      "Ramanathapuram",
+      "Thoothukudi"
+    ],
+    "length_km": 203,
+    "year": 1985,
+    "contractor": "Sadbhav Engineering Ltd.",
+    "budget_crore": 2030,
+    "condition": "Poor",
+    "issues": [
+      "Severe Potholes",
+      "Poor Drainage",
+      "Heavy Bus Traffic"
+    ],
+    "summary": "NH | Poor | 203 km"
+  },
+  {
+    "id": "nh-744",
+    "name": "NH 744",
+    "type": "NH",
+    "route": "Madurai \u2013 Dindigul \u2013 Karur \u2013 Salem \u2013 Dharmapuri \u2013 Hosur",
+    "districts": [
+      "Madurai",
+      "Dindigul",
+      "Karur",
+      "Salem",
+      "Dharmapuri",
+      "Krishnagiri"
+    ],
+    "length_km": 312,
+    "year": 1978,
+    "contractor": "Dilip Buildcon Ltd.",
+    "budget_crore": 3120,
+    "condition": "Moderate",
+    "issues": [
+      "Truck Overloading",
+      "Potholes (Salem\u2013Dharmapuri)",
+      "Cracks"
+    ],
+    "summary": "NH | Moderate | 312 km"
+  },
+  {
+    "id": "nh-583",
+    "name": "NH 583",
+    "type": "NH",
+    "route": "Nagapattinam \u2013 Thiruvarur \u2013 Thanjavur Road",
+    "districts": [
+      "Nagapattinam",
+      "Tiruvarur",
+      "Thanjavur"
+    ],
+    "length_km": 122,
+    "year": 1978,
+    "contractor": "Delta Constructions Ltd.",
+    "budget_crore": 1342,
+    "condition": "Moderate",
+    "issues": [
+      "Delta Flooding",
+      "Drainage Issues",
+      "Narrow Bridges"
+    ],
+    "summary": "NH | Moderate | 122 km"
+  },
+  {
+    "id": "nh-67",
+    "name": "NH 67",
+    "type": "NH",
+    "route": "Nagapattinam \u2013 Trichy \u2013 Karur \u2013 Coimbatore (old NH-67 / now split into NH 81, NH 83, NH 85, NH 87)",
+    "districts": [
+      "Nagapattinam",
+      "Tiruchirappalli",
+      "Karur",
+      "Coimbatore"
+    ],
+    "length_km": 280,
+    "year": 1960,
+    "contractor": "NHAI / L&T Construction Ltd.",
+    "budget_crore": 2800,
+    "condition": "Moderate",
+    "issues": [
+      "High Freight Volume",
+      "Some Potholes",
+      "Overlay Pending"
+    ],
+    "summary": "NH | Moderate | 280 km"
+  },
+  {
+    "id": "nh-81",
+    "name": "NH 81",
+    "type": "NH",
+    "route": "Coimbatore \u2013 Karur Road (Old NH-67 segment)",
+    "districts": [
+      "Coimbatore",
+      "Tiruppur",
+      "Karur"
+    ],
+    "length_km": 111,
+    "year": 2016,
+    "contractor": "GR Infraprojects Ltd.",
+    "budget_crore": 1221,
+    "condition": "Good",
+    "issues": [
+      "Textile Lorries",
+      "Minor Shoulder Erosion"
+    ],
+    "summary": "NH | Good | 111 km"
+  },
+  {
+    "id": "nh-83",
+    "name": "NH 83",
+    "type": "NH",
+    "route": "Nagapattinam \u2013 Tiruchirappalli Road (coastal delta section)",
+    "districts": [
+      "Nagapattinam",
+      "Tiruvarur",
+      "Tiruchirappalli"
+    ],
+    "length_km": 134,
+    "year": 2016,
+    "contractor": "KNR Constructions Ltd.",
+    "budget_crore": 1474,
+    "condition": "Moderate",
+    "issues": [
+      "Delta Flooding",
+      "Drainage Gaps",
+      "Cracks"
+    ],
+    "summary": "NH | Moderate | 134 km"
+  },
+  {
+    "id": "nh-85",
+    "name": "NH 85",
+    "type": "NH",
+    "route": "Trichy \u2013 Karur \u2013 Erode Road (upgraded from SH)",
+    "districts": [
+      "Tiruchirappalli",
+      "Karur",
+      "Erode"
+    ],
+    "length_km": 148,
+    "year": 2017,
+    "contractor": "Navayuga Engineering Co.",
+    "budget_crore": 1628,
+    "condition": "Good",
+    "issues": [
+      "Industrial Traffic",
+      "Minor Edge Erosion"
+    ],
+    "summary": "NH | Good | 148 km"
+  },
+  {
+    "id": "nh-87",
+    "name": "NH 87",
+    "type": "NH",
+    "route": "Thanjavur \u2013 Ariyalur \u2013 Perambalur \u2013 Trichy Road",
+    "districts": [
+      "Thanjavur",
+      "Ariyalur",
+      "Perambalur",
+      "Tiruchirappalli"
+    ],
+    "length_km": 115,
+    "year": 2017,
+    "contractor": "BSCPL Infrastructure Ltd.",
+    "budget_crore": 1265,
+    "condition": "Moderate",
+    "issues": [
+      "Cement Trucks",
+      "Bridge Aging",
+      "Potholes"
+    ],
+    "summary": "NH | Moderate | 115 km"
+  },
+  {
+    "id": "nh-136b",
+    "name": "NH 136B",
+    "type": "NH",
+    "route": "Kumbakonam \u2013 Sirkali \u2013 Chidambaram Road (upgraded from SH 64)",
+    "districts": [
+      "Thanjavur",
+      "Mayiladuthurai",
+      "Cuddalore"
+    ],
+    "length_km": 92,
+    "year": 2021,
+    "contractor": "Apco Infratech Pvt. Ltd.",
+    "budget_crore": 920,
+    "condition": "Good",
+    "issues": [
+      "Seasonal Flooding",
+      "Minor Potholes"
+    ],
+    "summary": "NH | Good | 92 km"
+  },
+  {
+    "id": "nh-179a",
+    "name": "NH 179A",
+    "type": "NH",
+    "route": "Salem \u2013 Tirupattur \u2013 Vaniyambadi Road (upgraded from SH 18)",
+    "districts": [
+      "Salem",
+      "Dharmapuri",
+      "Tirupattur",
+      "Vaniyambadi"
+    ],
+    "length_km": 125,
+    "year": 2018,
+    "contractor": "NHAI / Dilip Buildcon Ltd.",
+    "budget_crore": 1250,
+    "condition": "Good",
+    "issues": [
+      "Widening to 4 Lane Completed",
+      "Minor Roadside Encroachments"
+    ],
+    "summary": "NH | Good | 125 km"
+  },
+  {
+    "id": "nh-132b",
+    "name": "NH 132B",
+    "type": "NH",
+    "route": "Chengalpattu \u2013 Kanchipuram Road (upgraded from SH 58 section)",
+    "districts": [
+      "Chengalpattu",
+      "Kanchipuram"
+    ],
+    "length_km": 38,
+    "year": 2022,
+    "contractor": "GVR Infra Projects Ltd.",
+    "budget_crore": 418,
+    "condition": "Good",
+    "issues": [
+      "Urban Encroachments",
+      "Junction Signals"
+    ],
+    "summary": "NH | Good | 38 km"
+  },
+  {
+    "id": "nh-138",
+    "name": "NH 138",
+    "type": "NH",
+    "route": "Krishnagiri \u2013 Dharmapuri \u2013 Hosur \u2013 Bengaluru (TN section)",
+    "districts": [
+      "Krishnagiri",
+      "Dharmapuri"
+    ],
+    "length_km": 98,
+    "year": 2014,
+    "contractor": "IRB Infrastructure Developers Ltd.",
+    "budget_crore": 1176,
+    "condition": "Good",
+    "issues": [
+      "High Freight Volume",
+      "Toll Plaza Queues"
+    ],
+    "summary": "NH | Good | 98 km"
+  },
+  {
+    "id": "sh-1",
+    "name": "SH 1",
+    "type": "SH",
+    "route": "Chennai \u2013 Ennore Expressway Road",
+    "districts": [
+      "Chennai",
+      "Tiruvallur"
+    ],
+    "length_km": 10,
+    "year": 2004,
+    "contractor": "L&T Construction Ltd.",
+    "budget_crore": 110,
+    "condition": "Good",
+    "issues": [
+      "Port Traffic",
+      "Congestion at Junctions"
+    ],
+    "summary": "SH | Good | 10 km"
+  },
+  {
+    "id": "sh-1a",
+    "name": "SH 1A",
+    "type": "SH",
+    "route": "Manali Oil Refinery Road",
+    "districts": [
+      "Tiruvallur"
+    ],
+    "length_km": 6,
+    "year": 2002,
+    "contractor": "HPCL / TNHD",
+    "budget_crore": 72,
+    "condition": "Good",
+    "issues": [
+      "Industrial Access",
+      "Heavy Tankers"
+    ],
+    "summary": "SH | Good | 6 km"
+  },
+  {
+    "id": "sh-2",
+    "name": "SH 2",
+    "type": "SH",
+    "route": "Inner Ring Road \u2013 Chennai",
+    "districts": [
+      "Chennai"
+    ],
+    "length_km": 25,
+    "year": 2000,
+    "contractor": "L&T Construction Ltd.",
+    "budget_crore": 300,
+    "condition": "Moderate",
+    "issues": [
+      "Urban Congestion",
+      "Pothole Clusters",
+      "Signal Failures"
+    ],
+    "summary": "SH | Moderate | 25 km"
+  },
+  {
+    "id": "sh-2a",
+    "name": "SH 2A",
+    "type": "SH",
+    "route": "Inner Ring Road Southern Sector \u2013 Chennai",
+    "districts": [
+      "Chennai"
+    ],
+    "length_km": 5,
+    "year": 2001,
+    "contractor": "Chennai City Roads Division",
+    "budget_crore": 60,
+    "condition": "Moderate",
+    "issues": [
+      "Urban Traffic",
+      "Utilities Conflict"
+    ],
+    "summary": "SH | Moderate | 5 km"
+  },
+  {
+    "id": "sh-4",
+    "name": "SH 4",
+    "type": "SH",
+    "route": "Arcot \u2013 Kanchipuram \u2013 Villupuram Road",
+    "districts": [
+      "Ranipet",
+      "Vellore",
+      "Kanchipuram",
+      "Villupuram"
+    ],
+    "length_km": 110,
+    "year": 1978,
+    "contractor": "Simplex Infrastructures Ltd.",
+    "budget_crore": 1100,
+    "condition": "Moderate",
+    "issues": [
+      "Missing Road Signs",
+      "Bridge Wear",
+      "Cattle Crossing"
+    ],
+    "summary": "SH | Moderate | 110 km"
+  },
+  {
+    "id": "sh-4a",
+    "name": "SH 4A",
+    "type": "SH",
+    "route": "Sanipoondi \u2013 Kilpennathur \u2013 Avalurpet \u2013 Chetpet Road",
+    "districts": [
+      "Tiruvannamalai",
+      "Villupuram"
+    ],
+    "length_km": 42,
+    "year": 1985,
+    "contractor": "Arss Infrastructure Projects Ltd.",
+    "budget_crore": 378,
+    "condition": "Poor",
+    "issues": [
+      "No Street Lights",
+      "Potholes",
+      "Narrow Width"
+    ],
+    "summary": "SH | Poor | 42 km"
+  },
+  {
+    "id": "sh-5",
+    "name": "SH 5",
+    "type": "SH",
+    "route": "Arcot \u2013 Tindivanam Road",
+    "districts": [
+      "Vellore",
+      "Ranipet",
+      "Villupuram"
+    ],
+    "length_km": 95,
+    "year": 1980,
+    "contractor": "Navayuga Engineering Co.",
+    "budget_crore": 855,
+    "condition": "Poor",
+    "issues": [
+      "Potholes",
+      "Shoulder Erosion",
+      "No Drainage"
+    ],
+    "summary": "SH | Poor | 95 km"
+  },
+  {
+    "id": "sh-5a",
+    "name": "SH 5A",
+    "type": "SH",
+    "route": "Kancheepuram \u2013 Thiruvathipuram Road",
+    "districts": [
+      "Chengalpattu"
+    ],
+    "length_km": 17,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 153,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Trucks",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 17 km"
+  },
+  {
+    "id": "sh-6",
+    "name": "SH 6",
+    "type": "SH",
+    "route": "Kallakurichi \u2013 Tiruvannamalai Road",
+    "districts": [
+      "Kallakurichi",
+      "Tiruvannamalai"
+    ],
+    "length_km": 64,
+    "year": 1982,
+    "contractor": "BSCPL Infrastructure Ltd.",
+    "budget_crore": 576,
+    "condition": "Moderate",
+    "issues": [
+      "Rocky Terrain",
+      "Missing Signage"
+    ],
+    "summary": "SH | Moderate | 64 km"
+  },
+  {
+    "id": "sh-6a",
+    "name": "SH 6A",
+    "type": "SH",
+    "route": "Tiruvannamalai \u2013 Thanipadi \u2013 Harur Road",
+    "districts": [
+      "Tiruvannamalai",
+      "Dharmapuri"
+    ],
+    "length_km": 75,
+    "year": 1985,
+    "contractor": "Arss Infrastructure Projects Ltd.",
+    "budget_crore": 675,
+    "condition": "Poor",
+    "issues": [
+      "No Night Lighting",
+      "Potholes",
+      "Encroachments"
+    ],
+    "summary": "SH | Poor | 75 km"
+  },
+  {
+    "id": "sh-6b",
+    "name": "SH 6B",
+    "type": "SH",
+    "route": "Thandrampet \u2013 Kottakulam Road",
+    "districts": [
+      "Tiruvannamalai"
+    ],
+    "length_km": 18,
+    "year": 1990,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 162,
+    "condition": "Poor",
+    "issues": [
+      "Potholes",
+      "No Footpath",
+      "Narrow"
+    ],
+    "summary": "SH | Poor | 18 km"
+  },
+  {
+    "id": "sh-7",
+    "name": "SH 7",
+    "type": "SH",
+    "route": "Villupuram \u2013 Mambalapattu \u2013 Thirukoilur Road",
+    "districts": [
+      "Villupuram",
+      "Kallakurichi"
+    ],
+    "length_km": 35,
+    "year": 1983,
+    "contractor": "CES (I) Ltd.",
+    "budget_crore": 315,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Vehicles",
+      "Narrow Width"
+    ],
+    "summary": "SH | Moderate | 35 km"
+  },
+  {
+    "id": "sh-8",
+    "name": "SH 8",
+    "type": "SH",
+    "route": "Vikravandi \u2013 Kumbakonam \u2013 Thanjavur Road",
+    "districts": [
+      "Villupuram",
+      "Mayiladuthurai",
+      "Thanjavur"
+    ],
+    "length_km": 128,
+    "year": 1981,
+    "contractor": "ITD Cementation India Ltd.",
+    "budget_crore": 1280,
+    "condition": "Moderate",
+    "issues": [
+      "Delta Flooding",
+      "Drainage Issues",
+      "Bridge Capacity"
+    ],
+    "summary": "SH | Moderate | 128 km"
+  },
+  {
+    "id": "sh-9",
+    "name": "SH 9",
+    "type": "SH",
+    "route": "Cuddalore \u2013 Chittoor Road",
+    "districts": [
+      "Cuddalore",
+      "Kallakurichi",
+      "Tiruvannamalai",
+      "Vellore"
+    ],
+    "length_km": 126,
+    "year": 1979,
+    "contractor": "Ramco Constructions Ltd.",
+    "budget_crore": 1134,
+    "condition": "Poor",
+    "issues": [
+      "Severe Potholes",
+      "Poor Drainage",
+      "No Footpath"
+    ],
+    "summary": "SH | Poor | 126 km"
+  },
+  {
+    "id": "sh-9a",
+    "name": "SH 9A",
+    "type": "SH",
+    "route": "Tiruvannamalai \u2013 Thiyagadurgam Road",
+    "districts": [
+      "Tiruvannamalai",
+      "Kallakurichi"
+    ],
+    "length_km": 51,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 459,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Narrow Road"
+    ],
+    "summary": "SH | Moderate | 51 km"
+  },
+  {
+    "id": "sh-11",
+    "name": "SH 11",
+    "type": "SH",
+    "route": "Calicut \u2013 Nilambur \u2013 Gudalur Road (TN section from Kerala border)",
+    "districts": [
+      "Nilgiris"
+    ],
+    "length_km": 6,
+    "year": 1972,
+    "contractor": "TN Highways Dept.",
+    "budget_crore": 72,
+    "condition": "Good",
+    "issues": [
+      "Border Section",
+      "Forest Area",
+      "Wildlife Zone"
+    ],
+    "summary": "SH | Good | 6 km"
+  },
+  {
+    "id": "sh-12",
+    "name": "SH 12",
+    "type": "SH",
+    "route": "Calicut \u2013 Vythiri \u2013 Gudalur Road (TN stretch from Kerala border)",
+    "districts": [
+      "Nilgiris"
+    ],
+    "length_km": 38,
+    "year": 1972,
+    "contractor": "TN Highways Dept.",
+    "budget_crore": 380,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Erosion",
+      "Fog",
+      "Landslides"
+    ],
+    "summary": "SH | Moderate | 38 km"
+  },
+  {
+    "id": "sh-15",
+    "name": "SH 15",
+    "type": "SH",
+    "route": "Udhagamandalam \u2013 Kotagiri \u2013 Mettupalayam \u2013 Sathyamangalam \u2013 Gobichettipalayam \u2013 Erode Road",
+    "districts": [
+      "Nilgiris",
+      "Coimbatore",
+      "Erode"
+    ],
+    "length_km": 160,
+    "year": 1975,
+    "contractor": "Hindustan Construction Co.",
+    "budget_crore": 1600,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Hairpin Bends",
+      "Landslides",
+      "Tourist Traffic"
+    ],
+    "summary": "SH | Moderate | 160 km"
+  },
+  {
+    "id": "sh-15a",
+    "name": "SH 15A",
+    "type": "SH",
+    "route": "Cheyur to Erode \u2013 Sathy Road",
+    "districts": [
+      "Tiruppur",
+      "Erode"
+    ],
+    "length_km": 30,
+    "year": 1990,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 270,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Dust",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Moderate | 30 km"
+  },
+  {
+    "id": "sh-17",
+    "name": "SH 17",
+    "type": "SH",
+    "route": "Malur \u2013 Hosur \u2013 Adhiyamankottai Road (from Karnataka border)",
+    "districts": [
+      "Krishnagiri",
+      "Dharmapuri"
+    ],
+    "length_km": 92,
+    "year": 1980,
+    "contractor": "Sakthi Constructions Pvt. Ltd.",
+    "budget_crore": 828,
+    "condition": "Moderate",
+    "issues": [
+      "Karnataka Border Trade",
+      "Quarry Trucks",
+      "Dust"
+    ],
+    "summary": "SH | Moderate | 92 km"
+  },
+  {
+    "id": "sh-17a",
+    "name": "SH 17A",
+    "type": "SH",
+    "route": "Hosur \u2013 Denkanikottai Road",
+    "districts": [
+      "Krishnagiri"
+    ],
+    "length_km": 26,
+    "year": 1987,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 234,
+    "condition": "Moderate",
+    "issues": [
+      "Forest Stretch",
+      "Hairpin Bends"
+    ],
+    "summary": "SH | Moderate | 26 km"
+  },
+  {
+    "id": "sh-17b",
+    "name": "SH 17B",
+    "type": "SH",
+    "route": "Hosur \u2013 Thally \u2013 Denkanikottai Road",
+    "districts": [
+      "Krishnagiri"
+    ],
+    "length_km": 42,
+    "year": 1989,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 378,
+    "condition": "Moderate",
+    "issues": [
+      "Tourism Traffic",
+      "Ghat Section"
+    ],
+    "summary": "SH | Moderate | 42 km"
+  },
+  {
+    "id": "sh-17c",
+    "name": "SH 17C",
+    "type": "SH",
+    "route": "Bagalur \u2013 Berigai Road",
+    "districts": [
+      "Krishnagiri"
+    ],
+    "length_km": 12,
+    "year": 1995,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 108,
+    "condition": "Good",
+    "issues": [
+      "Industrial Traffic",
+      "Light Wear"
+    ],
+    "summary": "SH | Good | 12 km"
+  },
+  {
+    "id": "sh-18a",
+    "name": "SH 18A",
+    "type": "SH",
+    "route": "Tirupattur \u2013 Singarapet Road",
+    "districts": [
+      "Tirupattur",
+      "Krishnagiri"
+    ],
+    "length_km": 30,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 270,
+    "condition": "Moderate",
+    "issues": [
+      "Cracks",
+      "Encroachments"
+    ],
+    "summary": "SH | Moderate | 30 km"
+  },
+  {
+    "id": "sh-19",
+    "name": "SH 19",
+    "type": "SH",
+    "route": "Avinashi \u2013 Tiruppur \u2013 Palladam \u2013 Pollachi \u2013 Meenkarai Road",
+    "districts": [
+      "Tiruppur",
+      "Coimbatore"
+    ],
+    "length_km": 85,
+    "year": 1978,
+    "contractor": "Sri Ram EPC Ltd.",
+    "budget_crore": 850,
+    "condition": "Good",
+    "issues": [
+      "Textile Industry Traffic",
+      "Minor Cracks",
+      "Speed Humps"
+    ],
+    "summary": "SH | Good | 85 km"
+  },
+  {
+    "id": "sh-19a",
+    "name": "SH 19A",
+    "type": "SH",
+    "route": "Tiruppur \u2013 Vijayamangalam Road",
+    "districts": [
+      "Tiruppur",
+      "Erode"
+    ],
+    "length_km": 25,
+    "year": 1990,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 225,
+    "condition": "Moderate",
+    "issues": [
+      "Textile Lorries",
+      "Dust",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 25 km"
+  },
+  {
+    "id": "sh-21",
+    "name": "SH 21",
+    "type": "SH",
+    "route": "Pollachi \u2013 Dharapuram \u2013 Karur Road",
+    "districts": [
+      "Coimbatore",
+      "Tiruppur",
+      "Karur"
+    ],
+    "length_km": 114,
+    "year": 1977,
+    "contractor": "Elsamex India Ltd.",
+    "budget_crore": 1140,
+    "condition": "Moderate",
+    "issues": [
+      "Narrow Sections",
+      "Cattle on Road",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 114 km"
+  },
+  {
+    "id": "sh-22",
+    "name": "SH 22",
+    "type": "SH",
+    "route": "Grand Anaicut \u2013 Kaveripattinam Road",
+    "districts": [
+      "Thanjavur",
+      "Mayiladuthurai"
+    ],
+    "length_km": 125,
+    "year": 1982,
+    "contractor": "Delta Constructions Ltd.",
+    "budget_crore": 1125,
+    "condition": "Moderate",
+    "issues": [
+      "Delta Zone Flooding",
+      "Drainage Missing"
+    ],
+    "summary": "SH | Moderate | 125 km"
+  },
+  {
+    "id": "sh-23",
+    "name": "SH 23",
+    "type": "SH",
+    "route": "Mayiladuthurai \u2013 Thiruthuraipoondi Road",
+    "districts": [
+      "Mayiladuthurai",
+      "Tiruvarur"
+    ],
+    "length_km": 68,
+    "year": 1984,
+    "contractor": "GMR Highways Ltd.",
+    "budget_crore": 680,
+    "condition": "Poor",
+    "issues": [
+      "Flooding",
+      "Pothole Dense",
+      "Lack of Drainage"
+    ],
+    "summary": "SH | Poor | 68 km"
+  },
+  {
+    "id": "sh-25",
+    "name": "SH 25",
+    "type": "SH",
+    "route": "Trichy \u2013 Namakkal Road (remaining section)",
+    "districts": [
+      "Tiruchirappalli",
+      "Namakkal"
+    ],
+    "length_km": 77,
+    "year": 1976,
+    "contractor": "KMB Infra Ltd.",
+    "budget_crore": 770,
+    "condition": "Moderate",
+    "issues": [
+      "Narrow Sections",
+      "Signage Missing"
+    ],
+    "summary": "SH | Moderate | 77 km"
+  },
+  {
+    "id": "sh-26",
+    "name": "SH 26",
+    "type": "SH",
+    "route": "Trichy \u2013 Pudukkottai \u2013 Aranthangi \u2013 Mimisal Road",
+    "districts": [
+      "Tiruchirappalli",
+      "Pudukkottai"
+    ],
+    "length_km": 120,
+    "year": 1980,
+    "contractor": "Soma Enterprises Ltd.",
+    "budget_crore": 1200,
+    "condition": "Moderate",
+    "issues": [
+      "Bridge Aging",
+      "Narrow Sections",
+      "Agricultural Traffic"
+    ],
+    "summary": "SH | Moderate | 120 km"
+  },
+  {
+    "id": "sh-27",
+    "name": "SH 27",
+    "type": "SH",
+    "route": "Perambalur \u2013 Manamadurai Road",
+    "districts": [
+      "Ariyalur",
+      "Thanjavur",
+      "Sivaganga"
+    ],
+    "length_km": 130,
+    "year": 1983,
+    "contractor": "Coastal Projects Ltd.",
+    "budget_crore": 1170,
+    "condition": "Poor",
+    "issues": [
+      "Potholes",
+      "Poor Condition",
+      "No Footpath"
+    ],
+    "summary": "SH | Poor | 130 km"
+  },
+  {
+    "id": "sh-29",
+    "name": "SH 29",
+    "type": "SH",
+    "route": "Thanjavur \u2013 Pattukkottai \u2013 Aranthangi \u2013 Karaikudi \u2013 Paramakudi \u2013 Sayalkudi Road",
+    "districts": [
+      "Thanjavur",
+      "Pudukkottai",
+      "Sivaganga",
+      "Ramanathapuram"
+    ],
+    "length_km": 241,
+    "year": 1979,
+    "contractor": "SPB Infra Ltd.",
+    "budget_crore": 2169,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Trucks",
+      "Bridge Load Limit",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 241 km"
+  },
+  {
+    "id": "sh-30",
+    "name": "SH 30",
+    "type": "SH",
+    "route": "Musiri \u2013 Thuraiyur \u2013 Attur Road",
+    "districts": [
+      "Tiruchirappalli",
+      "Salem"
+    ],
+    "length_km": 91,
+    "year": 1981,
+    "contractor": "Pandian Infrastructure Ltd.",
+    "budget_crore": 819,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Traffic",
+      "Narrow Width",
+      "Dust"
+    ],
+    "summary": "SH | Moderate | 91 km"
+  },
+  {
+    "id": "sh-32",
+    "name": "SH 32",
+    "type": "SH",
+    "route": "Madurai \u2013 Thoothukudi Road (city-side section)",
+    "districts": [
+      "Madurai",
+      "Thoothukudi"
+    ],
+    "length_km": 143,
+    "year": 1975,
+    "contractor": "TVS Construction Pvt. Ltd.",
+    "budget_crore": 1430,
+    "condition": "Moderate",
+    "issues": [
+      "Heavy Trucks",
+      "Port Traffic",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Moderate | 143 km"
+  },
+  {
+    "id": "sh-33",
+    "name": "SH 33",
+    "type": "SH",
+    "route": "Madurai \u2013 Thondi Road",
+    "districts": [
+      "Madurai",
+      "Ramanathapuram"
+    ],
+    "length_km": 130,
+    "year": 1978,
+    "contractor": "Subramanya Constructions",
+    "budget_crore": 1170,
+    "condition": "Poor",
+    "issues": [
+      "Severe Potholes",
+      "Sand Encroachment",
+      "No Street Lights"
+    ],
+    "summary": "SH | Poor | 130 km"
+  },
+  {
+    "id": "sh-34",
+    "name": "SH 34",
+    "type": "SH",
+    "route": "Ramanathapuram \u2013 Elayankudi \u2013 Sivaganga \u2013 Melur Road",
+    "districts": [
+      "Ramanathapuram",
+      "Sivaganga",
+      "Madurai"
+    ],
+    "length_km": 98,
+    "year": 1982,
+    "contractor": "Gayatri Projects Ltd.",
+    "budget_crore": 882,
+    "condition": "Moderate",
+    "issues": [
+      "Sand Encroachment",
+      "Faded Markings",
+      "Cattle"
+    ],
+    "summary": "SH | Moderate | 98 km"
+  },
+  {
+    "id": "sh-34a",
+    "name": "SH 34A",
+    "type": "SH",
+    "route": "Uppoor \u2013 Kottaiyur Road",
+    "districts": [
+      "Ramanathapuram",
+      "Sivaganga"
+    ],
+    "length_km": 37,
+    "year": 1990,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 333,
+    "condition": "Poor",
+    "issues": [
+      "Coastal Wind",
+      "Potholes",
+      "Narrow"
+    ],
+    "summary": "SH | Poor | 37 km"
+  },
+  {
+    "id": "sh-35",
+    "name": "SH 35",
+    "type": "SH",
+    "route": "Dindigul \u2013 Natham \u2013 Singampunari \u2013 Thiruppathur \u2013 Karaikudi Road",
+    "districts": [
+      "Dindigul",
+      "Madurai",
+      "Sivaganga"
+    ],
+    "length_km": 112,
+    "year": 1980,
+    "contractor": "Arun Kumar Infrastructure",
+    "budget_crore": 1008,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Narrow Road",
+      "Puddles"
+    ],
+    "summary": "SH | Moderate | 112 km"
+  },
+  {
+    "id": "sh-37",
+    "name": "SH 37",
+    "type": "SH",
+    "route": "Mettur \u2013 Oddanchatram \u2013 Dharapuram \u2013 Tiruppur Road",
+    "districts": [
+      "Salem",
+      "Dindigul",
+      "Tiruppur"
+    ],
+    "length_km": 103,
+    "year": 1984,
+    "contractor": "Ramco Constructions Ltd.",
+    "budget_crore": 927,
+    "condition": "Moderate",
+    "issues": [
+      "Cracks",
+      "Shoulder Issues",
+      "Quarry Access"
+    ],
+    "summary": "SH | Moderate | 103 km"
+  },
+  {
+    "id": "sh-38",
+    "name": "SH 38",
+    "type": "SH",
+    "route": "Aruppukottai \u2013 Perunali \u2013 Sayalkudi \u2013 Kadugusandai Road",
+    "districts": [
+      "Virudhunagar",
+      "Ramanathapuram"
+    ],
+    "length_km": 73,
+    "year": 1985,
+    "contractor": "TVS Construction Pvt. Ltd.",
+    "budget_crore": 657,
+    "condition": "Moderate",
+    "issues": [
+      "Rural Feeder",
+      "Sand Drift",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 73 km"
+  },
+  {
+    "id": "sh-39",
+    "name": "SH 39",
+    "type": "SH",
+    "route": "Tirunelveli \u2013 Shencottai \u2013 Kollam Road (TN section)",
+    "districts": [
+      "Tirunelveli",
+      "Tenkasi"
+    ],
+    "length_km": 56,
+    "year": 1981,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 504,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Section",
+      "Border Access",
+      "Landslide Risk"
+    ],
+    "summary": "SH | Moderate | 56 km"
+  },
+  {
+    "id": "sh-39a",
+    "name": "SH 39A",
+    "type": "SH",
+    "route": "Shencottai \u2013 Surandai \u2013 Pavoorchatram Road",
+    "districts": [
+      "Tenkasi"
+    ],
+    "length_km": 31,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 279,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat",
+      "Light Traffic",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 31 km"
+  },
+  {
+    "id": "sh-40",
+    "name": "SH 40",
+    "type": "SH",
+    "route": "Tiruchendur \u2013 Palayamkottai \u2013 Ambasamudram \u2013 Tenkasi \u2013 Courtalam Road",
+    "districts": [
+      "Thoothukudi",
+      "Tirunelveli",
+      "Tenkasi"
+    ],
+    "length_km": 134,
+    "year": 1980,
+    "contractor": "Coastal Projects Ltd.",
+    "budget_crore": 1206,
+    "condition": "Moderate",
+    "issues": [
+      "Tourism Traffic",
+      "Ghat Erosion",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 134 km"
+  },
+  {
+    "id": "sh-40a",
+    "name": "SH 40A",
+    "type": "SH",
+    "route": "Kadayam \u2013 Mukkudal Road",
+    "districts": [
+      "Tirunelveli"
+    ],
+    "length_km": 28,
+    "year": 1990,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 252,
+    "condition": "Poor",
+    "issues": [
+      "Forest Road",
+      "Potholes",
+      "No Lighting"
+    ],
+    "summary": "SH | Poor | 28 km"
+  },
+  {
+    "id": "sh-41",
+    "name": "SH 41",
+    "type": "SH",
+    "route": "Rajapalayam \u2013 Sankarankovil \u2013 Tirunelveli Road",
+    "districts": [
+      "Virudhunagar",
+      "Tenkasi",
+      "Tirunelveli"
+    ],
+    "length_km": 86,
+    "year": 1980,
+    "contractor": "Southern Structurals Ltd.",
+    "budget_crore": 774,
+    "condition": "Moderate",
+    "issues": [
+      "Pilgrimage Traffic",
+      "Minor Cracks",
+      "Signage"
+    ],
+    "summary": "SH | Moderate | 86 km"
+  },
+  {
+    "id": "sh-42",
+    "name": "SH 42",
+    "type": "SH",
+    "route": "Srivilliputhur \u2013 Sivakasi \u2013 Virudhunagar \u2013 Aruppukottai \u2013 Narikudi Road",
+    "districts": [
+      "Virudhunagar",
+      "Ramanathapuram"
+    ],
+    "length_km": 109,
+    "year": 1982,
+    "contractor": "TVS Construction Pvt. Ltd.",
+    "budget_crore": 981,
+    "condition": "Moderate",
+    "issues": [
+      "Fireworks Industry Traffic",
+      "Potholes",
+      "Dust"
+    ],
+    "summary": "SH | Moderate | 109 km"
+  },
+  {
+    "id": "sh-44",
+    "name": "SH 44",
+    "type": "SH",
+    "route": "Paruvakudi \u2013 Kovilpatti \u2013 Ettayapuram \u2013 Vilathikulam \u2013 Vembar Road",
+    "districts": [
+      "Tenkasi",
+      "Thoothukudi"
+    ],
+    "length_km": 92,
+    "year": 1983,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 828,
+    "condition": "Moderate",
+    "issues": [
+      "Salt Pan Traffic",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 92 km"
+  },
+  {
+    "id": "sh-45",
+    "name": "SH 45",
+    "type": "SH",
+    "route": "Aralvaimozhi \u2013 Nedumangadu Road (towards Kerala border)",
+    "districts": [
+      "Kanyakumari"
+    ],
+    "length_km": 49,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 441,
+    "condition": "Good",
+    "issues": [
+      "Tourism Traffic",
+      "Border Crossing Delay"
+    ],
+    "summary": "SH | Good | 49 km"
+  },
+  {
+    "id": "sh-46",
+    "name": "SH 46",
+    "type": "SH",
+    "route": "Aralvaimozhi \u2013 Nagercoil \u2013 Rajakkamangalam \u2013 Colachel Road",
+    "districts": [
+      "Kanyakumari"
+    ],
+    "length_km": 29,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 261,
+    "condition": "Good",
+    "issues": [
+      "Coastal Wind",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Good | 29 km"
+  },
+  {
+    "id": "sh-47",
+    "name": "SH 47",
+    "type": "SH",
+    "route": "Parthibanur \u2013 Kamuthi \u2013 Aruppukottai Road",
+    "districts": [
+      "Ramanathapuram"
+    ],
+    "length_km": 42,
+    "year": 1987,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 378,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Faded Markings"
+    ],
+    "summary": "SH | Moderate | 42 km"
+  },
+  {
+    "id": "sh-48",
+    "name": "SH 48",
+    "type": "SH",
+    "route": "Marmalong Bridge \u2013 Irumbuliyur \u2013 Vandalur \u2013 Mudichur \u2013 Oragadam \u2013 Walajabad Road",
+    "districts": [
+      "Chennai",
+      "Chengalpattu"
+    ],
+    "length_km": 50,
+    "year": 1999,
+    "contractor": "L&T Construction Ltd.",
+    "budget_crore": 550,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Corridor Traffic",
+      "Encroachments",
+      "Signage"
+    ],
+    "summary": "SH | Moderate | 50 km"
+  },
+  {
+    "id": "sh-49",
+    "name": "SH 49",
+    "type": "SH",
+    "route": "East Coast Road (Thiruvanmiyur \u2013 Mahabalipuram \u2013 Marakkanam \u2013 Pondicherry Road)",
+    "districts": [
+      "Chennai",
+      "Chengalpattu",
+      "Villupuram"
+    ],
+    "length_km": 134,
+    "year": 2002,
+    "contractor": "TNRDC",
+    "budget_crore": 1340,
+    "condition": "Good",
+    "issues": [
+      "Coastal Erosion",
+      "Tourism Traffic",
+      "Speed"
+    ],
+    "summary": "SH | Good | 134 km"
+  },
+  {
+    "id": "sh-49a",
+    "name": "SH 49A",
+    "type": "SH",
+    "route": "Rajiv Gandhi Road / IT Expressway (Chennai \u2013 Thiruporur \u2013 Mahabalipuram Road)",
+    "districts": [
+      "Chennai",
+      "Chengalpattu"
+    ],
+    "length_km": 44,
+    "year": 2000,
+    "contractor": "TNRDC",
+    "budget_crore": 480,
+    "condition": "Good",
+    "issues": [
+      "IT Corridor Traffic",
+      "Minor Wear",
+      "Speed Enforcement"
+    ],
+    "summary": "SH | Good | 44 km"
+  },
+  {
+    "id": "sh-50",
+    "name": "SH 50",
+    "type": "SH",
+    "route": "Thirumazhisai \u2013 Thiruvallur \u2013 Uthukottai Road",
+    "districts": [
+      "Tiruvallur"
+    ],
+    "length_km": 46,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 414,
+    "condition": "Moderate",
+    "issues": [
+      "Urban Growth Encroachments",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Moderate | 46 km"
+  },
+  {
+    "id": "sh-50a",
+    "name": "SH 50A",
+    "type": "SH",
+    "route": "Korattur \u2013 Thinnanur \u2013 Periyapalayam Road",
+    "districts": [
+      "Tiruvallur"
+    ],
+    "length_km": 29,
+    "year": 1990,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 261,
+    "condition": "Moderate",
+    "issues": [
+      "Congestion",
+      "Signal Issues"
+    ],
+    "summary": "SH | Moderate | 29 km"
+  },
+  {
+    "id": "sh-50b",
+    "name": "SH 50B",
+    "type": "SH",
+    "route": "Thandalam \u2013 Perambakkam \u2013 Thakkolam \u2013 Arugilpadi Road",
+    "districts": [
+      "Chengalpattu",
+      "Tiruvallur",
+      "Vellore"
+    ],
+    "length_km": 39,
+    "year": 1992,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 351,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Access",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 39 km"
+  },
+  {
+    "id": "sh-52",
+    "name": "SH 52",
+    "type": "SH",
+    "route": "Kavarapettai \u2013 Sathiyavedu Road (towards AP border)",
+    "districts": [
+      "Tiruvallur"
+    ],
+    "length_km": 20,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 180,
+    "condition": "Good",
+    "issues": [
+      "Border Section",
+      "Low Traffic"
+    ],
+    "summary": "SH | Good | 20 km"
+  },
+  {
+    "id": "sh-54",
+    "name": "SH 54",
+    "type": "SH",
+    "route": "Chittoor \u2013 Tiruttani Road (from AP border)",
+    "districts": [
+      "Vellore",
+      "Tiruvallur"
+    ],
+    "length_km": 49,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 441,
+    "condition": "Moderate",
+    "issues": [
+      "Pilgrimage Traffic",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 49 km"
+  },
+  {
+    "id": "sh-55",
+    "name": "SH 55",
+    "type": "SH",
+    "route": "Mount \u2013 Poonamallee \u2013 Avadi Road",
+    "districts": [
+      "Tiruvallur"
+    ],
+    "length_km": 20,
+    "year": 1992,
+    "contractor": "Chennai City Roads Division",
+    "budget_crore": 220,
+    "condition": "Moderate",
+    "issues": [
+      "Urban Sprawl",
+      "Congestion",
+      "Pavement Wear"
+    ],
+    "summary": "SH | Moderate | 20 km"
+  },
+  {
+    "id": "sh-57",
+    "name": "SH 57",
+    "type": "SH",
+    "route": "Singaperumalkoil \u2013 Sriperumbudur \u2013 Thiruvallur \u2013 Red Hills Road",
+    "districts": [
+      "Chengalpattu",
+      "Tiruvallur"
+    ],
+    "length_km": 76,
+    "year": 1996,
+    "contractor": "Gawar Construction Ltd.",
+    "budget_crore": 760,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Corridor",
+      "Encroachments",
+      "Narrow Width"
+    ],
+    "summary": "SH | Moderate | 76 km"
+  },
+  {
+    "id": "sh-58",
+    "name": "SH 58",
+    "type": "SH",
+    "route": "Sadras \u2013 Chengalpattu \u2013 Arakkonam \u2013 Tiruthani Road",
+    "districts": [
+      "Chengalpattu",
+      "Vellore",
+      "Tiruvallur"
+    ],
+    "length_km": 106,
+    "year": 1982,
+    "contractor": "Bridge and Roof Co. India",
+    "budget_crore": 954,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Traffic",
+      "Some Potholes"
+    ],
+    "summary": "SH | Moderate | 106 km"
+  },
+  {
+    "id": "sh-59",
+    "name": "SH 59",
+    "type": "SH",
+    "route": "Tiruvalam \u2013 Katpadi \u2013 Venkatagirikottah Road",
+    "districts": [
+      "Vellore"
+    ],
+    "length_km": 13,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 117,
+    "condition": "Moderate",
+    "issues": [
+      "Leather Industry Traffic"
+    ],
+    "summary": "SH | Moderate | 13 km"
+  },
+  {
+    "id": "sh-60",
+    "name": "SH 60",
+    "type": "SH",
+    "route": "Hogenakkal \u2013 Pennagaram \u2013 Dharmapuri \u2013 Tirupattur Road",
+    "districts": [
+      "Dharmapuri",
+      "Krishnagiri",
+      "Tirupattur"
+    ],
+    "length_km": 108,
+    "year": 1983,
+    "contractor": "Ramco Constructions Ltd.",
+    "budget_crore": 972,
+    "condition": "Moderate",
+    "issues": [
+      "Tourism Traffic",
+      "Hairpin Bends",
+      "Bridge Condition"
+    ],
+    "summary": "SH | Moderate | 108 km"
+  },
+  {
+    "id": "sh-60a",
+    "name": "SH 60A",
+    "type": "SH",
+    "route": "Dharmapuri \u2013 Morappur \u2013 Harur Road",
+    "districts": [
+      "Dharmapuri"
+    ],
+    "length_km": 38,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 342,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Trucks",
+      "Dust",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 38 km"
+  },
+  {
+    "id": "sh-61",
+    "name": "SH 61",
+    "type": "SH",
+    "route": "Walajah \u2013 Sholinghur \u2013 Arakkonam Road",
+    "districts": [
+      "Vellore"
+    ],
+    "length_km": 51,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 459,
+    "condition": "Moderate",
+    "issues": [
+      "Narrow Width",
+      "Agricultural Vehicles"
+    ],
+    "summary": "SH | Moderate | 51 km"
+  },
+  {
+    "id": "sh-62",
+    "name": "SH 62",
+    "type": "SH",
+    "route": "Trichy \u2013 Thuraiyur Road",
+    "districts": [
+      "Tiruchirappalli"
+    ],
+    "length_km": 32,
+    "year": 1983,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 288,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Traffic",
+      "Some Cracks"
+    ],
+    "summary": "SH | Moderate | 32 km"
+  },
+  {
+    "id": "sh-63",
+    "name": "SH 63",
+    "type": "SH",
+    "route": "Thanjavur \u2013 Mannargudi \u2013 Thiruthuraipoondi \u2013 Vedaranyam \u2013 Kodiyakkarai Road",
+    "districts": [
+      "Thanjavur",
+      "Tiruvarur",
+      "Nagapattinam"
+    ],
+    "length_km": 107,
+    "year": 1981,
+    "contractor": "Delta Constructions Ltd.",
+    "budget_crore": 963,
+    "condition": "Poor",
+    "issues": [
+      "Delta Flooding",
+      "Drainage",
+      "Potholes",
+      "Narrow Bridges"
+    ],
+    "summary": "SH | Poor | 107 km"
+  },
+  {
+    "id": "sh-65",
+    "name": "SH 65",
+    "type": "SH",
+    "route": "Tiruvarur \u2013 Kodavasal \u2013 Kumbakonam Road",
+    "districts": [
+      "Tiruvarur",
+      "Thanjavur"
+    ],
+    "length_km": 37,
+    "year": 1982,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 333,
+    "condition": "Moderate",
+    "issues": [
+      "Seasonal Flooding",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Moderate | 37 km"
+  },
+  {
+    "id": "sh-66",
+    "name": "SH 66",
+    "type": "SH",
+    "route": "Kumbakonam \u2013 Mannargudi \u2013 Adhirampattinam Road",
+    "districts": [
+      "Thanjavur",
+      "Tiruvarur"
+    ],
+    "length_km": 75,
+    "year": 1983,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 675,
+    "condition": "Moderate",
+    "issues": [
+      "Delta Floods",
+      "Narrow Bridges",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 75 km"
+  },
+  {
+    "id": "sh-67",
+    "name": "SH 67",
+    "type": "SH",
+    "route": "Nagore \u2013 Nannilam \u2013 Nachiyarkoil Road",
+    "districts": [
+      "Nagapattinam",
+      "Tiruvarur",
+      "Thanjavur"
+    ],
+    "length_km": 47,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 423,
+    "condition": "Moderate",
+    "issues": [
+      "Temple Traffic",
+      "Flooding",
+      "Poor Drainage"
+    ],
+    "summary": "SH | Moderate | 47 km"
+  },
+  {
+    "id": "sh-68",
+    "name": "SH 68",
+    "type": "SH",
+    "route": "Cuddalore \u2013 Thirukoilur \u2013 Sankarapuram Road",
+    "districts": [
+      "Cuddalore",
+      "Kallakurichi"
+    ],
+    "length_km": 95,
+    "year": 1983,
+    "contractor": "GVR Infra Projects Ltd.",
+    "budget_crore": 855,
+    "condition": "Moderate",
+    "issues": [
+      "Seasonal Flooding",
+      "Potholes",
+      "Industrial Trucks"
+    ],
+    "summary": "SH | Moderate | 95 km"
+  },
+  {
+    "id": "sh-69",
+    "name": "SH 69",
+    "type": "SH",
+    "route": "Virudhachalam \u2013 Ulundurpet \u2013 Villupuram Road",
+    "districts": [
+      "Cuddalore",
+      "Kallakurichi",
+      "Villupuram"
+    ],
+    "length_km": 60,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 540,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Access",
+      "Minor Wear"
+    ],
+    "summary": "SH | Moderate | 60 km"
+  },
+  {
+    "id": "sh-70",
+    "name": "SH 70",
+    "type": "SH",
+    "route": "Virudhachalam \u2013 Portonovo Road",
+    "districts": [
+      "Cuddalore"
+    ],
+    "length_km": 43,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 387,
+    "condition": "Moderate",
+    "issues": [
+      "Coastal Access",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 43 km"
+  },
+  {
+    "id": "sh-71",
+    "name": "SH 71",
+    "type": "SH",
+    "route": "Musiri \u2013 Kulithalai \u2013 Pudukkottai \u2013 Alangudy \u2013 Paeravorani Road",
+    "districts": [
+      "Tiruchirappalli",
+      "Karur",
+      "Pudukkottai",
+      "Thanjavur"
+    ],
+    "length_km": 151,
+    "year": 1980,
+    "contractor": "SPB Infra Ltd.",
+    "budget_crore": 1359,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Bridge Load Limit",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Moderate | 151 km"
+  },
+  {
+    "id": "sh-71a",
+    "name": "SH 71A",
+    "type": "SH",
+    "route": "Manapparai \u2013 Thuvarankurichy Road",
+    "districts": [
+      "Tiruchirappalli"
+    ],
+    "length_km": 28,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 252,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Vehicles",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 28 km"
+  },
+  {
+    "id": "sh-72",
+    "name": "SH 72",
+    "type": "SH",
+    "route": "Madurai \u2013 Natham Road",
+    "districts": [
+      "Madurai"
+    ],
+    "length_km": 20,
+    "year": 1981,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 180,
+    "condition": "Moderate",
+    "issues": [
+      "Urban Traffic",
+      "Encroachments"
+    ],
+    "summary": "SH | Moderate | 20 km"
+  },
+  {
+    "id": "sh-72a",
+    "name": "SH 72A",
+    "type": "SH",
+    "route": "Madurai \u2013 Alagarkoil \u2013 Melur Road",
+    "districts": [
+      "Madurai"
+    ],
+    "length_km": 33,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 297,
+    "condition": "Good",
+    "issues": [
+      "Temple Tourism",
+      "Speed Humps"
+    ],
+    "summary": "SH | Good | 33 km"
+  },
+  {
+    "id": "sh-73",
+    "name": "SH 73",
+    "type": "SH",
+    "route": "Thirumangalam \u2013 Pallapatti \u2013 Silukkuvarpatti Road",
+    "districts": [
+      "Madurai",
+      "Dindigul"
+    ],
+    "length_km": 42,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 378,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Traffic",
+      "Dust",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 42 km"
+  },
+  {
+    "id": "sh-73a",
+    "name": "SH 73A",
+    "type": "SH",
+    "route": "Thirumangalam \u2013 Usilampatti Road",
+    "districts": [
+      "Madurai"
+    ],
+    "length_km": 26,
+    "year": 1989,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 234,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Narrow Width"
+    ],
+    "summary": "SH | Moderate | 26 km"
+  },
+  {
+    "id": "sh-74",
+    "name": "SH 74",
+    "type": "SH",
+    "route": "Dindigul \u2013 Gujiliamparai \u2013 Karur Road",
+    "districts": [
+      "Dindigul",
+      "Karur"
+    ],
+    "length_km": 70,
+    "year": 1983,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 630,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Section",
+      "Potholes",
+      "Narrow"
+    ],
+    "summary": "SH | Moderate | 70 km"
+  },
+  {
+    "id": "sh-75",
+    "name": "SH 75",
+    "type": "SH",
+    "route": "Palayamkottai \u2013 Ottapidaram \u2013 Vilathikulam \u2013 Pandalkudi \u2013 Aruppukkottai Road",
+    "districts": [
+      "Tirunelveli",
+      "Thoothukudi",
+      "Virudhunagar"
+    ],
+    "length_km": 109,
+    "year": 1982,
+    "contractor": "Southern Structurals Ltd.",
+    "budget_crore": 981,
+    "condition": "Moderate",
+    "issues": [
+      "Thoothukudi Port Traffic",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Moderate | 109 km"
+  },
+  {
+    "id": "sh-76",
+    "name": "SH 76",
+    "type": "SH",
+    "route": "Puliangudi \u2013 Sankarankovil \u2013 Kalugumalai \u2013 Nalatinpudur Road",
+    "districts": [
+      "Tenkasi",
+      "Thoothukudi"
+    ],
+    "length_km": 50,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 450,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Dust"
+    ],
+    "summary": "SH | Moderate | 50 km"
+  },
+  {
+    "id": "sh-78",
+    "name": "SH 78",
+    "type": "SH",
+    "route": "Pollachi \u2013 Valparai Road",
+    "districts": [
+      "Coimbatore"
+    ],
+    "length_km": 64,
+    "year": 1975,
+    "contractor": "Hindustan Construction Co.",
+    "budget_crore": 640,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Hairpins",
+      "Landslide Prone",
+      "Tea Estate Traffic"
+    ],
+    "summary": "SH | Moderate | 64 km"
+  },
+  {
+    "id": "sh-78a",
+    "name": "SH 78A",
+    "type": "SH",
+    "route": "Pollachi \u2013 Palakkad Road (towards Kerala border)",
+    "districts": [
+      "Coimbatore"
+    ],
+    "length_km": 16,
+    "year": 1981,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 144,
+    "condition": "Good",
+    "issues": [
+      "Border Trade",
+      "Agricultural Traffic"
+    ],
+    "summary": "SH | Good | 16 km"
+  },
+  {
+    "id": "sh-79",
+    "name": "SH 79",
+    "type": "SH",
+    "route": "Mallikkarai \u2013 Rasipuram \u2013 Thiruchengode \u2013 Erode Road",
+    "districts": [
+      "Salem",
+      "Namakkal",
+      "Erode"
+    ],
+    "length_km": 99,
+    "year": 1980,
+    "contractor": "Sakthi Constructions Pvt. Ltd.",
+    "budget_crore": 891,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Trucks",
+      "Dust",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Moderate | 99 km"
+  },
+  {
+    "id": "sh-80",
+    "name": "SH 80",
+    "type": "SH",
+    "route": "Avinashi \u2013 Mettupalayam Road",
+    "districts": [
+      "Tiruppur",
+      "Coimbatore"
+    ],
+    "length_km": 38,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 342,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Traffic",
+      "Potholes at Junctions"
+    ],
+    "summary": "SH | Moderate | 38 km"
+  },
+  {
+    "id": "sh-81",
+    "name": "SH 81",
+    "type": "SH",
+    "route": "Gobi \u2013 Uthukuli \u2013 Padiyur Road",
+    "districts": [
+      "Erode",
+      "Tiruppur"
+    ],
+    "length_km": 47,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 423,
+    "condition": "Moderate",
+    "issues": [
+      "Textile Industry Access",
+      "Narrow Width"
+    ],
+    "summary": "SH | Moderate | 47 km"
+  },
+  {
+    "id": "sh-82",
+    "name": "SH 82",
+    "type": "SH",
+    "route": "Sathy \u2013 Athani \u2013 Bhavani Road",
+    "districts": [
+      "Erode"
+    ],
+    "length_km": 53,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 477,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Bridge Aging"
+    ],
+    "summary": "SH | Moderate | 53 km"
+  },
+  {
+    "id": "sh-83",
+    "name": "SH 83",
+    "type": "SH",
+    "route": "Palani \u2013 Dharapuram Road",
+    "districts": [
+      "Dindigul",
+      "Tiruppur"
+    ],
+    "length_km": 31,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 279,
+    "condition": "Moderate",
+    "issues": [
+      "Pilgrimage Traffic",
+      "Minor Wear"
+    ],
+    "summary": "SH | Moderate | 31 km"
+  },
+  {
+    "id": "sh-83a",
+    "name": "SH 83A",
+    "type": "SH",
+    "route": "Erode \u2013 Dharapuram Road",
+    "districts": [
+      "Erode",
+      "Tiruppur"
+    ],
+    "length_km": 78,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 702,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Trucks",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 78 km"
+  },
+  {
+    "id": "sh-84",
+    "name": "SH 84",
+    "type": "SH",
+    "route": "Erode \u2013 Karur Road",
+    "districts": [
+      "Erode",
+      "Karur"
+    ],
+    "length_km": 61,
+    "year": 1983,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 549,
+    "condition": "Moderate",
+    "issues": [
+      "Textile Traffic",
+      "Narrow Sections"
+    ],
+    "summary": "SH | Moderate | 61 km"
+  },
+  {
+    "id": "sh-84a",
+    "name": "SH 84A",
+    "type": "SH",
+    "route": "Erode \u2013 Muthur \u2013 Vellakovil \u2013 Mulanur Road",
+    "districts": [
+      "Erode",
+      "Tiruppur"
+    ],
+    "length_km": 62,
+    "year": 1987,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 558,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Access",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 62 km"
+  },
+  {
+    "id": "sh-85",
+    "name": "SH 85",
+    "type": "SH",
+    "route": "Rayakottai \u2013 Athipalli Road (towards Karnataka border)",
+    "districts": [
+      "Krishnagiri"
+    ],
+    "length_km": 40,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 360,
+    "condition": "Good",
+    "issues": [
+      "Forest Stretch",
+      "Low Traffic"
+    ],
+    "summary": "SH | Good | 40 km"
+  },
+  {
+    "id": "sh-86",
+    "name": "SH 86",
+    "type": "SH",
+    "route": "Omalur \u2013 Sankari \u2013 Thiruchengodu \u2013 Paramathi Road",
+    "districts": [
+      "Salem",
+      "Namakkal"
+    ],
+    "length_km": 81,
+    "year": 1982,
+    "contractor": "Sakthi Constructions Pvt. Ltd.",
+    "budget_crore": 729,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Traffic",
+      "Dust",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 81 km"
+  },
+  {
+    "id": "sh-86a",
+    "name": "SH 86A",
+    "type": "SH",
+    "route": "Thiruchengode \u2013 Ariyanur Road",
+    "districts": [
+      "Namakkal",
+      "Salem"
+    ],
+    "length_km": 33,
+    "year": 1989,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 297,
+    "condition": "Moderate",
+    "issues": [
+      "Minor Cracks",
+      "Quarry Access"
+    ],
+    "summary": "SH | Moderate | 33 km"
+  },
+  {
+    "id": "sh-87",
+    "name": "SH 87",
+    "type": "SH",
+    "route": "Udumalpet \u2013 Palladam Road",
+    "districts": [
+      "Tiruppur"
+    ],
+    "length_km": 45,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 405,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 45 km"
+  },
+  {
+    "id": "sh-89",
+    "name": "SH 89",
+    "type": "SH",
+    "route": "Nanguneri \u2013 Tisayanvilai \u2013 Bharathar Uvari Road",
+    "districts": [
+      "Tirunelveli"
+    ],
+    "length_km": 36,
+    "year": 1987,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 324,
+    "condition": "Moderate",
+    "issues": [
+      "Coastal Wind",
+      "Potholes",
+      "Light Traffic"
+    ],
+    "summary": "SH | Moderate | 36 km"
+  },
+  {
+    "id": "sh-90",
+    "name": "SH 90",
+    "type": "SH",
+    "route": "Marthandam \u2013 Pechiparai Road",
+    "districts": [
+      "Kanyakumari"
+    ],
+    "length_km": 21,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 189,
+    "condition": "Good",
+    "issues": [
+      "Tourism Traffic",
+      "Ghat Section"
+    ],
+    "summary": "SH | Good | 21 km"
+  },
+  {
+    "id": "sh-91",
+    "name": "SH 91",
+    "type": "SH",
+    "route": "Paraseri \u2013 Eraniel \u2013 Monday Market \u2013 Puthukadai Road",
+    "districts": [
+      "Kanyakumari"
+    ],
+    "length_km": 24,
+    "year": 1987,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 216,
+    "condition": "Good",
+    "issues": [
+      "Coastal Tourism",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Good | 24 km"
+  },
+  {
+    "id": "sh-92",
+    "name": "SH 92",
+    "type": "SH",
+    "route": "Nanguneri \u2013 Eruvadi \u2013 Valliyoor \u2013 Vijayapathy Road",
+    "districts": [
+      "Tirunelveli"
+    ],
+    "length_km": 42,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 378,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow"
+    ],
+    "summary": "SH | Moderate | 42 km"
+  },
+  {
+    "id": "sh-93",
+    "name": "SH 93",
+    "type": "SH",
+    "route": "Alwarthirunagari \u2013 Nazerath \u2013 Sathankulam \u2013 Ittamozhi \u2013 Valliyoor Road",
+    "districts": [
+      "Thoothukudi",
+      "Tirunelveli"
+    ],
+    "length_km": 60,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 540,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Coastal Access",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 60 km"
+  },
+  {
+    "id": "sh-94",
+    "name": "SH 94",
+    "type": "SH",
+    "route": "Tiruchengode \u2013 Namakkal Road",
+    "districts": [
+      "Namakkal"
+    ],
+    "length_km": 31,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 279,
+    "condition": "Good",
+    "issues": [
+      "Industrial Traffic",
+      "Minor Wear"
+    ],
+    "summary": "SH | Good | 31 km"
+  },
+  {
+    "id": "sh-95",
+    "name": "SH 95",
+    "type": "SH",
+    "route": "Mohanur \u2013 Namakkal \u2013 Sendamangalam \u2013 Rasipuram Road",
+    "districts": [
+      "Namakkal"
+    ],
+    "length_km": 54,
+    "year": 1982,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 486,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Trucks",
+      "Dust",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 54 km"
+  },
+  {
+    "id": "sh-96",
+    "name": "SH 96",
+    "type": "SH",
+    "route": "Erode \u2013 Perunthurai \u2013 Kangayam Road",
+    "districts": [
+      "Erode",
+      "Tiruppur"
+    ],
+    "length_km": 51,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 459,
+    "condition": "Moderate",
+    "issues": [
+      "Textile Lorries",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 51 km"
+  },
+  {
+    "id": "sh-97",
+    "name": "SH 97",
+    "type": "SH",
+    "route": "Udumalpet \u2013 Dharapuram Road",
+    "districts": [
+      "Tiruppur"
+    ],
+    "length_km": 36,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 324,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Moderate | 36 km"
+  },
+  {
+    "id": "sh-98",
+    "name": "SH 98",
+    "type": "SH",
+    "route": "Gudalur \u2013 Sulthan Bathery Road (towards Kerala border)",
+    "districts": [
+      "Nilgiris"
+    ],
+    "length_km": 27,
+    "year": 1982,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 243,
+    "condition": "Moderate",
+    "issues": [
+      "Wildlife Corridor",
+      "Fog",
+      "Ghat Erosion"
+    ],
+    "summary": "SH | Moderate | 27 km"
+  },
+  {
+    "id": "sh-99",
+    "name": "SH 99",
+    "type": "SH",
+    "route": "Thirukattupalli \u2013 Sengipatti \u2013 Pattukottai Road",
+    "districts": [
+      "Thanjavur",
+      "Pudukkottai"
+    ],
+    "length_km": 70,
+    "year": 1983,
+    "contractor": "Delta Constructions Ltd.",
+    "budget_crore": 630,
+    "condition": "Moderate",
+    "issues": [
+      "Delta Flooding",
+      "Drainage Issues"
+    ],
+    "summary": "SH | Moderate | 70 km"
+  },
+  {
+    "id": "sh-99a",
+    "name": "SH 99A",
+    "type": "SH",
+    "route": "Thanjavur \u2013 Vallam Road",
+    "districts": [
+      "Thanjavur"
+    ],
+    "length_km": 11,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 99,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 11 km"
+  },
+  {
+    "id": "sh-100",
+    "name": "SH 100",
+    "type": "SH",
+    "route": "Uthamapalayam \u2013 Bodinaickanur Road",
+    "districts": [
+      "Theni"
+    ],
+    "length_km": 32,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 288,
+    "condition": "Good",
+    "issues": [
+      "Tourism Traffic",
+      "Minor Wear"
+    ],
+    "summary": "SH | Good | 32 km"
+  },
+  {
+    "id": "sh-101",
+    "name": "SH 101",
+    "type": "SH",
+    "route": "Devathanapatti \u2013 Varusanadu Road",
+    "districts": [
+      "Theni"
+    ],
+    "length_km": 58,
+    "year": 1987,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 522,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Road",
+      "Landslide Risk",
+      "Fog"
+    ],
+    "summary": "SH | Moderate | 58 km"
+  },
+  {
+    "id": "sh-104",
+    "name": "SH 104",
+    "type": "SH",
+    "route": "Chennai \u2013 Puzhal Road",
+    "districts": [
+      "Tiruvallur"
+    ],
+    "length_km": 26,
+    "year": 1992,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 234,
+    "condition": "Moderate",
+    "issues": [
+      "Urban Growth",
+      "Encroachments"
+    ],
+    "summary": "SH | Moderate | 26 km"
+  },
+  {
+    "id": "sh-106",
+    "name": "SH 106",
+    "type": "SH",
+    "route": "Thiruttani \u2013 Podatturpet \u2013 Pallipet Road",
+    "districts": [
+      "Tiruvallur"
+    ],
+    "length_km": 27,
+    "year": 1989,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 243,
+    "condition": "Moderate",
+    "issues": [
+      "Pilgrimage Traffic",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 27 km"
+  },
+  {
+    "id": "sh-109",
+    "name": "SH 109",
+    "type": "SH",
+    "route": "Pallavaram \u2013 Thoraipakkam Road",
+    "districts": [
+      "Chennai"
+    ],
+    "length_km": 11,
+    "year": 2000,
+    "contractor": "Chennai City Roads Division",
+    "budget_crore": 121,
+    "condition": "Moderate",
+    "issues": [
+      "IT Corridor Traffic",
+      "Signal Failures",
+      "Encroachments"
+    ],
+    "summary": "SH | Moderate | 11 km"
+  },
+  {
+    "id": "sh-110",
+    "name": "SH 110",
+    "type": "SH",
+    "route": "Tambaram \u2013 Mudichur \u2013 Sriperumbudur Road",
+    "districts": [
+      "Chennai",
+      "Chengalpattu"
+    ],
+    "length_km": 24,
+    "year": 1998,
+    "contractor": "L&T Construction Ltd.",
+    "budget_crore": 264,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Corridor",
+      "Congestion",
+      "Signage"
+    ],
+    "summary": "SH | Moderate | 24 km"
+  },
+  {
+    "id": "sh-113",
+    "name": "SH 113",
+    "type": "SH",
+    "route": "Kodambakkam \u2013 Sriperumbudur Road",
+    "districts": [
+      "Tiruvallur",
+      "Chengalpattu"
+    ],
+    "length_km": 29,
+    "year": 1997,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 261,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Traffic",
+      "Encroachments"
+    ],
+    "summary": "SH | Moderate | 29 km"
+  },
+  {
+    "id": "sh-115",
+    "name": "SH 115",
+    "type": "SH",
+    "route": "Cheyyur \u2013 Vandavasi \u2013 Polur Road",
+    "districts": [
+      "Chengalpattu",
+      "Tiruvannamalai"
+    ],
+    "length_km": 105,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 945,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Bridge Capacity"
+    ],
+    "summary": "SH | Moderate | 105 km"
+  },
+  {
+    "id": "sh-116",
+    "name": "SH 116",
+    "type": "SH",
+    "route": "Kancheepuram \u2013 Vandavasi Road",
+    "districts": [
+      "Chengalpattu"
+    ],
+    "length_km": 40,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 360,
+    "condition": "Moderate",
+    "issues": [
+      "Temple Traffic",
+      "Narrow Bridges"
+    ],
+    "summary": "SH | Moderate | 40 km"
+  },
+  {
+    "id": "sh-122",
+    "name": "SH 122",
+    "type": "SH",
+    "route": "Abdullapuram \u2013 Asanampattu \u2013 Alangayam \u2013 Thirupattur Road",
+    "districts": [
+      "Vellore",
+      "Tirupattur"
+    ],
+    "length_km": 80,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 720,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Dust"
+    ],
+    "summary": "SH | Moderate | 80 km"
+  },
+  {
+    "id": "sh-126",
+    "name": "SH 126",
+    "type": "SH",
+    "route": "Arakkonam \u2013 Ocheri Road",
+    "districts": [
+      "Vellore"
+    ],
+    "length_km": 32,
+    "year": 1987,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 288,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Traffic",
+      "Dust",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 32 km"
+  },
+  {
+    "id": "sh-130",
+    "name": "SH 130",
+    "type": "SH",
+    "route": "Gudiyatham \u2013 Gadambur \u2013 Kailasagiri \u2013 Vaniyambadi Road",
+    "districts": [
+      "Tirupattur"
+    ],
+    "length_km": 42,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 378,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 42 km"
+  },
+  {
+    "id": "sh-133",
+    "name": "SH 133",
+    "type": "SH",
+    "route": "Polur \u2013 Chengam Road",
+    "districts": [
+      "Tiruvannamalai"
+    ],
+    "length_km": 47,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 423,
+    "condition": "Moderate",
+    "issues": [
+      "Pilgrimage Traffic",
+      "Potholes",
+      "Narrow Width"
+    ],
+    "summary": "SH | Moderate | 47 km"
+  },
+  {
+    "id": "sh-134",
+    "name": "SH 134",
+    "type": "SH",
+    "route": "Tindivanam \u2013 Marakkanam Road",
+    "districts": [
+      "Villupuram"
+    ],
+    "length_km": 34,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 306,
+    "condition": "Moderate",
+    "issues": [
+      "Coastal Access",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 34 km"
+  },
+  {
+    "id": "sh-136",
+    "name": "SH 136",
+    "type": "SH",
+    "route": "Vellemedupettai \u2013 Mailam \u2013 Pondicherry Road",
+    "districts": [
+      "Villupuram"
+    ],
+    "length_km": 48,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 432,
+    "condition": "Moderate",
+    "issues": [
+      "Pondicherry Border Trade",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Moderate | 48 km"
+  },
+  {
+    "id": "sh-137",
+    "name": "SH 137",
+    "type": "SH",
+    "route": "Thirukoilur \u2013 Asanur Road",
+    "districts": [
+      "Kallakurichi"
+    ],
+    "length_km": 39,
+    "year": 1987,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 351,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 39 km"
+  },
+  {
+    "id": "sh-139",
+    "name": "SH 139",
+    "type": "SH",
+    "route": "Ariyalur \u2013 Muthuvancheri \u2013 Sripuranthan Road",
+    "districts": [
+      "Ariyalur"
+    ],
+    "length_km": 35,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 315,
+    "condition": "Poor",
+    "issues": [
+      "Cement Trucks",
+      "Potholes",
+      "Dust"
+    ],
+    "summary": "SH | Poor | 35 km"
+  },
+  {
+    "id": "sh-140",
+    "name": "SH 140",
+    "type": "SH",
+    "route": "Virudhachalam \u2013 Jayankondam \u2013 Madhanathur Road",
+    "districts": [
+      "Cuddalore",
+      "Ariyalur"
+    ],
+    "length_km": 49,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 441,
+    "condition": "Moderate",
+    "issues": [
+      "Delta Flooding",
+      "Drainage Gaps"
+    ],
+    "summary": "SH | Moderate | 49 km"
+  },
+  {
+    "id": "sh-142",
+    "name": "SH 142",
+    "type": "SH",
+    "route": "Thuraiyur \u2013 Perambalur Road",
+    "districts": [
+      "Tiruchirappalli",
+      "Perambalur"
+    ],
+    "length_km": 39,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 351,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 39 km"
+  },
+  {
+    "id": "sh-145",
+    "name": "SH 145",
+    "type": "SH",
+    "route": "Aranthangi \u2013 Kattumavadi Road",
+    "districts": [
+      "Pudukkottai"
+    ],
+    "length_km": 26,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 234,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Narrow"
+    ],
+    "summary": "SH | Moderate | 26 km"
+  },
+  {
+    "id": "sh-146",
+    "name": "SH 146",
+    "type": "SH",
+    "route": "Mannargudi \u2013 Pattukkottai \u2013 Sethubhavachatram Road",
+    "districts": [
+      "Tiruvarur",
+      "Thanjavur"
+    ],
+    "length_km": 51,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 459,
+    "condition": "Moderate",
+    "issues": [
+      "Delta Floods",
+      "Potholes",
+      "Drainage"
+    ],
+    "summary": "SH | Moderate | 51 km"
+  },
+  {
+    "id": "sh-147",
+    "name": "SH 147",
+    "type": "SH",
+    "route": "Kumbakonam \u2013 Karaikal Road (towards Puducherry)",
+    "districts": [
+      "Thanjavur",
+      "Mayiladuthurai",
+      "Tiruvarur"
+    ],
+    "length_km": 42,
+    "year": 1983,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 378,
+    "condition": "Moderate",
+    "issues": [
+      "Temple Tourist Traffic",
+      "Narrow Bridges"
+    ],
+    "summary": "SH | Moderate | 42 km"
+  },
+  {
+    "id": "sh-150",
+    "name": "SH 150",
+    "type": "SH",
+    "route": "Vaitheeswarankoil \u2013 Lower Anaicut Road",
+    "districts": [
+      "Mayiladuthurai",
+      "Thanjavur"
+    ],
+    "length_km": 32,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 288,
+    "condition": "Moderate",
+    "issues": [
+      "Temple Traffic",
+      "Flooding"
+    ],
+    "summary": "SH | Moderate | 32 km"
+  },
+  {
+    "id": "sh-152",
+    "name": "SH 152",
+    "type": "SH",
+    "route": "Vadamadurai \u2013 Oddanchatram Road",
+    "districts": [
+      "Dindigul"
+    ],
+    "length_km": 43,
+    "year": 1987,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 387,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Moderate | 43 km"
+  },
+  {
+    "id": "sh-153",
+    "name": "SH 153",
+    "type": "SH",
+    "route": "Palani \u2013 Alangiyam \u2013 Dharapuram Road",
+    "districts": [
+      "Dindigul",
+      "Tiruppur"
+    ],
+    "length_km": 33,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 297,
+    "condition": "Moderate",
+    "issues": [
+      "Pilgrimage Traffic",
+      "Speed Humps"
+    ],
+    "summary": "SH | Moderate | 33 km"
+  },
+  {
+    "id": "sh-156",
+    "name": "SH 156",
+    "type": "SH",
+    "route": "Theni \u2013 Cumbum \u2013 Gudalur Road",
+    "districts": [
+      "Theni"
+    ],
+    "length_km": 55,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 495,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Section",
+      "Landslide Risk",
+      "Fog"
+    ],
+    "summary": "SH | Moderate | 55 km"
+  },
+  {
+    "id": "sh-158",
+    "name": "SH 158",
+    "type": "SH",
+    "route": "Aranthangi \u2013 Avudaiyarkoil \u2013 Pattukkottai Road",
+    "districts": [
+      "Pudukkottai",
+      "Thanjavur"
+    ],
+    "length_km": 52,
+    "year": 1983,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 468,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Minor Cracks",
+      "Narrow Width"
+    ],
+    "summary": "SH | Moderate | 52 km"
+  },
+  {
+    "id": "sh-162",
+    "name": "SH 162",
+    "type": "SH",
+    "route": "Valparai \u2013 Udumalpet Road",
+    "districts": [
+      "Coimbatore",
+      "Tiruppur"
+    ],
+    "length_km": 72,
+    "year": 1982,
+    "contractor": "Hindustan Construction Co.",
+    "budget_crore": 648,
+    "condition": "Poor",
+    "issues": [
+      "Ghat Road",
+      "Landslide Risk",
+      "Limited Width"
+    ],
+    "summary": "SH | Poor | 72 km"
+  },
+  {
+    "id": "sh-166",
+    "name": "SH 166",
+    "type": "SH",
+    "route": "Tiruvannamalai \u2013 Polur \u2013 Chengam Road",
+    "districts": [
+      "Tiruvannamalai"
+    ],
+    "length_km": 60,
+    "year": 1983,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 540,
+    "condition": "Moderate",
+    "issues": [
+      "Pilgrimage Traffic",
+      "Minor Potholes"
+    ],
+    "summary": "SH | Moderate | 60 km"
+  },
+  {
+    "id": "sh-173",
+    "name": "SH 173",
+    "type": "SH",
+    "route": "Namakkal \u2013 Kumarapalayam \u2013 Tiruchengode Road",
+    "districts": [
+      "Namakkal"
+    ],
+    "length_km": 45,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 405,
+    "condition": "Good",
+    "issues": [
+      "Industrial Traffic",
+      "Minor Edge Erosion"
+    ],
+    "summary": "SH | Good | 45 km"
+  },
+  {
+    "id": "sh-176",
+    "name": "SH 176",
+    "type": "SH",
+    "route": "Thoothukudi \u2013 Sattankulam \u2013 Thisayanvilai Road",
+    "districts": [
+      "Thoothukudi",
+      "Tirunelveli"
+    ],
+    "length_km": 66,
+    "year": 1985,
+    "contractor": "Southern Structurals Ltd.",
+    "budget_crore": 594,
+    "condition": "Moderate",
+    "issues": [
+      "Salt Air Corrosion",
+      "Port Traffic",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 66 km"
+  },
+  {
+    "id": "sh-181",
+    "name": "SH 181",
+    "type": "SH",
+    "route": "Krishnagiri \u2013 Kaveripattinam \u2013 Bargur Road",
+    "districts": [
+      "Krishnagiri"
+    ],
+    "length_km": 48,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 432,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Traffic",
+      "Dust",
+      "Cracks"
+    ],
+    "summary": "SH | Moderate | 48 km"
+  },
+  {
+    "id": "sh-184",
+    "name": "SH 184",
+    "type": "SH",
+    "route": "Salem \u2013 Attur \u2013 Yercaud Road",
+    "districts": [
+      "Salem"
+    ],
+    "length_km": 50,
+    "year": 1983,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 450,
+    "condition": "Good",
+    "issues": [
+      "Tourism Traffic",
+      "Hairpin Bends",
+      "Ghat Erosion"
+    ],
+    "summary": "SH | Good | 50 km"
+  },
+  {
+    "id": "sh-188",
+    "name": "SH 188",
+    "type": "SH",
+    "route": "Sivaganga \u2013 Ilayankudi \u2013 Devakottai Road",
+    "districts": [
+      "Sivaganga"
+    ],
+    "length_km": 50,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 450,
+    "condition": "Poor",
+    "issues": [
+      "Pothole Clusters",
+      "No Drainage",
+      "Bridge Aging"
+    ],
+    "summary": "SH | Poor | 50 km"
+  },
+  {
+    "id": "sh-207",
+    "name": "SH 207",
+    "type": "SH",
+    "route": "Nagercoil \u2013 Marthandam \u2013 Colachel \u2013 Mandaikadu Road",
+    "districts": [
+      "Kanyakumari"
+    ],
+    "length_km": 42,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 378,
+    "condition": "Good",
+    "issues": [
+      "Coastal Wind",
+      "Tourism Traffic"
+    ],
+    "summary": "SH | Good | 42 km"
+  },
+  {
+    "id": "sh-212",
+    "name": "SH 212",
+    "type": "SH",
+    "route": "Ramanathapuram \u2013 Mandapam \u2013 Rameswaram Access Road",
+    "districts": [
+      "Ramanathapuram"
+    ],
+    "length_km": 48,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 432,
+    "condition": "Moderate",
+    "issues": [
+      "Temple Tourism",
+      "Coastal Flooding"
+    ],
+    "summary": "SH | Moderate | 48 km"
+  },
+  {
+    "id": "sh-218",
+    "name": "SH 218",
+    "type": "SH",
+    "route": "Vellore \u2013 Gudiyatham \u2013 Tirupattur Road",
+    "districts": [
+      "Vellore",
+      "Tirupattur"
+    ],
+    "length_km": 74,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 666,
+    "condition": "Moderate",
+    "issues": [
+      "Leather Industry Traffic",
+      "Potholes",
+      "Dust"
+    ],
+    "summary": "SH | Moderate | 74 km"
+  },
+  {
+    "id": "sh-235",
+    "name": "SH 235",
+    "type": "SH",
+    "route": "Madurai \u2013 Melur \u2013 Manamadurai Road",
+    "districts": [
+      "Madurai",
+      "Sivaganga"
+    ],
+    "length_km": 68,
+    "year": 1984,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 612,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow Width"
+    ],
+    "summary": "SH | Moderate | 68 km"
+  },
+  {
+    "id": "sh-249",
+    "name": "SH 249",
+    "type": "SH",
+    "route": "Tuticorin \u2013 Kayalpatnam \u2013 Kilakarai Road",
+    "districts": [
+      "Thoothukudi",
+      "Ramanathapuram"
+    ],
+    "length_km": 82,
+    "year": 1984,
+    "contractor": "Southern Highway Corp.",
+    "budget_crore": 738,
+    "condition": "Moderate",
+    "issues": [
+      "Coastal Erosion",
+      "Salt Air",
+      "Potholes"
+    ],
+    "summary": "SH | Moderate | 82 km"
+  },
+  {
+    "id": "sh-260",
+    "name": "SH 260",
+    "type": "SH",
+    "route": "Dharmapuri \u2013 Palacode \u2013 Pennagaram Road",
+    "districts": [
+      "Dharmapuri"
+    ],
+    "length_km": 64,
+    "year": 1987,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 576,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow"
+    ],
+    "summary": "SH | Moderate | 64 km"
+  },
+  {
+    "id": "sh-265",
+    "name": "SH 265",
+    "type": "SH",
+    "route": "Sivakasi \u2013 Rajapalayam \u2013 Sankarankovil Road",
+    "districts": [
+      "Virudhunagar",
+      "Tenkasi"
+    ],
+    "length_km": 70,
+    "year": 1985,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 630,
+    "condition": "Moderate",
+    "issues": [
+      "Fireworks Industry",
+      "Potholes",
+      "Narrow Bridges"
+    ],
+    "summary": "SH | Moderate | 70 km"
+  },
+  {
+    "id": "sh-276",
+    "name": "SH 276",
+    "type": "SH",
+    "route": "Nagapattinam \u2013 Poompuhar \u2013 Vedaranyam Road",
+    "districts": [
+      "Nagapattinam"
+    ],
+    "length_km": 62,
+    "year": 1983,
+    "contractor": "Delta Constructions Ltd.",
+    "budget_crore": 558,
+    "condition": "Poor",
+    "issues": [
+      "Coastal Flooding",
+      "Potholes",
+      "No Drainage",
+      "Cyclone Damage"
+    ],
+    "summary": "SH | Poor | 62 km"
+  },
+  {
+    "id": "sh-280",
+    "name": "SH 280",
+    "type": "SH",
+    "route": "Krishnagiri \u2013 Veppanapalli \u2013 Bargur \u2013 Anchetti Road",
+    "districts": [
+      "Krishnagiri"
+    ],
+    "length_km": 58,
+    "year": 1988,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 522,
+    "condition": "Moderate",
+    "issues": [
+      "Forest Road",
+      "Wildlife Zone",
+      "Hairpin Bends"
+    ],
+    "summary": "SH | Moderate | 58 km"
+  },
+  {
+    "id": "sh-283",
+    "name": "SH 283",
+    "type": "SH",
+    "route": "Theni \u2013 Periyakulam \u2013 Bodhinayakanur Road",
+    "districts": [
+      "Theni"
+    ],
+    "length_km": 45,
+    "year": 1986,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 405,
+    "condition": "Good",
+    "issues": [
+      "Tourism Traffic",
+      "Ghat Section",
+      "Minor Cracks"
+    ],
+    "summary": "SH | Good | 45 km"
+  },
+  {
+    "id": "sh-286",
+    "name": "SH 286",
+    "type": "SH",
+    "route": "Viluppuram \u2013 Kallakurichi \u2013 Sankarapuram Link Road",
+    "districts": [
+      "Villupuram",
+      "Kallakurichi"
+    ],
+    "length_km": 44,
+    "year": 1990,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 396,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow Width"
+    ],
+    "summary": "SH | Moderate | 44 km"
+  },
+  {
+    "id": "mdr-1-chennai",
+    "name": "MDR 1 (Chennai)",
+    "type": "MDR",
+    "route": "Rajiv Gandhi Salai \u2013 Perungudi \u2013 Sholinganallur Link",
+    "districts": [
+      "Chennai"
+    ],
+    "length_km": 14,
+    "year": 2003,
+    "contractor": "Chennai City Roads Division",
+    "budget_crore": 168,
+    "condition": "Good",
+    "issues": [
+      "IT Corridor Traffic",
+      "Utility Work",
+      "Congestion"
+    ],
+    "summary": "MDR | Good | 14 km"
+  },
+  {
+    "id": "mdr-9-kanchipuram",
+    "name": "MDR 9 (Kanchipuram)",
+    "type": "MDR",
+    "route": "Chengalpattu \u2013 Madurantakam \u2013 Tindivanam Road",
+    "districts": [
+      "Chengalpattu",
+      "Villupuram"
+    ],
+    "length_km": 60,
+    "year": 2000,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 540,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Vehicles",
+      "Potholes",
+      "Narrow Width"
+    ],
+    "summary": "MDR | Moderate | 60 km"
+  },
+  {
+    "id": "mdr-12-vellore",
+    "name": "MDR 12 (Vellore)",
+    "type": "MDR",
+    "route": "Vellore \u2013 Gudiyatham \u2013 Jolarpettai Road",
+    "districts": [
+      "Vellore",
+      "Tirupattur"
+    ],
+    "length_km": 72,
+    "year": 1998,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 720,
+    "condition": "Moderate",
+    "issues": [
+      "Leather Industry Traffic",
+      "Dust",
+      "Potholes"
+    ],
+    "summary": "MDR | Moderate | 72 km"
+  },
+  {
+    "id": "mdr-14-tiruvannamalai",
+    "name": "MDR 14 (Tiruvannamalai)",
+    "type": "MDR",
+    "route": "Tiruvannamalai \u2013 Vandavasi \u2013 Tindivanam",
+    "districts": [
+      "Tiruvannamalai",
+      "Villupuram"
+    ],
+    "length_km": 85,
+    "year": 1997,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 850,
+    "condition": "Poor",
+    "issues": [
+      "Poor Drainage",
+      "Potholes",
+      "No Signage"
+    ],
+    "summary": "MDR | Poor | 85 km"
+  },
+  {
+    "id": "mdr-22-salem",
+    "name": "MDR 22 (Salem)",
+    "type": "MDR",
+    "route": "Salem \u2013 Mettur \u2013 Bhavani Road",
+    "districts": [
+      "Salem",
+      "Erode"
+    ],
+    "length_km": 68,
+    "year": 1995,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 680,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Traffic",
+      "Potholes",
+      "Bridge Wear"
+    ],
+    "summary": "MDR | Moderate | 68 km"
+  },
+  {
+    "id": "mdr-28-dharmapuri",
+    "name": "MDR 28 (Dharmapuri)",
+    "type": "MDR",
+    "route": "Dharmapuri \u2013 Karimangalam \u2013 Palacode Road",
+    "districts": [
+      "Dharmapuri"
+    ],
+    "length_km": 56,
+    "year": 1999,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 560,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Dust",
+      "Narrow Width"
+    ],
+    "summary": "MDR | Moderate | 56 km"
+  },
+  {
+    "id": "mdr-33-erode",
+    "name": "MDR 33 (Erode)",
+    "type": "MDR",
+    "route": "Erode \u2013 Perundurai \u2013 Kangayam Road",
+    "districts": [
+      "Erode",
+      "Tiruppur"
+    ],
+    "length_km": 48,
+    "year": 2001,
+    "contractor": "VGN Construction Ltd.",
+    "budget_crore": 480,
+    "condition": "Moderate",
+    "issues": [
+      "Textile Industry Traffic",
+      "Minor Cracks"
+    ],
+    "summary": "MDR | Moderate | 48 km"
+  },
+  {
+    "id": "mdr-37-namakkal",
+    "name": "MDR 37 (Namakkal)",
+    "type": "MDR",
+    "route": "Namakkal \u2013 Paramathi \u2013 Mohanur Road",
+    "districts": [
+      "Namakkal"
+    ],
+    "length_km": 38,
+    "year": 2002,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 380,
+    "condition": "Good",
+    "issues": [
+      "Quarry Traffic",
+      "Dust",
+      "Some Potholes"
+    ],
+    "summary": "MDR | Good | 38 km"
+  },
+  {
+    "id": "mdr-41-tiruchirappalli",
+    "name": "MDR 41 (Tiruchirappalli)",
+    "type": "MDR",
+    "route": "Trichy \u2013 Manapparai \u2013 Natham Road",
+    "districts": [
+      "Tiruchirappalli",
+      "Dindigul"
+    ],
+    "length_km": 62,
+    "year": 2000,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 620,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Minor Potholes"
+    ],
+    "summary": "MDR | Moderate | 62 km"
+  },
+  {
+    "id": "mdr-47-perambalur",
+    "name": "MDR 47 (Perambalur)",
+    "type": "MDR",
+    "route": "Perambalur \u2013 Alathur \u2013 Veppanthattai Road",
+    "districts": [
+      "Perambalur"
+    ],
+    "length_km": 34,
+    "year": 2001,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 340,
+    "condition": "Poor",
+    "issues": [
+      "Cement Trucks",
+      "Potholes",
+      "No Drainage",
+      "Dust"
+    ],
+    "summary": "MDR | Poor | 34 km"
+  },
+  {
+    "id": "mdr-52-ariyalur",
+    "name": "MDR 52 (Ariyalur)",
+    "type": "MDR",
+    "route": "Ariyalur \u2013 Senthurai \u2013 Udayarpalayam Road",
+    "districts": [
+      "Ariyalur"
+    ],
+    "length_km": 45,
+    "year": 1999,
+    "contractor": "SPML Infra Ltd.",
+    "budget_crore": 450,
+    "condition": "Poor",
+    "issues": [
+      "Cement Truck Overloading",
+      "Severe Potholes",
+      "Dust"
+    ],
+    "summary": "MDR | Poor | 45 km"
+  },
+  {
+    "id": "mdr-58-thanjavur",
+    "name": "MDR 58 (Thanjavur)",
+    "type": "MDR",
+    "route": "Thanjavur \u2013 Orathanadu \u2013 Aranthangi Road",
+    "districts": [
+      "Thanjavur",
+      "Pudukkottai"
+    ],
+    "length_km": 58,
+    "year": 2000,
+    "contractor": "Delta Constructions Ltd.",
+    "budget_crore": 580,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Delta Flooding"
+    ],
+    "summary": "MDR | Moderate | 58 km"
+  },
+  {
+    "id": "mdr-63-nagapattinam",
+    "name": "MDR 63 (Nagapattinam)",
+    "type": "MDR",
+    "route": "Nagapattinam \u2013 Kilvelur \u2013 Tiruvarur Road",
+    "districts": [
+      "Nagapattinam",
+      "Tiruvarur"
+    ],
+    "length_km": 42,
+    "year": 1998,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 420,
+    "condition": "Poor",
+    "issues": [
+      "Severe Flooding",
+      "Potholes",
+      "No Drainage",
+      "Bridge Aging"
+    ],
+    "summary": "MDR | Poor | 42 km"
+  },
+  {
+    "id": "mdr-69-mayiladuthurai",
+    "name": "MDR 69 (Mayiladuthurai)",
+    "type": "MDR",
+    "route": "Mayiladuthurai \u2013 Sembanarkoil \u2013 Sirkazhi Road",
+    "districts": [
+      "Mayiladuthurai"
+    ],
+    "length_km": 36,
+    "year": 2002,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 360,
+    "condition": "Moderate",
+    "issues": [
+      "Temple Traffic",
+      "Flooding",
+      "Potholes"
+    ],
+    "summary": "MDR | Moderate | 36 km"
+  },
+  {
+    "id": "mdr-74-cuddalore",
+    "name": "MDR 74 (Cuddalore)",
+    "type": "MDR",
+    "route": "Cuddalore \u2013 Tittakudi \u2013 Vridhachalam Road",
+    "districts": [
+      "Cuddalore",
+      "Kallakurichi"
+    ],
+    "length_km": 55,
+    "year": 1999,
+    "contractor": "GVR Infra Projects Ltd.",
+    "budget_crore": 550,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Traffic",
+      "Potholes",
+      "Encroachments"
+    ],
+    "summary": "MDR | Moderate | 55 km"
+  },
+  {
+    "id": "mdr-78-villupuram",
+    "name": "MDR 78 (Villupuram)",
+    "type": "MDR",
+    "route": "Villupuram \u2013 Gingee \u2013 Tindivanam Road",
+    "districts": [
+      "Villupuram"
+    ],
+    "length_km": 68,
+    "year": 2000,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 680,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Access",
+      "Minor Cracks",
+      "Signage"
+    ],
+    "summary": "MDR | Moderate | 68 km"
+  },
+  {
+    "id": "mdr-82-kallakurichi",
+    "name": "MDR 82 (Kallakurichi)",
+    "type": "MDR",
+    "route": "Kallakurichi \u2013 Ulundurpet \u2013 Sankarapuram Road",
+    "districts": [
+      "Kallakurichi",
+      "Villupuram"
+    ],
+    "length_km": 50,
+    "year": 2003,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 500,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow"
+    ],
+    "summary": "MDR | Moderate | 50 km"
+  },
+  {
+    "id": "mdr-88-krishnagiri",
+    "name": "MDR 88 (Krishnagiri)",
+    "type": "MDR",
+    "route": "Krishnagiri \u2013 Shoolagiri \u2013 Hosur Road",
+    "districts": [
+      "Krishnagiri"
+    ],
+    "length_km": 44,
+    "year": 2001,
+    "contractor": "Sakthi Constructions Pvt. Ltd.",
+    "budget_crore": 440,
+    "condition": "Good",
+    "issues": [
+      "Karnataka Border Trade",
+      "Industrial Traffic",
+      "Minor Wear"
+    ],
+    "summary": "MDR | Good | 44 km"
+  },
+  {
+    "id": "mdr-91-vellore",
+    "name": "MDR 91 (Vellore)",
+    "type": "MDR",
+    "route": "Vellore \u2013 Arakkonam \u2013 Sholinghur Road",
+    "districts": [
+      "Vellore"
+    ],
+    "length_km": 62,
+    "year": 2000,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 620,
+    "condition": "Moderate",
+    "issues": [
+      "Narrow Width",
+      "Agricultural Vehicles",
+      "Potholes"
+    ],
+    "summary": "MDR | Moderate | 62 km"
+  },
+  {
+    "id": "mdr-96-ranipet",
+    "name": "MDR 96 (Ranipet)",
+    "type": "MDR",
+    "route": "Ranipet \u2013 Walajah \u2013 Nemili Road",
+    "districts": [
+      "Ranipet",
+      "Vellore"
+    ],
+    "length_km": 40,
+    "year": 2002,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 400,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Traffic",
+      "Potholes",
+      "Faded Markings"
+    ],
+    "summary": "MDR | Moderate | 40 km"
+  },
+  {
+    "id": "mdr-103-tirupattur",
+    "name": "MDR 103 (Tirupattur)",
+    "type": "MDR",
+    "route": "Tirupattur \u2013 Vaniyambadi \u2013 Ambur Road",
+    "districts": [
+      "Tirupattur"
+    ],
+    "length_km": 46,
+    "year": 2001,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 460,
+    "condition": "Moderate",
+    "issues": [
+      "Leather Industry Traffic",
+      "Dust",
+      "Potholes"
+    ],
+    "summary": "MDR | Moderate | 46 km"
+  },
+  {
+    "id": "mdr-107-dindigul",
+    "name": "MDR 107 (Dindigul)",
+    "type": "MDR",
+    "route": "Dindigul \u2013 Oddanchatram \u2013 Palani Road",
+    "districts": [
+      "Dindigul"
+    ],
+    "length_km": 55,
+    "year": 2000,
+    "contractor": "Arun Kumar Infrastructure",
+    "budget_crore": 550,
+    "condition": "Moderate",
+    "issues": [
+      "Pilgrimage Traffic",
+      "Minor Cracks",
+      "Ghat Section"
+    ],
+    "summary": "MDR | Moderate | 55 km"
+  },
+  {
+    "id": "mdr-112-theni",
+    "name": "MDR 112 (Theni)",
+    "type": "MDR",
+    "route": "Theni \u2013 Periyakulam \u2013 Gudalur Road",
+    "districts": [
+      "Theni"
+    ],
+    "length_km": 62,
+    "year": 1999,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 620,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Erosion",
+      "Fog",
+      "Tourist Traffic"
+    ],
+    "summary": "MDR | Moderate | 62 km"
+  },
+  {
+    "id": "mdr-116-virudhunagar",
+    "name": "MDR 116 (Virudhunagar)",
+    "type": "MDR",
+    "route": "Virudhunagar \u2013 Srivilliputhur \u2013 Rajapalayam Road",
+    "districts": [
+      "Virudhunagar"
+    ],
+    "length_km": 70,
+    "year": 2000,
+    "contractor": "TVS Construction Pvt. Ltd.",
+    "budget_crore": 700,
+    "condition": "Moderate",
+    "issues": [
+      "Fireworks Industry",
+      "Potholes",
+      "Dust"
+    ],
+    "summary": "MDR | Moderate | 70 km"
+  },
+  {
+    "id": "mdr-121-madurai",
+    "name": "MDR 121 (Madurai)",
+    "type": "MDR",
+    "route": "Madurai \u2013 Tirumangalam \u2013 Sivaganga Road",
+    "districts": [
+      "Madurai",
+      "Sivaganga"
+    ],
+    "length_km": 58,
+    "year": 2001,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 580,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow"
+    ],
+    "summary": "MDR | Moderate | 58 km"
+  },
+  {
+    "id": "mdr-125-sivaganga",
+    "name": "MDR 125 (Sivaganga)",
+    "type": "MDR",
+    "route": "Sivaganga \u2013 Karaikudi \u2013 Devakottai Road",
+    "districts": [
+      "Sivaganga"
+    ],
+    "length_km": 52,
+    "year": 2002,
+    "contractor": "Pandian Infrastructure Ltd.",
+    "budget_crore": 520,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Cracks",
+      "Narrow Width"
+    ],
+    "summary": "MDR | Moderate | 52 km"
+  },
+  {
+    "id": "mdr-129-ramanathapuram",
+    "name": "MDR 129 (Ramanathapuram)",
+    "type": "MDR",
+    "route": "Ramanathapuram \u2013 Paramakudi \u2013 Kamuthi Road",
+    "districts": [
+      "Ramanathapuram"
+    ],
+    "length_km": 64,
+    "year": 2000,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 640,
+    "condition": "Poor",
+    "issues": [
+      "Severe Potholes",
+      "No Street Lighting",
+      "Poor Drainage"
+    ],
+    "summary": "MDR | Poor | 64 km"
+  },
+  {
+    "id": "mdr-134-thoothukudi",
+    "name": "MDR 134 (Thoothukudi)",
+    "type": "MDR",
+    "route": "Thoothukudi \u2013 Tiruchendur \u2013 Sattankulam Road",
+    "districts": [
+      "Thoothukudi"
+    ],
+    "length_km": 56,
+    "year": 2001,
+    "contractor": "Southern Highway Corp.",
+    "budget_crore": 560,
+    "condition": "Good",
+    "issues": [
+      "Coastal Wind",
+      "Tourism Traffic",
+      "Salt Corrosion"
+    ],
+    "summary": "MDR | Good | 56 km"
+  },
+  {
+    "id": "mdr-138-tirunelveli",
+    "name": "MDR 138 (Tirunelveli)",
+    "type": "MDR",
+    "route": "Tirunelveli \u2013 Nanguneri \u2013 Radhapuram Road",
+    "districts": [
+      "Tirunelveli"
+    ],
+    "length_km": 62,
+    "year": 2000,
+    "contractor": "Southern Structurals Ltd.",
+    "budget_crore": 620,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow Bridges"
+    ],
+    "summary": "MDR | Moderate | 62 km"
+  },
+  {
+    "id": "mdr-142-tenkasi",
+    "name": "MDR 142 (Tenkasi)",
+    "type": "MDR",
+    "route": "Tenkasi \u2013 Puliyangudi \u2013 Shencottai Road",
+    "districts": [
+      "Tenkasi"
+    ],
+    "length_km": 48,
+    "year": 2002,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 480,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Section",
+      "Minor Landslides",
+      "Potholes"
+    ],
+    "summary": "MDR | Moderate | 48 km"
+  },
+  {
+    "id": "mdr-147-cuddalore",
+    "name": "MDR 147 (Cuddalore)",
+    "type": "MDR",
+    "route": "Cuddalore \u2013 Panruti \u2013 Ulundurpet",
+    "districts": [
+      "Cuddalore",
+      "Villupuram"
+    ],
+    "length_km": 74,
+    "year": 2003,
+    "contractor": "KGK Infra Ltd.",
+    "budget_crore": 666,
+    "condition": "Poor",
+    "issues": [
+      "Severe Potholes",
+      "Waterlogging",
+      "Industrial Trucks"
+    ],
+    "summary": "MDR | Poor | 74 km"
+  },
+  {
+    "id": "mdr-151-karur",
+    "name": "MDR 151 (Karur)",
+    "type": "MDR",
+    "route": "Karur \u2013 Aravakurichi \u2013 Krishnarayapuram Road",
+    "districts": [
+      "Karur"
+    ],
+    "length_km": 44,
+    "year": 2001,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 440,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow Width"
+    ],
+    "summary": "MDR | Moderate | 44 km"
+  },
+  {
+    "id": "mdr-156-coimbatore",
+    "name": "MDR 156 (Coimbatore)",
+    "type": "MDR",
+    "route": "Coimbatore \u2013 Sulur \u2013 Periyanaickenpalayam Road",
+    "districts": [
+      "Coimbatore"
+    ],
+    "length_km": 38,
+    "year": 2002,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 380,
+    "condition": "Good",
+    "issues": [
+      "Industrial Traffic",
+      "Minor Wear",
+      "Speed Humps"
+    ],
+    "summary": "MDR | Good | 38 km"
+  },
+  {
+    "id": "mdr-158-pudukkottai",
+    "name": "MDR 158 (Pudukkottai)",
+    "type": "MDR",
+    "route": "Aranthangi \u2013 Avudaiyarkoil \u2013 Pattukkottai",
+    "districts": [
+      "Pudukkottai",
+      "Thanjavur"
+    ],
+    "length_km": 52,
+    "year": 2000,
+    "contractor": "Delta Constructions Ltd.",
+    "budget_crore": 468,
+    "condition": "Moderate",
+    "issues": [
+      "Cracks",
+      "Narrow Width",
+      "Cattle on Road"
+    ],
+    "summary": "MDR | Moderate | 52 km"
+  },
+  {
+    "id": "mdr-163-tiruppur",
+    "name": "MDR 163 (Tiruppur)",
+    "type": "MDR",
+    "route": "Tiruppur \u2013 Dharapuram \u2013 Kangayam Road",
+    "districts": [
+      "Tiruppur"
+    ],
+    "length_km": 58,
+    "year": 2001,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 580,
+    "condition": "Moderate",
+    "issues": [
+      "Textile Industry Traffic",
+      "Potholes",
+      "Dust"
+    ],
+    "summary": "MDR | Moderate | 58 km"
+  },
+  {
+    "id": "mdr-166-tiruvannamalai",
+    "name": "MDR 166 (Tiruvannamalai)",
+    "type": "MDR",
+    "route": "Tiruvannamalai \u2013 Polur \u2013 Chengam",
+    "districts": [
+      "Tiruvannamalai"
+    ],
+    "length_km": 60,
+    "year": 2006,
+    "contractor": "Arun Kumar Infrastructure",
+    "budget_crore": 540,
+    "condition": "Moderate",
+    "issues": [
+      "Pilgrimage Traffic",
+      "Minor Potholes"
+    ],
+    "summary": "MDR | Moderate | 60 km"
+  },
+  {
+    "id": "mdr-172-kanyakumari",
+    "name": "MDR 172 (Kanyakumari)",
+    "type": "MDR",
+    "route": "Nagercoil \u2013 Colachel \u2013 Kulasekaram Road",
+    "districts": [
+      "Kanyakumari"
+    ],
+    "length_km": 44,
+    "year": 2002,
+    "contractor": "Southern Highway Corp.",
+    "budget_crore": 440,
+    "condition": "Good",
+    "issues": [
+      "Coastal Wind",
+      "Tourism Traffic",
+      "Minor Wear"
+    ],
+    "summary": "MDR | Good | 44 km"
+  },
+  {
+    "id": "mdr-178-namakkal",
+    "name": "MDR 178 (Namakkal)",
+    "type": "MDR",
+    "route": "Namakkal \u2013 Kumarapalayam \u2013 Tiruchengode",
+    "districts": [
+      "Namakkal"
+    ],
+    "length_km": 45,
+    "year": 2009,
+    "contractor": "Sakthi Constructions Pvt. Ltd.",
+    "budget_crore": 405,
+    "condition": "Good",
+    "issues": [
+      "Lorry Overloading",
+      "Slight Edge Erosion"
+    ],
+    "summary": "MDR | Good | 45 km"
+  },
+  {
+    "id": "mdr-183-nilgiris",
+    "name": "MDR 183 (Nilgiris)",
+    "type": "MDR",
+    "route": "Ooty \u2013 Kothagiri \u2013 Kotagiri Road",
+    "districts": [
+      "Nilgiris"
+    ],
+    "length_km": 38,
+    "year": 2000,
+    "contractor": "Hindustan Construction Co.",
+    "budget_crore": 418,
+    "condition": "Moderate",
+    "issues": [
+      "Ghat Hairpins",
+      "Fog",
+      "Landslide Risk",
+      "Tourism"
+    ],
+    "summary": "MDR | Moderate | 38 km"
+  },
+  {
+    "id": "mdr-188-tiruvarur",
+    "name": "MDR 188 (Tiruvarur)",
+    "type": "MDR",
+    "route": "Tiruvarur \u2013 Nannilam \u2013 Sirkazhi Road",
+    "districts": [
+      "Tiruvarur",
+      "Mayiladuthurai"
+    ],
+    "length_km": 42,
+    "year": 2001,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 420,
+    "condition": "Poor",
+    "issues": [
+      "Delta Flooding",
+      "Potholes",
+      "No Drainage",
+      "Bridge Aging"
+    ],
+    "summary": "MDR | Poor | 42 km"
+  },
+  {
+    "id": "mdr-189-sivaganga",
+    "name": "MDR 189 (Sivaganga)",
+    "type": "MDR",
+    "route": "Sivaganga \u2013 Ilayankudi \u2013 Devakottai",
+    "districts": [
+      "Sivaganga"
+    ],
+    "length_km": 50,
+    "year": 2004,
+    "contractor": "Pandian Infrastructure Ltd.",
+    "budget_crore": 450,
+    "condition": "Poor",
+    "issues": [
+      "Pothole Clusters",
+      "No Drainage",
+      "Bridge Aging"
+    ],
+    "summary": "MDR | Poor | 50 km"
+  },
+  {
+    "id": "mdr-193-karur",
+    "name": "MDR 193 (Karur)",
+    "type": "MDR",
+    "route": "Karur \u2013 Thanthoni \u2013 Manapparai Road",
+    "districts": [
+      "Karur",
+      "Tiruchirappalli"
+    ],
+    "length_km": 48,
+    "year": 2002,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 480,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Minor Cracks"
+    ],
+    "summary": "MDR | Moderate | 48 km"
+  },
+  {
+    "id": "mdr-197-salem",
+    "name": "MDR 197 (Salem)",
+    "type": "MDR",
+    "route": "Salem \u2013 Yercaud \u2013 Mettur Road (ghat section)",
+    "districts": [
+      "Salem"
+    ],
+    "length_km": 56,
+    "year": 2000,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 560,
+    "condition": "Moderate",
+    "issues": [
+      "Tourism Traffic",
+      "Ghat Erosion",
+      "Hairpin Bends"
+    ],
+    "summary": "MDR | Moderate | 56 km"
+  },
+  {
+    "id": "mdr-201-pudukkottai",
+    "name": "MDR 201 (Pudukkottai)",
+    "type": "MDR",
+    "route": "Pudukkottai \u2013 Gandarvakottai \u2013 Alangudi Road",
+    "districts": [
+      "Pudukkottai"
+    ],
+    "length_km": 40,
+    "year": 2003,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 400,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow"
+    ],
+    "summary": "MDR | Moderate | 40 km"
+  },
+  {
+    "id": "mdr-204-dindigul",
+    "name": "MDR 204 (Dindigul)",
+    "type": "MDR",
+    "route": "Dindigul \u2013 Natham \u2013 Batlagundu Road",
+    "districts": [
+      "Dindigul"
+    ],
+    "length_km": 48,
+    "year": 2002,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 480,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Minor Cracks",
+      "Dust"
+    ],
+    "summary": "MDR | Moderate | 48 km"
+  },
+  {
+    "id": "mdr-207-kanyakumari",
+    "name": "MDR 207 (Kanyakumari)",
+    "type": "MDR",
+    "route": "Nagercoil \u2013 Marthandam \u2013 Colachel \u2013 Mandaikadu",
+    "districts": [
+      "Kanyakumari"
+    ],
+    "length_km": 42,
+    "year": 2012,
+    "contractor": "Southern Highway Corp.",
+    "budget_crore": 462,
+    "condition": "Good",
+    "issues": [
+      "Coastal Wind",
+      "Tourism Traffic"
+    ],
+    "summary": "MDR | Good | 42 km"
+  },
+  {
+    "id": "mdr-211-dharmapuri",
+    "name": "MDR 211 (Dharmapuri)",
+    "type": "MDR",
+    "route": "Dharmapuri \u2013 Pennagaram \u2013 Hogenakkal Road",
+    "districts": [
+      "Dharmapuri"
+    ],
+    "length_km": 55,
+    "year": 2001,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 550,
+    "condition": "Moderate",
+    "issues": [
+      "Tourism Traffic",
+      "River Crossing",
+      "Potholes"
+    ],
+    "summary": "MDR | Moderate | 55 km"
+  },
+  {
+    "id": "mdr-215-erode",
+    "name": "MDR 215 (Erode)",
+    "type": "MDR",
+    "route": "Erode \u2013 Modakurichi \u2013 Chengapalli Road",
+    "districts": [
+      "Erode"
+    ],
+    "length_km": 36,
+    "year": 2003,
+    "contractor": "VGN Construction Ltd.",
+    "budget_crore": 360,
+    "condition": "Moderate",
+    "issues": [
+      "Textile Lorry Traffic",
+      "Slight Rutting"
+    ],
+    "summary": "MDR | Moderate | 36 km"
+  },
+  {
+    "id": "mdr-219-coimbatore",
+    "name": "MDR 219 (Coimbatore)",
+    "type": "MDR",
+    "route": "Coimbatore \u2013 Kinathukadavu \u2013 Pollachi Road",
+    "districts": [
+      "Coimbatore"
+    ],
+    "length_km": 48,
+    "year": 2002,
+    "contractor": "KNR Constructions Ltd.",
+    "budget_crore": 480,
+    "condition": "Good",
+    "issues": [
+      "Agricultural Traffic",
+      "Minor Wear"
+    ],
+    "summary": "MDR | Good | 48 km"
+  },
+  {
+    "id": "mdr-222-ariyalur",
+    "name": "MDR 222 (Ariyalur)",
+    "type": "MDR",
+    "route": "Ariyalur \u2013 Andimadam \u2013 Perambalur Road",
+    "districts": [
+      "Ariyalur",
+      "Perambalur"
+    ],
+    "length_km": 48,
+    "year": 2005,
+    "contractor": "SPML Infra Ltd.",
+    "budget_crore": 432,
+    "condition": "Moderate",
+    "issues": [
+      "Cement Factory Trucks",
+      "Dust",
+      "Cracks"
+    ],
+    "summary": "MDR | Moderate | 48 km"
+  },
+  {
+    "id": "mdr-225-tirunelveli",
+    "name": "MDR 225 (Tirunelveli)",
+    "type": "MDR",
+    "route": "Tirunelveli \u2013 Ambasamudram \u2013 Kallidaikurichi Road",
+    "districts": [
+      "Tirunelveli"
+    ],
+    "length_km": 44,
+    "year": 2001,
+    "contractor": "Southern Structurals Ltd.",
+    "budget_crore": 440,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow Bridges"
+    ],
+    "summary": "MDR | Moderate | 44 km"
+  },
+  {
+    "id": "mdr-229-madurai",
+    "name": "MDR 229 (Madurai)",
+    "type": "MDR",
+    "route": "Madurai \u2013 Usilampatti \u2013 Theni Road",
+    "districts": [
+      "Madurai",
+      "Theni"
+    ],
+    "length_km": 62,
+    "year": 2000,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 620,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Narrow Width"
+    ],
+    "summary": "MDR | Moderate | 62 km"
+  },
+  {
+    "id": "mdr-234-vellore",
+    "name": "MDR 234 (Vellore)",
+    "type": "MDR",
+    "route": "Vellore \u2013 Katpadi \u2013 Anaicut Road",
+    "districts": [
+      "Vellore"
+    ],
+    "length_km": 38,
+    "year": 2002,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 380,
+    "condition": "Moderate",
+    "issues": [
+      "Industrial Traffic",
+      "Potholes",
+      "Signage Issues"
+    ],
+    "summary": "MDR | Moderate | 38 km"
+  },
+  {
+    "id": "mdr-237-thoothukudi",
+    "name": "MDR 237 (Thoothukudi)",
+    "type": "MDR",
+    "route": "Thoothukudi \u2013 Kayalpatnam \u2013 Vaippar Road",
+    "districts": [
+      "Thoothukudi"
+    ],
+    "length_km": 44,
+    "year": 2001,
+    "contractor": "Southern Highway Corp.",
+    "budget_crore": 440,
+    "condition": "Moderate",
+    "issues": [
+      "Coastal Wind",
+      "Salt Corrosion",
+      "Potholes"
+    ],
+    "summary": "MDR | Moderate | 44 km"
+  },
+  {
+    "id": "mdr-241-nilgiris",
+    "name": "MDR 241 (Nilgiris)",
+    "type": "MDR",
+    "route": "Ooty \u2013 Gudalur \u2013 Masinagudi \u2013 Mudumalai",
+    "districts": [
+      "Nilgiris"
+    ],
+    "length_km": 52,
+    "year": 2003,
+    "contractor": "Hindustan Construction Co.",
+    "budget_crore": 572,
+    "condition": "Moderate",
+    "issues": [
+      "Wildlife Corridor",
+      "Fog",
+      "Ghat Erosion",
+      "Speed Limits"
+    ],
+    "summary": "MDR | Moderate | 52 km"
+  },
+  {
+    "id": "mdr-244-nagapattinam",
+    "name": "MDR 244 (Nagapattinam)",
+    "type": "MDR",
+    "route": "Nagapattinam \u2013 Sirkali \u2013 Poompuhar Road",
+    "districts": [
+      "Nagapattinam",
+      "Mayiladuthurai"
+    ],
+    "length_km": 40,
+    "year": 2003,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 400,
+    "condition": "Poor",
+    "issues": [
+      "Coastal Flooding",
+      "Cyclone Damage",
+      "Potholes",
+      "No Drainage"
+    ],
+    "summary": "MDR | Poor | 40 km"
+  },
+  {
+    "id": "mdr-248-ramanathapuram",
+    "name": "MDR 248 (Ramanathapuram)",
+    "type": "MDR",
+    "route": "Paramakudi \u2013 Mudukulathur \u2013 Kamuthi Road",
+    "districts": [
+      "Ramanathapuram"
+    ],
+    "length_km": 48,
+    "year": 2002,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 480,
+    "condition": "Poor",
+    "issues": [
+      "Potholes",
+      "Sand Drift",
+      "No Street Lights",
+      "Poor Drainage"
+    ],
+    "summary": "MDR | Poor | 48 km"
+  },
+  {
+    "id": "mdr-252-pudukkottai",
+    "name": "MDR 252 (Pudukkottai)",
+    "type": "MDR",
+    "route": "Pudukkottai \u2013 Karambakudi \u2013 Sivaganga Road",
+    "districts": [
+      "Pudukkottai",
+      "Sivaganga"
+    ],
+    "length_km": 56,
+    "year": 2001,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 560,
+    "condition": "Moderate",
+    "issues": [
+      "Agricultural Traffic",
+      "Potholes",
+      "Bridge Aging"
+    ],
+    "summary": "MDR | Moderate | 56 km"
+  },
+  {
+    "id": "mdr-256-krishnagiri",
+    "name": "MDR 256 (Krishnagiri)",
+    "type": "MDR",
+    "route": "Krishnagiri \u2013 Pochampalli \u2013 Uthangarai Road",
+    "districts": [
+      "Krishnagiri"
+    ],
+    "length_km": 50,
+    "year": 2003,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 500,
+    "condition": "Moderate",
+    "issues": [
+      "Quarry Traffic",
+      "Dust",
+      "Cracks"
+    ],
+    "summary": "MDR | Moderate | 50 km"
+  },
+  {
+    "id": "mdr-260-chengalpattu",
+    "name": "MDR 260 (Chengalpattu)",
+    "type": "MDR",
+    "route": "Chengalpattu \u2013 Madurantakam \u2013 Pondicherry Access Road",
+    "districts": [
+      "Chengalpattu",
+      "Villupuram"
+    ],
+    "length_km": 42,
+    "year": 2004,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 420,
+    "condition": "Moderate",
+    "issues": [
+      "Tourism Traffic",
+      "Potholes",
+      "Encroachments"
+    ],
+    "summary": "MDR | Moderate | 42 km"
+  },
+  {
+    "id": "mdr-263-coimbatore-n",
+    "name": "MDR 263 (Coimbatore N)",
+    "type": "MDR",
+    "route": "Coimbatore \u2013 Mettupalayam \u2013 Sathy Road",
+    "districts": [
+      "Coimbatore"
+    ],
+    "length_km": 46,
+    "year": 2002,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 460,
+    "condition": "Good",
+    "issues": [
+      "Ghat Section",
+      "Fog",
+      "Minor Landslides"
+    ],
+    "summary": "MDR | Good | 46 km"
+  },
+  {
+    "id": "mdr-267-namakkal-s",
+    "name": "MDR 267 (Namakkal S)",
+    "type": "MDR",
+    "route": "Namakkal \u2013 Mohanur \u2013 Salem Road",
+    "districts": [
+      "Namakkal",
+      "Salem"
+    ],
+    "length_km": 38,
+    "year": 2004,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 380,
+    "condition": "Moderate",
+    "issues": [
+      "Granite Trucks",
+      "Dust",
+      "Cracks"
+    ],
+    "summary": "MDR | Moderate | 38 km"
+  },
+  {
+    "id": "mdr-271-madurai-n",
+    "name": "MDR 271 (Madurai N)",
+    "type": "MDR",
+    "route": "Madurai \u2013 Melakkal \u2013 Thirumangalam Road",
+    "districts": [
+      "Madurai"
+    ],
+    "length_km": 30,
+    "year": 2005,
+    "contractor": "TN Highways C&M Wing",
+    "budget_crore": 300,
+    "condition": "Moderate",
+    "issues": [
+      "Urban Expansion",
+      "Encroachments",
+      "Signal Issues"
+    ],
+    "summary": "MDR | Moderate | 30 km"
+  }
+]

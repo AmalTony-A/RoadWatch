@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9fd4ff"/>
+      <stop offset="100%" stop-color="#f4fbff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#sky3)"/>
+  <rect y="315" width="1280" height="405" fill="#8abf7a"/>
+  <polygon points="190,720 510,325 770,325 1080,720" fill="#505967"/>
+  <rect x="636" y="348" width="12" height="350" fill="#f4f4f4"/>
+  <g fill="#ffffff" opacity="0.3">
+    <rect x="608" y="370" width="68" height="6"/>
+    <rect x="608" y="430" width="68" height="6"/>
+    <rect x="608" y="490" width="68" height="6"/>
+    <rect x="608" y="550" width="68" height="6"/>
+  </g>
+  <text x="36" y="56" font-family="Arial, sans-serif" font-size="38" fill="#0d2236" font-weight="700">RoadWatch AI Demo - Healthy Road</text>
+</svg>
