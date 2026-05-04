@@ -62,27 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return AppConfig.dangerRed;
   }
 
-  void _syncLiveDistrict(AppState state) {
-    final suggested = state.liveSuggestedDistrict;
-    if (suggested == null || _selectedDistrict != 'ALL') {
-      return;
-    }
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted || _selectedDistrict != 'ALL') {
-        return;
-      }
-      setState(() {
-        _selectedDistrict = suggested;
-      });
-
-      final filtered = state.searchRoadsForDistrict(suggested, '');
-      if (filtered.isNotEmpty) {
-        state.selectRoadNetworkItem(filtered.first);
-      }
-    });
-  }
-
   List<RoadNetworkItem> _districtRoads(AppState state) {
     return state.searchRoadsForDistrict(_selectedDistrict, '');
   }
@@ -110,7 +89,6 @@ class _HomeScreenState extends State<HomeScreen> {
     final selectedNetworkRoad = state.selectedRoadNetwork;
     final theme = Theme.of(context);
     _maybeCenterMap(state);
-    _syncLiveDistrict(state);
 
     final districtOptions = ['ALL', ...state.roadNetworkDistricts];
     final filteredNetworkRoads = state.searchRoadsForDistrict(_selectedDistrict, _roadSearchQuery);
@@ -305,7 +283,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         border: Border.all(color: AppConfig.safeGreen.withValues(alpha: 0.18)),
                       ),
                       child: Text(
-                        'Nearby roads detected from live location: ${state.liveSuggestedDistrict}.',
+                        'Nearby roads detected from live location: ${state.liveSuggestedDistrict}. Pick it from the district dropdown to filter the road list.',
                         style: const TextStyle(color: AppConfig.deepNavy, fontWeight: FontWeight.w600),
                       ),
                     ),

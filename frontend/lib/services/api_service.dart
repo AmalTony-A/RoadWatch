@@ -54,7 +54,9 @@ class ApiService {
       }
     } catch (_) {}
 
-    return const <RoadNetworkItem>[];
+    return DemoDataService.roadNetworkPayload()
+        .map((e) => RoadNetworkItem.fromJson(e))
+        .toList(growable: false);
   }
 
   Future<RoadNetworkItem> getRoadNetworkItem(String itemId) async {
