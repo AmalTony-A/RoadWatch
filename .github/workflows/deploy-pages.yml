@@ -34,10 +34,11 @@ jobs:
 
       - name: Build Flutter web
         working-directory: frontend
+        env:
+          API_URL: ${{ vars.API_URL }}
+          BASE_HREF: /${{ github.event.repository.name }}/
         run: |
-          flutter build web --release \
-            --base-href "/${{ github.event.repository.name }}/" \
-            --dart-define=API_URL=${{ vars.API_URL || 'http://127.0.0.1:8000' }}
+          flutter build web --release --base-href "$BASE_HREF" --dart-define=API_URL="${API_URL:-http://127.0.0.1:8000}"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
