@@ -122,6 +122,8 @@ Additional helper endpoints:
 
 See detailed steps in `docs/SETUP.md`.
 
+To host the frontend publicly, use the GitHub Pages workflow in `.github/workflows/deploy-pages.yml` and set the `API_URL` repository variable to your deployed backend.
+
 Backend + Mongo with Docker:
 
 ```bash

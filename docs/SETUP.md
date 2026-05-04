@@ -81,6 +81,14 @@ For online deployment, build the web app with your deployed backend URL:
 flutter build web --release --dart-define=API_URL=https://your-backend-domain.example
 ```
 
+## 2a) Host on GitHub Pages
+
+The repo includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml` that publishes the Flutter web build from `main` to GitHub Pages.
+
+Before the first deployment, add a repository variable named `API_URL` in GitHub settings and point it at your deployed backend. If you do not set it yet, the site will still build and open, but backend-dependent actions will fall back to demo behavior.
+
+Then enable GitHub Pages in the repository settings and choose `GitHub Actions` as the source. Every push to `main` will rebuild and publish the site.
+
 ## 3) Configure API URL
 
 Update backend URL in `frontend/lib/config/app_config.dart`:
@@ -92,6 +100,7 @@ Update backend URL in `frontend/lib/config/app_config.dart`:
 If you run Flutter Web on a custom port, either keep the backend CORS origin as `*` or make the port match your `FRONTEND_ORIGIN` value.
 
 Important: if `API_URL` is not provided during an online build, the web app will fall back to the current browser origin. That works when your frontend and backend share the same domain or are proxied together, but you should set `API_URL` explicitly when they are hosted on different domains.
+For GitHub Pages, the workflow injects `API_URL` from the repository variable when available.
 
 ## 4) Google Maps setup
 
