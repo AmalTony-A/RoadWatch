@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 class AppConfig {
   static const String appName = 'RoadWatch AI';
   static String get baseUrl => String.fromEnvironment(
     'API_URL',
-    defaultValue: kIsWeb ? Uri.base.origin : 'http://localhost:8000',
+    defaultValue: 'http://127.0.0.1:8000',
   );
 
   static const Color dangerRed = Color(0xFFD64045);
