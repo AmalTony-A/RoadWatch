@@ -16,6 +16,8 @@ import 'demo_data_service.dart';
 class ApiService {
   final http.Client _client;
   static const Duration _apiTimeout = Duration(seconds: 20);
+  static const String _roadNetworkFallbackUrl =
+      'https://raw.githubusercontent.com/AmalTony-A/RoadWatch/main/backend/app/data/road_network_data.json';
 
   ApiService({http.Client? client}) : _client = client ?? http.Client();
 
@@ -48,6 +50,14 @@ class ApiService {
   Future<List<RoadNetworkItem>> getRoadNetworkData() async {
     try {
       final res = await _client.get(_uri('/get-road-network-data'));
+      if (res.statusCode == 200) {
+        final data = jsonDecode(res.body) as List<dynamic>;
+        return data.map((e) => RoadNetworkItem.fromJson(e as Map<String, dynamic>)).toList();
+      }
+    } catch (_) {}
+
+    try {
+      final res = await _client.get(Uri.parse(_roadNetworkFallbackUrl)).timeout(_apiTimeout);
       if (res.statusCode == 200) {
         final data = jsonDecode(res.body) as List<dynamic>;
         return data.map((e) => RoadNetworkItem.fromJson(e as Map<String, dynamic>)).toList();
