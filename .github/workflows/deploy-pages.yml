@@ -38,7 +38,11 @@ jobs:
           API_URL: ${{ vars.API_URL }}
           BASE_HREF: /${{ github.event.repository.name }}/
         run: |
-          flutter build web --release --base-href "$BASE_HREF" --dart-define=API_URL="${API_URL:-http://127.0.0.1:8000}"
+          if [ -z "$API_URL" ]; then
+            echo "API_URL repository variable is required for live deployment."
+            exit 1
+          fi
+          flutter build web --release --base-href "$BASE_HREF" --dart-define=API_URL="$API_URL"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

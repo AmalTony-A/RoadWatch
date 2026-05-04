@@ -12,7 +12,7 @@ class Settings(BaseSettings):
 
     app_name: str = "RoadWatch AI API"
     app_env: str = "development"
-    demo_mode: bool = True
+    demo_mode: bool = False
 
     api_host: str = "0.0.0.0"
     api_port: int = 8000
