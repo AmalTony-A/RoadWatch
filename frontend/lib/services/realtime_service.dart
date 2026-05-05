@@ -38,6 +38,8 @@ class RealtimeService {
 
     try {
       _channel = WebSocketChannel.connect(wsUri);
+      _connected = true;
+      onStatusChanged?.call(true);
       _subscription = _channel!.stream.listen(
       (message) {
         _connected = true;

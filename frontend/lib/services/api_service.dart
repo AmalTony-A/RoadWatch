@@ -103,8 +103,14 @@ class ApiService {
       return payload['image_id'] as String;
     } catch (_) {
       // Keep image analysis usable in hosted/demo mode even without backend upload.
-      final millis = DateTime.now().millisecondsSinceEpoch;
-      return 'demo-upload-$millis.jpg';
+      final normalized = fileName.toLowerCase();
+      if (normalized.contains('crack')) {
+        return 'demo_crack_2.svg';
+      }
+      if (normalized.contains('good') || normalized.contains('clear')) {
+        return 'demo_good_road.svg';
+      }
+      return 'demo_pothole_1.svg';
     }
   }
 

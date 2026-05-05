@@ -420,11 +420,18 @@ class AppState extends ChangeNotifier {
       await refreshData();
       lastMessage = 'Detection complete in ${lastDetection?.inferenceMs ?? 0} ms.';
     } catch (_) {
+      // Fall back to demo detection with one of the known demo images
+      // This ensures the backend can find the demo detections
+      final demoImageId = fileName.toLowerCase().contains('crack')
+          ? 'demo_crack_2.svg'
+          : fileName.toLowerCase().contains('good') || fileName.toLowerCase().contains('clear')
+              ? 'demo_good_road.svg'
+              : 'demo_pothole_1.svg';
       lastDetection = await api.detectDamage(
-        imageId: 'demo-fallback-${DateTime.now().millisecondsSinceEpoch}.jpg',
+        imageId: demoImageId,
         roadId: roadId,
       );
-      lastMessage = 'Backend unavailable. Showing demo analysis result.';
+      lastMessage = 'Backend unavailable. Using demo detection for "$fileName".';
     }
     notifyListeners();
   }
