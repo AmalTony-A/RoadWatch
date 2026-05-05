@@ -1,9 +1,10 @@
 import json
+import os
 
 import httpx
 
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = os.getenv("ROADWATCH_API_URL", "http://localhost:8001")
 
 
 def print_result(name: str, status: int, payload: dict | list | str):

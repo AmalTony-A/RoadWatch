@@ -420,7 +420,11 @@ class AppState extends ChangeNotifier {
       await refreshData();
       lastMessage = 'Detection complete in ${lastDetection?.inferenceMs ?? 0} ms.';
     } catch (_) {
-      lastMessage = 'Detection failed. Check the backend and try again.';
+      lastDetection = await api.detectDamage(
+        imageId: 'demo-fallback-${DateTime.now().millisecondsSinceEpoch}.jpg',
+        roadId: roadId,
+      );
+      lastMessage = 'Backend unavailable. Showing demo analysis result.';
     }
     notifyListeners();
   }
@@ -578,13 +582,22 @@ class AppState extends ChangeNotifier {
     chatHistory.add(ChatItem(role: 'user', content: query));
     notifyListeners();
 
-    final response = await api.askChat(
-      query: query,
-      roadId: selectedRoadId,
-      history: chatHistory,
-    );
-
-    chatHistory.add(ChatItem(role: 'assistant', content: response.answer));
+    try {
+      final response = await api.askChat(
+        query: query,
+        roadId: selectedRoadId,
+        history: chatHistory,
+      );
+      chatHistory.add(ChatItem(role: 'assistant', content: response.answer));
+    } catch (_) {
+      chatHistory.add(
+        const ChatItem(
+          role: 'assistant',
+          content:
+              'Assistant is temporarily unavailable from the backend. Please try again in a moment, or continue in demo mode.',
+        ),
+      );
+    }
     notifyListeners();
   }
 
