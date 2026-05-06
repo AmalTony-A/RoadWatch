@@ -6,6 +6,7 @@ import '../providers/app_state.dart';
 import 'accountability_screen.dart';
 import 'capture_screen.dart';
 import 'chatbot_screen.dart';
+import 'comparison_charts_screen.dart';
 import 'complaints_screen.dart';
 import 'home_screen.dart';
 import 'intelligence_screen.dart';
@@ -28,11 +29,12 @@ class _ShellScreenState extends State<ShellScreen> {
     ChatbotScreen(),
     ComplaintsScreen(),
     StatisticsScreen(),
+    ComparisonChartsScreen(),
     AccountabilityScreen(),
     IntelligenceScreen(),
   ];
 
-  static const _labels = ['Home', 'Capture', 'Assistant', 'Complaints', 'Statistics', 'Accountability', 'Intelligence'];
+  static const _labels = ['Home', 'Capture', 'Assistant', 'Complaints', 'Statistics', 'Comparison', 'Accountability', 'Intelligence'];
 
   static const _icons = [
     Icons.map_rounded,
@@ -40,6 +42,7 @@ class _ShellScreenState extends State<ShellScreen> {
     Icons.chat_bubble_rounded,
     Icons.task_alt_rounded,
     Icons.bar_chart_rounded,
+    Icons.compare_arrows_rounded,
     Icons.verified_user_rounded,
     Icons.insights_rounded,
   ];
