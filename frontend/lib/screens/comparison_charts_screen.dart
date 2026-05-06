@@ -84,7 +84,7 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
               _StatCard(
                 'Total Roads',
                 '${roads.length}',
-                Icons.road_rounded,
+                Icons.route_rounded,
                 AppConfig.deepNavy,
               ),
               _StatCard(
@@ -272,7 +272,7 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
   Widget _buildConditionChart(Map<String, int> data) {
     final total = data.values.fold<int>(0, (sum, val) => sum + val);
     final goodPercentage = total > 0 ? (data['Good'] ?? 0) / total : 0;
-    const sectionSpace = 0;
+    final sectionSpace = 0.0;
 
     return SizedBox(
       height: 280,
@@ -337,21 +337,21 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
                 sections: [
                   PieChartSectionData(
                     value: ((data['NH'] ?? 0) / total) * 100,
-                    color: const Color(0xFF FF6B6B),
+                    color: const Color(0xFFFF6B6B),
                     title: '${(((data['NH'] ?? 0) / total) * 100).toStringAsFixed(0)}%',
                     titleStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                     radius: 80,
                   ),
                   PieChartSectionData(
                     value: ((data['SH'] ?? 0) / total) * 100,
-                    color: const Color(0xFF 4ECDC4),
+                    color: const Color(0xFF4ECDC4),
                     title: '${(((data['SH'] ?? 0) / total) * 100).toStringAsFixed(0)}%',
                     titleStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                     radius: 80,
                   ),
                   PieChartSectionData(
                     value: ((data['MDR'] ?? 0) / total) * 100,
-                    color: const Color(0xFF 45B7D1),
+                    color: const Color(0xFF45B7D1),
                     title: '${(((data['MDR'] ?? 0) / total) * 100).toStringAsFixed(0)}%',
                     titleStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                     radius: 80,

@@ -33,7 +33,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     final mdrRoads = roads.where((r) => r.type == 'MDR').length;
 
     final totalBudget = roads.fold<int>(0, (sum, road) => sum + road.budgetCrore);
-    final totalKm = roads.fold<double>(0.0, (sum, road) => sum + road.length);
+    final totalKm = roads.fold<int>(0, (sum, road) => sum + road.lengthKm);
     final avgScore = roads.isEmpty ? 0 : roads.fold<int>(0, (sum, road) => sum + road.healthScore) ~/ roads.length;
 
     final nhBudget = roads.where((r) => r.type == 'NH').fold<int>(0, (sum, road) => sum + road.budgetCrore);
@@ -103,8 +103,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             spacing: 12,
             runSpacing: 12,
             children: [
-              _MetricCard('Total Roads', '${ roads.length}', Icons.route_rounded, AppConfig.deepNavy),
-              _MetricCard('Total km', '${totalKm.toStringAsFixed(0)}', Icons.straighten_rounded, AppConfig.safeGreen),
+              _MetricCard('Total Roads', '${roads.length}', Icons.route_rounded, AppConfig.deepNavy),
+              _MetricCard('Total km', '$totalKm', Icons.straighten_rounded, AppConfig.safeGreen),
               _MetricCard('Avg Health', '$avgScore/100', Icons.favorite_rounded, AppConfig.cautionYellow),
               _MetricCard('Budget', '₹${(totalBudget / 100).toStringAsFixed(0)}Cr', Icons.attach_money_rounded, AppConfig.dangerRed),
             ],
