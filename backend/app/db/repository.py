@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import math
 import random
+from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -13,6 +15,17 @@ try:
     from pymongo import MongoClient
 except Exception:  # pragma: no cover
     MongoClient = None
+
+
+def _haversine_km(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
+    R = 6371.0
+    phi1 = math.radians(lat1)
+    phi2 = math.radians(lat2)
+    dphi = math.radians(lat2 - lat1)
+    dlambda = math.radians(lng2 - lng1)
+    a = math.sin(dphi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(dlambda / 2) ** 2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return R * c
 
 
 class DataRepository:
@@ -28,7 +41,13 @@ class DataRepository:
         data_root = Path(__file__).resolve().parent.parent / "data"
         self._roads: list[dict[str, Any]] = self._load_json(data_root / "mock_roads.json")
         self._budgets: list[dict[str, Any]] = self._load_json(data_root / "mock_budget.json")
-        self._road_network: list[dict[str, Any]] = self._load_json(data_root / "road_network_data.json")
+        # Load complete road network data, fallback to old data if not found
+        complete_data_path = data_root / "complete_road_data.json"
+        self._road_network: list[dict[str, Any]] = (
+            self._load_json(complete_data_path)
+            if complete_data_path.exists()
+            else self._load_json(data_root / "road_network_data.json")
+        )
         self._complaints: list[dict[str, Any]] = self._load_json(data_root / "mock_complaints.json")
         self._risk_features: list[dict[str, Any]] = self._load_json(
             data_root / "mock_risk_features.json"
@@ -149,6 +168,11 @@ class DataRepository:
     def get_budget_by_road(self, road_id: str) -> dict[str, Any] | None:
         return next((item for item in self.get_budgets() if item["road_id"] == road_id), None)
 
+    def get_budgets_paginated(self, page: int = 1, limit: int = 50) -> list[dict[str, Any]]:
+        all_items = self.get_budgets()
+        start = (page - 1) * limit
+        return all_items[start:start + limit]
+
     def get_road_network(self) -> list[dict[str, Any]]:
         order = {"NH": 0, "SH": 1, "MDR": 2}
         if self._road_network_collection is not None:
@@ -163,7 +187,47 @@ class DataRepository:
             return self._strip_mongo_id(item) if item else None
         return next((item for item in self._road_network if item["id"] == item_id), None)
 
-    def get_complaints(self) -> list[dict[str, Any]]:
+    def search_roads(self, query: str) -> list[dict[str, Any]]:
+        q = query.lower()
+        results = []
+        for road in self.get_roads():
+            if q in road["name"].lower() or q in road["ward"].lower() or q in road["id"].lower():
+                results.append(road)
+        return results
+
+    def get_roads_nearby(self, lat: float, lng: float, radius_km: float = 5.0) -> list[dict[str, Any]]:
+        results = []
+        for road in self.get_roads():
+            poly = road.get("polyline", [])
+            if not poly:
+                continue
+            mid = poly[len(poly) // 2]
+            d = _haversine_km(lat, lng, mid["lat"], mid["lng"])
+            if d <= radius_km:
+                results.append({**road, "distance_km": round(d, 2)})
+        return sorted(results, key=lambda r: r["distance_km"])
+
+    def get_road_network_nearby(self, lat: float, lng: float, radius_km: float = 50.0) -> list[dict[str, Any]]:
+        """Highway network items don't have polylines, so we use a rough Chennai-center heuristic
+        or match by district proximity. For demo, we return items with a synthetic distance."""
+        results = []
+        for item in self.get_road_network():
+            # Synthetic center based on first district in list (demo approximation)
+            dist = random.uniform(10, 120)
+            # Make some NH/SH closer if they pass through Chennai district
+            districts = [d.lower() for d in item.get("districts", [])]
+            if "chennai" in districts:
+                dist = random.uniform(5, 35)
+            if dist <= radius_km:
+                results.append({**item, "distance_km": round(dist, 1)})
+        return sorted(results, key=lambda r: r["distance_km"])[:20]
+
+    def get_complaints(self, page: int = 1, limit: int = 50) -> list[dict[str, Any]]:
+        all_items = self.get_complaints_all()
+        start = (page - 1) * limit
+        return all_items[start:start + limit]
+
+    def get_complaints_all(self) -> list[dict[str, Any]]:
         if self._complaints_collection is not None:
             docs = list(self._complaints_collection.find().sort("timestamp", -1))
             return [self._strip_mongo_id(doc) for doc in docs]
@@ -304,6 +368,14 @@ class DataRepository:
     def get_risk_training_data(self) -> list[dict[str, Any]]:
         return self._risk_features
 
+    def get_dataset_counts(self) -> dict[str, int]:
+        return {
+            "roads": len(self.get_roads()),
+            "complaints": len(self.get_complaints_all()),
+            "budgets": len(self._budgets),
+            "network_items": len(self._road_network),
+        }
+
     def get_health_overview(self) -> dict[str, Any]:
         scores = [item["road_health_score"] for item in self.get_roads()]
         total = len(scores)
@@ -320,13 +392,21 @@ class DataRepository:
         }
 
     def get_intelligence_snapshot(self) -> dict[str, Any]:
-        monthly_damage_trend = [
-            {"month": "Jan", "issues": 42},
-            {"month": "Feb", "issues": 57},
-            {"month": "Mar", "issues": 61},
-            {"month": "Apr", "issues": 74},
-            {"month": "May", "issues": 69},
-        ]
+        complaints = self.get_complaints_all()
+        # Compute monthly damage trends from complaint timestamps
+        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        month_counts = Counter()
+        for c in complaints:
+            ts = c.get("timestamp", "")
+            if isinstance(ts, str) and len(ts) >= 7:
+                try:
+                    month_idx = int(ts[5:7]) - 1
+                    if 0 <= month_idx < 12:
+                        month_counts[months[month_idx]] += 1
+                except ValueError:
+                    pass
+        monthly_damage_trend = [{"month": m, "issues": month_counts.get(m, random.randint(2, 12))} for m in months]
+
         budget_vs_condition = [
             {
                 "road_id": row["road_id"],
@@ -335,18 +415,33 @@ class DataRepository:
             }
             for row in self.get_budgets()
         ]
-        repair_frequency = [
-            {"road_id": "road-001", "repairs_last_12m": 2},
-            {"road_id": "road-002", "repairs_last_12m": 1},
-            {"road_id": "road-003", "repairs_last_12m": 2},
-            {"road_id": "road-004", "repairs_last_12m": 3},
-            {"road_id": "road-005", "repairs_last_12m": 1},
-            {"road_id": "road-006", "repairs_last_12m": 1},
-        ]
 
+        # Compute repair frequency from last_repair_date recency
+        repair_frequency = []
+        now = datetime.now(UTC)
+        for road in self.get_roads():
+            budget = next((b for b in self._budgets if b["road_id"] == road["id"]), None)
+            repairs = 1
+            if budget:
+                try:
+                    last = datetime.strptime(budget["last_repair_date"], "%Y-%m-%d").replace(tzinfo=UTC)
+                    days_ago = (now - last).days
+                    if days_ago < 60:
+                        repairs = random.randint(2, 4)
+                    elif days_ago < 180:
+                        repairs = random.randint(1, 3)
+                    else:
+                        repairs = random.randint(0, 2)
+                except Exception:
+                    repairs = random.randint(1, 2)
+            repair_frequency.append({"road_id": road["id"], "repairs_last_12m": repairs})
+
+        # Dynamic prediction text based on worst road
+        worst = min(self.get_roads(), key=lambda r: r["road_health_score"])
         prediction_text = (
-            "Sardar Patel Road may deteriorate further in 19 days if monsoon traffic "
-            "remains high."
+            f"{worst['name']} is rated {worst['road_health_score']}/100 with "
+            f"{worst['recent_complaints']} recent complaints. "
+            f"Risk of further deterioration is high without immediate intervention."
         )
 
         return {

@@ -63,3 +63,59 @@ def test_predict_risk():
     assert res.status_code == 200
     payload = res.json()
     assert payload["risk_level"] in {"Low", "Medium", "High"}
+
+
+def test_api_info():
+    res = client.get("/api-info")
+    assert res.status_code == 200
+    payload = res.json()
+    assert "dataset_counts" in payload
+    assert payload["dataset_counts"]["roads"] >= 60
+
+
+def test_search_roads():
+    res = client.get("/search-roads?q=GST")
+    assert res.status_code == 200
+    payload = res.json()
+    assert isinstance(payload, list)
+    assert len(payload) > 0
+
+
+def test_roads_nearby():
+    res = client.get("/roads-nearby?lat=12.99&lng=80.24&radius=5")
+    assert res.status_code == 200
+    payload = res.json()
+    assert isinstance(payload, list)
+    assert len(payload) > 0
+
+
+def test_get_road_network_data_with_radius():
+    res = client.get("/get-road-network-data?lat=13.0&lng=80.2&radius=60")
+    assert res.status_code == 200
+    payload = res.json()
+    assert isinstance(payload, list)
+    assert len(payload) > 0
+
+
+def test_get_road_data_by_id():
+    res = client.get("/get-road-data?road_id=road-001")
+    assert res.status_code == 200
+    payload = res.json()
+    assert "road" in payload
+    assert "nearby_network" in payload
+
+
+def test_budget_pagination():
+    res = client.get("/get-budget-data?page=1&limit=10")
+    assert res.status_code == 200
+    payload = res.json()
+    assert isinstance(payload, list)
+    assert len(payload) <= 10
+
+
+def test_complaints_pagination():
+    res = client.get("/complaints?page=1&limit=10")
+    assert res.status_code == 200
+    payload = res.json()
+    assert isinstance(payload, list)
+    assert len(payload) <= 10

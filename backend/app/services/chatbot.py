@@ -188,6 +188,32 @@ class CivicChatbotService:
     def _fallback_answer(self, query: str, road: dict | None, budget: dict | None, complaints: list):
         q = query.lower()
 
+        if any(g in q for g in ("hello", "hi", "hey", "greetings")):
+            return (
+                "Hello! I'm the RoadWatch AI civic assistant. I can help you with road conditions, "
+                "budget transparency, contractor details, complaint filing, and tracking. "
+                "Select a road or ask me anything."
+            )
+
+        if any(g in q for g in ("help", "what can you do", "capabilities", "features")):
+            return (
+                "I can:\n"
+                "- Show road health scores and damage detections\n"
+                "- Reveal budget and contractor transparency data\n"
+                "- File and track civic complaints\n"
+                "- Predict road deterioration risk\n"
+                "- Answer questions about specific roads"
+            )
+
+        if any(g in q for g in ("score", "health", "rating", "condition")):
+            if not road:
+                return "Select a road to see its health score and condition breakdown."
+            return (
+                f"{road['name']} has a health score of {road['road_health_score']}/100 "
+                f"({road['color'].upper()}). Nearby issues: {road['nearby_issues']}, "
+                f"recent complaints: {road['recent_complaints']}."
+            )
+
         if "why" in q and "poor" in q:
             if not road:
                 return "This area has unresolved issues and rising complaint volume. Select a road to get exact causes."
@@ -196,11 +222,13 @@ class CivicChatbotService:
                 f"with {road['recent_complaints']} recent complaints. Recommended action: immediate patching and drainage check."
             )
 
-        if "budget" in q or "allocated" in q:
+        if "budget" in q or "allocated" in q or "spent" in q:
             if not budget:
                 return "Budget data is unavailable for this road."
             return (
-                f"Allocated budget: {self._format_inr(budget['allocated_inr'])}. Contractor: {budget['contractor']}. "
+                f"Allocated budget: {self._format_inr(budget['allocated_inr'])}. "
+                f"Spent: {self._format_inr(budget['spent_inr'])}. "
+                f"Contractor: {budget['contractor']}. "
                 f"Last repair: {budget['last_repair_date']}. Condition score is {budget['actual_score']}/100."
             )
 
@@ -224,13 +252,26 @@ class CivicChatbotService:
                 "RoadWatch AI will auto-attach GPS and timestamp."
             )
 
-        if "issue" in q or "detect" in q:
+        if "issue" in q or "detect" in q or "damage" in q or "pothole" in q or "crack" in q:
             if not road:
                 return "Detected issues are primarily potholes and cracks. Select a road for severity-level breakdown."
             return (
                 f"Primary issues on {road['name']}: potholes/cracks with {road['nearby_issues']} nearby incidents. "
                 "Use image capture to generate severity-tagged evidence."
             )
+
+        if "risk" in q or "predict" in q or "deteriorat" in q:
+            if not road:
+                return "Select a road to see its deterioration risk prediction."
+            return (
+                f"{road['name']} has {road['recent_complaints']} recent complaints and "
+                f"a health score of {road['road_health_score']}/100. Use the Risk Predictor for a detailed forecast."
+            )
+
+        if "ward" in q or "area" in q or "location" in q:
+            if not road:
+                return "Select a road to see its ward and location details."
+            return f"{road['name']} is located in {road['ward']} ward."
 
         return (
             "I can help with road condition, budget transparency, contractor details, complaint filing, "

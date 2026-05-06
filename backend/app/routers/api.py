@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 import logging
+import time
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Annotated
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, WebSocket, WebSocketDisconnect
 
 from app.db.repository import DataRepository
 from app.schemas.models import (
@@ -31,6 +32,7 @@ from app.services.scoring import calculate_road_health_score
 
 router = APIRouter(tags=["RoadWatch AI"])
 logger = logging.getLogger(__name__)
+STARTUP_TIME = time.time()
 
 
 class RealtimeUpdateHub:
@@ -62,8 +64,33 @@ UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 @router.get("/health")
-def health_check():
-    return {"ok": True, "service": "roadwatch-ai-api", "time": datetime.now(UTC).isoformat()}
+def health_check(repository: Annotated[DataRepository, Depends(get_repository)]):
+    return {
+        "ok": True,
+        "service": "roadwatch-ai-api",
+        "version": "1.0.0",
+        "time": datetime.now(UTC).isoformat(),
+        "dataset_counts": repository.get_dataset_counts(),
+        "uptime_seconds": int(time.time() - STARTUP_TIME),
+    }
+
+
+@router.get("/api-info")
+def api_info(repository: Annotated[DataRepository, Depends(get_repository)]):
+    from app.services.container import get_detection_service, get_prediction_service
+
+    detector = get_detection_service()
+    predictor = get_prediction_service()
+    return {
+        "version": "1.0.0",
+        "demo_mode": repository.settings.demo_mode,
+        "dataset_counts": repository.get_dataset_counts(),
+        "model_info": {
+            "detector": detector.model_name,
+            "predictor": "random_forest" if predictor.model is not None else "heuristic_fallback",
+        },
+        "uptime_seconds": int(time.time() - STARTUP_TIME),
+    }
 
 
 def _safe_error_message(error: Exception) -> str:
@@ -130,6 +157,7 @@ async def upload_image(file: UploadFile = File(...), road_id: str | None = None)
         "road_id": road_id,
         "size_bytes": len(content),
         "stored_at": path.as_posix(),
+        "public_url": f"/uploads/{image_id}",
     }
 
 
@@ -228,16 +256,22 @@ def get_road_data(
         road = repository.get_road(road_id)
         if not road:
             raise HTTPException(status_code=404, detail="Road not found")
+        poly = road.get("polyline", [])
+        nearby_network = []
+        if poly:
+            mid = poly[len(poly) // 2]
+            nearby_network = repository.get_road_network_nearby(mid["lat"], mid["lng"], radius_km=60)
         return {
             "road": road,
             "budget": repository.get_budget_by_road(road_id),
-            "complaints": [c for c in repository.get_complaints() if c["road_id"] == road_id],
+            "complaints": [c for c in repository.get_complaints_all() if c["road_id"] == road_id],
+            "nearby_network": nearby_network,
         }
 
     return {
         "overview": repository.get_health_overview(),
         "roads": repository.get_roads(),
-        "recent_complaints": repository.get_complaints()[:8],
+        "recent_complaints": repository.get_complaints_all()[:8],
         "intelligence": repository.get_intelligence_snapshot(),
     }
 
@@ -246,19 +280,26 @@ def get_road_data(
 def get_budget_data(
     repository: Annotated[DataRepository, Depends(get_repository)],
     road_id: str | None = None,
+    page: int = Query(1, ge=1),
+    limit: int = Query(50, ge=1, le=200),
 ):
     if road_id:
         record = repository.get_budget_by_road(road_id)
         if not record:
             raise HTTPException(status_code=404, detail="Budget record not found")
         return record
-    return repository.get_budgets()
+    return repository.get_budgets_paginated(page=page, limit=limit)
 
 
 @router.get("/get-road-network-data")
 def get_road_network_data(
     repository: Annotated[DataRepository, Depends(get_repository)],
+    lat: float | None = None,
+    lng: float | None = None,
+    radius: float = Query(50.0, ge=1, le=300),
 ):
+    if lat is not None and lng is not None:
+        return repository.get_road_network_nearby(lat, lng, radius_km=radius)
     return repository.get_road_network()
 
 
@@ -271,6 +312,24 @@ def get_road_network_item(
     if not item:
         raise HTTPException(status_code=404, detail=f"Road network item not found: {item_id}")
     return item
+
+
+@router.get("/search-roads")
+def search_roads(
+    q: str = Query(..., min_length=1),
+    repository: Annotated[DataRepository, Depends(get_repository)] = ...,  # type: ignore[assignment]
+):
+    return repository.search_roads(q)
+
+
+@router.get("/roads-nearby")
+def roads_nearby(
+    lat: float = Query(...),
+    lng: float = Query(...),
+    radius: float = Query(5.0, ge=0.5, le=50),
+    repository: Annotated[DataRepository, Depends(get_repository)] = ...,  # type: ignore[assignment]
+):
+    return repository.get_roads_nearby(lat, lng, radius_km=radius)
 
 
 @router.post("/predict-risk")
@@ -310,8 +369,10 @@ def chat(
 def list_complaints(
     repository: Annotated[DataRepository, Depends(get_repository)],
     road_id: str | None = None,
+    page: int = Query(1, ge=1),
+    limit: int = Query(50, ge=1, le=200),
 ):
-    items = repository.get_complaints()
+    items = repository.get_complaints(page=page, limit=limit)
     if road_id:
         items = [row for row in items if row["road_id"] == road_id]
     return items

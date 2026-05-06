@@ -47,6 +47,7 @@ class AppState extends ChangeNotifier {
 
   bool isLoading = false;
   bool isOnline = true;
+  bool isBackendReachable = true;
   bool isRealtimeConnected = false;
   bool isLocationLoading = false;
   String? selectedRoadId;
@@ -57,8 +58,10 @@ class AppState extends ChangeNotifier {
   final List<ChatItem> chatHistory = [];
   StreamSubscription<bool>? _connectivitySubscription;
   Timer? _refreshTimer;
+  Timer? _healthTimer;
 
   static const Duration _refreshInterval = Duration(seconds: 15);
+  static const Duration _healthInterval = Duration(seconds: 30);
 
   RoadSegment? get selectedRoad {
     if (selectedRoadId == null) {
@@ -100,10 +103,24 @@ class AppState extends ChangeNotifier {
 
     _refreshTimer?.cancel();
     _refreshTimer = Timer.periodic(_refreshInterval, (_) {
-      if (isOnline && !isLoading) {
+      if (isOnline && isBackendReachable && !isLoading) {
         unawaited(refreshData());
       }
     });
+
+    _healthTimer?.cancel();
+    _healthTimer = Timer.periodic(_healthInterval, (_) {
+      unawaited(_checkBackendHealth());
+    });
+    unawaited(_checkBackendHealth());
+  }
+
+  Future<void> _checkBackendHealth() async {
+    final reachable = await api.checkHealth();
+    if (isBackendReachable != reachable) {
+      isBackendReachable = reachable;
+      notifyListeners();
+    }
   }
 
   Future<void> refreshData() async {
@@ -611,6 +628,7 @@ class AppState extends ChangeNotifier {
   @override
   void dispose() {
     _refreshTimer?.cancel();
+    _healthTimer?.cancel();
     _connectivitySubscription?.cancel();
     unawaited(realtime.disconnect());
     super.dispose();

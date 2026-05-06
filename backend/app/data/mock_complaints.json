@@ -1,108 +1,136 @@
 [
   {
     "id": "cmp-2026-0001",
-    "road_id": "road-001",
-    "description": "Multiple deep potholes near bus stop causing bike skids.",
-    "image_ref": "demo_pothole_1.jpg",
-    "location": {"lat": 12.9946, "lng": 80.2371},
-    "timestamp": "2026-04-28T08:41:00Z",
-    "status": "In Progress",
-    "authority_ticket": "CCMC-11408",
-    "recommended_department": "Highways Department",
-    "routing_reason": "Pothole repair and road surfacing issues are handled by highways.",
-    "complaint_letter": "Please inspect and repair the potholes near the bus stop on Sardar Patel Road.",
+    "road_id": "road-025",
+    "description": "Illegal parking obstructing half the road width.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0029,
+      "lng": 80.1961
+    },
+    "timestamp": "2026-04-14T23:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-11318",
+    "recommended_department": "Tamil Nadu Highways Department",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Ellaiamman Colony Road.",
     "sent_to_authority": true,
-    "delivered_to_authority": true,
+    "delivered_to_authority": false,
     "read_by_authority": false,
-    "sent_at": "2026-04-28T09:05:00Z",
-    "delivered_at": "2026-04-28T09:15:00Z",
+    "sent_at": "2026-04-17T18:03:05.088709Z",
+    "delivered_at": null,
     "read_at": null,
     "timeline": [
       {
         "status": "Filed",
-        "at": "2026-04-28T08:41:00Z",
+        "at": "2026-04-15T19:03:05.088709Z",
         "note": "Complaint auto-filed from RoadWatch AI"
       },
       {
         "status": "Sent",
-        "at": "2026-04-28T09:05:00Z",
-        "note": "Complaint sent to Highways Department"
-      },
-      {
-        "status": "Delivered",
-        "at": "2026-04-28T09:15:00Z",
-        "note": "Complaint letter delivered to the department inbox"
-      },
-      {
-        "status": "In Progress",
-        "at": "2026-04-29T11:22:00Z",
-        "note": "Zonal engineer assigned for inspection"
+        "at": "2026-04-17T18:03:05.088709Z",
+        "note": "Complaint sent to department"
       }
     ]
   },
   {
     "id": "cmp-2026-0002",
-    "road_id": "road-004",
-    "description": "Long transverse crack expanding after rain.",
-    "image_ref": "demo_crack_2.jpg",
-    "location": {"lat": 13.0024, "lng": 80.2017},
-    "timestamp": "2026-04-25T14:06:00Z",
-    "status": "Resolved",
-    "authority_ticket": "CCMC-11367",
-    "recommended_department": "Highways Department",
-    "routing_reason": "Surface crack repair and patch work are handled by highways.",
-    "complaint_letter": "Please review and permanently repair the expanding crack after rain.",
+    "road_id": "road-049",
+    "description": "Cluster of medium potholes near signal line.",
+    "image_ref": "demo_pothole_1.jpg",
+    "location": {
+      "lat": 12.9068,
+      "lng": 80.1767
+    },
+    "timestamp": "2026-03-31T20:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-11880",
+    "recommended_department": "Greater Chennai Corporation - Road Works Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Dr. Radhakrishnan Salai.",
     "sent_to_authority": true,
     "delivered_to_authority": true,
-    "read_by_authority": true,
-    "sent_at": "2026-04-25T14:18:00Z",
-    "delivered_at": "2026-04-25T14:28:00Z",
-    "read_at": "2026-04-25T15:10:00Z",
+    "read_by_authority": false,
+    "sent_at": "2026-04-03T19:03:05.088709Z",
+    "delivered_at": "2026-04-05T03:03:05.088709Z",
+    "read_at": null,
     "timeline": [
       {
         "status": "Filed",
-        "at": "2026-04-25T14:06:00Z",
-        "note": "Complaint submitted"
+        "at": "2026-04-02T15:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
       },
       {
         "status": "Sent",
-        "at": "2026-04-25T14:18:00Z",
-        "note": "Complaint sent to Highways Department"
+        "at": "2026-04-03T19:03:05.088709Z",
+        "note": "Complaint sent to department"
       },
       {
         "status": "Delivered",
-        "at": "2026-04-25T14:28:00Z",
+        "at": "2026-04-05T03:03:05.088709Z",
         "note": "Complaint letter delivered to the department inbox"
-      },
-      {
-        "status": "Read",
-        "at": "2026-04-25T15:10:00Z",
-        "note": "Authority opened the complaint letter for review"
-      },
-      {
-        "status": "In Progress",
-        "at": "2026-04-26T09:11:00Z",
-        "note": "Temporary patch work started"
-      },
-      {
-        "status": "Resolved",
-        "at": "2026-04-27T16:34:00Z",
-        "note": "Patch completed and verified"
       }
     ]
   },
   {
     "id": "cmp-2026-0003",
-    "road_id": "road-003",
-    "description": "Cluster of medium potholes near signal line.",
-    "image_ref": "demo_pothole_3.jpg",
-    "location": {"lat": 12.9767, "lng": 80.2188},
-    "timestamp": "2026-05-01T07:55:00Z",
+    "road_id": "road-019",
+    "description": "Bridge approach settlement creating bumps.",
+    "image_ref": "demo_pothole_1.jpg",
+    "location": {
+      "lat": 12.9598,
+      "lng": 80.267
+    },
+    "timestamp": "2026-03-03T18:03:05.088709Z",
+    "status": "Read",
+    "authority_ticket": "CCMC-12936",
+    "recommended_department": "Tamil Nadu Highways Department",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Gandhi Mandapam Salai.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-03-06T09:03:05.088709Z",
+    "delivered_at": "2026-03-06T12:03:05.088709Z",
+    "read_at": "2026-03-07T03:03:05.088709Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-05T13:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-06T09:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-06T12:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-03-07T03:03:05.088709Z",
+        "note": "Authority opened the complaint letter for review"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0004",
+    "road_id": "road-050",
+    "description": "Speed breaker unmarked, causing vehicle damage.",
+    "image_ref": "demo_pothole_1.jpg",
+    "location": {
+      "lat": 13.0972,
+      "lng": 80.1344
+    },
+    "timestamp": "2026-03-29T00:03:05.088709Z",
     "status": "Filed",
-    "authority_ticket": "CCMC-11470",
-    "recommended_department": "Highways Department",
-    "routing_reason": "Pothole repair and road surfacing issues are handled by highways.",
-    "complaint_letter": "Please inspect the pothole cluster near the signal line.",
+    "authority_ticket": "CCMC-12090",
+    "recommended_department": "Tamil Nadu Highways Department",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Sterling Road.",
     "sent_to_authority": false,
     "delivered_to_authority": false,
     "read_by_authority": false,
@@ -112,7 +140,1676 @@
     "timeline": [
       {
         "status": "Filed",
-        "at": "2026-05-01T07:55:00Z",
+        "at": "2026-03-29T08:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0005",
+    "road_id": "road-033",
+    "description": "Street light poles in middle of carriageway after expansion.",
+    "image_ref": "demo_crack_2.jpg",
+    "location": {
+      "lat": 13.0918,
+      "lng": 80.1774
+    },
+    "timestamp": "2026-04-25T22:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-11828",
+    "recommended_department": "Greater Chennai Corporation - Electrical Wing",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Thiruvanmiyur East Coast Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-04-28T01:03:05.088709Z",
+    "delivered_at": "2026-04-29T05:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-27T22:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-28T01:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-04-29T05:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0006",
+    "road_id": "road-019",
+    "description": "Multiple deep potholes near bus stop causing bike skids.",
+    "image_ref": "demo_pothole_2.jpg",
+    "location": {
+      "lat": 12.9599,
+      "lng": 80.2672
+    },
+    "timestamp": "2026-03-25T05:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12729",
+    "recommended_department": "Greater Chennai Corporation - Road Works Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Gandhi Mandapam Salai.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-26T21:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0007",
+    "road_id": "road-016",
+    "description": "Open trench left uncovered by contractor.",
+    "image_ref": "demo_crack_1.jpg",
+    "location": {
+      "lat": 12.9368,
+      "lng": 80.2125
+    },
+    "timestamp": "2026-02-27T08:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-12296",
+    "recommended_department": "Greater Chennai Corporation - Road Works Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Haddows Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": "2026-03-01T06:03:05.088709Z",
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-02-28T10:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-01T06:03:05.088709Z",
+        "note": "Complaint sent to department"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0008",
+    "road_id": "road-034",
+    "description": "Street light poles in middle of carriageway after expansion.",
+    "image_ref": "demo_crack_1.jpg",
+    "location": {
+      "lat": 13.0324,
+      "lng": 80.2986
+    },
+    "timestamp": "2026-03-21T11:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-11154",
+    "recommended_department": "Tamil Nadu Highways Department",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Kotturpuram Inner Ring.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-03-23T15:03:05.088709Z",
+    "delivered_at": "2026-03-24T07:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-23T05:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-23T15:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-24T07:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0009",
+    "road_id": "road-050",
+    "description": "Rutting and shoving visible on entire stretch.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0985,
+      "lng": 80.1349
+    },
+    "timestamp": "2026-02-21T16:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-11900",
+    "recommended_department": "Greater Chennai Corporation - Road Works Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Sterling Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-02-24T17:03:05.088709Z",
+    "delivered_at": "2026-02-26T06:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-02-22T21:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-02-24T17:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-02-26T06:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0010",
+    "road_id": "road-031",
+    "description": "Drainage overflow making road slippery and dangerous.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0991,
+      "lng": 80.1861
+    },
+    "timestamp": "2026-03-30T16:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-11755",
+    "recommended_department": "Greater Chennai Corporation - Storm Water Drainage Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Vijayanagar Main Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": "2026-03-31T19:03:05.088709Z",
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-30T20:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-31T19:03:05.088709Z",
+        "note": "Complaint sent to department"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0011",
+    "road_id": "road-005",
+    "description": "Cluster of medium potholes near signal line.",
+    "image_ref": "demo_pothole_3.jpg",
+    "location": {
+      "lat": 13.1162,
+      "lng": 80.2105
+    },
+    "timestamp": "2026-02-15T15:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-12861",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Kutchery Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-02-18T01:03:05.088709Z",
+    "delivered_at": "2026-02-19T07:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-02-17T00:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-02-18T01:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-02-19T07:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0012",
+    "road_id": "road-042",
+    "description": "Kerbs broken and dislocated at multiple locations.",
+    "image_ref": "demo_crack_1.jpg",
+    "location": {
+      "lat": 12.9818,
+      "lng": 80.1912
+    },
+    "timestamp": "2026-03-05T18:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12323",
+    "recommended_department": "Tamil Nadu Highways Department",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Anna University Road.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-06T04:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0013",
+    "road_id": "road-003",
+    "description": "Rutting and shoving visible on entire stretch.",
+    "image_ref": "demo_pothole_2.jpg",
+    "location": {
+      "lat": 13.0285,
+      "lng": 80.2002
+    },
+    "timestamp": "2026-03-09T18:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12586",
+    "recommended_department": "Greater Chennai Corporation - Storm Water Drainage Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Bhashyam Road.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-11T04:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0014",
+    "road_id": "road-044",
+    "description": "Illegal parking obstructing half the road width.",
+    "image_ref": "demo_pothole_3.jpg",
+    "location": {
+      "lat": 13.0904,
+      "lng": 80.2406
+    },
+    "timestamp": "2026-04-27T00:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-11166",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Taramani Link Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-04-28T19:03:05.088709Z",
+    "delivered_at": "2026-04-30T15:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-27T07:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-28T19:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-04-30T15:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0015",
+    "road_id": "road-043",
+    "description": "Street light poles in middle of carriageway after expansion.",
+    "image_ref": "demo_pothole_3.jpg",
+    "location": {
+      "lat": 13.0496,
+      "lng": 80.2107
+    },
+    "timestamp": "2026-03-26T14:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12144",
+    "recommended_department": "Greater Chennai Corporation - Electrical Wing",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Anna Nagar West Boulevard.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-28T11:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0016",
+    "road_id": "road-042",
+    "description": "Broken edge and shoulder erosion on left side.",
+    "image_ref": "demo_pothole_2.jpg",
+    "location": {
+      "lat": 12.9812,
+      "lng": 80.1911
+    },
+    "timestamp": "2026-02-08T12:03:05.088709Z",
+    "status": "Read",
+    "authority_ticket": "CCMC-11632",
+    "recommended_department": "Tamil Nadu Highways Department",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Anna University Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-02-12T08:03:05.088709Z",
+    "delivered_at": "2026-02-13T18:03:05.088709Z",
+    "read_at": "2026-02-14T00:03:05.088709Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-02-10T12:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-02-12T08:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-02-13T18:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-02-14T00:03:05.088709Z",
+        "note": "Authority opened the complaint letter for review"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0017",
+    "road_id": "road-014",
+    "description": "Culvert slab cracked, structural integrity compromised.",
+    "image_ref": "demo_crack_1.jpg",
+    "location": {
+      "lat": 12.9966,
+      "lng": 80.1213
+    },
+    "timestamp": "2026-04-11T03:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-11689",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Butt Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": "2026-04-11T22:03:05.088709Z",
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-11T12:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-11T22:03:05.088709Z",
+        "note": "Complaint sent to department"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0018",
+    "road_id": "road-009",
+    "description": "Broken edge and shoulder erosion on left side.",
+    "image_ref": "demo_pothole_2.jpg",
+    "location": {
+      "lat": 13.0641,
+      "lng": 80.134
+    },
+    "timestamp": "2026-04-15T05:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-12250",
+    "recommended_department": "Greater Chennai Corporation - Storm Water Drainage Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Thirumayilai Station Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-04-18T18:03:05.088709Z",
+    "delivered_at": "2026-04-19T05:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-17T02:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-18T18:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-04-19T05:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0019",
+    "road_id": "road-049",
+    "description": "Rutting and shoving visible on entire stretch.",
+    "image_ref": "demo_pothole_2.jpg",
+    "location": {
+      "lat": 12.9063,
+      "lng": 80.1778
+    },
+    "timestamp": "2026-04-05T17:03:05.088709Z",
+    "status": "Read",
+    "authority_ticket": "CCMC-12593",
+    "recommended_department": "Greater Chennai Corporation - Electrical Wing",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Dr. Radhakrishnan Salai.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-04-07T05:03:05.088709Z",
+    "delivered_at": "2026-04-08T12:03:05.088709Z",
+    "read_at": "2026-04-09T01:03:05.088709Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-06T09:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-07T05:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-04-08T12:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-04-09T01:03:05.088709Z",
+        "note": "Authority opened the complaint letter for review"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0020",
+    "road_id": "road-033",
+    "description": "Patchwork quality poor, dislodged within 2 weeks.",
+    "image_ref": "demo_crack_1.jpg",
+    "location": {
+      "lat": 13.0931,
+      "lng": 80.1773
+    },
+    "timestamp": "2026-04-09T15:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-12732",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Thiruvanmiyur East Coast Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-04-10T17:03:05.088709Z",
+    "delivered_at": "2026-04-10T21:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-10T00:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-10T17:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-04-10T21:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0021",
+    "road_id": "road-055",
+    "description": "Cluster of medium potholes near signal line.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.073,
+      "lng": 80.1382
+    },
+    "timestamp": "2026-04-15T02:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12672",
+    "recommended_department": "Greater Chennai Corporation - Electrical Wing",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Velachery Main Road Extension.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-16T07:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0022",
+    "road_id": "road-057",
+    "description": "Multiple deep potholes near bus stop causing bike skids.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.1177,
+      "lng": 80.1884
+    },
+    "timestamp": "2026-03-13T09:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-11057",
+    "recommended_department": "Greater Chennai Corporation - Storm Water Drainage Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Venus Colony 1st Main.",
+    "sent_to_authority": true,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": "2026-03-15T20:03:05.088709Z",
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-14T11:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-15T20:03:05.088709Z",
+        "note": "Complaint sent to department"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0023",
+    "road_id": "road-060",
+    "description": "Illegal parking obstructing half the road width.",
+    "image_ref": "demo_crack_1.jpg",
+    "location": {
+      "lat": 12.9464,
+      "lng": 80.2914
+    },
+    "timestamp": "2026-04-17T06:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-11960",
+    "recommended_department": "Greater Chennai Corporation - Electrical Wing",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Pycrofts Road.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-17T09:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0024",
+    "road_id": "road-040",
+    "description": "Cluster of medium potholes near signal line.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.07,
+      "lng": 80.1461
+    },
+    "timestamp": "2026-05-03T02:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12589",
+    "recommended_department": "Greater Chennai Corporation - Storm Water Drainage Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Kamarajar Salai Extension.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-03T16:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0025",
+    "road_id": "road-016",
+    "description": "Long transverse crack expanding after rain.",
+    "image_ref": "demo_crack_1.jpg",
+    "location": {
+      "lat": 12.9362,
+      "lng": 80.2123
+    },
+    "timestamp": "2026-04-04T21:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-12055",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Haddows Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": "2026-04-08T06:03:05.088709Z",
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-06T14:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-08T06:03:05.088709Z",
+        "note": "Complaint sent to department"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0026",
+    "road_id": "road-016",
+    "description": "Drainage overflow making road slippery and dangerous.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9361,
+      "lng": 80.2134
+    },
+    "timestamp": "2026-03-12T10:03:05.088709Z",
+    "status": "Read",
+    "authority_ticket": "CCMC-12952",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Haddows Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-03-15T01:03:05.088709Z",
+    "delivered_at": "2026-03-15T17:03:05.088709Z",
+    "read_at": "2026-03-17T06:03:05.088709Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-14T02:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-15T01:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-15T17:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-03-17T06:03:05.088709Z",
+        "note": "Authority opened the complaint letter for review"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0027",
+    "road_id": "road-035",
+    "description": "Utility cut not restored properly.",
+    "image_ref": "demo_pothole_2.jpg",
+    "location": {
+      "lat": 12.9247,
+      "lng": 80.126
+    },
+    "timestamp": "2026-02-24T10:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-12614",
+    "recommended_department": "Greater Chennai Corporation - Road Works Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Bishop Garden Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-02-26T18:03:05.088709Z",
+    "delivered_at": "2026-02-26T21:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-02-25T11:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-02-26T18:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-02-26T21:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0028",
+    "road_id": "road-023",
+    "description": "Severe road depression causing waterlogging during rains.",
+    "image_ref": "demo_crack_1.jpg",
+    "location": {
+      "lat": 13.1284,
+      "lng": 80.1428
+    },
+    "timestamp": "2026-02-19T11:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-11951",
+    "recommended_department": "Greater Chennai Corporation - Electrical Wing",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on C.P. Ramaswamy Road.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-02-20T09:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0029",
+    "road_id": "road-041",
+    "description": "Broken edge and shoulder erosion on left side.",
+    "image_ref": "demo_pothole_1.jpg",
+    "location": {
+      "lat": 13.047,
+      "lng": 80.2387
+    },
+    "timestamp": "2026-04-26T12:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12911",
+    "recommended_department": "Greater Chennai Corporation - Storm Water Drainage Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Santhome High Road.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-27T18:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0030",
+    "road_id": "road-033",
+    "description": "Reflectors and signboards damaged/missing.",
+    "image_ref": "demo_pothole_1.jpg",
+    "location": {
+      "lat": 13.0922,
+      "lng": 80.1763
+    },
+    "timestamp": "2026-03-06T02:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-11254",
+    "recommended_department": "Greater Chennai Corporation - Storm Water Drainage Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Thiruvanmiyur East Coast Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": "2026-03-07T23:03:05.088709Z",
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-06T05:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-07T23:03:05.088709Z",
+        "note": "Complaint sent to department"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0031",
+    "road_id": "road-028",
+    "description": "Rutting and shoving visible on entire stretch.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0825,
+      "lng": 80.2997
+    },
+    "timestamp": "2026-03-17T00:03:05.088709Z",
+    "status": "In Progress",
+    "authority_ticket": "CCMC-11881",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on 2nd Avenue.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-03-18T20:03:05.088709Z",
+    "delivered_at": "2026-03-20T17:03:05.088709Z",
+    "read_at": "2026-03-22T01:03:05.088709Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-17T12:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-18T20:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-20T17:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-03-22T01:03:05.088709Z",
+        "note": "Authority opened the complaint letter for review"
+      },
+      {
+        "status": "In Progress",
+        "at": "2026-03-23T01:03:05.088709Z",
+        "note": "Zonal engineer assigned for inspection"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0032",
+    "road_id": "road-053",
+    "description": "Drainage overflow making road slippery and dangerous.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9774,
+      "lng": 80.1796
+    },
+    "timestamp": "2026-03-25T07:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12412",
+    "recommended_department": "Greater Chennai Corporation - Electrical Wing",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Raja Annamalaipuram Main.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-25T13:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0033",
+    "road_id": "road-023",
+    "description": "Street light poles in middle of carriageway after expansion.",
+    "image_ref": "demo_pothole_1.jpg",
+    "location": {
+      "lat": 13.1301,
+      "lng": 80.144
+    },
+    "timestamp": "2026-02-15T21:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-12050",
+    "recommended_department": "Tamil Nadu Highways Department",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on C.P. Ramaswamy Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": "2026-02-18T08:03:05.088709Z",
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-02-16T15:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-02-18T08:03:05.088709Z",
+        "note": "Complaint sent to department"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0034",
+    "road_id": "road-002",
+    "description": "Kerbs broken and dislocated at multiple locations.",
+    "image_ref": "demo_pothole_3.jpg",
+    "location": {
+      "lat": 13.0276,
+      "lng": 80.1603
+    },
+    "timestamp": "2026-02-07T20:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-11784",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on G.N. Chetty Road.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-02-07T23:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0035",
+    "road_id": "road-003",
+    "description": "Rutting and shoving visible on entire stretch.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0276,
+      "lng": 80.2002
+    },
+    "timestamp": "2026-03-18T23:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-12967",
+    "recommended_department": "Greater Chennai Corporation - Road Works Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Bhashyam Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-03-20T09:03:05.088709Z",
+    "delivered_at": "2026-03-21T22:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-20T04:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-20T09:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-21T22:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0036",
+    "road_id": "road-002",
+    "description": "Culvert slab cracked, structural integrity compromised.",
+    "image_ref": "demo_crack_2.jpg",
+    "location": {
+      "lat": 13.0287,
+      "lng": 80.1602
+    },
+    "timestamp": "2026-02-27T22:03:05.088709Z",
+    "status": "Read",
+    "authority_ticket": "CCMC-12876",
+    "recommended_department": "Greater Chennai Corporation - Electrical Wing",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on G.N. Chetty Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-03-01T18:03:05.088709Z",
+    "delivered_at": "2026-03-02T11:03:05.088709Z",
+    "read_at": "2026-03-03T04:03:05.088709Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-01T10:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-01T18:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-02T11:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-03-03T04:03:05.088709Z",
+        "note": "Authority opened the complaint letter for review"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0037",
+    "road_id": "road-013",
+    "description": "Cluster of medium potholes near signal line.",
+    "image_ref": "demo_crack_2.jpg",
+    "location": {
+      "lat": 13.1056,
+      "lng": 80.1444
+    },
+    "timestamp": "2026-03-09T05:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-11711",
+    "recommended_department": "Greater Chennai Corporation - Road Works Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Mahalakshmi Street.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-11T03:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0038",
+    "road_id": "road-036",
+    "description": "Drainage overflow making road slippery and dangerous.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0144,
+      "lng": 80.2848
+    },
+    "timestamp": "2026-04-14T12:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-12622",
+    "recommended_department": "Tamil Nadu Highways Department",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Chennai Airport Link Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-04-18T07:03:05.088709Z",
+    "delivered_at": "2026-04-20T00:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-16T10:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-18T07:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-04-20T00:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0039",
+    "road_id": "road-016",
+    "description": "Multiple deep potholes near bus stop causing bike skids.",
+    "image_ref": "demo_pothole_1.jpg",
+    "location": {
+      "lat": 12.9356,
+      "lng": 80.2139
+    },
+    "timestamp": "2026-03-19T17:03:05.088709Z",
+    "status": "Read",
+    "authority_ticket": "CCMC-12468",
+    "recommended_department": "Greater Chennai Corporation - Electrical Wing",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Haddows Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-03-22T06:03:05.088709Z",
+    "delivered_at": "2026-03-23T12:03:05.088709Z",
+    "read_at": "2026-03-25T00:03:05.088709Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-21T06:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-22T06:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-23T12:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-03-25T00:03:05.088709Z",
+        "note": "Authority opened the complaint letter for review"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0040",
+    "road_id": "road-034",
+    "description": "Gravel and debris scattered across lanes.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0335,
+      "lng": 80.299
+    },
+    "timestamp": "2026-02-21T08:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-12798",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Kotturpuram Inner Ring.",
+    "sent_to_authority": true,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": "2026-02-22T14:03:05.088709Z",
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-02-21T17:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-02-22T14:03:05.088709Z",
+        "note": "Complaint sent to department"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0041",
+    "road_id": "road-041",
+    "description": "Broken edge and shoulder erosion on left side.",
+    "image_ref": "demo_pothole_2.jpg",
+    "location": {
+      "lat": 13.0472,
+      "lng": 80.2386
+    },
+    "timestamp": "2026-03-10T18:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-12940",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Santhome High Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-03-11T06:03:05.088709Z",
+    "delivered_at": "2026-03-12T16:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-10T22:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-11T06:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-12T16:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0042",
+    "road_id": "road-058",
+    "description": "Cluster of medium potholes near signal line.",
+    "image_ref": "demo_crack_1.jpg",
+    "location": {
+      "lat": 13.0755,
+      "lng": 80.2508
+    },
+    "timestamp": "2026-04-03T04:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-12312",
+    "recommended_department": "Tamil Nadu Highways Department",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Lattice Bridge Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": "2026-04-06T09:03:05.088709Z",
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-04T21:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-06T09:03:05.088709Z",
+        "note": "Complaint sent to department"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0043",
+    "road_id": "road-038",
+    "description": "Broken edge and shoulder erosion on left side.",
+    "image_ref": "demo_crack_2.jpg",
+    "location": {
+      "lat": 12.9571,
+      "lng": 80.1658
+    },
+    "timestamp": "2026-04-13T13:03:05.088709Z",
+    "status": "Resolved",
+    "authority_ticket": "CCMC-11431",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Guindy Industrial Estate Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-04-17T04:03:05.088709Z",
+    "delivered_at": "2026-04-18T19:03:05.088709Z",
+    "read_at": "2026-04-19T17:03:05.088709Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-04-15T05:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-04-17T04:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-04-18T19:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-04-19T17:03:05.088709Z",
+        "note": "Authority opened the complaint letter for review"
+      },
+      {
+        "status": "In Progress",
+        "at": "2026-04-21T06:03:05.088709Z",
+        "note": "Zonal engineer assigned for inspection"
+      },
+      {
+        "status": "Resolved",
+        "at": "2026-04-21T09:03:05.088709Z",
+        "note": "Repair work completed and verified"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0044",
+    "road_id": "road-027",
+    "description": "Multiple deep potholes near bus stop causing bike skids.",
+    "image_ref": "demo_pothole_3.jpg",
+    "location": {
+      "lat": 13.091,
+      "lng": 80.2104
+    },
+    "timestamp": "2026-03-02T14:03:05.088709Z",
+    "status": "Delivered",
+    "authority_ticket": "CCMC-11928",
+    "recommended_department": "Greater Chennai Corporation - Road Works Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Roundana Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": false,
+    "sent_at": "2026-03-04T20:03:05.088709Z",
+    "delivered_at": "2026-03-06T14:03:05.088709Z",
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-04T01:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-04T20:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-06T14:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0045",
+    "road_id": "road-045",
+    "description": "Rutting and shoving visible on entire stretch.",
+    "image_ref": "demo_crack_2.jpg",
+    "location": {
+      "lat": 12.9309,
+      "lng": 80.2868
+    },
+    "timestamp": "2026-03-12T19:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12762",
+    "recommended_department": "Greater Chennai Corporation - Storm Water Drainage Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Nungambakkam High Road.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-14T01:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0046",
+    "road_id": "road-026",
+    "description": "Street light poles in middle of carriageway after expansion.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.1089,
+      "lng": 80.2964
+    },
+    "timestamp": "2026-02-28T17:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-11288",
+    "recommended_department": "Greater Chennai Corporation - Road Works Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on LB Road.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-01T00:03:05.088709Z",
+        "note": "Complaint filed with location and image"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0047",
+    "road_id": "road-004",
+    "description": "Open trench left uncovered by contractor.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9065,
+      "lng": 80.2721
+    },
+    "timestamp": "2026-02-15T21:03:05.088709Z",
+    "status": "Sent",
+    "authority_ticket": "CCMC-12562",
+    "recommended_department": "Tamil Nadu Highways Department",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Harrington Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": "2026-02-17T00:03:05.088709Z",
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-02-16T13:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-02-17T00:03:05.088709Z",
+        "note": "Complaint sent to department"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0048",
+    "road_id": "road-032",
+    "description": "Rutting and shoving visible on entire stretch.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9248,
+      "lng": 80.2893
+    },
+    "timestamp": "2026-03-03T01:03:05.088709Z",
+    "status": "Resolved",
+    "authority_ticket": "CCMC-11576",
+    "recommended_department": "Greater Chennai Corporation - Electrical Wing",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Chamiers Road Extension.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-03-04T11:03:05.088709Z",
+    "delivered_at": "2026-03-04T17:03:05.088709Z",
+    "read_at": "2026-03-05T19:03:05.088709Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-04T09:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-04T11:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-04T17:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-03-05T19:03:05.088709Z",
+        "note": "Authority opened the complaint letter for review"
+      },
+      {
+        "status": "In Progress",
+        "at": "2026-03-07T04:03:05.088709Z",
+        "note": "Zonal engineer assigned for inspection"
+      },
+      {
+        "status": "Resolved",
+        "at": "2026-03-08T10:03:05.088709Z",
+        "note": "Repair work completed and verified"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0049",
+    "road_id": "road-039",
+    "description": "Culvert slab cracked, structural integrity compromised.",
+    "image_ref": "demo_pothole_2.jpg",
+    "location": {
+      "lat": 12.9251,
+      "lng": 80.1766
+    },
+    "timestamp": "2026-03-29T17:03:05.088709Z",
+    "status": "In Progress",
+    "authority_ticket": "CCMC-11104",
+    "recommended_department": "Greater Chennai Corporation - Zonal Office",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on TTK Road.",
+    "sent_to_authority": true,
+    "delivered_to_authority": true,
+    "read_by_authority": true,
+    "sent_at": "2026-03-30T01:03:05.088709Z",
+    "delivered_at": "2026-03-31T05:03:05.088709Z",
+    "read_at": "2026-03-31T14:03:05.088709Z",
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-29T18:03:05.088709Z",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      },
+      {
+        "status": "Sent",
+        "at": "2026-03-30T01:03:05.088709Z",
+        "note": "Complaint sent to department"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-03-31T05:03:05.088709Z",
+        "note": "Complaint letter delivered to the department inbox"
+      },
+      {
+        "status": "Read",
+        "at": "2026-03-31T14:03:05.088709Z",
+        "note": "Authority opened the complaint letter for review"
+      },
+      {
+        "status": "In Progress",
+        "at": "2026-04-01T07:03:05.088709Z",
+        "note": "Zonal engineer assigned for inspection"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0050",
+    "road_id": "road-036",
+    "description": "Reflectors and signboards damaged/missing.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0151,
+      "lng": 80.2856
+    },
+    "timestamp": "2026-03-30T08:03:05.088709Z",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12996",
+    "recommended_department": "Greater Chennai Corporation - Road Works Division",
+    "routing_reason": "Auto-routed based on road type and description keywords.",
+    "complaint_letter": "Please inspect and repair the reported issue on Chennai Airport Link Road.",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-03-31T09:03:05.088709Z",
         "note": "Complaint filed with location and image"
       }
     ]

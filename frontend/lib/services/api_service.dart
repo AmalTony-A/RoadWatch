@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer' as developer;
 import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
@@ -25,36 +26,80 @@ class ApiService {
     return Uri.parse('${AppConfig.baseUrl}$path').replace(queryParameters: query);
   }
 
+  void _log(String message, {Object? error}) {
+    developer.log(message, name: 'ApiService', error: error);
+  }
+
+  Future<http.Response> _retryRequest(
+    Future<http.Response> Function() request, {
+    int maxRetries = 2,
+  }) async {
+    for (var attempt = 0; attempt <= maxRetries; attempt++) {
+      try {
+        final res = await request().timeout(_apiTimeout);
+        if (res.statusCode < 500) {
+          return res;
+        }
+        _log('Server error ${res.statusCode}, attempt $attempt');
+      } catch (e) {
+        _log('Request failed, attempt $attempt', error: e);
+      }
+      if (attempt < maxRetries) {
+        await Future.delayed(Duration(milliseconds: 500 * (attempt + 1)));
+      }
+    }
+    throw Exception('Request failed after $maxRetries retries');
+  }
+
+  Future<bool> checkHealth() async {
+    try {
+      final res = await _client.get(_uri('/health')).timeout(const Duration(seconds: 5));
+      return res.statusCode == 200;
+    } catch (e) {
+      _log('Health check failed', error: e);
+      return false;
+    }
+  }
+
   Future<Map<String, dynamic>> getRoadData() async {
     try {
-      final res = await _client.get(_uri('/get-road-data'));
+      final res = await _retryRequest(() => _client.get(_uri('/get-road-data')));
       if (res.statusCode == 200) {
         return jsonDecode(res.body) as Map<String, dynamic>;
       }
-    } catch (_) {}
+      _log('getRoadData returned status ${res.statusCode}');
+    } catch (e) {
+      _log('getRoadData failed', error: e);
+    }
     return DemoDataService.roadPayload();
   }
 
   Future<List<BudgetRecord>> getBudgetData() async {
     try {
-      final res = await _client.get(_uri('/get-budget-data'));
+      final res = await _retryRequest(() => _client.get(_uri('/get-budget-data')));
       if (res.statusCode == 200) {
         final data = jsonDecode(res.body) as List<dynamic>;
         return data.map((e) => BudgetRecord.fromJson(e as Map<String, dynamic>)).toList();
       }
-    } catch (_) {}
+      _log('getBudgetData returned status ${res.statusCode}');
+    } catch (e) {
+      _log('getBudgetData failed', error: e);
+    }
 
     return DemoDataService.budgetPayload().map(BudgetRecord.fromJson).toList();
   }
 
   Future<List<RoadNetworkItem>> getRoadNetworkData() async {
     try {
-      final res = await _client.get(_uri('/get-road-network-data'));
+      final res = await _retryRequest(() => _client.get(_uri('/get-road-network-data')));
       if (res.statusCode == 200) {
         final data = jsonDecode(res.body) as List<dynamic>;
         return data.map((e) => RoadNetworkItem.fromJson(e as Map<String, dynamic>)).toList();
       }
-    } catch (_) {}
+      _log('getRoadNetworkData returned status ${res.statusCode}');
+    } catch (e) {
+      _log('getRoadNetworkData failed', error: e);
+    }
 
     try {
       final res = await _client.get(Uri.parse(_roadNetworkFallbackUrl)).timeout(_apiTimeout);
@@ -62,7 +107,9 @@ class ApiService {
         final data = jsonDecode(res.body) as List<dynamic>;
         return data.map((e) => RoadNetworkItem.fromJson(e as Map<String, dynamic>)).toList();
       }
-    } catch (_) {}
+    } catch (e) {
+      _log('Road network fallback failed', error: e);
+    }
 
     return DemoDataService.roadNetworkPayload()
         .map((e) => RoadNetworkItem.fromJson(e))
@@ -70,7 +117,7 @@ class ApiService {
   }
 
   Future<RoadNetworkItem> getRoadNetworkItem(String itemId) async {
-    final res = await _client.get(_uri('/get-road-network-data/$itemId'));
+    final res = await _client.get(_uri('/get-road-network-data/$itemId')).timeout(_apiTimeout);
     if (res.statusCode != 200) {
       throw Exception('Road network item not found: $itemId');
     }
@@ -100,8 +147,14 @@ class ApiService {
         throw Exception('Failed to upload image: $body');
       }
       final payload = jsonDecode(body) as Map<String, dynamic>;
+      // Prefer public_url if backend provides it (new static file serving)
+      final publicUrl = payload['public_url'] as String?;
+      if (publicUrl != null && publicUrl.isNotEmpty) {
+        return publicUrl;
+      }
       return payload['image_id'] as String;
-    } catch (_) {
+    } catch (e) {
+      _log('uploadImage failed, using fallback', error: e);
       // Keep image analysis usable in hosted/demo mode even without backend upload.
       final normalized = fileName.toLowerCase();
       if (normalized.contains('crack')) {
@@ -116,49 +169,50 @@ class ApiService {
 
   Future<DetectionResult> detectDamage({required String imageId, String? roadId}) async {
     try {
-      final res = await _client
-          .post(
-        _uri('/detect-damage'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'image_id': imageId, 'road_id': roadId}),
-      )
-          .timeout(_apiTimeout);
+      final res = await _retryRequest(
+        () => _client.post(
+          _uri('/detect-damage'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({'image_id': imageId, 'road_id': roadId}),
+        ),
+      );
       if (res.statusCode == 200) {
         return DetectionResult.fromJson(jsonDecode(res.body) as Map<String, dynamic>);
       }
-      throw Exception(res.body);
-    } catch (_) {
-      return DetectionResult.fromJson({
-        'image_id': imageId,
-        'road_id': roadId,
-        'model': 'demo-mock-detector',
-        'inference_ms': 510,
-        'image_width': 640,
-        'image_height': 360,
-        'detections': [
-          {
-            'label': 'pothole',
-            'confidence': 0.92,
-            'severity': 'high',
-            'bbox': [102, 188, 254, 318]
-          },
-          {
-            'label': 'crack',
-            'confidence': 0.79,
-            'severity': 'medium',
-            'bbox': [320, 214, 470, 284]
-          }
-        ],
-        'score': {
-          'road_health_score': 76,
-          'color': 'yellow',
-          'severity_breakdown': {'low': 0, 'medium': 1, 'high': 1}
-        },
-        'scene_status': 'issue_detected',
-        'scene_message': 'Road damage detected.',
-        'needs_reupload': false,
-      });
+      _log('detectDamage returned status ${res.statusCode}');
+    } catch (e) {
+      _log('detectDamage failed', error: e);
     }
+    return DetectionResult.fromJson({
+      'image_id': imageId,
+      'road_id': roadId,
+      'model': 'demo-mock-detector',
+      'inference_ms': 510,
+      'image_width': 640,
+      'image_height': 360,
+      'detections': [
+        {
+          'label': 'pothole',
+          'confidence': 0.92,
+          'severity': 'high',
+          'bbox': [102, 188, 254, 318]
+        },
+        {
+          'label': 'crack',
+          'confidence': 0.79,
+          'severity': 'medium',
+          'bbox': [320, 214, 470, 284]
+        }
+      ],
+      'score': {
+        'road_health_score': 76,
+        'color': 'yellow',
+        'severity_breakdown': {'low': 0, 'medium': 1, 'high': 1}
+      },
+      'scene_status': 'issue_detected',
+      'scene_message': 'Road damage detected.',
+      'needs_reupload': false,
+    });
   }
 
   Future<ComplaintItem> generateComplaint({
@@ -204,14 +258,19 @@ class ApiService {
 
   Future<List<ComplaintItem>> getComplaints({String? roadId}) async {
     try {
-      final res = await _client.get(
-        _uri('/complaints', {if (roadId != null) 'road_id': roadId}),
+      final res = await _retryRequest(
+        () => _client.get(
+          _uri('/complaints', {if (roadId != null) 'road_id': roadId}),
+        ),
       );
       if (res.statusCode == 200) {
         final data = jsonDecode(res.body) as List<dynamic>;
         return data.map((e) => ComplaintItem.fromJson(e as Map<String, dynamic>)).toList();
       }
-    } catch (_) {}
+      _log('getComplaints returned status ${res.statusCode}');
+    } catch (e) {
+      _log('getComplaints failed', error: e);
+    }
 
     final fallback = DemoDataService.roadPayload()['recent_complaints'] as List<dynamic>;
     return fallback
@@ -226,22 +285,25 @@ class ApiService {
     required int complaintCount30d,
   }) async {
     try {
-      final res = await _client
-          .post(
-        _uri('/predict-risk'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'road_id': roadId,
-          'weather_index': weatherIndex,
-          'traffic_index': trafficIndex,
-          'complaint_count_30d': complaintCount30d,
-        }),
-      )
-          .timeout(_apiTimeout);
+      final res = await _retryRequest(
+        () => _client.post(
+          _uri('/predict-risk'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({
+            'road_id': roadId,
+            'weather_index': weatherIndex,
+            'traffic_index': trafficIndex,
+            'complaint_count_30d': complaintCount30d,
+          }),
+        ),
+      );
       if (res.statusCode == 200) {
         return RiskPrediction.fromJson(jsonDecode(res.body) as Map<String, dynamic>);
       }
-    } catch (_) {}
+      _log('predictRisk returned status ${res.statusCode}');
+    } catch (e) {
+      _log('predictRisk failed', error: e);
+    }
 
     return RiskPrediction.fromJson({
       'road_id': roadId,
@@ -257,21 +319,24 @@ class ApiService {
     required List<ChatItem> history,
   }) async {
     try {
-      final res = await _client
-          .post(
-        _uri('/chat'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'query': query,
-          'road_id': roadId,
-          'history': history.map((e) => e.toJson()).toList(),
-        }),
-      )
-          .timeout(_apiTimeout);
+      final res = await _retryRequest(
+        () => _client.post(
+          _uri('/chat'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({
+            'query': query,
+            'road_id': roadId,
+            'history': history.map((e) => e.toJson()).toList(),
+          }),
+        ),
+      );
       if (res.statusCode == 200) {
         return ChatResponse.fromJson(jsonDecode(res.body) as Map<String, dynamic>);
       }
-    } catch (_) {}
+      _log('askChat returned status ${res.statusCode}');
+    } catch (e) {
+      _log('askChat failed', error: e);
+    }
 
     return const ChatResponse(
       answer:

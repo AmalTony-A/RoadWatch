@@ -3,11 +3,13 @@ import 'package:provider/provider.dart';
 
 import '../config/app_config.dart';
 import '../providers/app_state.dart';
+import 'accountability_screen.dart';
 import 'capture_screen.dart';
 import 'chatbot_screen.dart';
 import 'complaints_screen.dart';
 import 'home_screen.dart';
 import 'intelligence_screen.dart';
+import 'statistics_screen.dart';
 
 class ShellScreen extends StatefulWidget {
   const ShellScreen({super.key});
@@ -25,16 +27,20 @@ class _ShellScreenState extends State<ShellScreen> {
     CaptureScreen(),
     ChatbotScreen(),
     ComplaintsScreen(),
+    StatisticsScreen(),
+    AccountabilityScreen(),
     IntelligenceScreen(),
   ];
 
-  static const _labels = ['Home', 'Capture', 'Assistant', 'Complaints', 'Intelligence'];
+  static const _labels = ['Home', 'Capture', 'Assistant', 'Complaints', 'Statistics', 'Accountability', 'Intelligence'];
 
   static const _icons = [
     Icons.map_rounded,
     Icons.camera_alt_rounded,
     Icons.chat_bubble_rounded,
     Icons.task_alt_rounded,
+    Icons.bar_chart_rounded,
+    Icons.verified_user_rounded,
     Icons.insights_rounded,
   ];
 

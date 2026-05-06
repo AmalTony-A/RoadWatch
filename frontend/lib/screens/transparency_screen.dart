@@ -218,8 +218,8 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                     style: TextStyle(color: AppConfig.skySlate),
                   )
                 else
-                  DropdownButtonFormField<RoadNetworkItem>(
-                    value: selectedRoad,
+                  DropdownButtonFormField<String>(
+                    value: selectedRoad?.id,
                     decoration: InputDecoration(
                       labelText: 'Roads in $_selectedDistrict',
                       filled: true,
@@ -231,15 +231,16 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                     ),
                     items: filteredRoads
                         .map(
-                          (road) => DropdownMenuItem<RoadNetworkItem>(
-                            value: road,
+                          (road) => DropdownMenuItem<String>(
+                            value: road.id,
                             child: Text(road.name),
                           ),
                         )
                         .toList(),
                     onChanged: (value) {
                       if (value != null) {
-                        _pickRoad(appState, value, showDetails: false);
+                        final road = filteredRoads.firstWhere((r) => r.id == value);
+                        _pickRoad(appState, road, showDetails: false);
                       }
                     },
                   ),
@@ -415,7 +416,7 @@ class _RoadDetailCard extends StatelessWidget {
   }
 }
 
-class _RoadNetworkCard extends StatelessWidget {
+class _RoadNetworkCard extends StatefulWidget {
   final RoadNetworkItem road;
   final bool isActive;
   final VoidCallback onTap;
@@ -424,19 +425,54 @@ class _RoadNetworkCard extends StatelessWidget {
   const _RoadNetworkCard({required this.road, required this.isActive, required this.onTap, required this.healthColor});
 
   @override
+  State<_RoadNetworkCard> createState() => _RoadNetworkCardState();
+}
+
+class _RoadNetworkCardState extends State<_RoadNetworkCard> with SingleTickerProviderStateMixin {
+  bool _expanded = false;
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _toggleExpand() {
+    setState(() {
+      _expanded = !_expanded;
+      if (_expanded) {
+        _animationController.forward();
+      } else {
+        _animationController.reverse();
+      }
+    });
+    widget.onTap();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final score = road.healthScore;
+    final score = widget.road.healthScore;
+    final formatter = NumberFormat.currency(locale: 'en_IN', symbol: '₹', decimalDigits: 0);
+    final budgetPerKm = widget.road.lengthKm > 0 ? (widget.road.budgetCrore * 10000000 / widget.road.lengthKm).toInt() : 0;
+
     return Material(
       color: Colors.white,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
-        onTap: onTap,
+        onTap: _toggleExpand,
         borderRadius: BorderRadius.circular(20),
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: isActive ? healthColor(score).withValues(alpha: 0.35) : const Color(0xFFE5ECF5), width: isActive ? 1.5 : 1),
+            border: Border.all(color: widget.isActive || _expanded ? widget.healthColor(score).withValues(alpha: 0.35) : const Color(0xFFE5ECF5), width: widget.isActive || _expanded ? 1.5 : 1),
             boxShadow: [
               BoxShadow(
                 color: AppConfig.deepNavy.withValues(alpha: 0.04),
@@ -455,12 +491,12 @@ class _RoadNetworkCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          road.name,
+                          widget.road.name,
                           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: AppConfig.deepNavy),
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          road.route,
+                          widget.road.route,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(color: AppConfig.skySlate),
@@ -469,32 +505,133 @@ class _RoadNetworkCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: healthColor(score).withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(999),
-                    ),
-                    child: Text(
-                      '$score/100',
-                      style: TextStyle(color: healthColor(score), fontWeight: FontWeight.w800, fontSize: 12),
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: widget.healthColor(score).withValues(alpha: 0.12),
+                          borderRadius: BorderRadius.circular(999),
+                        ),
+                        child: Text(
+                          '$score/100',
+                          style: TextStyle(color: widget.healthColor(score), fontWeight: FontWeight.w800, fontSize: 12),
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      RotationTransition(
+                        turns: Tween(begin: 0.0, end: 0.5).animate(_animationController),
+                        child: const Icon(Icons.expand_more_rounded, size: 20, color: AppConfig.skySlate),
+                      ),
+                    ],
                   ),
                 ],
               ),
               const SizedBox(height: 12),
-              Text('Districts: ${road.districts.join(', ')}', style: const TextStyle(color: AppConfig.skySlate)),
+              Text('Districts: ${widget.road.districts.join(', ')}', style: const TextStyle(color: AppConfig.skySlate)),
               const SizedBox(height: 8),
               LinearProgressIndicator(
                 minHeight: 10,
                 value: score / 100,
                 backgroundColor: const Color(0xFFE2E8F0),
-                valueColor: AlwaysStoppedAnimation<Color>(healthColor(score)),
+                valueColor: AlwaysStoppedAnimation<Color>(widget.healthColor(score)),
               ),
+              if (_expanded) ...[
+                const SizedBox(height: 16),
+                const Divider(height: 1),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _InfoColumn('Length', '${widget.road.lengthKm} km'),
+                    _InfoColumn('Year', '${widget.road.year}'),
+                    _InfoColumn('Type', widget.road.type),
+                    _InfoColumn('Condition', widget.road.condition),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                _DetailRow('Contractor:', widget.road.contractor),
+                const SizedBox(height: 8),
+                _DetailRow('Budget:', formatter.format(widget.road.budgetCrore * 10000000)),
+                const SizedBox(height: 8),
+                _DetailRow('Budget/km:', formatter.format(budgetPerKm)),
+                const SizedBox(height: 12),
+                Text('Issues:', style: const TextStyle(fontWeight: FontWeight.w700, color: AppConfig.deepNavy)),
+                const SizedBox(height: 6),
+                Wrap(
+                  spacing: 6,
+                  runSpacing: 6,
+                  children: widget.road.issues
+                      .map(
+                        (issue) => Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: widget.healthColor(score).withValues(alpha: 0.12),
+                            borderRadius: BorderRadius.circular(999),
+                          ),
+                          child: Text(issue, style: TextStyle(color: widget.healthColor(score), fontWeight: FontWeight.w600, fontSize: 11)),
+                        ),
+                      )
+                      .toList(),
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF8FAFC),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: const Color(0xFFE5ECF5)),
+                  ),
+                  child: Text(
+                    widget.road.summary,
+                    style: const TextStyle(color: AppConfig.skySlate, fontWeight: FontWeight.w600, height: 1.4),
+                  ),
+                ),
+              ],
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class _InfoColumn extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _InfoColumn(this.label, this.value);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(label, style: const TextStyle(color: AppConfig.skySlate, fontSize: 11, fontWeight: FontWeight.w600)),
+          const SizedBox(height: 4),
+          Text(value, style: const TextStyle(color: AppConfig.deepNavy, fontSize: 13, fontWeight: FontWeight.w800)),
+        ],
+      ),
+    );
+  }
+}
+
+class _DetailRow extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _DetailRow(this.label, this.value);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(label, style: const TextStyle(color: AppConfig.skySlate, fontWeight: FontWeight.w600)),
+        const SizedBox(width: 8),
+        Expanded(child: Text(value, style: const TextStyle(color: AppConfig.deepNavy, fontWeight: FontWeight.w700))),
+      ],
     );
   }
 }

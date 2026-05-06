@@ -1,72 +1,102 @@
 {
-  "demo_pothole_1.jpg": [
-    {
-      "label": "pothole",
-      "confidence": 0.92,
-      "severity": "high",
-      "bbox": [102, 188, 254, 318]
-    },
-    {
-      "label": "pothole",
-      "confidence": 0.84,
-      "severity": "medium",
-      "bbox": [302, 210, 420, 328]
-    },
-    {
-      "label": "crack",
-      "confidence": 0.78,
-      "severity": "low",
-      "bbox": [460, 198, 570, 260]
-    }
-  ],
   "demo_pothole_1.svg": [
     {
       "label": "pothole",
       "confidence": 0.92,
       "severity": "high",
-      "bbox": [102, 188, 254, 318]
-    },
-    {
-      "label": "pothole",
-      "confidence": 0.84,
-      "severity": "medium",
-      "bbox": [302, 210, 420, 328]
+      "bbox": [
+        102,
+        188,
+        254,
+        318
+      ]
     },
     {
       "label": "crack",
-      "confidence": 0.78,
-      "severity": "low",
-      "bbox": [460, 198, 570, 260]
+      "confidence": 0.79,
+      "severity": "medium",
+      "bbox": [
+        320,
+        214,
+        470,
+        284
+      ]
     }
   ],
-  "demo_crack_2.jpg": [
+  "demo_pothole_1.jpg": [
     {
-      "label": "crack",
-      "confidence": 0.89,
-      "severity": "medium",
-      "bbox": [90, 220, 530, 286]
+      "label": "pothole",
+      "confidence": 0.92,
+      "severity": "high",
+      "bbox": [
+        102,
+        188,
+        254,
+        318
+      ]
     },
     {
       "label": "crack",
-      "confidence": 0.8,
+      "confidence": 0.79,
       "severity": "medium",
-      "bbox": [110, 290, 560, 332]
+      "bbox": [
+        320,
+        214,
+        470,
+        284
+      ]
     }
   ],
   "demo_crack_2.svg": [
     {
       "label": "crack",
-      "confidence": 0.89,
-      "severity": "medium",
-      "bbox": [90, 220, 530, 286]
-    },
-    {
-      "label": "crack",
-      "confidence": 0.8,
-      "severity": "medium",
-      "bbox": [110, 290, 560, 332]
+      "confidence": 0.88,
+      "severity": "high",
+      "bbox": [
+        45,
+        220,
+        580,
+        290
+      ]
     }
   ],
+  "demo_crack_2.jpg": [
+    {
+      "label": "crack",
+      "confidence": 0.88,
+      "severity": "high",
+      "bbox": [
+        45,
+        220,
+        580,
+        290
+      ]
+    }
+  ],
+  "demo_good_road.svg": [],
   "demo_good_road.jpg": [],
-  "demo_good_road.svg": []
+  "demo_pothole_3.jpg": [
+    {
+      "label": "pothole",
+      "confidence": 0.85,
+      "severity": "medium",
+      "bbox": [
+        200,
+        240,
+        380,
+        340
+      ]
+    },
+    {
+      "label": "pothole",
+      "confidence": 0.71,
+      "severity": "low",
+      "bbox": [
+        420,
+        260,
+        520,
+        320
+      ]
+    }
+  ]
 }

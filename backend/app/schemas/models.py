@@ -159,3 +159,18 @@ class HealthOverview(BaseModel):
     yellow_roads: int
     green_roads: int
     generated_at: datetime
+
+
+class RoadDetailResponse(BaseModel):
+    road: dict[str, object]
+    budget: dict[str, object] | None
+    complaints: list[dict[str, object]]
+    nearby_network: list[dict[str, object]]
+
+
+class ApiInfoResponse(BaseModel):
+    version: str
+    demo_mode: bool
+    dataset_counts: dict[str, int]
+    model_info: dict[str, str | None]
+    uptime_seconds: float | None = None

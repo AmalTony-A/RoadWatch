@@ -1,56 +1,542 @@
 [
   {
     "road_id": "road-001",
-    "project_id": "CHN-2025-ADY-11",
-    "allocated_inr": 5000000,
-    "spent_inr": 4700000,
-    "contractor": "Metro CivilWorks Pvt Ltd",
-    "last_repair_date": "2025-12-03",
-    "expected_score": 78
+    "project_id": "CHN-2025-ADY-91",
+    "allocated_inr": 6300000,
+    "spent_inr": 4185742,
+    "contractor": "Ramky Infrastructure",
+    "last_repair_date": "2025-09-21",
+    "expected_score": 85
   },
   {
     "road_id": "road-002",
-    "project_id": "CHN-2025-PRG-07",
+    "project_id": "CHN-2025-T N-17",
     "allocated_inr": 3500000,
-    "spent_inr": 3260000,
-    "contractor": "South Corridor Infra LLP",
-    "last_repair_date": "2025-11-18",
-    "expected_score": 72
+    "spent_inr": 2847104,
+    "contractor": "J Kumar Infraprojects",
+    "last_repair_date": "2025-10-19",
+    "expected_score": 71
   },
   {
     "road_id": "road-003",
-    "project_id": "CHN-2025-VLC-02",
-    "allocated_inr": 4200000,
-    "spent_inr": 4015000,
-    "contractor": "Urban Paving Consortium",
-    "last_repair_date": "2025-10-27",
-    "expected_score": 75
+    "project_id": "CHN-2025-MYL-13",
+    "allocated_inr": 2800000,
+    "spent_inr": 2627751,
+    "contractor": "J Kumar Infraprojects",
+    "last_repair_date": "2025-08-16",
+    "expected_score": 84
   },
   {
     "road_id": "road-004",
-    "project_id": "CHN-2025-GDY-04",
-    "allocated_inr": 6300000,
-    "spent_inr": 5980000,
-    "contractor": "National Highway Repairs Co",
-    "last_repair_date": "2025-09-21",
-    "expected_score": 80
+    "project_id": "CHN-2025-NUN-84",
+    "allocated_inr": 2000000,
+    "spent_inr": 1776812,
+    "contractor": "Bayline Roads and Bridges",
+    "last_repair_date": "2026-02-27",
+    "expected_score": 83
   },
   {
     "road_id": "road-005",
-    "project_id": "CHN-2025-THR-09",
-    "allocated_inr": 2800000,
-    "spent_inr": 2410000,
-    "contractor": "Bayline Roads and Bridges",
-    "last_repair_date": "2026-01-09",
-    "expected_score": 76
+    "project_id": "CHN-2025-MYL-44",
+    "allocated_inr": 7500000,
+    "spent_inr": 6809275,
+    "contractor": "Man Infraconstruction",
+    "last_repair_date": "2025-09-15",
+    "expected_score": 78
   },
   {
     "road_id": "road-006",
-    "project_id": "CHN-2025-KTP-05",
-    "allocated_inr": 2200000,
-    "spent_inr": 2050000,
-    "contractor": "Green Patch Engineering",
-    "last_repair_date": "2026-02-14",
+    "project_id": "CHN-2025-GUI-49",
+    "allocated_inr": 2800000,
+    "spent_inr": 2607031,
+    "contractor": "Ashoka Buildcon",
+    "last_repair_date": "2025-07-31",
+    "expected_score": 87
+  },
+  {
+    "road_id": "road-007",
+    "project_id": "CHN-2025-MYL-81",
+    "allocated_inr": 2000000,
+    "spent_inr": 1707523,
+    "contractor": "GMR Highways",
+    "last_repair_date": "2025-12-11",
+    "expected_score": 77
+  },
+  {
+    "road_id": "road-008",
+    "project_id": "CHN-2025-T N-98",
+    "allocated_inr": 2800000,
+    "spent_inr": 2220989,
+    "contractor": "National Highway Repairs Co",
+    "last_repair_date": "2025-08-22",
+    "expected_score": 73
+  },
+  {
+    "road_id": "road-009",
+    "project_id": "CHN-2025-MYL-06",
+    "allocated_inr": 3500000,
+    "spent_inr": 3076571,
+    "contractor": "Ashoka Buildcon",
+    "last_repair_date": "2026-03-09",
+    "expected_score": 70
+  },
+  {
+    "road_id": "road-010",
+    "project_id": "CHN-2025-ROY-19",
+    "allocated_inr": 5000000,
+    "spent_inr": 3841464,
+    "contractor": "Dilip Buildcon Ltd",
+    "last_repair_date": "2025-09-08",
+    "expected_score": 83
+  },
+  {
+    "road_id": "road-011",
+    "project_id": "CHN-2025-THI-79",
+    "allocated_inr": 3500000,
+    "spent_inr": 2471331,
+    "contractor": "Ramky Infrastructure",
+    "last_repair_date": "2025-12-04",
+    "expected_score": 72
+  },
+  {
+    "road_id": "road-012",
+    "project_id": "CHN-2025-ANN-30",
+    "allocated_inr": 7500000,
+    "spent_inr": 7134251,
+    "contractor": "PNC Infratech",
+    "last_repair_date": "2025-11-27",
+    "expected_score": 74
+  },
+  {
+    "road_id": "road-013",
+    "project_id": "CHN-2025-T N-60",
+    "allocated_inr": 7500000,
+    "spent_inr": 5506933,
+    "contractor": "GMR Highways",
+    "last_repair_date": "2026-01-16",
+    "expected_score": 70
+  },
+  {
+    "road_id": "road-014",
+    "project_id": "CHN-2025-GUI-76",
+    "allocated_inr": 2800000,
+    "spent_inr": 2228158,
+    "contractor": "GMR Highways",
+    "last_repair_date": "2025-09-01",
     "expected_score": 81
+  },
+  {
+    "road_id": "road-015",
+    "project_id": "CHN-2025-PER-26",
+    "allocated_inr": 5000000,
+    "spent_inr": 4003779,
+    "contractor": "Ramky Infrastructure",
+    "last_repair_date": "2025-08-02",
+    "expected_score": 79
+  },
+  {
+    "road_id": "road-016",
+    "project_id": "CHN-2025-TEY-46",
+    "allocated_inr": 2800000,
+    "spent_inr": 2039178,
+    "contractor": "Capacit'e Infraprojects",
+    "last_repair_date": "2025-11-06",
+    "expected_score": 88
+  },
+  {
+    "road_id": "road-017",
+    "project_id": "CHN-2025-T N-36",
+    "allocated_inr": 5000000,
+    "spent_inr": 3286200,
+    "contractor": "Metro CivilWorks Pvt Ltd",
+    "last_repair_date": "2026-03-12",
+    "expected_score": 82
+  },
+  {
+    "road_id": "road-018",
+    "project_id": "CHN-2025-MYL-30",
+    "allocated_inr": 7500000,
+    "spent_inr": 6936276,
+    "contractor": "Man Infraconstruction",
+    "last_repair_date": "2025-10-08",
+    "expected_score": 79
+  },
+  {
+    "road_id": "road-019",
+    "project_id": "CHN-2025-KOT-87",
+    "allocated_inr": 4200000,
+    "spent_inr": 3612352,
+    "contractor": "Bayline Roads and Bridges",
+    "last_repair_date": "2026-02-16",
+    "expected_score": 78
+  },
+  {
+    "road_id": "road-020",
+    "project_id": "CHN-2025-TEY-05",
+    "allocated_inr": 2000000,
+    "spent_inr": 1503895,
+    "contractor": "Capacit'e Infraprojects",
+    "last_repair_date": "2025-10-02",
+    "expected_score": 84
+  },
+  {
+    "road_id": "road-021",
+    "project_id": "CHN-2025-ADY-42",
+    "allocated_inr": 3500000,
+    "spent_inr": 2379104,
+    "contractor": "Sadbhav Engineering",
+    "last_repair_date": "2026-01-07",
+    "expected_score": 79
+  },
+  {
+    "road_id": "road-022",
+    "project_id": "CHN-2025-TEY-47",
+    "allocated_inr": 4200000,
+    "spent_inr": 2913173,
+    "contractor": "J Kumar Infraprojects",
+    "last_repair_date": "2025-07-24",
+    "expected_score": 87
+  },
+  {
+    "road_id": "road-023",
+    "project_id": "CHN-2025-MYL-62",
+    "allocated_inr": 5000000,
+    "spent_inr": 4620279,
+    "contractor": "GMR Highways",
+    "last_repair_date": "2025-10-15",
+    "expected_score": 78
+  },
+  {
+    "road_id": "road-024",
+    "project_id": "CHN-2025-ROY-19",
+    "allocated_inr": 2800000,
+    "spent_inr": 2252738,
+    "contractor": "Dilip Buildcon Ltd",
+    "last_repair_date": "2025-09-15",
+    "expected_score": 72
+  },
+  {
+    "road_id": "road-025",
+    "project_id": "CHN-2025-ADY-02",
+    "allocated_inr": 5500000,
+    "spent_inr": 3738899,
+    "contractor": "IRB Infrastructure",
+    "last_repair_date": "2026-02-02",
+    "expected_score": 82
+  },
+  {
+    "road_id": "road-026",
+    "project_id": "CHN-2025-ADY-75",
+    "allocated_inr": 7500000,
+    "spent_inr": 5787249,
+    "contractor": "Ramky Infrastructure",
+    "last_repair_date": "2025-09-28",
+    "expected_score": 78
+  },
+  {
+    "road_id": "road-027",
+    "project_id": "CHN-2025-ANN-04",
+    "allocated_inr": 2800000,
+    "spent_inr": 2443548,
+    "contractor": "Man Infraconstruction",
+    "last_repair_date": "2025-10-21",
+    "expected_score": 85
+  },
+  {
+    "road_id": "road-028",
+    "project_id": "CHN-2025-ANN-90",
+    "allocated_inr": 4200000,
+    "spent_inr": 3627646,
+    "contractor": "GMR Highways",
+    "last_repair_date": "2025-09-09",
+    "expected_score": 84
+  },
+  {
+    "road_id": "road-029",
+    "project_id": "CHN-2025-VEL-39",
+    "allocated_inr": 2800000,
+    "spent_inr": 1949153,
+    "contractor": "Monte Carlo Ltd",
+    "last_repair_date": "2026-02-06",
+    "expected_score": 71
+  },
+  {
+    "road_id": "road-030",
+    "project_id": "CHN-2025-T N-18",
+    "allocated_inr": 2800000,
+    "spent_inr": 2036955,
+    "contractor": "Ramky Infrastructure",
+    "last_repair_date": "2025-08-17",
+    "expected_score": 87
+  },
+  {
+    "road_id": "road-031",
+    "project_id": "CHN-2025-VEL-54",
+    "allocated_inr": 5500000,
+    "spent_inr": 4791932,
+    "contractor": "Capacit'e Infraprojects",
+    "last_repair_date": "2026-01-17",
+    "expected_score": 87
+  },
+  {
+    "road_id": "road-032",
+    "project_id": "CHN-2025-KOT-79",
+    "allocated_inr": 6300000,
+    "spent_inr": 5456582,
+    "contractor": "Sadbhav Engineering",
+    "last_repair_date": "2025-11-14",
+    "expected_score": 85
+  },
+  {
+    "road_id": "road-033",
+    "project_id": "CHN-2025-THI-57",
+    "allocated_inr": 2000000,
+    "spent_inr": 1755585,
+    "contractor": "PNC Infratech",
+    "last_repair_date": "2025-12-07",
+    "expected_score": 76
+  },
+  {
+    "road_id": "road-034",
+    "project_id": "CHN-2025-KOT-70",
+    "allocated_inr": 5500000,
+    "spent_inr": 3755328,
+    "contractor": "KMC Constructions",
+    "last_repair_date": "2026-03-06",
+    "expected_score": 81
+  },
+  {
+    "road_id": "road-035",
+    "project_id": "CHN-2025-TEY-59",
+    "allocated_inr": 6300000,
+    "spent_inr": 4668557,
+    "contractor": "Urban Paving Consortium",
+    "last_repair_date": "2025-12-19",
+    "expected_score": 73
+  },
+  {
+    "road_id": "road-036",
+    "project_id": "CHN-2025-GUI-32",
+    "allocated_inr": 2000000,
+    "spent_inr": 1333381,
+    "contractor": "Bayline Roads and Bridges",
+    "last_repair_date": "2025-12-22",
+    "expected_score": 80
+  },
+  {
+    "road_id": "road-037",
+    "project_id": "CHN-2025-TEY-27",
+    "allocated_inr": 2800000,
+    "spent_inr": 2586751,
+    "contractor": "Capacit'e Infraprojects",
+    "last_repair_date": "2025-12-17",
+    "expected_score": 87
+  },
+  {
+    "road_id": "road-038",
+    "project_id": "CHN-2025-GUI-77",
+    "allocated_inr": 4200000,
+    "spent_inr": 3185383,
+    "contractor": "Metro CivilWorks Pvt Ltd",
+    "last_repair_date": "2025-11-16",
+    "expected_score": 74
+  },
+  {
+    "road_id": "road-039",
+    "project_id": "CHN-2025-TEY-33",
+    "allocated_inr": 3500000,
+    "spent_inr": 3415594,
+    "contractor": "Green Patch Engineering",
+    "last_repair_date": "2026-02-09",
+    "expected_score": 87
+  },
+  {
+    "road_id": "road-040",
+    "project_id": "CHN-2025-GUI-31",
+    "allocated_inr": 2000000,
+    "spent_inr": 1386990,
+    "contractor": "Capacit'e Infraprojects",
+    "last_repair_date": "2025-10-23",
+    "expected_score": 81
+  },
+  {
+    "road_id": "road-041",
+    "project_id": "CHN-2025-KOT-17",
+    "allocated_inr": 2000000,
+    "spent_inr": 1415002,
+    "contractor": "Sadbhav Engineering",
+    "last_repair_date": "2025-07-11",
+    "expected_score": 71
+  },
+  {
+    "road_id": "road-042",
+    "project_id": "CHN-2025-KOT-58",
+    "allocated_inr": 2800000,
+    "spent_inr": 2508994,
+    "contractor": "KMC Constructions",
+    "last_repair_date": "2025-07-18",
+    "expected_score": 85
+  },
+  {
+    "road_id": "road-043",
+    "project_id": "CHN-2025-ANN-79",
+    "allocated_inr": 2800000,
+    "spent_inr": 2237653,
+    "contractor": "South Corridor Infra LLP",
+    "last_repair_date": "2025-07-14",
+    "expected_score": 77
+  },
+  {
+    "road_id": "road-044",
+    "project_id": "CHN-2025-VEL-08",
+    "allocated_inr": 5000000,
+    "spent_inr": 4005770,
+    "contractor": "Monte Carlo Ltd",
+    "last_repair_date": "2025-09-13",
+    "expected_score": 70
+  },
+  {
+    "road_id": "road-045",
+    "project_id": "CHN-2025-TEY-92",
+    "allocated_inr": 6300000,
+    "spent_inr": 5521396,
+    "contractor": "PNC Infratech",
+    "last_repair_date": "2026-02-28",
+    "expected_score": 85
+  },
+  {
+    "road_id": "road-046",
+    "project_id": "CHN-2025-TEY-09",
+    "allocated_inr": 2800000,
+    "spent_inr": 2117631,
+    "contractor": "Bayline Roads and Bridges",
+    "last_repair_date": "2025-11-17",
+    "expected_score": 74
+  },
+  {
+    "road_id": "road-047",
+    "project_id": "CHN-2025-VEL-38",
+    "allocated_inr": 5500000,
+    "spent_inr": 4266341,
+    "contractor": "PNC Infratech",
+    "last_repair_date": "2025-07-22",
+    "expected_score": 86
+  },
+  {
+    "road_id": "road-048",
+    "project_id": "CHN-2025-THI-84",
+    "allocated_inr": 6300000,
+    "spent_inr": 4301192,
+    "contractor": "NCC Urban",
+    "last_repair_date": "2025-12-17",
+    "expected_score": 73
+  },
+  {
+    "road_id": "road-049",
+    "project_id": "CHN-2025-MYL-53",
+    "allocated_inr": 6300000,
+    "spent_inr": 5033782,
+    "contractor": "Ashoka Buildcon",
+    "last_repair_date": "2025-08-17",
+    "expected_score": 77
+  },
+  {
+    "road_id": "road-050",
+    "project_id": "CHN-2025-NUN-41",
+    "allocated_inr": 6300000,
+    "spent_inr": 4959842,
+    "contractor": "Sadbhav Engineering",
+    "last_repair_date": "2025-10-28",
+    "expected_score": 73
+  },
+  {
+    "road_id": "road-051",
+    "project_id": "CHN-2025-VEL-88",
+    "allocated_inr": 5000000,
+    "spent_inr": 3867596,
+    "contractor": "Monte Carlo Ltd",
+    "last_repair_date": "2026-03-03",
+    "expected_score": 74
+  },
+  {
+    "road_id": "road-052",
+    "project_id": "CHN-2025-ADY-56",
+    "allocated_inr": 2800000,
+    "spent_inr": 2588557,
+    "contractor": "National Highway Repairs Co",
+    "last_repair_date": "2025-09-28",
+    "expected_score": 72
+  },
+  {
+    "road_id": "road-053",
+    "project_id": "CHN-2025-KOT-72",
+    "allocated_inr": 3500000,
+    "spent_inr": 2917608,
+    "contractor": "NCC Urban",
+    "last_repair_date": "2025-10-20",
+    "expected_score": 88
+  },
+  {
+    "road_id": "road-054",
+    "project_id": "CHN-2025-MYL-93",
+    "allocated_inr": 2800000,
+    "spent_inr": 2199587,
+    "contractor": "South Corridor Infra LLP",
+    "last_repair_date": "2025-11-10",
+    "expected_score": 83
+  },
+  {
+    "road_id": "road-055",
+    "project_id": "CHN-2025-PER-65",
+    "allocated_inr": 5000000,
+    "spent_inr": 3830216,
+    "contractor": "L&T Construction Ltd",
+    "last_repair_date": "2026-01-17",
+    "expected_score": 88
+  },
+  {
+    "road_id": "road-056",
+    "project_id": "CHN-2025-THI-45",
+    "allocated_inr": 7500000,
+    "spent_inr": 5430006,
+    "contractor": "NCC Urban",
+    "last_repair_date": "2025-09-30",
+    "expected_score": 73
+  },
+  {
+    "road_id": "road-057",
+    "project_id": "CHN-2025-NUN-29",
+    "allocated_inr": 2800000,
+    "spent_inr": 2524647,
+    "contractor": "Sadbhav Engineering",
+    "last_repair_date": "2026-03-24",
+    "expected_score": 88
+  },
+  {
+    "road_id": "road-058",
+    "project_id": "CHN-2025-THI-90",
+    "allocated_inr": 5000000,
+    "spent_inr": 3297772,
+    "contractor": "GMR Highways",
+    "last_repair_date": "2025-10-15",
+    "expected_score": 78
+  },
+  {
+    "road_id": "road-059",
+    "project_id": "CHN-2025-ADY-73",
+    "allocated_inr": 5500000,
+    "spent_inr": 3586082,
+    "contractor": "Ramky Infrastructure",
+    "last_repair_date": "2026-03-02",
+    "expected_score": 74
+  },
+  {
+    "road_id": "road-060",
+    "project_id": "CHN-2025-ROY-12",
+    "allocated_inr": 3500000,
+    "spent_inr": 3130819,
+    "contractor": "J Kumar Infraprojects",
+    "last_repair_date": "2025-12-17",
+    "expected_score": 70
   }
 ]
