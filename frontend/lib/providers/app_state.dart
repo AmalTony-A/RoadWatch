@@ -50,6 +50,7 @@ class AppState extends ChangeNotifier {
   bool isBackendReachable = true;
   bool isRealtimeConnected = false;
   bool isLocationLoading = false;
+  bool isDarkMode = false;
   String? selectedRoadId;
   String? selectedRoadNetworkId;
   String? lastMessage;
@@ -137,6 +138,7 @@ class AppState extends ChangeNotifier {
     budgets = await api.getBudgetData();
     roadNetwork = await api.getRoadNetworkData();
     complaints = await api.getComplaints();
+    _ensureDefaultSelections();
     lastUpdatedAt = DateTime.now();
 
     isLoading = false;
@@ -187,6 +189,33 @@ class AppState extends ChangeNotifier {
     return null;
   }
 
+  RoadSegment? get nearestRoadFromCurrentPosition {
+    final position = currentPosition;
+    if (position == null || roads.isEmpty) {
+      return null;
+    }
+
+    RoadSegment? nearestRoad;
+    var nearestDistance = double.infinity;
+
+    for (final road in roads) {
+      for (final point in road.polyline) {
+        final distance = Geolocator.distanceBetween(
+          position.latitude,
+          position.longitude,
+          point.lat,
+          point.lng,
+        );
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestRoad = road;
+        }
+      }
+    }
+
+    return nearestRoad;
+  }
+
   List<RoadNetworkItem> roadsForDistrict(String district) {
     if (district == 'ALL') {
       return roadNetwork;
@@ -207,6 +236,29 @@ class AppState extends ChangeNotifier {
               item.route.toLowerCase().contains(normalizedQuery) ||
               item.contractor.toLowerCase().contains(normalizedQuery) ||
               item.issues.any((issue) => issue.toLowerCase().contains(normalizedQuery)),
+        )
+        .toList();
+  }
+
+  List<RoadSegment> roadsForComplaintDistrict(String district) {
+    if (district == 'ALL') {
+      return roads;
+    }
+
+    if (district == 'AUTO') {
+      final suggestedDistrict = liveSuggestedDistrict;
+      if (suggestedDistrict == null) {
+        return roads;
+      }
+      return roadsForComplaintDistrict(suggestedDistrict);
+    }
+
+    final normalizedDistrict = district.trim().toLowerCase();
+    return roads
+        .where(
+          (road) =>
+              road.ward.toLowerCase().contains(normalizedDistrict) ||
+              road.name.toLowerCase().contains(normalizedDistrict),
         )
         .toList();
   }
@@ -374,16 +426,19 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _refreshRoadNetwork() async {
-    roadNetwork = await api.getRoadNetworkData();
-    lastUpdatedAt = DateTime.now();
-    notifyListeners();
-  }
-
   Future<void> _refreshComplaintData() async {
     complaints = await api.getComplaints();
     lastUpdatedAt = DateTime.now();
     notifyListeners();
+  }
+
+  void _ensureDefaultSelections() {
+    if (selectedRoadId == null && roads.isNotEmpty) {
+      selectedRoadId = roads.first.id;
+    }
+    if (selectedRoadNetworkId == null && roadNetwork.isNotEmpty) {
+      selectedRoadNetworkId = roadNetwork.first.id;
+    }
   }
 
   void selectRoad(String roadId) {

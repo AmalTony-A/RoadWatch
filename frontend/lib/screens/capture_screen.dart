@@ -23,21 +23,45 @@ class _CaptureScreenState extends State<CaptureScreen> {
   String? _selectedImageName;
   String? _selectedDemoAsset;
   bool _busy = false;
+  bool _syncLiveDistrictQueued = false;
+  bool _autoDistrictQueued = false;
   String _selectedDistrict = 'ALL';
   String _roadSearchQuery = '';
   bool _autoDistrictApplied = false;
 
+  String _roadUniqueKey(RoadNetworkItem road) {
+    final id = road.id.trim();
+    if (id.isNotEmpty) {
+      return '${id}_${road.name.trim()}';
+    }
+    return '${road.name.trim()}_${road.route.trim()}_${road.districts.join('|')}';
+  }
+
+  List<RoadNetworkItem> _uniqueRoads(List<RoadNetworkItem> roads) {
+    final byKey = <String, RoadNetworkItem>{};
+    for (final road in roads) {
+      byKey.putIfAbsent(_roadUniqueKey(road), () => road);
+    }
+    return byKey.values.toList(growable: false);
+  }
+
   void _syncLiveDistrict(AppState state) {
-    final suggested = state.liveSuggestedDistrict;
-    if (suggested == null || _autoDistrictApplied) {
+    if (_syncLiveDistrictQueued || _autoDistrictApplied) {
       return;
     }
-
+    
+    final suggested = state.liveSuggestedDistrict;
+    if (suggested == null) {
+      return;
+    }
+    
+    _syncLiveDistrictQueued = true;
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      _syncLiveDistrictQueued = false;
       if (!mounted || _autoDistrictApplied) {
         return;
       }
-      final liveRoads = state.roadsForDistrict(suggested);
+      final liveRoads = _uniqueRoads(state.roadsForDistrict(suggested));
       setState(() {
         _selectedDistrict = suggested;
         _roadSearchQuery = '';
@@ -50,7 +74,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
   }
 
   List<RoadNetworkItem> _filteredRoads(AppState state) {
-    return state.searchRoadsForDistrict(_selectedDistrict, _roadSearchQuery);
+    return _uniqueRoads(state.searchRoadsForDistrict(_selectedDistrict, _roadSearchQuery));
   }
 
   void _selectRoad(AppState state, RoadNetworkItem road) {
@@ -84,6 +108,34 @@ class _CaptureScreenState extends State<CaptureScreen> {
         });
       }
     }
+  }
+
+  void _autoSelectDistrict(AppState state) {
+    if (_autoDistrictQueued || _autoDistrictApplied) {
+      return;
+    }
+
+    final suggested = state.liveSuggestedDistrict;
+    if (suggested == null || _selectedDistrict != 'ALL') {
+      return;
+    }
+
+    _autoDistrictQueued = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _autoDistrictQueued = false;
+      if (!mounted || _autoDistrictApplied || _selectedDistrict != 'ALL') {
+        return;
+      }
+      final liveRoads = _uniqueRoads(state.roadsForDistrict(suggested));
+      setState(() {
+        _selectedDistrict = suggested;
+        _roadSearchQuery = '';
+        _autoDistrictApplied = true;
+      });
+      if (liveRoads.isNotEmpty) {
+        state.selectRoadNetworkItem(liveRoads.first);
+      }
+    });
   }
 
   RoadNetworkItem? _selectedRoad(AppState state) {
@@ -131,10 +183,27 @@ class _CaptureScreenState extends State<CaptureScreen> {
   Widget build(BuildContext context) {
     final appState = context.watch<AppState>();
     final detection = appState.lastDetection;
+    
+    // Prevent repeated syncs on every rebuild
     _syncLiveDistrict(appState);
-    final selectedRoad = _selectedRoad(appState);
-    final filteredRoads = _filteredRoads(appState);
-    final districtOptions = ['ALL', ...appState.roadNetworkDistricts];
+    _autoSelectDistrict(appState);
+    
+    // Lazy-compute heavy values only when needed
+    late final List<RoadNetworkItem> filteredRoads;
+    late final RoadNetworkItem? selectedRoad;
+    late final List<String> districtOptions;
+    
+    // Only compute if road network is available
+    if (appState.roadNetwork.isNotEmpty) {
+      districtOptions = ['ALL', ...appState.roadNetworkDistricts];
+      filteredRoads = _filteredRoads(appState);
+      selectedRoad = _selectedRoad(appState);
+    } else {
+      districtOptions = ['ALL'];
+      filteredRoads = [];
+      selectedRoad = null;
+    }
+    
     final analysisMessage = detection == null
       ? null
       : detection.sceneMessage ??
@@ -268,7 +337,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
                 children: [
                   Expanded(
                     child: DropdownButtonFormField<String>(
-                      value: _selectedDistrict,
+                      initialValue: _selectedDistrict,
                       decoration: InputDecoration(
                         labelText: 'District',
                         filled: true,
@@ -290,7 +359,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
                         if (value == null) {
                           return;
                         }
-                        final nextRoads = appState.roadsForDistrict(value);
+                        final nextRoads = _uniqueRoads(appState.roadsForDistrict(value));
                         setState(() {
                           _selectedDistrict = value;
                           _roadSearchQuery = '';
@@ -341,13 +410,25 @@ class _CaptureScreenState extends State<CaptureScreen> {
                   ),
                 ),
               const SizedBox(height: 12),
-              if (_selectedDistrict != 'ALL' && filteredRoads.isNotEmpty)
+              if (_selectedDistrict == 'ALL')
+                const Text(
+                  'All roads are shown below. Pick a district to narrow the list.',
+                  style: TextStyle(color: AppConfig.skySlate),
+                ),
+              const SizedBox(height: 12),
+              if (filteredRoads.isEmpty)
+                const Text(
+                  'No roads match your search in this district.',
+                  style: TextStyle(color: AppConfig.skySlate),
+                )
+              else
                 Wrap(
                   spacing: 10,
                   runSpacing: 10,
                   children: filteredRoads
                       .map(
                         (road) => ActionChip(
+                          key: ValueKey(_roadUniqueKey(road)),
                           label: Text(road.name),
                           onPressed: () async {
                             _selectRoad(appState, road);
@@ -356,16 +437,6 @@ class _CaptureScreenState extends State<CaptureScreen> {
                         ),
                       )
                       .toList(),
-                )
-              else if (_selectedDistrict == 'ALL')
-                const Text(
-                  'Pick a district first to narrow the road list.',
-                  style: TextStyle(color: AppConfig.skySlate),
-                )
-              else if (filteredRoads.isEmpty)
-                const Text(
-                  'No roads match your search in this district.',
-                  style: TextStyle(color: AppConfig.skySlate),
                 ),
               if (selectedRoad != null) ...[
                 const SizedBox(height: 12),
@@ -386,7 +457,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () => _selectRoad(appState, selectedRoad),
+                        onPressed: () => _selectRoad(appState, selectedRoad!),
                         child: const Text('Use this road'),
                       ),
                     ],

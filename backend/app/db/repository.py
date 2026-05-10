@@ -39,6 +39,8 @@ class DataRepository:
         self._complaints_collection = None
 
         data_root = Path(__file__).resolve().parent.parent / "data"
+        self._data_root = data_root
+        self._complaints_path = data_root / "mock_complaints.json"
         self._roads: list[dict[str, Any]] = self._load_json(data_root / "mock_roads.json")
         self._budgets: list[dict[str, Any]] = self._load_json(data_root / "mock_budget.json")
         # Load complete road network data, fallback to old data if not found
@@ -48,7 +50,7 @@ class DataRepository:
             if complete_data_path.exists()
             else self._load_json(data_root / "road_network_data.json")
         )
-        self._complaints: list[dict[str, Any]] = self._load_json(data_root / "mock_complaints.json")
+        self._complaints: list[dict[str, Any]] = self._load_json(self._complaints_path)
         self._risk_features: list[dict[str, Any]] = self._load_json(
             data_root / "mock_risk_features.json"
         )
@@ -61,6 +63,13 @@ class DataRepository:
     def _load_json(path: Path):
         with path.open("r", encoding="utf-8") as file:
             return json.load(file)
+
+    def _save_complaints(self):
+        if self._complaints_collection is not None:
+            return
+
+        with self._complaints_path.open("w", encoding="utf-8") as file:
+            json.dump(self._complaints, file, ensure_ascii=False, indent=2)
 
     def _init_mongo(self):
         if not self.settings.mongo_uri or MongoClient is None:
@@ -282,6 +291,8 @@ class DataRepository:
         self._complaints.append(payload)
         if self._complaints_collection is not None:
             self._complaints_collection.insert_one(payload)
+        else:
+            self._save_complaints()
         road = self.get_road(road_id)
         if road:
             road["recent_complaints"] += 1
@@ -299,6 +310,7 @@ class DataRepository:
             index = next((i for i, item in enumerate(self._complaints) if item["id"] == complaint_id), -1)
             if index >= 0:
                 self._complaints[index] = complaint
+                self._save_complaints()
         return complaint
 
     def send_complaint_to_authority(self, complaint_id: str) -> dict[str, Any] | None:

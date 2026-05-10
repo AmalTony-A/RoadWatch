@@ -18,7 +18,7 @@ class RealtimeService {
     void Function(bool connected)? onStatusChanged,
   }) {
     _shouldReconnect = true;
-    disconnect();
+    unawaited(_closeCurrentConnection());
     _startConnection(onUpdate, onStatusChanged: onStatusChanged);
   }
 
@@ -59,29 +59,32 @@ class RealtimeService {
       onDone: () {
         _connected = false;
         onStatusChanged?.call(false);
-        _scheduleReconnect(onUpdate);
+        _scheduleReconnect(onUpdate, onStatusChanged: onStatusChanged);
       },
       onError: (_) {
         _connected = false;
         onStatusChanged?.call(false);
-        _scheduleReconnect(onUpdate);
+        _scheduleReconnect(onUpdate, onStatusChanged: onStatusChanged);
       },
       cancelOnError: true,
     );
     } catch (_) {
       _connected = false;
       onStatusChanged?.call(false);
-      _scheduleReconnect(onUpdate);
+      _scheduleReconnect(onUpdate, onStatusChanged: onStatusChanged);
     }
   }
 
-  void _scheduleReconnect(void Function(Map<String, dynamic>) onUpdate) {
+  void _scheduleReconnect(
+    void Function(Map<String, dynamic>) onUpdate, {
+    void Function(bool connected)? onStatusChanged,
+  }) {
     if (!_shouldReconnect) {
       return;
     }
     _reconnectTimer?.cancel();
     _reconnectTimer = Timer(const Duration(seconds: 3), () {
-      _startConnection(onUpdate);
+      _startConnection(onUpdate, onStatusChanged: onStatusChanged);
     });
   }
 
@@ -89,12 +92,18 @@ class RealtimeService {
 
   Future<void> disconnect() async {
     _shouldReconnect = false;
+    await _closeCurrentConnection();
+  }
+
+  Future<void> _closeCurrentConnection() async {
     _reconnectTimer?.cancel();
     _reconnectTimer = null;
-    await _subscription?.cancel();
+    final subscription = _subscription;
+    final channel = _channel;
     _subscription = null;
-    await _channel?.sink.close();
     _channel = null;
     _connected = false;
+    await subscription?.cancel();
+    await channel?.sink.close();
   }
 }

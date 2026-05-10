@@ -1813,5 +1813,2064 @@
         "note": "Complaint filed with location and image"
       }
     ]
+  },
+  {
+    "id": "cmp-2026-0051",
+    "road_id": "road-001",
+    "description": "Persistence test complaint from browser",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T05:37:42.814335+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12670",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Persistence test complaint from browser\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T05:37:42.814335+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0052",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.659635+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12450",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.659635+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0053",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.669494+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12705",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.669494+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0054",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0776,
+      "lng": 80.2917
+    },
+    "timestamp": "2026-05-07T08:11:35.675196+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12191",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.675196+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0055",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0776,
+      "lng": 80.2917
+    },
+    "timestamp": "2026-05-07T08:11:35.680181+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12755",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.680181+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0056",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0776,
+      "lng": 80.2917
+    },
+    "timestamp": "2026-05-07T08:11:35.684468+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12650",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.684468+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0057",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0776,
+      "lng": 80.2917
+    },
+    "timestamp": "2026-05-07T08:11:35.690867+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12514",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.690867+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0058",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.698914+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12255",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.698914+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0059",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.703147+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12664",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.703147+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0060",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.711399+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12485",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.711399+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0061",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.718340+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12127",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.718340+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0062",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.726253+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12960",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.726253+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0063",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.730858+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12826",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.730858+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0064",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.735366+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12015",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.735366+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0065",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.742988+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12851",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.742988+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0066",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.749228+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12287",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.749228+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0067",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.756953+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12699",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.756953+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0068",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.763288+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12244",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.763288+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0069",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.769706+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12869",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.769706+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0070",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.778338+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12730",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.778338+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0071",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.786539+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12012",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.786539+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0072",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.794061+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12345",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.794061+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0073",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.801814+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12499",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.801814+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0074",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.809211+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12165",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.809211+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0075",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.816565+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12848",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.816565+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0076",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. file it and complalin",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.824374+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12913",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. file it and complalin\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.824374+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0077",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.835294+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12791",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.835294+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0078",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.027516,
+      "lng": 80.018341
+    },
+    "timestamp": "2026-05-07T08:11:35.843839+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12099",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.843839+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0079",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.0776,
+      "lng": 80.2917
+    },
+    "timestamp": "2026-05-07T08:11:35.851657+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12406",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.851657+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0080",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.858092+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12727",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.858092+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0081",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 13.027793,
+      "lng": 80.017517
+    },
+    "timestamp": "2026-05-07T08:11:35.864943+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12981",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.864943+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0082",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.869201+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12800",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.869201+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0083",
+    "road_id": "road-001",
+    "description": "AI detected 2 issues with score 76/100.",
+    "image_ref": "demo_crack_2.svg",
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.877831+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12132",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: AI detected 2 issues with score 76/100.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.877831+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0084",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours. now",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:11:35.889242+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12564",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours. now\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:11:35.889242+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0085",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.203754+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12244",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.203754+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0086",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.206795+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12610",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.206795+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0087",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.209396+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12188",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.209396+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0088",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.211979+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12445",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.211979+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0089",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.214972+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12810",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.214972+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0090",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.219227+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12064",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.219227+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0091",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.222418+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12262",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.222418+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0092",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.224411+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12347",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.224411+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0093",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.227401+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12941",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.227401+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0094",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.232407+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12581",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.232407+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0095",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.238387+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12668",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.238387+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0096",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.248200+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12896",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.248200+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0097",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.254518+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12253",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.254518+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0098",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.260188+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12594",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.260188+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0099",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.265876+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12642",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.265876+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0100",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.272412+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12969",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.272412+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0101",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.278450+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12764",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.278450+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0102",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.286161+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12181",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.286161+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0103",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.291459+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12163",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.291459+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0104",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.300016+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12633",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.300016+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0105",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.305880+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12578",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.305880+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0106",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.311848+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12697",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.311848+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0107",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.320739+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12598",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.320739+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0108",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.324727+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12235",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.324727+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0109",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.329709+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12734",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.329709+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0110",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.334200+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12217",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.334200+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0111",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.340179+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12259",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.340179+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0112",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.345417+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12495",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.345417+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0113",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.350400+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12851",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.350400+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0114",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.356380+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12379",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.356380+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0115",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.360366+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12250",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.360366+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0116",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.366349+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12832",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.366349+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0117",
+    "road_id": "road-001",
+    "description": "Pothole causing safety hazard during peak traffic hours.",
+    "image_ref": null,
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-07T08:12:09.371333+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12291",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Pothole causing safety hazard during peak traffic hours.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-07T08:12:09.371333+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0118",
+    "road_id": "road-001",
+    "description": "Automated test complaint",
+    "image_ref": "demo_pothole_1.svg",
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-09T17:19:43.006976+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12760",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Automated test complaint\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-09T17:19:43.006976+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0119",
+    "road_id": "road-001",
+    "description": "Automated test complaint",
+    "image_ref": "demo_pothole_1.svg",
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-09T17:26:40.722903+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12448",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Automated test complaint\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-09T17:26:40.722903+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0120",
+    "road_id": "road-001",
+    "description": "Automated test complaint",
+    "image_ref": "demo_pothole_1.svg",
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-09T17:27:50.227550+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12011",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Automated test complaint\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-09T17:27:50.227550+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0121",
+    "road_id": "road-001",
+    "description": "Automated test complaint",
+    "image_ref": "demo_pothole_1.svg",
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-09T17:36:41.721861+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12177",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: Automated test complaint\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-09T17:36:41.721861+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
   }
 ]

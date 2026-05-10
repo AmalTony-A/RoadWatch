@@ -63,3 +63,25 @@ RoadWatch AI has four major layers:
 - Secure secret handling via environment vault
 - Add signed evidence storage (S3/GCS)
 - Add observability (OpenTelemetry + logs + dashboards)
+
+## Frontend incremental refactor plan (overview)
+
+Goal: make the Flutter frontend easier to read, modify, and extend without changing runtime behavior.
+
+High-level approach:
+- Non-destructive, incremental refactors only — add new modules and providers, keep old code paths until replacement is fully tested.
+- Start by documenting and extracting map-related logic and UI into a `features/map` area, then move other screens into `features/<feature>`.
+- Split `AppState` into focused providers (e.g. `MapProvider`, `NetworkProvider`, `ComplaintProvider`) and use `Provider`/`Consumer` to reduce rebuild scope.
+- Move heavy JSON parsing to background isolates (`compute`) and add caching layers for large datasets.
+
+Minimal safe first steps:
+1. Add `docs/FRONTEND_REFACTOR_PLAN.md` and `docs/CONTRIBUTING.md` to capture structure and conventions.
+2. Introduce a `features/map` folder and a `MapProvider` wrapper that mirrors current behavior; wire it in alongside existing `AppState` without removing anything.
+3. Replace map caching logic in place with the new provider, then flip usage when tests pass.
+4. Continue iteratively for `road_network_browser`, `complaints`, and `transparency` screens.
+
+Testing and validation:
+- Run `flutter analyze` and `flutter test` after each incremental change.
+- Manually verify Live Location behaviors (auto/manual) and map rendering performance on a representative dataset.
+
+This plan reduces risk and keeps the app runnable throughout the refactor.

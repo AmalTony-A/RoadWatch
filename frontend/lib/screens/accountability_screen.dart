@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../config/app_config.dart';
@@ -20,7 +19,6 @@ class _AccountabilityScreenState extends State<AccountabilityScreen> {
   Widget build(BuildContext context) {
     final appState = context.watch<AppState>();
     final roads = appState.roadNetwork;
-    final formatter = NumberFormat.currency(locale: 'en_IN', symbol: '₹', decimalDigits: 0);
 
     // Calculate efficiency metrics
     final roadsWithBudgetAndIssues = roads
@@ -128,10 +126,10 @@ class _AccountabilityScreenState extends State<AccountabilityScreen> {
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: const Color(0xFFE5ECF5)),
                   ),
-                  child: Column(
+                  child: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Row(
+                      Row(
                         children: [
                           Icon(Icons.info_rounded, size: 16, color: AppConfig.skySlate),
                           SizedBox(width: 8),
@@ -267,7 +265,7 @@ class _AccountabilityScreenState extends State<AccountabilityScreen> {
             title: 'Key Insights',
             child: Column(
               children: [
-                _InsightItem(
+                const _InsightItem(
                   '🏗️',
                   'High Budget Roads',
                   'Roads receiving >₹100Cr show mixed issue rates, suggesting budget alone doesn\'t determine road quality.',

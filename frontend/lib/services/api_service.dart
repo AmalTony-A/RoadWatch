@@ -16,7 +16,8 @@ import 'demo_data_service.dart';
 
 class ApiService {
   final http.Client _client;
-  static const Duration _apiTimeout = Duration(seconds: 20);
+  static const Duration _apiTimeout = Duration(seconds: 10);
+  static const Duration _retryTimeout = Duration(seconds: 5);
   static const String _roadNetworkFallbackUrl =
       'https://raw.githubusercontent.com/AmalTony-A/RoadWatch/main/backend/app/data/road_network_data.json';
 
@@ -32,11 +33,12 @@ class ApiService {
 
   Future<http.Response> _retryRequest(
     Future<http.Response> Function() request, {
-    int maxRetries = 2,
+    int maxRetries = 1,
+    Duration timeout = _retryTimeout,
   }) async {
     for (var attempt = 0; attempt <= maxRetries; attempt++) {
       try {
-        final res = await request().timeout(_apiTimeout);
+        final res = await request().timeout(timeout);
         if (res.statusCode < 500) {
           return res;
         }
@@ -45,7 +47,7 @@ class ApiService {
         _log('Request failed, attempt $attempt', error: e);
       }
       if (attempt < maxRetries) {
-        await Future.delayed(Duration(milliseconds: 500 * (attempt + 1)));
+        await Future.delayed(Duration(milliseconds: 300 * (attempt + 1)));
       }
     }
     throw Exception('Request failed after $maxRetries retries');
@@ -147,11 +149,6 @@ class ApiService {
         throw Exception('Failed to upload image: $body');
       }
       final payload = jsonDecode(body) as Map<String, dynamic>;
-      // Prefer public_url if backend provides it (new static file serving)
-      final publicUrl = payload['public_url'] as String?;
-      if (publicUrl != null && publicUrl.isNotEmpty) {
-        return publicUrl;
-      }
       return payload['image_id'] as String;
     } catch (e) {
       _log('uploadImage failed, using fallback', error: e);
@@ -275,7 +272,7 @@ class ApiService {
     final fallback = DemoDataService.roadPayload()['recent_complaints'] as List<dynamic>;
     return fallback
         .map((e) => ComplaintItem.fromJson(e as Map<String, dynamic>))
-        .toList(growable: false);
+        .toList(growable: true);
   }
 
   Future<RiskPrediction> predictRisk({

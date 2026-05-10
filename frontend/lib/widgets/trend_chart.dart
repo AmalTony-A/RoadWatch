@@ -1,4 +1,4 @@
-import 'package:fl_chart/fl_chart.dart';
+﻿import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import '../config/app_config.dart';
@@ -28,7 +28,7 @@ class TrendChart extends StatelessWidget {
       height: 220,
       child: LineChart(
         LineChartData(
-          gridData: FlGridData(show: true, drawVerticalLine: false),
+          gridData: const FlGridData(show: true, drawVerticalLine: false),
           titlesData: FlTitlesData(
             rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
             topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -60,7 +60,7 @@ class TrendChart extends StatelessWidget {
               color: AppConfig.deepNavy,
               barWidth: 3,
               isCurved: true,
-              belowBarData: BarAreaData(show: true, color: AppConfig.deepNavy.withOpacity(0.1)),
+              belowBarData: BarAreaData(show: true, color: AppConfig.deepNavy.withValues(alpha: 0.1)),
               dotData: const FlDotData(show: true),
             ),
           ],

@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../config/app_config.dart';
-import '../models/road_network_item.dart';
 import '../providers/app_state.dart';
 
 class StatisticsScreen extends StatefulWidget {
@@ -15,13 +13,11 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
-  String _selectedMetric = 'condition'; // condition, type, district
-
   @override
   Widget build(BuildContext context) {
     final appState = context.watch<AppState>();
     final roads = appState.roadNetwork;
-    final formatter = NumberFormat.currency(locale: 'en_IN', symbol: '₹', decimalDigits: 0);
+    final theme = Theme.of(context);
 
     // Calculate statistics
     final goodRoads = roads.where((r) => r.condition == 'Good').length;
@@ -83,10 +79,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               children: [
                 Text(
                   'Tamil Nadu Road Network',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                      ),
+                  style: theme.textTheme.headlineSmall?.copyWith(color: Colors.white, fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(height: 6),
                 Text(
@@ -106,7 +99,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               _MetricCard('Total Roads', '${roads.length}', Icons.route_rounded, AppConfig.deepNavy),
               _MetricCard('Total km', '$totalKm', Icons.straighten_rounded, AppConfig.safeGreen),
               _MetricCard('Avg Health', '$avgScore/100', Icons.favorite_rounded, AppConfig.cautionYellow),
-              _MetricCard('Budget', '₹${(totalBudget / 100).toStringAsFixed(0)}Cr', Icons.attach_money_rounded, AppConfig.dangerRed),
+              _MetricCard('Budget', 'â‚¹${(totalBudget / 100).toStringAsFixed(0)}Cr', Icons.attach_money_rounded, AppConfig.dangerRed),
             ],
           ),
           const SizedBox(height: 20),
@@ -147,7 +140,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _LegendItem('Good', AppConfig.safeGreen),
@@ -196,12 +189,12 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _LegendItem('National Hwy', const Color(0xFF3B82F6)),
-                    _LegendItem('State Hwy', const Color(0xFFA855F7)),
-                    _LegendItem('District Road', const Color(0xFF06B6D4)),
+                    _LegendItem('National Hwy', Color(0xFF3B82F6)),
+                    _LegendItem('State Hwy', Color(0xFFA855F7)),
+                    _LegendItem('District Road', Color(0xFF06B6D4)),
                   ],
                 ),
               ],
@@ -232,13 +225,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       Column(
                         children: [
                           const Text('Total Budget', style: TextStyle(color: AppConfig.skySlate, fontSize: 11)),
-                          Text('₹${(totalBudget / 100).toStringAsFixed(1)}Cr', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
+                          Text('â‚¹${(totalBudget / 100).toStringAsFixed(1)}Cr', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
                         ],
                       ),
                       Column(
                         children: [
                           const Text('Budget/km', style: TextStyle(color: AppConfig.skySlate, fontSize: 11)),
-                          Text('₹${((totalBudget * 10000000) / totalKm).toStringAsFixed(0)}/km', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
+                          Text('â‚¹${((totalBudget * 10000000) / totalKm).toStringAsFixed(0)}/km', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
                         ],
                       ),
                     ],
@@ -284,7 +277,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '₹${((stats['budget'] as int) / 100).toStringAsFixed(1)}Cr | ${stats['count']} roads',
+                        'â‚¹${((stats['budget'] as int) / 100).toStringAsFixed(1)}Cr | ${stats['count']} roads',
                         style: const TextStyle(fontSize: 11, color: AppConfig.skySlate),
                       ),
                     ],
@@ -309,16 +302,17 @@ class _MetricCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       width: 160,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: theme.cardTheme.color ?? theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: color.withValues(alpha: 0.12)),
         boxShadow: [
           BoxShadow(
-            color: AppConfig.deepNavy.withValues(alpha: 0.04),
+            color: theme.cardTheme.shadowColor ?? Colors.black.withValues(alpha: 0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -337,9 +331,9 @@ class _MetricCard extends StatelessWidget {
             child: Icon(icon, color: color, size: 18),
           ),
           const SizedBox(height: 10),
-          Text(value, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: AppConfig.deepNavy)),
+          Text(value, style: theme.textTheme.titleLarge?.copyWith(fontSize: 18, fontWeight: FontWeight.w800)),
           const SizedBox(height: 2),
-          Text(label, style: TextStyle(color: AppConfig.skySlate.withValues(alpha: 0.8), fontSize: 11, fontWeight: FontWeight.w600)),
+          Text(label, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurface.withValues(alpha: 0.75), fontSize: 11, fontWeight: FontWeight.w600)),
         ],
       ),
     );
@@ -354,14 +348,15 @@ class _SectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: theme.cardTheme.color ?? theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: AppConfig.deepNavy.withValues(alpha: 0.05),
+            color: theme.cardTheme.shadowColor ?? Colors.black.withValues(alpha: 0.05),
             blurRadius: 18,
             offset: const Offset(0, 8),
           ),
@@ -370,7 +365,7 @@ class _SectionCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: AppConfig.deepNavy)),
+          Text(title, style: theme.textTheme.titleMedium?.copyWith(fontSize: 16, fontWeight: FontWeight.w800)),
           const SizedBox(height: 14),
           child,
         ],
@@ -387,12 +382,13 @@ class _LegendItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(width: 12, height: 12, decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(3))),
         const SizedBox(width: 6),
-        Text(label, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600)),
+        Text(label, style: theme.textTheme.bodySmall?.copyWith(fontSize: 11, fontWeight: FontWeight.w600)),
       ],
     );
   }
@@ -408,14 +404,15 @@ class _BudgetBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final pct = budget / total;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            Expanded(child: Text(label, style: const TextStyle(fontWeight: FontWeight.w600))),
-            Text('₹${(budget / 100).toStringAsFixed(1)}Cr', style: const TextStyle(fontWeight: FontWeight.w700, color: AppConfig.deepNavy)),
+            Expanded(child: Text(label, style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600))),
+            Text('â‚¹${(budget / 100).toStringAsFixed(1)}Cr', style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700)),
           ],
         ),
         const SizedBox(height: 6),
@@ -424,7 +421,7 @@ class _BudgetBar extends StatelessWidget {
           child: LinearProgressIndicator(
             minHeight: 12,
             value: pct,
-            backgroundColor: const Color(0xFFE2E8F0),
+            backgroundColor: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.7),
             valueColor: AlwaysStoppedAnimation<Color>(color),
           ),
         ),

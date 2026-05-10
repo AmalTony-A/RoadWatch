@@ -114,7 +114,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             alignment: Alignment.centerLeft,
             child: Text(
               'Context road: $roadName',
-              style: TextStyle(color: AppConfig.skySlate, fontWeight: FontWeight.w600),
+              style: const TextStyle(color: AppConfig.skySlate, fontWeight: FontWeight.w600),
             ),
           ),
         ),

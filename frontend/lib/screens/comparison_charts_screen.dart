@@ -461,7 +461,7 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   _DistrictStatItem('Roads', districtRoads.length.toString()),
-                  _DistrictStatItem('Length', '${totalLength} km'),
+                  _DistrictStatItem('Length', '$totalLength km'),
                   _DistrictStatItem('Budget', '₹${(totalBudget / 100).toStringAsFixed(0)}Cr'),
                 ],
               ),
@@ -485,44 +485,6 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
           ],
         ),
       ],
-    );
-  }
-
-  Widget _buildBudgetRow(String label, int amount, Color color) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: const Color(0xFFF8FAFC),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFFE5ECF5)),
-      ),
-      child: Row(
-        children: [
-          Container(
-            height: 24,
-            width: 24,
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: Center(
-              child: Container(
-                height: 10,
-                width: 10,
-                decoration: BoxDecoration(
-                  color: color,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(label, style: const TextStyle(fontWeight: FontWeight.w600)),
-          ),
-          Text('₹${(amount / 100).toStringAsFixed(0)}Cr', style: const TextStyle(fontWeight: FontWeight.w700, color: AppConfig.deepNavy)),
-        ],
-      ),
     );
   }
 

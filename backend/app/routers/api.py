@@ -316,18 +316,18 @@ def get_road_network_item(
 
 @router.get("/search-roads")
 def search_roads(
+    repository: Annotated[DataRepository, Depends(get_repository)],
     q: str = Query(..., min_length=1),
-    repository: Annotated[DataRepository, Depends(get_repository)] = ...,  # type: ignore[assignment]
 ):
     return repository.search_roads(q)
 
 
 @router.get("/roads-nearby")
 def roads_nearby(
+    repository: Annotated[DataRepository, Depends(get_repository)],
     lat: float = Query(...),
     lng: float = Query(...),
     radius: float = Query(5.0, ge=0.5, le=50),
-    repository: Annotated[DataRepository, Depends(get_repository)] = ...,  # type: ignore[assignment]
 ):
     return repository.get_roads_nearby(lat, lng, radius_km=radius)
 

@@ -19,6 +19,28 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
   String? _selectedRoadId;
   bool _showDetails = false;
 
+  String _roadUniqueKey(RoadNetworkItem road) {
+    final id = road.id.trim();
+    if (id.isNotEmpty) {
+      return id + '_' + road.name.trim();
+    }
+    return '${road.name.trim()}_${road.route.trim()}_${road.districts.join('|')}';
+  }
+
+  List<RoadNetworkItem> _uniqueRoadsById(Iterable<RoadNetworkItem> roads) {
+    final seenKeys = <String>{};
+    final uniqueRoads = <RoadNetworkItem>[];
+
+    for (final road in roads) {
+      final key = _roadUniqueKey(road);
+      if (seenKeys.add(key)) {
+        uniqueRoads.add(road);
+      }
+    }
+
+    return uniqueRoads;
+  }
+
   void _autoSelectDistrict(AppState appState) {
     final suggestedDistrict = appState.liveSuggestedDistrict;
     if (suggestedDistrict == null || _selectedDistrict != 'ALL') {
@@ -33,8 +55,8 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
       setState(() {
         _selectedDistrict = suggestedDistrict;
         _roadSearchQuery = '';
-        _selectedRoadId = suggestedRoads.isNotEmpty ? suggestedRoads.first.id : null;
-        _showDetails = false;
+        _selectedRoadId = suggestedRoads.isNotEmpty ? _roadUniqueKey(suggestedRoads.first) : null;
+        _showDetails = suggestedRoads.isNotEmpty;
       });
       if (suggestedRoads.isNotEmpty) {
         appState.selectRoadNetworkItem(suggestedRoads.first);
@@ -47,7 +69,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
       return null;
     }
     for (final road in roads) {
-      if (road.id == _selectedRoadId) {
+      if (_roadUniqueKey(road) == _selectedRoadId) {
         return road;
       }
     }
@@ -56,7 +78,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
 
   void _pickRoad(AppState appState, RoadNetworkItem road, {required bool showDetails}) {
     setState(() {
-      _selectedRoadId = road.id;
+      _selectedRoadId = _roadUniqueKey(road);
       _showDetails = showDetails;
     });
     appState.selectRoadNetworkItem(road);
@@ -78,7 +100,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
     _autoSelectDistrict(appState);
 
     final districtOptions = ['ALL', ...appState.roadNetworkDistricts];
-    final filteredRoads = appState.searchRoadsForDistrict(_selectedDistrict, _roadSearchQuery);
+    final filteredRoads = _uniqueRoadsById(appState.searchRoadsForDistrict(_selectedDistrict, _roadSearchQuery));
     final selectedRoad = _selectedRoad(filteredRoads);
     final formatter = NumberFormat.currency(locale: 'en_IN', symbol: 'INR ', decimalDigits: 0);
 
@@ -132,7 +154,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                   children: [
                     Expanded(
                       child: DropdownButtonFormField<String>(
-                        value: _selectedDistrict,
+                        initialValue: _selectedDistrict,
                         decoration: InputDecoration(
                           labelText: 'District',
                           filled: true,
@@ -159,7 +181,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                             _selectedDistrict = value;
                             _roadSearchQuery = '';
                             _selectedRoadId = nextRoads.isNotEmpty ? nextRoads.first.id : null;
-                            _showDetails = false;
+                            _showDetails = nextRoads.isNotEmpty;
                           });
                           if (nextRoads.isNotEmpty) {
                             appState.selectRoadNetworkItem(nextRoads.first);
@@ -209,19 +231,20 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                 const SizedBox(height: 12),
                 if (_selectedDistrict == 'ALL')
                   const Text(
-                    'Choose a district to see the roads in that district.',
+                    'All roads are shown below. Pick a district to narrow the list.',
                     style: TextStyle(color: AppConfig.skySlate),
-                  )
-                else if (filteredRoads.isEmpty)
+                  ),
+                const SizedBox(height: 12),
+                if (filteredRoads.isEmpty)
                   const Text(
                     'No roads match your search in this district.',
                     style: TextStyle(color: AppConfig.skySlate),
                   )
                 else
                   DropdownButtonFormField<String>(
-                    value: selectedRoad?.id,
+                    initialValue: selectedRoad == null ? null : _roadUniqueKey(selectedRoad),
                     decoration: InputDecoration(
-                      labelText: 'Roads in $_selectedDistrict',
+                      labelText: _selectedDistrict == 'ALL' ? 'All roads' : 'Roads in $_selectedDistrict',
                       filled: true,
                       fillColor: const Color(0xFFF8FAFC),
                       border: OutlineInputBorder(
@@ -232,45 +255,33 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                     items: filteredRoads
                         .map(
                           (road) => DropdownMenuItem<String>(
-                            value: road.id,
+                            value: _roadUniqueKey(road),
                             child: Text(road.name),
                           ),
                         )
                         .toList(),
                     onChanged: (value) {
                       if (value != null) {
-                        final road = filteredRoads.firstWhere((r) => r.id == value);
-                        _pickRoad(appState, road, showDetails: false);
+                        final road = filteredRoads.firstWhere((r) => _roadUniqueKey(r) == value);
+                        _pickRoad(appState, road, showDetails: true);
                       }
                     },
                   ),
-                if (_selectedDistrict != 'ALL') ...[
-                  const SizedBox(height: 14),
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: filteredRoads
-                        .map(
-                          (road) => ActionChip(
-                            label: Text(road.name),
-                            onPressed: () => _pickRoad(appState, road, showDetails: false),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ],
+                const SizedBox(height: 14),
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: filteredRoads
+                      .map(
+                        (road) => ActionChip(
+                          label: Text(road.name),
+                          onPressed: () => _pickRoad(appState, road, showDetails: true),
+                        ),
+                      )
+                      .toList(),
+                ),
               ],
             ),
-          ),
-          const SizedBox(height: 14),
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: [
-              _StatCard(label: 'Roads', value: '${appState.roadNetwork.length}', icon: Icons.route_rounded, color: AppConfig.deepNavy),
-              _StatCard(label: 'Districts', value: '${appState.roadNetworkDistricts.length}', icon: Icons.location_city_rounded, color: AppConfig.safeGreen),
-              _StatCard(label: 'Live district', value: appState.liveSuggestedDistrict ?? '-', icon: Icons.my_location_rounded, color: AppConfig.cautionYellow),
-            ],
           ),
           const SizedBox(height: 14),
           if (_showDetails && selectedRoad != null)
@@ -281,6 +292,15 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
               style: TextStyle(color: AppConfig.skySlate),
             ),
           const SizedBox(height: 14),
+          Wrap(
+            spacing: 12,
+            runSpacing: 12,
+            children: [
+              _StatCard(label: 'Roads', value: '${appState.roadNetwork.length}', icon: Icons.route_rounded, color: AppConfig.deepNavy),
+              _StatCard(label: 'Districts', value: '${appState.roadNetworkDistricts.length}', icon: Icons.location_city_rounded, color: AppConfig.safeGreen),
+              _StatCard(label: 'Live district', value: appState.liveSuggestedDistrict ?? '-', icon: Icons.my_location_rounded, color: AppConfig.cautionYellow),
+            ],
+          ),
           if (filteredRoads.isNotEmpty)
             LayoutBuilder(
               builder: (context, constraints) {
@@ -557,7 +577,7 @@ class _RoadNetworkCardState extends State<_RoadNetworkCard> with SingleTickerPro
                 const SizedBox(height: 8),
                 _DetailRow('Budget/km:', formatter.format(budgetPerKm)),
                 const SizedBox(height: 12),
-                Text('Issues:', style: const TextStyle(fontWeight: FontWeight.w700, color: AppConfig.deepNavy)),
+                const Text('Issues:', style: TextStyle(fontWeight: FontWeight.w700, color: AppConfig.deepNavy)),
                 const SizedBox(height: 6),
                 Wrap(
                   spacing: 6,
