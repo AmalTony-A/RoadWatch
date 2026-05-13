@@ -182,7 +182,7 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
 
           // Budget Distribution
           _SectionCard(
-            title: 'Budget Distribution (₹ Crores)',
+            title: 'Budget Distribution (\u20B9 Crores)',
             child: Column(
               children: [
                 ...typeComparison.entries.map((entry) {
@@ -462,7 +462,7 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
                 children: [
                   _DistrictStatItem('Roads', districtRoads.length.toString()),
                   _DistrictStatItem('Length', '$totalLength km'),
-                  _DistrictStatItem('Budget', '₹${(totalBudget / 100).toStringAsFixed(0)}Cr'),
+                  _DistrictStatItem('Budget', '\u20B9${(totalBudget / 100).toStringAsFixed(0)}Cr'),
                 ],
               ),
             ],
@@ -743,7 +743,7 @@ class _BudgetRow extends StatelessWidget {
                   ],
                 ),
               ),
-              Text('₹${(amount / 100).toStringAsFixed(0)}Cr', style: const TextStyle(fontWeight: FontWeight.w800, color: AppConfig.deepNavy)),
+              Text('\u20B9${(amount / 100).toStringAsFixed(0)}Cr', style: const TextStyle(fontWeight: FontWeight.w800, color: AppConfig.deepNavy)),
             ],
           ),
           const SizedBox(height: 8),

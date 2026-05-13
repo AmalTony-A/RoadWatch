@@ -9,12 +9,14 @@ import '../features/capture/capture_screen.dart';
 import '../features/chatbot/chatbot_screen.dart';
 import '../features/comparison/comparison_charts_screen.dart';
 import '../features/complaints/complaints_screen.dart';
-import '../features/contractor/contractor_performance_screen.dart';
 import '../features/gamification/gamification_leaderboard_screen.dart';
 import '../features/map/map_screen.dart';
 import '../features/intelligence/intelligence_screen.dart';
 import '../features/maintenance/maintenance_scheduler_screen.dart';
 import '../features/statistics/statistics_screen.dart';
+import '../screens/monitoring_screen.dart';
+import '../screens/contractors_screen.dart';
+import '../screens/home_screen.dart';
 
 class ShellScreen extends StatefulWidget {
   const ShellScreen({super.key});
@@ -37,12 +39,13 @@ class _ShellScreenState extends State<ShellScreen> {
     AccountabilityScreen(),
     IntelligenceScreen(),
     MaintenanceSchedulerScreen(),
-    ContractorPerformanceScreen(),
+    ContractorsScreen(),
     BudgetForecastingScreen(),
     GamificationLeaderboardScreen(),
+    MonitoringScreen(),
   ];
 
-  static const _labels = ['Home', 'Capture', 'Assistant', 'Complaints', 'Statistics', 'Comparison', 'Accountability', 'Intelligence', 'Maintenance', 'Contractors', 'Budget', 'Gamification'];
+  static const _labels = ['Home', 'Capture', 'Assistant', 'Complaints', 'Statistics', 'Comparison', 'Accountability', 'Intelligence', 'Maintenance', 'Contractors', 'Budget', 'Gamification', 'Monitoring'];
 
   static const _icons = [
     Icons.map_rounded,
@@ -57,11 +60,13 @@ class _ShellScreenState extends State<ShellScreen> {
     Icons.person_rounded,
     Icons.trending_up_rounded,
     Icons.emoji_events_rounded,
+    Icons.dashboard_rounded,
   ];
 
   @override
   void initState() {
     super.initState();
+    _restoreLastScreen();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || _requestedLiveLocation) {
         return;
@@ -69,6 +74,16 @@ class _ShellScreenState extends State<ShellScreen> {
       _requestedLiveLocation = true;
       context.read<AppState>().requestLiveLocation();
     });
+  }
+
+  Future<void> _restoreLastScreen() async {
+    final appState = context.read<AppState>();
+    final lastIndex = await appState.localStorage.getLastScreenIndex();
+    if (mounted && lastIndex != _index) {
+      setState(() {
+        _index = lastIndex;
+      });
+    }
   }
 
   @override
@@ -98,7 +113,10 @@ class _ShellScreenState extends State<ShellScreen> {
                       currentIndex: _index,
                       isOnline: appState.isOnline,
                       realtimeLabel: appState.realtimeStatusLabel,
-                      onDestinationSelected: (value) => setState(() => _index = value),
+                      onDestinationSelected: (value) {
+                        setState(() => _index = value);
+                        appState.localStorage.saveLastScreenIndex(value);
+                      },
                     ),
                     Expanded(
                       child: Padding(
@@ -133,7 +151,10 @@ class _ShellScreenState extends State<ShellScreen> {
           : NavigationBar(
               elevation: 16,
               selectedIndex: _index,
-              onDestinationSelected: (value) => setState(() => _index = value),
+              onDestinationSelected: (value) {
+                setState(() => _index = value);
+                context.read<AppState>().localStorage.saveLastScreenIndex(value);
+              },
               indicatorColor: AppConfig.deepNavy.withValues(alpha: 0.12),
               destinations: _labels.asMap().entries.map((entry) {
                 final index = entry.key;

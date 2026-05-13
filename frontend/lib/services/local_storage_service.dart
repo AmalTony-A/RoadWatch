@@ -6,6 +6,7 @@ class LocalStorageService {
   static const _pendingComplaintsKey = 'pending_complaints';
   static const _pendingDetectionsKey = 'pending_detections';
   static const _lastKnownLocationKey = 'last_known_location';
+  static const _lastScreenIndexKey = 'last_screen_index';
 
   Future<List<Map<String, dynamic>>> getPendingComplaints() async {
     final prefs = await SharedPreferences.getInstance();
@@ -85,5 +86,15 @@ class LocalStorageService {
       'lat': lat.toDouble(),
       'lng': lng.toDouble(),
     };
+  }
+
+  Future<void> saveLastScreenIndex(int index) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_lastScreenIndexKey, index);
+  }
+
+  Future<int> getLastScreenIndex() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(_lastScreenIndexKey) ?? 0;
   }
 }

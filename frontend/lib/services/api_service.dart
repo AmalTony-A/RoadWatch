@@ -9,6 +9,7 @@ import '../config/app_config.dart';
 import '../models/budget_record.dart';
 import '../models/chat.dart';
 import '../models/complaint.dart';
+import '../models/contractor.dart';
 import '../models/detection.dart';
 import '../models/risk_prediction.dart';
 import '../models/road_network_item.dart';
@@ -275,6 +276,23 @@ class ApiService {
         .toList(growable: true);
   }
 
+  Future<List<Contractor>> getContractors() async {
+    try {
+      final res = await _retryRequest(() => _client.get(_uri('/contractors')));
+      if (res.statusCode == 200) {
+        final data = jsonDecode(res.body) as List<dynamic>;
+        return data.map((e) => Contractor.fromJson(e as Map<String, dynamic>)).toList();
+      }
+      _log('getContractors returned status ${res.statusCode}');
+    } catch (e) {
+      _log('getContractors failed', error: e);
+    }
+
+    return DemoDataService.contractorPayload()
+        .map((e) => Contractor.fromJson(e))
+        .toList(growable: true);
+  }
+
   Future<RiskPrediction> predictRisk({
     required String roadId,
     required double weatherIndex,
@@ -373,5 +391,18 @@ class ApiService {
       return MediaType('image', 'webp');
     }
     return MediaType('image', 'jpeg');
+  }
+
+  Future<Map<String, dynamic>?> get(String path, [Map<String, String>? query]) async {
+    try {
+      final res = await _retryRequest(() => _client.get(_uri(path, query)));
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body) as Map<String, dynamic>;
+      }
+      _log('GET $path returned status ${res.statusCode}');
+    } catch (e) {
+      _log('GET $path failed', error: e);
+    }
+    return null;
   }
 }

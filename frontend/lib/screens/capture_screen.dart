@@ -19,6 +19,7 @@ class CaptureScreen extends StatefulWidget {
 
 class _CaptureScreenState extends State<CaptureScreen> {
   final ImagePicker _picker = ImagePicker();
+  static const int _roadRowsStep = 4;
   Uint8List? _selectedImageBytes;
   String? _selectedImageName;
   String? _selectedDemoAsset;
@@ -28,6 +29,17 @@ class _CaptureScreenState extends State<CaptureScreen> {
   String _selectedDistrict = 'ALL';
   String _roadSearchQuery = '';
   bool _autoDistrictApplied = false;
+  int _visibleRoadRows = _roadRowsStep;
+
+  void _resetRoadRows() {
+    _visibleRoadRows = _roadRowsStep;
+  }
+
+  void _showMoreRoadRows() {
+    setState(() {
+      _visibleRoadRows += _roadRowsStep;
+    });
+  }
 
   String _roadUniqueKey(RoadNetworkItem road) {
     final id = road.id.trim();
@@ -66,6 +78,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
         _selectedDistrict = suggested;
         _roadSearchQuery = '';
         _autoDistrictApplied = true;
+        _resetRoadRows();
       });
       if (liveRoads.isNotEmpty) {
         state.selectRoadNetworkItem(liveRoads.first);
@@ -131,6 +144,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
         _selectedDistrict = suggested;
         _roadSearchQuery = '';
         _autoDistrictApplied = true;
+        _resetRoadRows();
       });
       if (liveRoads.isNotEmpty) {
         state.selectRoadNetworkItem(liveRoads.first);
@@ -210,6 +224,11 @@ class _CaptureScreenState extends State<CaptureScreen> {
         (detection.detections.isEmpty
           ? 'No visible road issue detected. Please reupload a clearer road photo.'
           : 'Road issue detected.');
+    final visibleRoads = _selectedDistrict == 'ALL'
+        ? filteredRoads.take(_visibleRoadRows).toList(growable: false)
+        : filteredRoads;
+    final canShowMoreRoads =
+        _selectedDistrict == 'ALL' && filteredRoads.length > visibleRoads.length;
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 120),
@@ -364,6 +383,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
                           _selectedDistrict = value;
                           _roadSearchQuery = '';
                           _autoDistrictApplied = true;
+                          _resetRoadRows();
                         });
                         if (nextRoads.isNotEmpty) {
                           appState.selectRoadNetworkItem(nextRoads.first);
@@ -378,6 +398,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
                       onChanged: (value) {
                         setState(() {
                           _roadSearchQuery = value;
+                          _resetRoadRows();
                         });
                       },
                       decoration: InputDecoration(
@@ -422,21 +443,42 @@ class _CaptureScreenState extends State<CaptureScreen> {
                   style: TextStyle(color: AppConfig.skySlate),
                 )
               else
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 10,
-                  children: filteredRoads
-                      .map(
-                        (road) => ActionChip(
-                          key: ValueKey(_roadUniqueKey(road)),
-                          label: Text(road.name),
-                          onPressed: () async {
-                            _selectRoad(appState, road);
-                            await _runDetectionIfReady(appState);
-                          },
+                Column(
+                  children: [
+                    ...visibleRoads.map(
+                      (road) => Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton(
+                            key: ValueKey(_roadUniqueKey(road)),
+                            onPressed: () async {
+                              _selectRoad(appState, road);
+                              await _runDetectionIfReady(appState);
+                            },
+                            style: OutlinedButton.styleFrom(
+                              alignment: Alignment.centerLeft,
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                            ),
+                            child: Text(
+                              road.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
                         ),
-                      )
-                      .toList(),
+                      ),
+                    ),
+                    if (canShowMoreRoads)
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton.icon(
+                          onPressed: _showMoreRoadRows,
+                          icon: const Icon(Icons.expand_more_rounded),
+                          label: Text('Show more roads (${filteredRoads.length - visibleRoads.length} left)'),
+                        ),
+                      ),
+                  ],
                 ),
               if (selectedRoad != null) ...[
                 const SizedBox(height: 12),

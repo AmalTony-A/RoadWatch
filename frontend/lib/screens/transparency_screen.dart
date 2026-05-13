@@ -14,10 +14,23 @@ class TransparencyScreen extends StatefulWidget {
 }
 
 class _TransparencyScreenState extends State<TransparencyScreen> {
+  static const int _roadRowsStep = 4;
+  final GlobalKey _scoreSectionKey = GlobalKey();
   String _selectedDistrict = 'ALL';
   String _roadSearchQuery = '';
   String? _selectedRoadId;
   bool _showDetails = false;
+  int _visibleRoadRows = _roadRowsStep;
+
+  void _resetRoadRows() {
+    _visibleRoadRows = _roadRowsStep;
+  }
+
+  void _showMoreRoadRows() {
+    setState(() {
+      _visibleRoadRows += _roadRowsStep;
+    });
+  }
 
   String _roadUniqueKey(RoadNetworkItem road) {
     final id = road.id.trim();
@@ -57,6 +70,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
         _roadSearchQuery = '';
         _selectedRoadId = suggestedRoads.isNotEmpty ? _roadUniqueKey(suggestedRoads.first) : null;
         _showDetails = suggestedRoads.isNotEmpty;
+        _resetRoadRows();
       });
       if (suggestedRoads.isNotEmpty) {
         appState.selectRoadNetworkItem(suggestedRoads.first);
@@ -82,6 +96,14 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
       _showDetails = showDetails;
     });
     appState.selectRoadNetworkItem(road);
+    // Scroll the detail card into view for the selected road
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final ctx = _scoreSectionKey.currentContext;
+      if (ctx != null) {
+        Scrollable.ensureVisible(ctx, duration: const Duration(milliseconds: 360), curve: Curves.easeInOut);
+      }
+    });
   }
 
   Color _healthColor(int score) {
@@ -101,6 +123,11 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
 
     final districtOptions = ['ALL', ...appState.roadNetworkDistricts];
     final filteredRoads = _uniqueRoadsById(appState.searchRoadsForDistrict(_selectedDistrict, _roadSearchQuery));
+    final visibleRoads = _selectedDistrict == 'ALL'
+      ? filteredRoads.take(_visibleRoadRows).toList(growable: false)
+      : filteredRoads;
+    final canShowMoreRoads =
+      _selectedDistrict == 'ALL' && filteredRoads.length > visibleRoads.length;
     final selectedRoad = _selectedRoad(filteredRoads);
     final formatter = NumberFormat.currency(locale: 'en_IN', symbol: 'INR ', decimalDigits: 0);
 
@@ -182,6 +209,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                             _roadSearchQuery = '';
                             _selectedRoadId = nextRoads.isNotEmpty ? nextRoads.first.id : null;
                             _showDetails = nextRoads.isNotEmpty;
+                            _resetRoadRows();
                           });
                           if (nextRoads.isNotEmpty) {
                             appState.selectRoadNetworkItem(nextRoads.first);
@@ -197,6 +225,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                             _roadSearchQuery = value;
                             _showDetails = false;
                             _selectedRoadId = null;
+                            _resetRoadRows();
                           });
                         },
                         decoration: InputDecoration(
@@ -268,24 +297,43 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                     },
                   ),
                 const SizedBox(height: 14),
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 10,
-                  children: filteredRoads
-                      .map(
-                        (road) => ActionChip(
-                          label: Text(road.name),
-                          onPressed: () => _pickRoad(appState, road, showDetails: true),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ...visibleRoads.map(
+                      (road) => Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton(
+                            onPressed: () => _pickRoad(appState, road, showDetails: true),
+                            style: OutlinedButton.styleFrom(
+                              alignment: Alignment.centerLeft,
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                            ),
+                            child: Text(
+                              road.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
                         ),
-                      )
-                      .toList(),
+                      ),
+                    ),
+                    if (canShowMoreRoads)
+                      TextButton.icon(
+                        onPressed: _showMoreRoadRows,
+                        icon: const Icon(Icons.expand_more_rounded),
+                        label: Text('Show more roads (${filteredRoads.length - visibleRoads.length} left)'),
+                      ),
+                  ],
                 ),
               ],
             ),
           ),
           const SizedBox(height: 14),
           if (_showDetails && selectedRoad != null)
-            _RoadDetailCard(road: selectedRoad, formatter: formatter, healthColor: _healthColor),
+            Container(key: _scoreSectionKey, child: _RoadDetailCard(road: selectedRoad, formatter: formatter, healthColor: _healthColor)),
           if (!_showDetails)
             const Text(
               'Tap a road card below to open the complete road details.',
@@ -314,7 +362,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                 return Wrap(
                   spacing: spacing,
                   runSpacing: spacing,
-                  children: filteredRoads
+                  children: visibleRoads
                       .map(
                         (road) => SizedBox(
                           width: cardWidth,
@@ -329,6 +377,15 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                       .toList(),
                 );
               },
+            ),
+          if (canShowMoreRoads)
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                onPressed: _showMoreRoadRows,
+                icon: const Icon(Icons.expand_more_rounded),
+                label: Text('Show more roads (${filteredRoads.length - visibleRoads.length} left)'),
+              ),
             ),
         ],
       ),
@@ -479,7 +536,7 @@ class _RoadNetworkCardState extends State<_RoadNetworkCard> with SingleTickerPro
   @override
   Widget build(BuildContext context) {
     final score = widget.road.healthScore;
-    final formatter = NumberFormat.currency(locale: 'en_IN', symbol: '₹', decimalDigits: 0);
+    final formatter = NumberFormat.currency(locale: 'en_IN', symbol: '\u20B9', decimalDigits: 0);
     final budgetPerKm = widget.road.lengthKm > 0 ? (widget.road.budgetCrore * 10000000 / widget.road.lengthKm).toInt() : 0;
 
     return Material(

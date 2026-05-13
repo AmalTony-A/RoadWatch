@@ -99,7 +99,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               _MetricCard('Total Roads', '${roads.length}', Icons.route_rounded, AppConfig.deepNavy),
               _MetricCard('Total km', '$totalKm', Icons.straighten_rounded, AppConfig.safeGreen),
               _MetricCard('Avg Health', '$avgScore/100', Icons.favorite_rounded, AppConfig.cautionYellow),
-              _MetricCard('Budget', 'â‚¹${(totalBudget / 100).toStringAsFixed(0)}Cr', Icons.attach_money_rounded, AppConfig.dangerRed),
+              _MetricCard('Budget', '\u20B9${(totalBudget / 100).toStringAsFixed(0)}Cr', Icons.attach_money_rounded, AppConfig.dangerRed),
             ],
           ),
           const SizedBox(height: 20),
@@ -225,13 +225,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       Column(
                         children: [
                           const Text('Total Budget', style: TextStyle(color: AppConfig.skySlate, fontSize: 11)),
-                          Text('â‚¹${(totalBudget / 100).toStringAsFixed(1)}Cr', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
+                          Text('\u20B9${(totalBudget / 100).toStringAsFixed(1)}Cr', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
                         ],
                       ),
                       Column(
                         children: [
                           const Text('Budget/km', style: TextStyle(color: AppConfig.skySlate, fontSize: 11)),
-                          Text('â‚¹${((totalBudget * 10000000) / totalKm).toStringAsFixed(0)}/km', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
+                          Text('\u20B9${((totalBudget * 10000000) / totalKm).toStringAsFixed(0)}/km', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
                         ],
                       ),
                     ],
@@ -277,7 +277,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'â‚¹${((stats['budget'] as int) / 100).toStringAsFixed(1)}Cr | ${stats['count']} roads',
+                        '\u20B9${((stats['budget'] as int) / 100).toStringAsFixed(1)}Cr | ${stats['count']} roads',
                         style: const TextStyle(fontSize: 11, color: AppConfig.skySlate),
                       ),
                     ],
@@ -412,7 +412,7 @@ class _BudgetBar extends StatelessWidget {
         Row(
           children: [
             Expanded(child: Text(label, style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600))),
-            Text('â‚¹${(budget / 100).toStringAsFixed(1)}Cr', style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700)),
+            Text('\u20B9${(budget / 100).toStringAsFixed(1)}Cr', style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700)),
           ],
         ),
         const SizedBox(height: 6),

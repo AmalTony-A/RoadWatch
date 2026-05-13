@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../config/app_config.dart';
@@ -10,11 +9,24 @@ import '../widgets/trend_chart.dart';
 class IntelligenceScreen extends StatelessWidget {
   const IntelligenceScreen({super.key});
 
+  String _roadNameFor(AppState state, String roadId) {
+    for (final road in state.roads) {
+      if (road.id == roadId) {
+        return road.name;
+      }
+    }
+    for (final road in state.roadNetwork) {
+      if (road.id == roadId) {
+        return road.name;
+      }
+    }
+    return roadId;
+  }
+
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
     final trends = state.intelligence['damage_trends'] as List<dynamic>? ?? [];
-    final budgetVsCondition = state.intelligence['budget_vs_condition'] as List<dynamic>? ?? [];
     final repairFrequency = state.intelligence['repair_frequency'] as List<dynamic>? ?? [];
     final predictionText = state.intelligence['prediction_text'] as String? ??
         'This road may deteriorate in 21 days based on complaint and weather trends.';
@@ -136,22 +148,14 @@ class IntelligenceScreen extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         _tableBlock(
-          title: 'Budget vs Condition',
-          headers: const ['Road', 'Allocated (INR)', 'Score'],
-          rows: budgetVsCondition
-              .map((row) => [
-                    row['road_id'].toString(),
-                    NumberFormat.decimalPattern('en_IN').format(row['allocated_inr']),
-                    row['score'].toString(),
-                  ])
-              .toList(),
-        ),
-        const SizedBox(height: 12),
-        _tableBlock(
           title: 'Repair Frequency (12 months)',
           headers: const ['Road', 'Repairs'],
           rows: repairFrequency
-              .map((row) => [row['road_id'].toString(), row['repairs_last_12m'].toString()])
+              .map((row) {
+                final roadId = row['road_id'].toString();
+                final roadName = _roadNameFor(state, roadId);
+                return [roadName, row['repairs_last_12m'].toString()];
+              })
               .toList(),
         ),
       ],
@@ -180,21 +184,56 @@ class IntelligenceScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: const TextStyle(fontWeight: FontWeight.w800, color: AppConfig.deepNavy)),
+          Text(
+            title,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontWeight: FontWeight.w800, color: AppConfig.deepNavy),
+          ),
           const SizedBox(height: 10),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: DataTable(
-              headingRowColor: WidgetStateProperty.all(const Color(0xFFF1F5F9)),
-              columns: headers.map((h) => DataColumn(label: Text(h))).toList(),
-              rows: rows
-                  .map(
-                    (row) => DataRow(
-                      cells: row.map((c) => DataCell(Text(c))).toList(),
-                    ),
-                  )
-                  .toList(),
-            ),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final minTableWidth = constraints.maxWidth < 360 ? 320.0 : 0.0;
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minWidth: minTableWidth),
+                  child: DataTable(
+                    columnSpacing: 16,
+                    horizontalMargin: 12,
+                    headingRowColor: WidgetStateProperty.all(const Color(0xFFF1F5F9)),
+                    columns: headers
+                        .map(
+                          (h) => DataColumn(
+                            label: Text(
+                              h,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    rows: rows
+                        .map(
+                          (row) => DataRow(
+                            cells: row
+                                .map(
+                                  (c) => DataCell(
+                                    Text(
+                                      c,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),

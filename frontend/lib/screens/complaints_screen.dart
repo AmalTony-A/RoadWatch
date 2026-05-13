@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../config/app_config.dart';
 import '../models/complaint.dart';
-import '../models/road_segment.dart';
+import '../models/road_network_item.dart';
 import '../providers/app_state.dart';
 import '../widgets/complaint_timeline.dart';
 
@@ -20,25 +20,38 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
     text: 'Pothole causing safety hazard during peak traffic hours.',
   );
   final ScrollController _scrollController = ScrollController();
-  String _selectedDistrict = 'AUTO';
+  String _selectedDistrict = 'ALL';
   int _displayedComplaintsCount = 10;
 
-  void _syncRoadSelection(AppState state, List<RoadSegment> roadOptions) {
+  String _roadUniqueKey(RoadNetworkItem road) {
+    final id = road.id.trim();
+    if (id.isNotEmpty) {
+      return '${id}_${road.name.trim()}';
+    }
+    return '${road.name.trim()}_${road.route.trim()}_${road.districts.join('|')}';
+  }
+
+  List<RoadNetworkItem> _uniqueRoads(List<RoadNetworkItem> roads) {
+    final byKey = <String, RoadNetworkItem>{};
+    for (final road in roads) {
+      byKey.putIfAbsent(_roadUniqueKey(road), () => road);
+    }
+    return byKey.values.toList(growable: false);
+  }
+
+  void _syncRoadSelection(AppState state, List<RoadNetworkItem> roadOptions) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || roadOptions.isEmpty) {
         return;
       }
 
-      final nearestRoad = state.nearestRoadFromCurrentPosition;
-      final selectedRoad = state.selectedRoad;
+      final selectedRoad = state.selectedRoadNetwork;
       final desiredRoad = selectedRoad != null && roadOptions.any((road) => road.id == selectedRoad.id)
           ? selectedRoad
-          : nearestRoad != null && roadOptions.any((road) => road.id == nearestRoad.id)
-              ? nearestRoad
-              : roadOptions.first;
+          : roadOptions.first;
 
-      if (state.selectedRoadId != desiredRoad.id) {
-        state.selectRoad(desiredRoad.id);
+      if (state.selectedRoadNetwork?.id != desiredRoad.id) {
+        state.selectRoadNetworkItem(desiredRoad);
       }
     });
   }
@@ -87,13 +100,17 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
     final appState = context.watch<AppState>();
     final theme = Theme.of(context);
 
-    final districtOptions = ['AUTO', ...appState.roadNetworkDistricts];
+    final districtOptions = ['ALL', ...appState.roadNetworkDistricts];
     final effectiveDistrict = _selectedDistrict == 'AUTO'
-        ? (appState.liveSuggestedDistrict ?? 'AUTO')
+        ? (appState.liveSuggestedDistrict ?? 'ALL')
         : _selectedDistrict;
-    final roadOptions = appState.roadsForComplaintDistrict(effectiveDistrict);
-    final selectedRoad = appState.selectedRoad;
+    final roadOptions = _uniqueRoads(appState.roadsForDistrict(effectiveDistrict == 'AUTO' ? 'ALL' : effectiveDistrict));
+    final selectedRoad = appState.selectedRoadNetwork;
     final liveDistrict = appState.liveSuggestedDistrict;
+    // Debug: log dropdown state to terminal to diagnose duplicate/value issues
+    // (removed in production once issue is resolved)
+    // ignore: avoid_print
+    print('ComplaintsScreen: selectedRoad=${selectedRoad?.id ?? 'null'} type=${selectedRoad?.runtimeType} roadOptions=${roadOptions.length}');
 
     if (appState.currentPosition != null && _selectedDistrict == 'AUTO') {
       _syncRoadSelection(appState, roadOptions);
@@ -238,7 +255,7 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
                           .map(
                             (district) => DropdownMenuItem(
                               value: district,
-                              child: Text(district == 'AUTO' ? 'Auto from location' : district),
+                              child: Text(district == 'ALL' ? 'All districts' : district),
                             ),
                           )
                           .toList(growable: false),
@@ -247,42 +264,39 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
                           return;
                         }
                         final nextDistrict = value;
-                        final nextRoadOptions = appState.roadsForComplaintDistrict(nextDistrict);
+                        final nextRoadOptions = _uniqueRoads(appState.roadsForDistrict(nextDistrict));
                         setState(() => _selectedDistrict = nextDistrict);
                         if (nextRoadOptions.isNotEmpty) {
-                          appState.selectRoad(nextRoadOptions.first.id);
+                          appState.selectRoadNetworkItem(nextRoadOptions.first);
                         }
                       },
                     ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: DropdownButtonFormField<RoadSegment>(
-                      initialValue: selectedRoad != null && roadOptions.any((road) => road.id == selectedRoad.id)
-                          ? selectedRoad
-                          : null,
+                    child: DropdownButtonFormField<String>(
+                      initialValue: (() {
+                        if (selectedRoad == null) return null;
+                        final key = _roadUniqueKey(selectedRoad);
+                        final matches = roadOptions.where((r) => _roadUniqueKey(r) == key).length;
+                        return matches == 1 ? key : null;
+                      })(),
                       decoration: const InputDecoration(labelText: 'Road'),
                       items: roadOptions
                           .map(
-                            (road) => DropdownMenuItem(
-                              value: road,
+                            (road) => DropdownMenuItem<String>(
+                              key: ValueKey(_roadUniqueKey(road)),
+                              value: _roadUniqueKey(road),
                               child: Text(road.name),
                             ),
                           )
                           .toList(growable: false),
-                      onChanged: (road) {
-                        if (road == null) {
-                          return;
-                        }
-                        appState.selectRoad(road.id);
-                        if (_selectedDistrict == 'AUTO') {
-                          final matchedDistrict = appState.roadNetworkDistricts.firstWhere(
-                            (district) => road.ward.toLowerCase().contains(district.toLowerCase()) || road.name.toLowerCase().contains(district.toLowerCase()),
-                            orElse: () => liveDistrict ?? 'AUTO',
-                          );
-                          if (matchedDistrict != 'AUTO') {
-                            setState(() => _selectedDistrict = matchedDistrict);
-                          }
+                      onChanged: (value) {
+                        if (value == null) return;
+                        final road = roadOptions.firstWhere((r) => _roadUniqueKey(r) == value);
+                        appState.selectRoadNetworkItem(road);
+                        if (_selectedDistrict == 'ALL' && road.districts.isNotEmpty) {
+                          setState(() => _selectedDistrict = road.districts.first);
                         }
                       },
                     ),
@@ -299,8 +313,8 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
                 ),
                 child: Text(
                   selectedRoad != null
-                      ? 'Filing against: ${selectedRoad.name} ${_selectedDistrict == 'AUTO' ? '(auto district: ${liveDistrict ?? 'unknown'})' : '(district: $_selectedDistrict)'}'
-                      : 'Enable live location to auto-select the nearest road.',
+                      ? 'Filing against: ${selectedRoad.name} (district: ${selectedRoad.districts.isNotEmpty ? selectedRoad.districts.first : 'all'})'
+                      : 'Select a road to file a complaint.',
                   style: TextStyle(
                     color: theme.colorScheme.onSurface,
                     fontWeight: FontWeight.w600,

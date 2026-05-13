@@ -14,7 +14,6 @@ import '../models/road_network_item.dart';
 import '../providers/app_state.dart';
 import '../widgets/road_health_legend.dart';
 import '../widgets/road_score_gauge.dart';
-import 'transparency_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,14 +24,30 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final MapController _mapController = MapController();
+  final GlobalKey _scoreSectionKey = GlobalKey();
+  static const int _roadRowsStep = 4;
+  static const int _scoreScrollMaxAttempts = 4;
   bool _centeredOnLiveLocation = false;
   bool _mapEditingEnabled = false;
   bool _manualDistrictSelection = false;
   bool _manualRoadSelection = false;
   bool _mapRefreshQueued = false;
   bool _syncLiveDistrictQueued = false;
+  bool _pendingScoreScroll = false;
+  int _scoreScrollAttempts = 0;
   String _selectedDistrict = 'ALL';
   String? _selectedNetworkRoadId;
+  int _visibleRoadRows = _roadRowsStep;
+
+  void _resetRoadRows() {
+    _visibleRoadRows = _roadRowsStep;
+  }
+
+  void _showMoreRoadRows() {
+    setState(() {
+      _visibleRoadRows += _roadRowsStep;
+    });
+  }
 
   Color _roadColor(String color) {
     return AppConfig.healthColorFromText(color);
@@ -193,6 +208,41 @@ class _HomeScreenState extends State<HomeScreen> {
     if (matchingRoad != null) {
       state.selectRoad(matchingRoad.id);
     }
+
+    // When user manually selects a road from dropdown/button, ensure the
+    // selected road score section is visible so the user sees the result.
+    if (manual) {
+      _requestScrollToScore();
+    }
+  }
+
+  void _requestScrollToScore() {
+    _pendingScoreScroll = true;
+    _scoreScrollAttempts = 0;
+    _tryScrollToScore();
+  }
+
+  void _tryScrollToScore() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_pendingScoreScroll) return;
+      final ctx = _scoreSectionKey.currentContext;
+      if (ctx != null) {
+        _pendingScoreScroll = false;
+        Scrollable.ensureVisible(
+          ctx,
+          duration: const Duration(milliseconds: 360),
+          curve: Curves.easeInOut,
+        );
+        return;
+      }
+
+      if (_scoreScrollAttempts < _scoreScrollMaxAttempts) {
+        _scoreScrollAttempts++;
+        _tryScrollToScore();
+      } else {
+        _pendingScoreScroll = false;
+      }
+    });
   }
 
   String? _districtFromNearestRoad(AppState state) {
@@ -281,6 +331,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       setState(() {
         _selectedDistrict = suggested;
+        _resetRoadRows();
       });
 
       final nearestRoad = state.nearestRoadFromCurrentPosition;
@@ -316,7 +367,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     final selectedNetworkRoad =
       _networkRoadByKey(state, _selectedNetworkRoadId) ??
-      (_selectedNetworkRoadId == null ? state.selectedRoadNetwork : null);
+      state.selectedRoadNetwork;
 
     // Only treat selectedRoad as authoritative when it matches the selected network road.
     final selectedRoad = state.selectedRoad;
@@ -340,6 +391,11 @@ class _HomeScreenState extends State<HomeScreen> {
           _roadUniqueKey(road): road,
     };
     final uniqueFilteredNetworkRoads = uniqueRoadDropdownItems.values.toList(growable: false);
+    final visibleNetworkRoads = _selectedDistrict == 'ALL'
+      ? uniqueFilteredNetworkRoads.take(_visibleRoadRows).toList(growable: false)
+      : uniqueFilteredNetworkRoads;
+    final canShowMoreRoads =
+      _selectedDistrict == 'ALL' && uniqueFilteredNetworkRoads.length > visibleNetworkRoads.length;
     final selectedNetworkRoadInDistrict =
         _selectedNetworkRoadId != null && uniqueRoadDropdownItems.containsKey(_selectedNetworkRoadId);
     final roadDropdownValue = selectedNetworkRoadInDistrict ? _selectedNetworkRoadId : null;
@@ -525,6 +581,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               _manualDistrictSelection =
                                   value != 'ALL' && value != state.liveSuggestedDistrict;
                               _manualRoadSelection = false;
+                              _resetRoadRows();
                             });
                             if (uniqueNextRoads.isNotEmpty) {
                               final firstRoad = uniqueNextRoads.first;
@@ -589,17 +646,36 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(color: AppConfig.skySlate),
                     )
                   else
-                    Wrap(
-                      spacing: 10,
-                      runSpacing: 10,
-                      children: uniqueFilteredNetworkRoads
-                          .map(
-                            (road) => ActionChip(
-                              label: Text(road.name),
-                              onPressed: () => _selectNetworkRoad(state, road, manual: true),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ...visibleNetworkRoads.map(
+                          (road) => Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: OutlinedButton(
+                                onPressed: () => _selectNetworkRoad(state, road, manual: true),
+                                style: OutlinedButton.styleFrom(
+                                  alignment: Alignment.centerLeft,
+                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                                ),
+                                child: Text(
+                                  road.name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
                             ),
-                          )
-                          .toList(),
+                          ),
+                        ),
+                        if (canShowMoreRoads)
+                          TextButton.icon(
+                            onPressed: _showMoreRoadRows,
+                            icon: const Icon(Icons.expand_more_rounded),
+                            label: Text('Show more roads (${uniqueFilteredNetworkRoads.length - visibleNetworkRoads.length} left)'),
+                          ),
+                      ],
                     ),
                 ],
               ),
@@ -607,6 +683,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 18),
           if (displayedSelectedRoad != null)
             _SectionCard(
+              key: _scoreSectionKey,
               title: 'Selected Road Score',
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -658,6 +735,7 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           else if (selectedNetworkRoad != null)
             _SectionCard(
+              key: _scoreSectionKey,
               title: 'Selected Road Score',
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -721,9 +799,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           if (displayedSelectedRoad == null && selectedNetworkRoad == null)
-            const _SectionCard(
+            _SectionCard(
+              key: _scoreSectionKey,
               title: 'Selected Road Score',
-              child: Text(
+              child: const Text(
                 'Choose a road from the dropdown or search to see its score here.',
                 style: TextStyle(color: AppConfig.skySlate),
               ),
@@ -827,10 +906,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           const SizedBox(height: 14),
-          _SectionCard(
-            title: 'Transparency Snapshot',
-            child: _TransparencyHighlight(selectedRoad: displayedSelectedRoad, appState: state),
-          ),
           if (state.lastMessage != null) ...[
             const SizedBox(height: 12),
             Container(
@@ -1473,7 +1548,7 @@ class _SectionCard extends StatelessWidget {
   final String title;
   final Widget child;
 
-  const _SectionCard({required this.title, required this.child});
+  const _SectionCard({Key? key, required this.title, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -1496,64 +1571,6 @@ class _SectionCard extends StatelessWidget {
           Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: AppConfig.deepNavy)),
           const SizedBox(height: 14),
           child,
-        ],
-      ),
-    );
-  }
-}
-
-class _TransparencyHighlight extends StatelessWidget {
-  final RoadSegment? selectedRoad;
-  final AppState appState;
-
-  const _TransparencyHighlight({required this.selectedRoad, required this.appState});
-
-  @override
-  Widget build(BuildContext context) {
-    final matchingBudgets =
-        appState.budgets.where((item) => item.roadId == selectedRoad?.id).toList();
-    final budget = matchingBudgets.isEmpty ? null : matchingBudgets.first;
-    final formatter = NumberFormat.currency(locale: 'en_IN', symbol: 'INR ', decimalDigits: 0);
-
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: const Color(0xFF112D4E),
-        borderRadius: BorderRadius.circular(18),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Transparency Indicator',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            budget == null
-                ? 'No budget data for selected road.'
-                : '${formatter.format(budget.allocatedInr)} allocated - current score ${budget.actualScore}/100',
-            style: const TextStyle(color: Color(0xFFE1E8F2), fontSize: 14),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            budget?.transparencyNote ?? 'Select a road to inspect allocation and outcomes.',
-            style: const TextStyle(color: Color(0xFFBCCCDC)),
-          ),
-          const SizedBox(height: 12),
-          ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: AppConfig.deepNavy,
-            ),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const TransparencyScreen()),
-              );
-            },
-            icon: const Icon(Icons.open_in_new),
-            label: const Text('Open Full Transparency Module'),
-          ),
         ],
       ),
     );

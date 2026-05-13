@@ -10,6 +10,7 @@ from uuid import uuid4
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, WebSocket, WebSocketDisconnect
 
 from app.db.repository import DataRepository
+from app.routers.admin import log_activity
 from app.schemas.models import (
     ChatRequest,
     ChatResponse,
@@ -152,6 +153,13 @@ async def upload_image(file: UploadFile = File(...), road_id: str | None = None)
     content = await file.read()
     path.write_bytes(content)
 
+    # Log activity
+    log_activity("upload", f"Image uploaded for road {road_id or 'unknown'}", {
+        "image_id": image_id,
+        "road_id": road_id,
+        "size_bytes": len(content),
+    })
+
     return {
         "image_id": image_id,
         "road_id": road_id,
@@ -186,6 +194,13 @@ async def detect_damage(
             "score": score.model_dump(),
         },
     )
+
+    # Log activity
+    log_activity("detection", f"Damage detected on road {payload.road_id}", {
+        "image_id": payload.image_id,
+        "score": score.road_health_score,
+        "detections_count": len(result.get("detections", [])),
+    })
 
     return result
 
@@ -244,6 +259,14 @@ async def generate_complaint(
             "road": road or {},
         },
     )
+    
+    # Log activity
+    log_activity("complaint", f"Complaint filed for {road.get('name', 'unknown road') if road else 'unknown road'}", {
+        "complaint_id": complaint.get("id"),
+        "road_id": payload.road_id,
+        "description": payload.description[:100],
+    })
+    
     return complaint
 
 
@@ -337,12 +360,21 @@ def predict_risk(
     payload: RiskRequest,
     predictor: Annotated[RiskPredictionService, Depends(get_prediction_service)],
 ):
-    return predictor.predict(
+    result = predictor.predict(
         road_id=payload.road_id,
         weather_index=payload.weather_index,
         traffic_index=payload.traffic_index,
         complaint_count_30d=payload.complaint_count_30d,
     )
+    
+    # Log activity
+    log_activity("prediction", f"Risk prediction for road {payload.road_id}", {
+        "road_id": payload.road_id,
+        "risk_level": result.get("risk_level"),
+        "probability": result.get("probability_of_deterioration"),
+    })
+    
+    return result
 
 
 @router.post("/chat", response_model=ChatResponse)

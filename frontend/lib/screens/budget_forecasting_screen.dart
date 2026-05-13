@@ -114,7 +114,7 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
         const Expanded(
           child: _ForecastCard(
             title: 'Projected Spend',
-            value: 'â‚¹450,000 Cr',
+            value: '\u20B9450,000 Cr',
             subtitle: 'Next 12 months',
             icon: Icons.trending_up,
             color: AppConfig.cautionYellow,
@@ -124,7 +124,7 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
         const Expanded(
           child: _ForecastCard(
             title: 'Required Budget',
-            value: 'â‚¹380,000 Cr',
+            value: '\u20B9380,000 Cr',
             subtitle: 'Maintenance only',
             icon: Icons.calculate,
             color: AppConfig.deepNavy,
@@ -134,7 +134,7 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
         Expanded(
           child: _ForecastCard(
             title: 'Budget Gap',
-            value: 'â‚¹70,000 Cr',
+            value: '\u20B970,000 Cr',
             subtitle: 'Allocation needed',
             icon: Icons.warning,
             color: Colors.red.withValues(alpha: 0.7),

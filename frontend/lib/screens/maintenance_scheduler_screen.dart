@@ -341,7 +341,7 @@ class _MaintenanceCardState extends State<_MaintenanceCard> {
                   const SizedBox(height: 8),
                   _DetailRow('Contractor', widget.contractor),
                   const SizedBox(height: 8),
-                  _DetailRow('Budget', '₹${widget.budget} Cr'),
+                  _DetailRow('Budget', '\u20B9${widget.budget} Cr'),
                   const SizedBox(height: 8),
                   const _DetailRow('Duration', '7-14 days'),
                   const SizedBox(height: 12),

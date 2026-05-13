@@ -88,7 +88,7 @@ class _AccountabilityScreenState extends State<AccountabilityScreen> {
             children: [
               _MetricCard(
                 'Total Budget',
-                '₹${(totalBudget / 100).toStringAsFixed(0)}Cr',
+                '\u20B9${(totalBudget / 100).toStringAsFixed(0)}Cr',
                 Icons.attach_money_rounded,
                 AppConfig.deepNavy,
               ),
@@ -268,7 +268,7 @@ class _AccountabilityScreenState extends State<AccountabilityScreen> {
                 const _InsightItem(
                   '🏗️',
                   'High Budget Roads',
-                  'Roads receiving >₹100Cr show mixed issue rates, suggesting budget alone doesn\'t determine road quality.',
+                  'Roads receiving >\u20B9100Cr show mixed issue rates, suggesting budget alone doesn\'t determine road quality.',
                 ),
                 const SizedBox(height: 12),
                 _InsightItem(
@@ -280,7 +280,7 @@ class _AccountabilityScreenState extends State<AccountabilityScreen> {
                 _InsightItem(
                   '💰',
                   'Budget Efficiency',
-                  'Average budget allocation is ₹${((totalBudget * 10000000) / roads.fold<int>(0, (sum, r) => sum + r.lengthKm)).toStringAsFixed(0)}/km across all roads.',
+                  'Average budget allocation is \u20B9${((totalBudget * 10000000) / roads.fold<int>(0, (sum, r) => sum + r.lengthKm)).toStringAsFixed(0)}/km across all roads.',
                 ),
               ],
             ),
@@ -453,9 +453,9 @@ class _BudgetIssueRow extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Icon(Icons.attach_money_rounded, size: 14, color: AppConfig.skySlate),
+                  const Icon(Icons.currency_rupee_rounded, size: 14, color: AppConfig.skySlate),
                   const SizedBox(width: 4),
-                  Text('₹${(budget / 100).toStringAsFixed(1)}Cr', style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600)),
+                  Text('${(budget / 100).toStringAsFixed(1)}Cr', style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600)),
                 ],
               ),
               Row(

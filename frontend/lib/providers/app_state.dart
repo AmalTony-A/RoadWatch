@@ -7,6 +7,7 @@ import 'package:geolocator/geolocator.dart';
 import '../models/budget_record.dart';
 import '../models/chat.dart';
 import '../models/complaint.dart';
+import '../models/contractor.dart';
 import '../models/detection.dart';
 import '../models/risk_prediction.dart';
 import '../models/road_network_item.dart';
@@ -36,6 +37,7 @@ class AppState extends ChangeNotifier {
   List<BudgetRecord> budgets = [];
   List<RoadNetworkItem> roadNetwork = [];
   List<ComplaintItem> complaints = [];
+  List<Contractor> contractors = [];
   Position? currentPosition;
   Map<String, dynamic> overview = {};
   Map<String, dynamic> intelligence = {};
@@ -60,6 +62,7 @@ class AppState extends ChangeNotifier {
   StreamSubscription<bool>? _connectivitySubscription;
   Timer? _refreshTimer;
   Timer? _healthTimer;
+  Timer? _realtimeStatusDebounceTimer;
 
   static const Duration _refreshInterval = Duration(seconds: 15);
   static const Duration _healthInterval = Duration(seconds: 30);
@@ -95,8 +98,19 @@ class AppState extends ChangeNotifier {
           unawaited(_handleRealtimeUpdate(event));
         }
       }, onStatusChanged: (connected) {
-        isRealtimeConnected = connected;
-        notifyListeners();
+        // Debounce transient false states so UI doesn't flicker.
+        _realtimeStatusDebounceTimer?.cancel();
+        if (connected) {
+          // Immediate when connected.
+          isRealtimeConnected = true;
+          notifyListeners();
+        } else {
+          // Delay reporting disconnected to avoid rapid flip.
+          _realtimeStatusDebounceTimer = Timer(const Duration(milliseconds: 900), () {
+            isRealtimeConnected = false;
+            notifyListeners();
+          });
+        }
       });
     } catch (_) {
       // Keep the app usable even if realtime sockets are unavailable.
@@ -138,6 +152,7 @@ class AppState extends ChangeNotifier {
     budgets = await api.getBudgetData();
     roadNetwork = await api.getRoadNetworkData();
     complaints = await api.getComplaints();
+    contractors = await api.getContractors();
     _ensureDefaultSelections();
     lastUpdatedAt = DateTime.now();
 
@@ -680,11 +695,104 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Contractor methods
+  Contractor? getContractorById(String contractorId) {
+    for (final contractor in contractors) {
+      if (contractor.id == contractorId) {
+        return contractor;
+      }
+    }
+    return null;
+  }
+
+  List<Contractor> searchContractors(String query) {
+    final normalized = query.trim().toLowerCase();
+    if (normalized.isEmpty) {
+      return contractors;
+    }
+    return contractors
+        .where(
+          (c) =>
+              c.name.toLowerCase().contains(normalized) ||
+              c.company.toLowerCase().contains(normalized),
+        )
+        .toList();
+  }
+
+  List<Contractor> getContractorsSortedBy(String sortBy) {
+    final sorted = List<Contractor>.from(contractors);
+    switch (sortBy) {
+      case 'highest_rated':
+        sorted.sort((a, b) => b.overallRating.compareTo(a.overallRating));
+        break;
+      case 'most_complaints':
+        sorted.sort((a, b) => b.complaintCount.compareTo(a.complaintCount));
+        break;
+      case 'recently_reviewed':
+        // Sort by most recent review timestamp
+        sorted.sort((a, b) {
+          final aTime = a.reviews.isNotEmpty ? a.reviews.first.timestamp : '';
+          final bTime = b.reviews.isNotEmpty ? b.reviews.first.timestamp : '';
+          return bTime.compareTo(aTime);
+        });
+        break;
+      case 'trusted_badge':
+        const badgeOrder = {'gold': 0, 'silver': 1, 'bronze': 2, '': 3};
+        sorted.sort((a, b) =>
+            (badgeOrder[a.trustedBadge] ?? 3).compareTo(badgeOrder[b.trustedBadge] ?? 3));
+        break;
+    }
+    return sorted;
+  }
+
+  Contractor? getContractorForRoad(String roadId) {
+    for (final contractor in contractors) {
+      if (contractor.roadsManaged.contains(roadId)) {
+        return contractor;
+      }
+    }
+    return null;
+  }
+
+  void submitContractorReview(String contractorId, ContractorReview review) {
+    // Find the contractor and add the review
+    for (var i = 0; i < contractors.length; i++) {
+      if (contractors[i].id == contractorId) {
+        final updatedReviews = List<ContractorReview>.from(contractors[i].reviews)..insert(0, review);
+        
+        // Calculate new overall rating
+        final totalRating = updatedReviews.fold<int>(0, (sum, r) => sum + r.rating);
+        final newOverallRating = totalRating / updatedReviews.length;
+        
+        // Create updated contractor
+        final updatedContractor = Contractor(
+          id: contractors[i].id,
+          name: contractors[i].name,
+          company: contractors[i].company,
+          projectStatus: contractors[i].projectStatus,
+          overallRating: newOverallRating,
+          totalReviews: updatedReviews.length,
+          reviews: updatedReviews,
+          trustedBadge: contractors[i].trustedBadge,
+          publicTransparencyScore: contractors[i].publicTransparencyScore,
+          complaintCount: contractors[i].complaintCount,
+          roadsManaged: contractors[i].roadsManaged,
+          profileImageUrl: contractors[i].profileImageUrl,
+        );
+        
+        contractors[i] = updatedContractor;
+        notifyListeners();
+        break;
+      }
+    }
+  }
+
   @override
   void dispose() {
     _refreshTimer?.cancel();
     _healthTimer?.cancel();
     _connectivitySubscription?.cancel();
+    _realtimeStatusDebounceTimer?.cancel();
     unawaited(realtime.disconnect());
     super.dispose();
   }

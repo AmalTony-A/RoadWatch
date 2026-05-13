@@ -3,10 +3,12 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.core.config import get_settings
 from app.routers.api import router as api_router
+from app.routers.admin import router as admin_router
 
 settings = get_settings()
 
@@ -34,3 +36,11 @@ uploads_dir = Path(__file__).resolve().parent / "uploads"
 app.mount("/uploads", StaticFiles(directory=uploads_dir), name="uploads")
 
 app.include_router(api_router)
+app.include_router(admin_router)
+
+
+@app.get("/dashboard")
+async def get_dashboard():
+    """Serve the backend dashboard."""
+    dashboard_path = Path(__file__).resolve().parent / "dashboard.html"
+    return FileResponse(dashboard_path)
