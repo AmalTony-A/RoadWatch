@@ -7,6 +7,8 @@ import '../models/complaint.dart';
 import '../models/road_network_item.dart';
 import '../providers/app_state.dart';
 import '../widgets/complaint_timeline.dart';
+import '../widgets/hover_road_chip.dart';
+import 'complaint_detail_screen.dart';
 
 class ComplaintsScreen extends StatefulWidget {
   const ComplaintsScreen({super.key});
@@ -20,7 +22,10 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
     text: 'Pothole causing safety hazard during peak traffic hours.',
   );
   final ScrollController _scrollController = ScrollController();
-  String _selectedDistrict = 'ALL';
+  String _selectedDistrict = 'AUTO';
+  String? _selectedRoadKey;
+  String? _activeComplaintId;
+  String? _hoveredComplaintId;
   int _displayedComplaintsCount = 10;
 
   String _roadUniqueKey(RoadNetworkItem road) {
@@ -31,51 +36,54 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
     return '${road.name.trim()}_${road.route.trim()}_${road.districts.join('|')}';
   }
 
-  List<RoadNetworkItem> _uniqueRoads(List<RoadNetworkItem> roads) {
-    final byKey = <String, RoadNetworkItem>{};
-    for (final road in roads) {
-      byKey.putIfAbsent(_roadUniqueKey(road), () => road);
-    }
-    return byKey.values.toList(growable: false);
-  }
-
   void _syncRoadSelection(AppState state, List<RoadNetworkItem> roadOptions) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || roadOptions.isEmpty) {
         return;
       }
 
-      final selectedRoad = state.selectedRoadNetwork;
-      final desiredRoad = selectedRoad != null && roadOptions.any((road) => road.id == selectedRoad.id)
-          ? selectedRoad
+      // Respect an explicit user tap selection stored locally.
+      if (_selectedRoadKey != null) {
+        return;
+      }
+
+      // Do not auto-override a user's explicit selection. Only auto-select
+      // when no network selection exists yet (null/empty) so taps persist.
+      if (state.selectedRoadNetworkId != null && state.selectedRoadNetworkId!.isNotEmpty) {
+        return;
+      }
+
+      final selectedNetworkRoad = state.selectedRoadNetwork;
+      final desiredRoad = selectedNetworkRoad != null && roadOptions.any((road) => road.id == selectedNetworkRoad.id)
+          ? selectedNetworkRoad
           : roadOptions.first;
 
-      if (state.selectedRoadNetwork?.id != desiredRoad.id) {
-        state.selectRoadNetworkItem(desiredRoad);
-      }
+      setState(() {
+        _selectedRoadKey = _roadUniqueKey(desiredRoad);
+      });
+      state.selectRoadNetworkItem(desiredRoad);
     });
   }
 
   Future<void> _fileComplaint() async {
     final state = context.read<AppState>();
-    final messenger = ScaffoldMessenger.of(context);
     final description = _descriptionController.text.trim();
     if (description.isEmpty) {
       return;
     }
+    final messenger = ScaffoldMessenger.of(context);
     await state.fileComplaint(description: description);
-    if (mounted) {
-      if (_scrollController.hasClients) {
-        await _scrollController.animateTo(
-          0,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOut,
-        );
-      }
-      messenger.showSnackBar(
-        const SnackBar(content: Text('Complaint request processed.')),
+    if (!mounted) return;
+    if (_scrollController.hasClients) {
+      await _scrollController.animateTo(
+        0,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
       );
     }
+    messenger.showSnackBar(
+      const SnackBar(content: Text('Complaint request processed.')),
+    );
   }
 
   Future<void> _sendLatestComplaint() async {
@@ -100,17 +108,13 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
     final appState = context.watch<AppState>();
     final theme = Theme.of(context);
 
-    final districtOptions = ['ALL', ...appState.roadNetworkDistricts];
+    final districtOptions = ['AUTO', ...appState.roadNetworkDistricts];
     final effectiveDistrict = _selectedDistrict == 'AUTO'
-        ? (appState.liveSuggestedDistrict ?? 'ALL')
+        ? (appState.liveSuggestedDistrict ?? 'AUTO')
         : _selectedDistrict;
-    final roadOptions = _uniqueRoads(appState.roadsForDistrict(effectiveDistrict == 'AUTO' ? 'ALL' : effectiveDistrict));
+    final roadOptions = appState.searchRoadsForDistrict(effectiveDistrict, '');
     final selectedRoad = appState.selectedRoadNetwork;
     final liveDistrict = appState.liveSuggestedDistrict;
-    // Debug: log dropdown state to terminal to diagnose duplicate/value issues
-    // (removed in production once issue is resolved)
-    // ignore: avoid_print
-    print('ComplaintsScreen: selectedRoad=${selectedRoad?.id ?? 'null'} type=${selectedRoad?.runtimeType} roadOptions=${roadOptions.length}');
 
     if (appState.currentPosition != null && _selectedDistrict == 'AUTO') {
       _syncRoadSelection(appState, roadOptions);
@@ -121,6 +125,18 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
     final sentCount = complaints.where((c) => c.sentToAuthority).length;
     final deliveredCount = complaints.where((c) => c.deliveredToAuthority).length;
     final readCount = complaints.where((c) => c.readByAuthority).length;
+
+    // Determine which complaint to show in the tracker: prefer explicit selection.
+    ComplaintItem? activeComplaint;
+    if (_activeComplaintId != null) {
+      final matches = complaints.where((c) => c.id == _activeComplaintId).toList(growable: false);
+      activeComplaint = matches.isNotEmpty ? matches.first : null;
+    } else {
+      activeComplaint = appState.latestComplaint;
+    }
+
+    // Exclude the actively shown complaint from the list to avoid duplication
+    final visibleComplaints = activeComplaint == null ? complaints : complaints.where((c) => c.id != activeComplaint!.id).toList(growable: false);
 
     return ListView(
       controller: _scrollController,
@@ -190,13 +206,13 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
           ],
         ),
         const SizedBox(height: 16),
-        if (appState.latestComplaint != null)
+        if (activeComplaint != null)
           _ComplaintTrackerCard(
-            complaint: appState.latestComplaint!,
-            onSend: appState.latestComplaint!.sentToAuthority ? null : _sendLatestComplaint,
-            onMarkRead: appState.latestComplaint!.sentToAuthority && !appState.latestComplaint!.readByAuthority ? _markLatestComplaintRead : null,
+            complaint: activeComplaint,
+            onSend: activeComplaint.sentToAuthority ? null : _sendLatestComplaint,
+            onMarkRead: activeComplaint.sentToAuthority && !activeComplaint.readByAuthority ? _markLatestComplaintRead : null,
           ),
-        if (appState.latestComplaint != null) const SizedBox(height: 16),
+        if (activeComplaint != null) const SizedBox(height: 16),
         Container(
           padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
@@ -204,7 +220,7 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
-                color: theme.cardTheme.shadowColor ?? Colors.black.withValues(alpha: 0.05),
+                color: theme.cardTheme.shadowColor ?? Colors.black.withOpacity(0.05),
                 blurRadius: 18,
                 offset: const Offset(0, 8),
               ),
@@ -245,65 +261,7 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
                 ],
               ),
               const SizedBox(height: 14),
-              Row(
-                children: [
-                  Expanded(
-                    child: DropdownButtonFormField<String>(
-                      initialValue: _selectedDistrict,
-                      decoration: const InputDecoration(labelText: 'District'),
-                      items: districtOptions
-                          .map(
-                            (district) => DropdownMenuItem(
-                              value: district,
-                              child: Text(district == 'ALL' ? 'All districts' : district),
-                            ),
-                          )
-                          .toList(growable: false),
-                      onChanged: (value) {
-                        if (value == null) {
-                          return;
-                        }
-                        final nextDistrict = value;
-                        final nextRoadOptions = _uniqueRoads(appState.roadsForDistrict(nextDistrict));
-                        setState(() => _selectedDistrict = nextDistrict);
-                        if (nextRoadOptions.isNotEmpty) {
-                          appState.selectRoadNetworkItem(nextRoadOptions.first);
-                        }
-                      },
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: DropdownButtonFormField<String>(
-                      initialValue: (() {
-                        if (selectedRoad == null) return null;
-                        final key = _roadUniqueKey(selectedRoad);
-                        final matches = roadOptions.where((r) => _roadUniqueKey(r) == key).length;
-                        return matches == 1 ? key : null;
-                      })(),
-                      decoration: const InputDecoration(labelText: 'Road'),
-                      items: roadOptions
-                          .map(
-                            (road) => DropdownMenuItem<String>(
-                              key: ValueKey(_roadUniqueKey(road)),
-                              value: _roadUniqueKey(road),
-                              child: Text(road.name),
-                            ),
-                          )
-                          .toList(growable: false),
-                      onChanged: (value) {
-                        if (value == null) return;
-                        final road = roadOptions.firstWhere((r) => _roadUniqueKey(r) == value);
-                        appState.selectRoadNetworkItem(road);
-                        if (_selectedDistrict == 'ALL' && road.districts.isNotEmpty) {
-                          setState(() => _selectedDistrict = road.districts.first);
-                        }
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
+              // Filing-against summary placed below the complaint input for clarity
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -311,16 +269,89 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
                   color: theme.colorScheme.primary.withValues(alpha: 0.08),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: Text(
-                  selectedRoad != null
-                      ? 'Filing against: ${selectedRoad.name} (district: ${selectedRoad.districts.isNotEmpty ? selectedRoad.districts.first : 'all'})'
-                      : 'Select a road to file a complaint.',
-                  style: TextStyle(
-                    color: theme.colorScheme.onSurface,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                child: Builder(builder: (ctx) {
+                  String label;
+                  // Prefer local user tap selection when available.
+                  if (_selectedRoadKey != null) {
+                    final match = roadOptions.firstWhere(
+                      (r) => _roadUniqueKey(r) == _selectedRoadKey,
+                      orElse: () => roadOptions.first,
+                    );
+                    label = 'Filing against: ${match.name} ${_selectedDistrict == 'AUTO' ? '(auto district: ${liveDistrict ?? 'unknown'})' : '(district: $_selectedDistrict)'}';
+                  } else if (selectedRoad != null) {
+                    label = 'Filing against: ${selectedRoad.name} ${_selectedDistrict == 'AUTO' ? '(auto district: ${liveDistrict ?? 'unknown'})' : '(district: $_selectedDistrict)'}';
+                  } else {
+                    label = 'Enable live location to auto-select the nearest road.';
+                  }
+
+                  return Text(
+                    label,
+                    style: TextStyle(
+                      color: theme.colorScheme.onSurface,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  );
+                }),
               ),
+              DropdownButtonFormField<String>(
+                initialValue: _selectedDistrict,
+                decoration: const InputDecoration(labelText: 'District'),
+                items: districtOptions
+                    .map(
+                      (district) => DropdownMenuItem(
+                        value: district,
+                        child: Text(district == 'AUTO' ? 'Auto from location' : district),
+                      ),
+                    )
+                    .toList(growable: false),
+                onChanged: (value) {
+                  if (value == null) {
+                    return;
+                  }
+                  final nextDistrict = value;
+                  final nextRoadOptions = appState.searchRoadsForDistrict(nextDistrict == 'AUTO' ? (liveDistrict ?? 'AUTO') : nextDistrict, '');
+                  setState(() {
+                    _selectedDistrict = nextDistrict;
+                    _selectedRoadKey = nextRoadOptions.isNotEmpty ? _roadUniqueKey(nextRoadOptions.first) : null;
+                  });
+                  if (nextRoadOptions.isNotEmpty) {
+                    appState.selectRoadNetworkItem(nextRoadOptions.first);
+                  }
+                },
+              ),
+              const SizedBox(height: 12),
+              if (roadOptions.isEmpty)
+                const Text(
+                  'No roads found for this district.',
+                  style: TextStyle(color: AppConfig.skySlate),
+                )
+              else
+                LayoutBuilder(builder: (context, constraints) {
+                  final spacing = 12.0;
+                  final itemWidth = (constraints.maxWidth - spacing) / 2;
+                  final selectedKey = _selectedRoadKey ?? (selectedRoad != null ? _roadUniqueKey(selectedRoad) : null);
+                  return Wrap(
+                    spacing: spacing,
+                    runSpacing: spacing,
+                    children: roadOptions.map((road) {
+                      final isSelected = selectedKey == _roadUniqueKey(road);
+                      return SizedBox(
+                        width: itemWidth,
+                        child: HoverRoadChip(
+                          label: road.name,
+                          selected: isSelected,
+                          onTap: () {
+                            setState(() {
+                              _selectedRoadKey = _roadUniqueKey(road);
+                            });
+                            appState.selectRoadNetworkItem(road);
+                          },
+                        ),
+                      );
+                    }).toList(),
+                  );
+                }),
+              const SizedBox(height: 10),
               if (appState.lastMessage != null) ...[
                 const SizedBox(height: 10),
                 Container(
@@ -369,13 +400,47 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ...complaints.take(_displayedComplaintsCount).map((item) {
+              ...visibleComplaints.take(_displayedComplaintsCount).map((item) {
+                final isHovered = _hoveredComplaintId == item.id;
+                final isSelected = _activeComplaintId == item.id;
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 12),
-                  child: ComplaintTimeline(complaint: item),
+                  child: MouseRegion(
+                    onEnter: (_) => setState(() => _hoveredComplaintId = item.id),
+                    onExit: (_) => setState(() => _hoveredComplaintId = null),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _activeComplaintId = item.id;
+                        });
+                        // Open complaint tracker preview in the same app tab.
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => ComplaintDetailScreen(complaintId: item.id),
+                          ),
+                        );
+                        // Scroll to top so tracker is visible
+                        if (_scrollController.hasClients) {
+                          _scrollController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+                        }
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 180),
+                        curve: Curves.easeOut,
+                        transform: isHovered ? Matrix4.translationValues(0, -4, 0) : Matrix4.identity(),
+                        decoration: BoxDecoration(
+                          border: isSelected ? Border.all(color: Theme.of(context).colorScheme.primary, width: 1.6) : null,
+                          boxShadow: isHovered
+                              ? [BoxShadow(color: Theme.of(context).cardTheme.shadowColor ?? Colors.black.withValues(alpha: 0.06), blurRadius: 18, offset: const Offset(0, 8))]
+                              : null,
+                        ),
+                        child: ComplaintTimeline(complaint: item),
+                      ),
+                    ),
+                  ),
                 );
               }),
-              if (_displayedComplaintsCount < complaints.length) ...[
+              if (_displayedComplaintsCount < visibleComplaints.length) ...[
                 const SizedBox(height: 16),
                 SizedBox(
                   width: double.infinity,
@@ -387,7 +452,7 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
                     },
                     icon: const Icon(Icons.expand_more_rounded),
                     label: Text(
-                      'Load more (${complaints.length - _displayedComplaintsCount} remaining)',
+                      'Load more (${visibleComplaints.length - _displayedComplaintsCount} remaining)',
                       style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
@@ -399,6 +464,7 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
     );
   }
 
+  // _statusChip removed; tracker uses internal chip helpers instead.
 }
 
 class _CountCard extends StatelessWidget {
@@ -421,7 +487,7 @@ class _CountCard extends StatelessWidget {
         border: Border.all(color: color.withValues(alpha: 0.12)),
         boxShadow: [
           BoxShadow(
-            color: theme.cardTheme.shadowColor ?? Colors.black.withValues(alpha: 0.04),
+            color: theme.cardTheme.shadowColor ?? Colors.black.withOpacity(0.04),
             blurRadius: 14,
             offset: const Offset(0, 6),
           ),
@@ -512,7 +578,7 @@ class _ComplaintTrackerCard extends StatelessWidget {
         border: Border.all(color: theme.dividerTheme.color ?? theme.colorScheme.onSurface.withValues(alpha: 0.12)),
         boxShadow: [
           BoxShadow(
-            color: theme.cardTheme.shadowColor ?? Colors.black.withValues(alpha: 0.05),
+            color: theme.cardTheme.shadowColor ?? Colors.black.withOpacity(0.05),
             blurRadius: 18,
             offset: const Offset(0, 8),
           ),

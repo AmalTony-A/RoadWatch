@@ -7,6 +7,7 @@ import '../config/app_config.dart';
 import '../models/budget_record.dart';
 import '../screens/transparency_screen.dart';
 import '../models/road_segment.dart';
+import '../models/road_network_item.dart';
 import '../providers/app_state.dart';
 
 class BudgetForecastingScreen extends StatefulWidget {
@@ -28,20 +29,58 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
-            Text(
-              'ðŸ’° Budget Forecasting',
-              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    color: AppConfig.deepNavy,
+            Container(
+              padding: const EdgeInsets.all(22),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF102A43), Color(0xFF1D4E89), Color(0xFF2B6CB0)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(28),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppConfig.deepNavy.withValues(alpha: 0.16),
+                    blurRadius: 22,
+                    offset: const Offset(0, 12),
                   ),
+                ],
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    height: 54,
+                    width: 54,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.14),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: const Icon(Icons.trending_up_rounded, color: Colors.white),
+                  ),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Budget Forecasting',
+                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white,
+                              ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          'Predict budget requirements and spending trends with a clearer, more visual dashboard.',
+                          style: TextStyle(color: Colors.white.withValues(alpha: 0.84)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 8),
-            Text(
-              'Predict budget requirements and spending trends',
-              style: TextStyle(color: AppConfig.skySlate.withValues(alpha: 0.8), fontSize: 14),
-            ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 18),
 
             Consumer<AppState>(
               builder: (context, appState, _) {
@@ -50,44 +89,63 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
             ),
             const SizedBox(height: 24),
 
-            // Controls
-            Row(
-              children: [
-                Expanded(
-                  child: DropdownButton<String>(
-                    value: _selectedPeriod,
-                    onChanged: (String? newValue) {
-                      if (newValue != null) setState(() => _selectedPeriod = newValue);
-                    },
-                    items: const [
-                      DropdownMenuItem(value: '6 Months', child: Text('6 Months')),
-                      DropdownMenuItem(value: '12 Months', child: Text('12 Months')),
-                      DropdownMenuItem(value: '24 Months', child: Text('24 Months')),
-                      DropdownMenuItem(value: '5 Years', child: Text('5 Years')),
-                    ],
+            Container(
+              padding: const EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(24),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppConfig.deepNavy.withValues(alpha: 0.05),
+                    blurRadius: 18,
+                    offset: const Offset(0, 8),
                   ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: DropdownButton<String>(
-                    value: _selectedCategory,
-                    onChanged: (String? newValue) {
-                      if (newValue != null) setState(() => _selectedCategory = newValue);
-                    },
-                    items: const [
-                      DropdownMenuItem(value: 'All', child: Text('All Categories')),
-                      DropdownMenuItem(value: 'NH', child: Text('National Highways')),
-                      DropdownMenuItem(value: 'SH', child: Text('State Highways')),
-                      DropdownMenuItem(value: 'MDR', child: Text('Major District Roads')),
-                    ],
+                ],
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                      initialValue: _selectedPeriod,
+                      decoration: const InputDecoration(labelText: 'Forecast period'),
+                      onChanged: (String? newValue) {
+                        if (newValue != null) setState(() => _selectedPeriod = newValue);
+                      },
+                      items: const [
+                        DropdownMenuItem(value: '6 Months', child: Text('6 Months')),
+                        DropdownMenuItem(value: '12 Months', child: Text('12 Months')),
+                        DropdownMenuItem(value: '24 Months', child: Text('24 Months')),
+                        DropdownMenuItem(value: '5 Years', child: Text('5 Years')),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                      initialValue: _selectedCategory,
+                      decoration: const InputDecoration(labelText: 'Road category'),
+                      onChanged: (String? newValue) {
+                        if (newValue != null) setState(() => _selectedCategory = newValue);
+                      },
+                      items: const [
+                        DropdownMenuItem(value: 'All', child: Text('All Categories')),
+                        DropdownMenuItem(value: 'NH', child: Text('National Highways')),
+                        DropdownMenuItem(value: 'SH', child: Text('State Highways')),
+                        DropdownMenuItem(value: 'MDR', child: Text('Major District Roads')),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 24),
 
             // Summary Cards
-            _buildForecastSummary(context),
+            Consumer<AppState>(
+              builder: (context, appState, _) {
+                return _buildForecastSummary(context, appState);
+              },
+            ),
             const SizedBox(height: 24),
 
             // Spending Trend Chart
@@ -108,24 +166,25 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
     );
   }
 
-  Widget _buildForecastSummary(BuildContext context) {
+  Widget _buildForecastSummary(BuildContext context, AppState appState) {
+    final summary = _buildSummaryForSelection(appState);
     return Row(
       children: [
-        const Expanded(
+        Expanded(
           child: _ForecastCard(
             title: 'Projected Spend',
-            value: '\u20B9450,000 Cr',
-            subtitle: 'Next 12 months',
+            value: summary.projectedSpendLabel,
+            subtitle: summary.periodLabel,
             icon: Icons.trending_up,
             color: AppConfig.cautionYellow,
           ),
         ),
         const SizedBox(width: 12),
-        const Expanded(
+        Expanded(
           child: _ForecastCard(
             title: 'Required Budget',
-            value: '\u20B9380,000 Cr',
-            subtitle: 'Maintenance only',
+            value: summary.requiredBudgetLabel,
+            subtitle: 'Maintenance need',
             icon: Icons.calculate,
             color: AppConfig.deepNavy,
           ),
@@ -134,10 +193,10 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
         Expanded(
           child: _ForecastCard(
             title: 'Budget Gap',
-            value: '\u20B970,000 Cr',
-            subtitle: 'Allocation needed',
+            value: summary.budgetGapLabel,
+            subtitle: summary.gapSubtitle,
             icon: Icons.warning,
-            color: Colors.red.withValues(alpha: 0.7),
+            color: summary.gapColor,
           ),
         ),
       ],
@@ -148,9 +207,16 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.6),
-        borderRadius: BorderRadius.circular(16),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
         border: Border.all(color: Colors.grey[200]!),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 16,
+            offset: const Offset(0, 8),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -270,9 +336,16 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.6),
-        borderRadius: BorderRadius.circular(16),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
         border: Border.all(color: Colors.grey[200]!),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 16,
+            offset: const Offset(0, 8),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -309,9 +382,9 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppConfig.deepNavy.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppConfig.deepNavy.withValues(alpha: 0.3)),
+        color: AppConfig.deepNavy.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppConfig.deepNavy.withValues(alpha: 0.18)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -348,6 +421,106 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
       ),
     );
   }
+
+  _BudgetSummary _buildSummaryForSelection(AppState appState) {
+    final selectedRoads = _roadsForCategory(appState);
+    final periodMultiplier = _periodMultiplier();
+    final projectedSpendCrore = selectedRoads.fold<double>(0, (sum, road) => sum + road.budgetCrore.toDouble());
+    final adjustedProjected = (projectedSpendCrore * periodMultiplier).round();
+
+    if (selectedRoads.isEmpty) {
+      return _BudgetSummary(
+        projectedSpendLabel: '₹0 Cr',
+        requiredBudgetLabel: '₹0 Cr',
+        budgetGapLabel: '₹0 Cr',
+        periodLabel: _periodLabel(),
+        gapSubtitle: 'No roads found for this category',
+        gapColor: Colors.red.withValues(alpha: 0.7),
+      );
+    }
+
+    final averageHealthScore = selectedRoads.fold<double>(0, (sum, road) => sum + road.healthScore.toDouble()) / selectedRoads.length;
+    final categoryFactor = _categoryBaseFactor();
+    final healthFactor = (100 - averageHealthScore) / 250; // better roads need slightly less extra funding
+    final requiredBudgetCrore = (adjustedProjected * (categoryFactor + healthFactor)).round();
+    final budgetGapCrore = requiredBudgetCrore - adjustedProjected;
+
+    return _BudgetSummary(
+      projectedSpendLabel: '₹${_formatCrore(adjustedProjected)} Cr',
+      requiredBudgetLabel: '₹${_formatCrore(requiredBudgetCrore)} Cr',
+      budgetGapLabel: '₹${_formatCrore(budgetGapCrore.abs())} Cr',
+      periodLabel: _periodLabel(),
+      gapSubtitle: budgetGapCrore >= 0 ? 'Allocation needed' : 'Potential surplus',
+      gapColor: budgetGapCrore >= 0 ? Colors.red.withValues(alpha: 0.7) : AppConfig.safeGreen,
+    );
+  }
+
+  List<RoadNetworkItem> _roadsForCategory(AppState appState) {
+    switch (_selectedCategory) {
+      case 'NH':
+        return appState.roadNetwork.where((item) => item.isNationalHighway).toList(growable: false);
+      case 'SH':
+        return appState.roadNetwork.where((item) => item.isStateHighway).toList(growable: false);
+      case 'MDR':
+        return appState.roadNetwork.where((item) => item.isDistrictRoad).toList(growable: false);
+      default:
+        return List<RoadNetworkItem>.from(appState.roadNetwork, growable: false);
+    }
+  }
+
+  double _periodMultiplier() {
+    switch (_selectedPeriod) {
+      case '6 Months':
+        return 0.5;
+      case '12 Months':
+        return 1.0;
+      case '24 Months':
+        return 2.0;
+      case '5 Years':
+        return 5.0;
+      default:
+        return 1.0;
+    }
+  }
+
+  String _periodLabel() {
+    return _selectedPeriod == '12 Months' ? 'Next 12 months' : 'Selected period: $_selectedPeriod';
+  }
+
+  double _categoryBaseFactor() {
+    switch (_selectedCategory) {
+      case 'NH':
+        return 1.16;
+      case 'SH':
+        return 1.10;
+      case 'MDR':
+        return 1.06;
+      default:
+        return 1.10;
+    }
+  }
+
+  String _formatCrore(int value) {
+    return NumberFormat('#,##0', 'en_IN').format(value);
+  }
+}
+
+class _BudgetSummary {
+  final String projectedSpendLabel;
+  final String requiredBudgetLabel;
+  final String budgetGapLabel;
+  final String periodLabel;
+  final String gapSubtitle;
+  final Color gapColor;
+
+  const _BudgetSummary({
+    required this.projectedSpendLabel,
+    required this.requiredBudgetLabel,
+    required this.budgetGapLabel,
+    required this.periodLabel,
+    required this.gapSubtitle,
+    required this.gapColor,
+  });
 }
 
 class _BudgetTransparencyCard extends StatelessWidget {
@@ -488,14 +661,29 @@ class _ForecastCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: color.withValues(alpha: 0.3)),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: color.withValues(alpha: 0.22)),
+        boxShadow: [
+          BoxShadow(
+            color: color.withValues(alpha: 0.08),
+            blurRadius: 12,
+            offset: const Offset(0, 6),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: color, size: 28),
+          Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+              color: color.withValues(alpha: 0.10),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: color, size: 22),
+          ),
           const SizedBox(height: 12),
           Text(
             value,
@@ -563,6 +751,13 @@ class _BudgetCategoryBar extends StatelessWidget {
     required this.color,
   });
 
+  String _formatPercentage(double value) {
+    if (value == value.roundToDouble()) {
+      return '${value.toInt()}%';
+    }
+    return '${value.toStringAsFixed(1)}%';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -572,7 +767,7 @@ class _BudgetCategoryBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(label, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12)),
-            Text('$percentage%', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 12, color: color)),
+            Text(_formatPercentage(percentage), style: TextStyle(fontWeight: FontWeight.w600, fontSize: 12, color: color)),
           ],
         ),
         const SizedBox(height: 6),

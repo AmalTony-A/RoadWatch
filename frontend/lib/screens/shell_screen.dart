@@ -14,7 +14,6 @@ import '../features/map/map_screen.dart';
 import '../features/intelligence/intelligence_screen.dart';
 import '../features/maintenance/maintenance_scheduler_screen.dart';
 import '../features/statistics/statistics_screen.dart';
-import '../screens/monitoring_screen.dart';
 import '../screens/contractors_screen.dart';
 import '../screens/home_screen.dart';
 
@@ -42,10 +41,9 @@ class _ShellScreenState extends State<ShellScreen> {
     ContractorsScreen(),
     BudgetForecastingScreen(),
     GamificationLeaderboardScreen(),
-    MonitoringScreen(),
   ];
 
-  static const _labels = ['Home', 'Capture', 'Assistant', 'Complaints', 'Statistics', 'Comparison', 'Accountability', 'Intelligence', 'Maintenance', 'Contractors', 'Budget', 'Gamification', 'Monitoring'];
+  static const _labels = ['Home', 'Capture', 'Assistant', 'Complaints', 'Statistics', 'Comparison', 'Accountability', 'Intelligence', 'Maintenance', 'Contractors', 'Budget', 'Gamification'];
 
   static const _icons = [
     Icons.map_rounded,
@@ -60,7 +58,6 @@ class _ShellScreenState extends State<ShellScreen> {
     Icons.person_rounded,
     Icons.trending_up_rounded,
     Icons.emoji_events_rounded,
-    Icons.dashboard_rounded,
   ];
 
   @override

@@ -12,8 +12,10 @@ import '../config/app_config.dart';
 import '../models/road_segment.dart';
 import '../models/road_network_item.dart';
 import '../providers/app_state.dart';
+import '../widgets/hover_road_chip.dart';
 import '../widgets/road_health_legend.dart';
 import '../widgets/road_score_gauge.dart';
+import 'map_fullscreen.dart'; // Importing the full-screen map screen for navigation
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -111,56 +113,31 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   RoadNetworkItem? _networkRoadByKey(AppState state, String? key) {
-    if (key == null) {
-      return null;
-    }
-    for (final road in state.roadNetwork) {
-      if (_roadUniqueKey(road) == key) {
-        return road;
-      }
+    if (key == null) return null;
+    for (final item in state.roadNetwork) {
+      if (_roadUniqueKey(item) == key) return item;
     }
     return null;
   }
 
-
   String _roadUniqueKey(RoadNetworkItem road) {
-    final id = road.id.trim();
+    final id = (road.id ?? '').trim();
     if (id.isNotEmpty) {
       return '${id}_${road.name.trim()}';
     }
-    // Some rows can miss IDs; fallback keeps them selectable in the dropdown.
     return '${road.name.trim()}_${road.route.trim()}_${road.districts.join('|')}';
+  }
+
+  RoadSegment? _matchingRoadSegment(AppState state, RoadNetworkItem networkRoad) {
+    final networkName = networkRoad.name.trim().toLowerCase();
+    for (final seg in state.roads) {
+      if (seg.name.trim().toLowerCase() == networkName) return seg;
+    }
+    return null;
   }
 
   bool _isValidRoadForSelection(RoadNetworkItem road) {
     return road.name.trim().isNotEmpty;
-  }
-
-
-  RoadSegment? _matchingRoadSegment(
-    AppState state,
-    RoadNetworkItem road,
-  ) {
-    final roadName = road.name.trim().toLowerCase();
-    final roadRoute = road.route.trim().toLowerCase();
-
-    for (final item in state.roads) {
-      if (item.name.trim().toLowerCase() == roadName) {
-        return item;
-      }
-    }
-
-    try {
-      return state.roads.firstWhere(
-        (item) =>
-            item.name.toLowerCase().contains(roadName) ||
-            roadName.contains(item.name.toLowerCase()) ||
-            item.ward.toLowerCase().contains(roadRoute) ||
-            roadRoute.contains(item.ward.toLowerCase()),
-      );
-    } catch (_) {
-      return null;
-    }
   }
 
   bool _roadMatchesNetworkRoad(RoadSegment road, RoadNetworkItem networkRoad) {
@@ -649,26 +626,27 @@ class _HomeScreenState extends State<HomeScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ...visibleNetworkRoads.map(
-                          (road) => Padding(
-                            padding: const EdgeInsets.only(bottom: 8),
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: OutlinedButton(
-                                onPressed: () => _selectNetworkRoad(state, road, manual: true),
-                                style: OutlinedButton.styleFrom(
-                                  alignment: Alignment.centerLeft,
-                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                                ),
-                                child: Text(
-                                  road.name,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        LayoutBuilder(builder: (context, constraints) {
+                          final spacing = 12.0;
+                          final itemWidth = (constraints.maxWidth - spacing) / 2;
+                          return Wrap(
+                            spacing: spacing,
+                            runSpacing: spacing,
+                            children: visibleNetworkRoads
+                                .map(
+                                  (road) => SizedBox(
+                                    width: itemWidth,
+                                    child: HoverRoadChip(
+                                      label: road.name,
+                                      selected: roadDropdownValue == _roadUniqueKey(road),
+                                      onTap: () => _selectNetworkRoad(state, road, manual: true),
+                                      borderRadius: BorderRadius.circular(999),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                          );
+                        }),
                         if (canShowMoreRoads)
                           TextButton.icon(
                             onPressed: _showMoreRoadRows,
@@ -833,7 +811,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 12),
                 SizedBox(
-                  height: 340,
+                  height: 520,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(24),
                     child: Stack(
@@ -890,9 +868,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ],
                             ),
-                            child: const Text(
-                              '© OpenStreetMap contributors',
-                              style: TextStyle(fontSize: 10, color: AppConfig.skySlate),
+                            child: Row(
+                              children: [
+                                FilledButton.icon(
+                                  onPressed: () {
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MapFullScreen()));
+                                  },
+                                  icon: const Icon(Icons.open_in_full, size: 14),
+                                  label: const Text('Enter map'),
+                                ),
+                                const SizedBox(width: 8),
+                                const Text(
+                                  '© OpenStreetMap contributors',
+                                  style: TextStyle(fontSize: 10, color: AppConfig.skySlate),
+                                ),
+                              ],
                             ),
                           ),
                         ),

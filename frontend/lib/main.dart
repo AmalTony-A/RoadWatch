@@ -6,6 +6,7 @@ import 'config/app_config.dart';
 import 'providers/app_state.dart';
 import 'features/map/map_provider.dart';
 import 'screens/shell_screen.dart';
+import 'screens/complaint_detail_screen.dart';
 import 'services/api_service.dart';
 import 'services/connectivity_service.dart';
 import 'services/local_storage_service.dart';
@@ -34,13 +35,22 @@ class RoadWatchApp extends StatelessWidget {
           create: (_) => MapProvider(),
         ),
       ],
-      child: Consumer<AppState>(
+          child: Consumer<AppState>(
         builder: (context, appState, _) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: AppConfig.appName,
             theme: _buildTheme(appState.isDarkMode),
             home: const ShellScreen(),
+            onGenerateRoute: (settings) {
+              // Simple route parsing for complaint detail: /complaint/<id>
+              final name = settings.name ?? '';
+              if (name.startsWith('/complaint/')) {
+                final id = name.replaceFirst('/complaint/', '');
+                return MaterialPageRoute(builder: (_) => ComplaintDetailScreen(complaintId: id));
+              }
+              return null;
+            },
           );
         },
       ),

@@ -57,6 +57,9 @@ class AppState extends ChangeNotifier {
   String? selectedRoadNetworkId;
   String? lastMessage;
   String? locationStatus;
+  // Gamification state (local only)
+  int userPoints = 0;
+  List<String> userBadges = [];
 
   final List<ChatItem> chatHistory = [];
   StreamSubscription<bool>? _connectivitySubscription;
@@ -481,6 +484,45 @@ class AppState extends ChangeNotifier {
       selectedRoadId = match.id;
     }
     notifyListeners();
+  }
+
+  /// Move the complaint with [complaintId] to the top of the list so it
+  /// becomes the `latestComplaint`. This is used by the UI when a user
+  /// explicitly selects a complaint to view its live tracking.
+  void promoteComplaintToTop(String complaintId) {
+    final idx = complaints.indexWhere((c) => c.id == complaintId);
+    if (idx > 0) {
+      final item = complaints.removeAt(idx);
+      complaints.insert(0, item);
+      notifyListeners();
+    }
+  }
+
+  // Gamification helpers
+  void addPoints(int pts) {
+    if (pts <= 0) return;
+    userPoints += pts;
+    notifyListeners();
+  }
+
+  bool claimReward(String rewardId, int cost) {
+    if (userPoints >= cost) {
+      userPoints -= cost;
+      if (!userBadges.contains(rewardId)) {
+        userBadges.add(rewardId);
+      }
+      notifyListeners();
+      return true;
+    }
+    return false;
+  }
+
+  void unlockBadge(String badgeId) {
+    if (badgeId.isEmpty) return;
+    if (!userBadges.contains(badgeId)) {
+      userBadges.add(badgeId);
+      notifyListeners();
+    }
   }
 
   Future<void> runDetection({required Uint8List imageBytes, required String fileName}) async {
