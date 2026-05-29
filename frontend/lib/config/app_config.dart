@@ -4,7 +4,7 @@ class AppConfig {
   static const String appName = 'RoadWatch AI';
   static const String baseUrl = String.fromEnvironment(
     'API_URL',
-    defaultValue: 'http://127.0.0.1:8001',
+    defaultValue: 'https://roadwatch-1-8gha.onrender.com',
   );
 
   static const Color dangerRed = Color(0xFFD64045);
