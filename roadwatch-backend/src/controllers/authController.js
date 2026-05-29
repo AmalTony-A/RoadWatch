@@ -96,6 +96,7 @@ const signup = asyncHandler(async (req, res) => {
 
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+  logger.info({ email: email?.toLowerCase?.().trim?.() || email, origin: req.headers.origin || '', requestId: req.requestId || '' }, 'login request received');
   const user = await User.findOne({ email: email.toLowerCase().trim() }).select('+password');
   if (!user) {
     logger.warn({ email }, 'login failed: user not found');

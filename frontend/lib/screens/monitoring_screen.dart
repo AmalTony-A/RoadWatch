@@ -36,14 +36,14 @@ class _MonitoringScreenState extends State<MonitoringScreen> {
       
       // Fetch dashboard stats
       if (_selectedTab == 'overview') {
-        _dashboardStats = await appState.api.get('/admin/dashboard-stats') ?? {};
+        _dashboardStats = await appState.api.get('/api/admin/dashboard-stats') ?? {};
       } else if (_selectedTab == 'activity') {
-        final res = await appState.api.get('/admin/activity-log?limit=100') ?? {};
+        final res = await appState.api.get('/api/admin/activity-log?limit=100') ?? {};
         _activityLog = res['activities'] ?? [];
       } else if (_selectedTab == 'system') {
-        _systemInfo = await appState.api.get('/admin/system-info') ?? {};
+        _systemInfo = await appState.api.get('/api/admin/system-info') ?? {};
       } else if (_selectedTab == 'complaints') {
-        _complaintsBreakdown = await appState.api.get('/admin/complaints-breakdown') ?? {};
+        _complaintsBreakdown = await appState.api.get('/api/admin/complaints-breakdown') ?? {};
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

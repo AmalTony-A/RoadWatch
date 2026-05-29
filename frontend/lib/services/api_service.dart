@@ -117,17 +117,21 @@ class ApiService {
     required String email,
     required String password,
   }) async {
+    final loginUri = _uri('/api/auth/login');
+    _log('Login request: $loginUri', error: {'email': email});
     final res = await _client
         .post(
-          _uri('/api/auth/login'),
+          loginUri,
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({'email': email, 'password': password}),
         )
         .timeout(_apiTimeout);
     final body = jsonDecode(res.body);
     if (res.statusCode == 200) {
+      _log('Login successful: ${res.statusCode}');
       return body as Map<String, dynamic>;
     }
+    _log('Login failed: ${res.statusCode}', error: body);
     throw Exception((body as Map)['message'] ?? 'Login failed');
   }
 
@@ -734,7 +738,7 @@ class ApiService {
       if (res.statusCode == 200) {
         return jsonDecode(res.body) as Map<String, dynamic>;
       }
-      _log('GET $path returned status ${res.statusCode}');
+      _log('GET $path returned status ${res.statusCode}', error: res.body);
     } catch (e) {
       _log('GET $path failed', error: e);
     }

@@ -1,4 +1,5 @@
 const AppError = require('../utils/AppError');
+const { logger } = require('../utils/logger');
 const { captureException } = require('../utils/observability');
 
 function notFound(_req, _res, next) {
@@ -7,6 +8,16 @@ function notFound(_req, _res, next) {
 
 function errorHandler(err, _req, res, _next) {
   const statusCode = err.statusCode || 500;
+  if (logger && (statusCode >= 400)) {
+    logger.error(
+      {
+        statusCode,
+        message: err.message || 'Internal server error',
+        name: err.name,
+      },
+      'request failed'
+    );
+  }
   if (statusCode >= 500) {
     captureException(err, { statusCode });
   }

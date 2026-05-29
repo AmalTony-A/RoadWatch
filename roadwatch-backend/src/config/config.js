@@ -26,6 +26,7 @@ const config = {
     'http://localhost:4173',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:4173',
+    'https://amaltony-a.github.io',
   ]),
   uploadDir: process.env.UPLOAD_DIR || 'uploads',
   monitorAllowInsecure: String(process.env.MONITOR_ALLOW_INSECURE || 'false') === 'true',
