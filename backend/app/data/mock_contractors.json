@@ -1,0 +1,137 @@
+[
+  {
+    "id": "con-001",
+    "name": "Metro CivilWorks Pvt Ltd",
+    "company": "Metro Construction",
+    "project_status": "Active",
+    "overall_rating": 3.8,
+    "total_reviews": 24,
+    "trusted_badge": "silver",
+    "public_transparency_score": 72.5,
+    "complaint_count": 3,
+    "roads_managed": ["road-001", "nh-45"],
+    "profile_image_url": "",
+    "reviews": [
+      {
+        "id": "rev-001",
+        "user_id": "user-001",
+        "user_name": "Arjun K",
+        "rating": 5,
+        "sentiment": "positive",
+        "review_text": "Excellent work on Sardar Patel Road. Great communication with residents.",
+        "emotion_emoji": "😊",
+        "timestamp": "2026-05-10T08:00:00Z"
+      },
+      {
+        "id": "rev-002",
+        "user_id": "user-002",
+        "user_name": "Priya S",
+        "rating": 4,
+        "sentiment": "positive",
+        "review_text": "Good progress on the repairs. Just need timely updates.",
+        "emotion_emoji": "😊",
+        "timestamp": "2026-05-08T10:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": "con-002",
+    "name": "GVR Infra Projects",
+    "company": "GVR Construction",
+    "project_status": "Completed",
+    "overall_rating": 4.2,
+    "total_reviews": 31,
+    "trusted_badge": "gold",
+    "public_transparency_score": 85.3,
+    "complaint_count": 1,
+    "roads_managed": ["nh-136"],
+    "profile_image_url": "",
+    "reviews": [
+      {
+        "id": "rev-003",
+        "user_id": "user-003",
+        "user_name": "Deepak M",
+        "rating": 5,
+        "sentiment": "positive",
+        "review_text": "Outstanding quality work. Finished ahead of schedule.",
+        "emotion_emoji": "😍",
+        "timestamp": "2026-05-05T14:15:00Z"
+      }
+    ]
+  },
+  {
+    "id": "con-003",
+    "name": "Ramky Infrastructure",
+    "company": "Ramky Ltd",
+    "project_status": "In Progress",
+    "overall_rating": 3.5,
+    "total_reviews": 18,
+    "trusted_badge": "bronze",
+    "public_transparency_score": 65.2,
+    "complaint_count": 5,
+    "roads_managed": ["road-001"],
+    "profile_image_url": "",
+    "reviews": [
+      {
+        "id": "rev-004",
+        "user_id": "user-004",
+        "user_name": "Suresh K",
+        "rating": 3,
+        "sentiment": "neutral",
+        "review_text": "Work is ongoing. Some delays observed.",
+        "emotion_emoji": "😐",
+        "timestamp": "2026-05-09T11:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "con-004",
+    "name": "PNC Infratech Ltd",
+    "company": "PNC Group",
+    "project_status": "Completed",
+    "overall_rating": 4.6,
+    "total_reviews": 42,
+    "trusted_badge": "gold",
+    "public_transparency_score": 92.1,
+    "complaint_count": 0,
+    "roads_managed": ["nh-48"],
+    "profile_image_url": "",
+    "reviews": [
+      {
+        "id": "rev-005",
+        "user_id": "user-005",
+        "user_name": "Anita D",
+        "rating": 5,
+        "sentiment": "positive",
+        "review_text": "Exceptional service and quality. Highly recommend!",
+        "emotion_emoji": "😍",
+        "timestamp": "2026-05-12T09:45:00Z"
+      }
+    ]
+  },
+  {
+    "id": "con-005",
+    "name": "TechBuild Solutions",
+    "company": "TechBuild Inc",
+    "project_status": "Active",
+    "overall_rating": 3.9,
+    "total_reviews": 22,
+    "trusted_badge": "silver",
+    "public_transparency_score": 78.6,
+    "complaint_count": 2,
+    "roads_managed": ["road-002", "road-003"],
+    "profile_image_url": "",
+    "reviews": [
+      {
+        "id": "rev-006",
+        "user_id": "user-006",
+        "user_name": "Vijay R",
+        "rating": 4,
+        "sentiment": "positive",
+        "review_text": "Modern equipment and professional team.",
+        "emotion_emoji": "😊",
+        "timestamp": "2026-05-11T13:20:00Z"
+      }
+    ]
+  }
+]

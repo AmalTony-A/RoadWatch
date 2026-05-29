@@ -57,12 +57,12 @@ class _HoverRoadChipState extends State<HoverRoadChip> {
             borderRadius: widget.borderRadius,
             onTap: widget.onTap,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: Row(
                 children: [
                   if (widget.selected) ...[
-                    const Icon(Icons.check_rounded, size: 16, color: AppConfig.deepNavy),
-                    const SizedBox(width: 6),
+                    const Icon(Icons.check_rounded, size: 13, color: AppConfig.deepNavy),
+                    const SizedBox(width: 5),
                   ],
                   Expanded(
                     child: Text(
@@ -72,6 +72,7 @@ class _HoverRoadChipState extends State<HoverRoadChip> {
                       style: TextStyle(
                         color: widget.selected ? AppConfig.deepNavy : AppConfig.skySlate,
                         fontWeight: FontWeight.w700,
+                        fontSize: 14,
                       ),
                     ),
                   ),

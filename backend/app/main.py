@@ -1,6 +1,7 @@
 from pathlib import Path
+from datetime import datetime, UTC
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse
@@ -20,6 +21,23 @@ app = FastAPI(
         "complaint automation, and risk prediction"
     ),
 )
+
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    try:
+        origin = request.headers.get('origin', '')
+        length = request.headers.get('content-length', '0')
+        path = request.url.path
+        log_dir = Path(__file__).resolve().parents[2] / 'logs'
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_file = log_dir / 'requests.log'
+        with log_file.open('a', encoding='utf-8') as f:
+            f.write(f"{datetime.now(UTC).isoformat()}\t{request.method}\t{path}\torigin={origin}\tlen={length}\n")
+    except Exception:
+        pass
+    response = await call_next(request)
+    return response
 
 app.add_middleware(
     CORSMiddleware,

@@ -44,6 +44,11 @@ class DetectionScore {
 class DetectionResult {
   final String imageId;
   final String? roadId;
+  final bool detected;
+  final String? damageType;
+  final int confidence;
+  final String message;
+  final String explanation;
   final List<DetectionBox> detections;
   final String model;
   final int inferenceMs;
@@ -57,6 +62,11 @@ class DetectionResult {
   const DetectionResult({
     required this.imageId,
     required this.roadId,
+    required this.detected,
+    required this.damageType,
+    required this.confidence,
+    required this.message,
+    required this.explanation,
     required this.detections,
     required this.model,
     required this.inferenceMs,
@@ -69,17 +79,40 @@ class DetectionResult {
   });
 
   factory DetectionResult.fromJson(Map<String, dynamic> json) {
+    List<DetectionBox> parseDetections(dynamic value) {
+      if (value is List) {
+        return value
+            .whereType<Map>()
+            .map((e) => DetectionBox.fromJson(Map<String, dynamic>.from(e)))
+            .toList();
+      }
+      return const <DetectionBox>[];
+    }
+
+    int asInt(dynamic value, {int fallback = 0}) {
+      if (value is int) return value;
+      if (value is num) return value.toInt();
+      return int.tryParse(value?.toString() ?? '') ?? fallback;
+    }
+
     return DetectionResult(
       imageId: json['image_id'] as String,
       roadId: json['road_id'] as String?,
-      detections: (json['detections'] as List<dynamic>)
-          .map((e) => DetectionBox.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      detected: json['detected'] as bool? ?? false,
+      damageType: json['damageType'] as String? ?? json['damage_type'] as String?,
+      confidence: asInt(json['confidence']),
+      message: json['message']?.toString() ?? '',
+      explanation: json['explanation']?.toString() ?? '',
+      detections: parseDetections(json['detections']),
       model: json['model'] as String,
-      inferenceMs: json['inference_ms'] as int,
-        imageWidth: (json['image_width'] as num?)?.toInt() ?? 640,
-        imageHeight: (json['image_height'] as num?)?.toInt() ?? 360,
-      score: DetectionScore.fromJson(json['score'] as Map<String, dynamic>),
+      inferenceMs: asInt(json['inference_ms']),
+      imageWidth: (json['image_width'] as num?)?.toInt() ?? 640,
+      imageHeight: (json['image_height'] as num?)?.toInt() ?? 360,
+      score: DetectionScore.fromJson((json['score'] as Map<String, dynamic>?) ?? const <String, dynamic>{
+        'road_health_score': 0,
+        'color': 'green',
+        'severity_breakdown': <String, dynamic>{},
+      }),
       sceneStatus: json['scene_status'] as String?,
       sceneMessage: json['scene_message'] as String?,
       needsReupload: json['needs_reupload'] as bool? ?? false,

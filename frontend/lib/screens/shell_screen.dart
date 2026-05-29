@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../config/app_config.dart';
@@ -16,6 +16,7 @@ import '../features/maintenance/maintenance_scheduler_screen.dart';
 import '../features/statistics/statistics_screen.dart';
 import '../screens/contractors_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/login_screen.dart';
 
 class ShellScreen extends StatefulWidget {
   const ShellScreen({super.key});
@@ -266,6 +267,43 @@ class _Sidebar extends StatelessWidget {
           _SidebarItem(icon: Icons.person_rounded, label: 'Contractors', selected: currentIndex == 9, onTap: () => onDestinationSelected(9)),
           _SidebarItem(icon: Icons.trending_up_rounded, label: 'Budget', selected: currentIndex == 10, onTap: () => onDestinationSelected(10)),
           _SidebarItem(icon: Icons.emoji_events_rounded, label: 'Gamification', selected: currentIndex == 11, onTap: () => onDestinationSelected(11)),
+          const SizedBox(height: 12),
+          const Divider(height: 1),
+          const SizedBox(height: 12),
+          // Logout button
+          Material(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(14),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(14),
+              onTap: () async {
+                await context.read<AppState>().logout();
+                if (!context.mounted) return;
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (_) => const LoginScreen()),
+                  (_) => false,
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                child: Row(
+                  children: [
+                    Icon(Icons.logout_rounded, size: 20,
+                        color: Theme.of(context).colorScheme.error.withValues(alpha: 0.8)),
+                    const SizedBox(width: 12),
+                    Text(
+                      'Logout',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).colorScheme.error.withValues(alpha: 0.8),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
         ),
       ),

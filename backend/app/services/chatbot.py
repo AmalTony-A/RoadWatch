@@ -96,7 +96,13 @@ class CivicChatbotService:
                     response = self.google_model.generate_content(prompt)
                     answer = getattr(response, "text", None) or "No response generated."
                     cited_data["llm"] = "google"
-                    return {"answer": answer, "cited_data": cited_data}
+                    return {
+                        "answer": answer,
+                        "cited_data": cited_data,
+                        "source": "llm",
+                        "llm": "google",
+                        "confidence": None,
+                    }
                 except Exception as exc:
                     google_error = self._safe_error(exc)
                     logger.exception("Google chat failed; falling back.")
@@ -124,7 +130,13 @@ class CivicChatbotService:
                     )
                     answer = response.choices[0].message.content or "No response generated."
                     cited_data["llm"] = "groq"
-                    return {"answer": answer, "cited_data": cited_data}
+                    return {
+                        "answer": answer,
+                        "cited_data": cited_data,
+                        "source": "llm",
+                        "llm": "groq",
+                        "confidence": None,
+                    }
                 except Exception as exc:
                     groq_error = self._safe_error(exc)
                     logger.exception("Groq chat failed; falling back.")
@@ -152,7 +164,13 @@ class CivicChatbotService:
                     )
                     answer = response.choices[0].message.content or "No response generated."
                     cited_data["llm"] = "openai"
-                    return {"answer": answer, "cited_data": cited_data}
+                    return {
+                        "answer": answer,
+                        "cited_data": cited_data,
+                        "source": "llm",
+                        "llm": "openai",
+                        "confidence": None,
+                    }
                 except Exception as exc:
                     openai_error = self._safe_error(exc)
                     logger.exception("OpenAI chat failed; falling back.")
@@ -165,13 +183,22 @@ class CivicChatbotService:
                     cited_data["groq_error"] = groq_error
                 if openai_error:
                     cited_data["openai_error"] = openai_error
-            return {"answer": answer, "cited_data": cited_data}
+            return {
+                "answer": answer,
+                "cited_data": cited_data,
+                "source": "rule-based",
+                "llm": None,
+                "confidence": None,
+            }
         except Exception as exc:
             logger.exception("Chat assistant failed; returning fallback.")
             answer = self._fallback_answer(query, road, budget, complaints)
             return {
                 "answer": answer,
                 "cited_data": {"llm_error": self._safe_error(exc)},
+                "source": "error",
+                "llm": None,
+                "confidence": None,
             }
 
     @staticmethod

@@ -191,3 +191,87 @@ def clear_activity_log():
     global _activity_log
     _activity_log = []
     return {"status": "cleared", "timestamp": datetime.now(UTC).isoformat()}
+
+
+# Chat log management endpoints
+from pathlib import Path
+import json
+
+
+def _chat_log_path() -> Path:
+    return Path(__file__).resolve().parents[2] / "logs" / "chat_history.jsonl"
+
+
+def _read_chat_logs() -> list[dict]:
+    path = _chat_log_path()
+    if not path.exists():
+        return []
+    entries = []
+    with path.open("r", encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                entries.append(json.loads(line))
+            except Exception:
+                # skip malformed lines
+                continue
+    return entries
+
+
+def _write_chat_logs(entries: list[dict]):
+    path = _chat_log_path()
+    with path.open("w", encoding="utf-8") as fh:
+        for e in entries:
+            fh.write(json.dumps(e, ensure_ascii=False) + "\n")
+
+
+@router.get("/chat-logs")
+def list_chat_logs(skip: int = 0, limit: int = 100):
+    logs = _read_chat_logs()
+    total = len(logs)
+    slice_ = logs[skip : skip + limit]
+    return {"total": total, "skip": skip, "limit": limit, "items": slice_}
+
+
+@router.get("/chat-logs/{index}")
+def get_chat_log(index: int):
+    logs = _read_chat_logs()
+    if index < 0 or index >= len(logs):
+        return {"error": "not found"}
+    return logs[index]
+
+
+@router.post("/chat-logs/{index}/redact")
+def redact_chat_log(index: int, payload: dict):
+    """Redact fields in a chat log entry. Payload: {"fields": ["history","origin"]} """
+    fields = payload.get("fields") if isinstance(payload, dict) else None
+    if not fields:
+        fields = ["history", "origin"]
+    logs = _read_chat_logs()
+    if index < 0 or index >= len(logs):
+        return {"error": "not found"}
+    entry = logs[index]
+    for f in fields:
+        if f in entry:
+            entry[f] = "<redacted>"
+    # also redact nested response history
+    if "response" in entry and isinstance(entry["response"], dict):
+        resp = entry["response"]
+        for f in fields:
+            if f in resp:
+                resp[f] = "<redacted>"
+    logs[index] = entry
+    _write_chat_logs(logs)
+    return {"status": "redacted", "index": index}
+
+
+@router.delete("/chat-logs/{index}")
+def delete_chat_log(index: int):
+    logs = _read_chat_logs()
+    if index < 0 or index >= len(logs):
+        return {"error": "not found"}
+    entry = logs.pop(index)
+    _write_chat_logs(logs)
+    return {"status": "deleted", "index": index, "entry": entry}

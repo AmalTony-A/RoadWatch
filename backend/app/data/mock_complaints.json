@@ -3872,5 +3872,92 @@
         "note": "Complaint auto-filed from RoadWatch AI"
       }
     ]
+  },
+  {
+    "id": "cmp-2026-0122",
+    "road_id": "road-014",
+    "description": "AI detected 1 issues with score 91/100.",
+    "image_ref": "987730f27d9942b2ad70df92d95cfcd0.jpg",
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-15T12:17:18.594518+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12818",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Butt Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Butt Road in Guindy. User report: AI detected 1 issues with score 91/100.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-15T12:17:18.594518+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0123",
+    "road_id": "road-014",
+    "description": "AI detected 1 issues with score 91/100.",
+    "image_ref": "987730f27d9942b2ad70df92d95cfcd0.jpg",
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-15T12:17:37.372862+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12846",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Butt Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Butt Road in Guindy. User report: AI detected 1 issues with score 91/100.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-15T12:17:37.372862+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
+  },
+  {
+    "id": "cmp-2026-0124",
+    "road_id": "road-001",
+    "description": "AI detected 2 issues with score 76/100.",
+    "image_ref": "demo_pothole_1.svg",
+    "location": {
+      "lat": 12.9946,
+      "lng": 80.2371
+    },
+    "timestamp": "2026-05-20T06:14:57.266722+00:00",
+    "status": "Filed",
+    "authority_ticket": "CCMC-12010",
+    "recommended_department": "Greater Chennai Corporation - Zonal Engineering Office",
+    "routing_reason": "The ward falls under a civic zone, so the zonal engineering office should process it.",
+    "complaint_letter": "To: Greater Chennai Corporation - Zonal Engineering Office\nSubject: Road complaint for Kottur Gardens Road\n\nDear Sir/Madam,\n\nRoadWatch AI reports a complaint for Kottur Gardens Road in Adyar. User report: AI detected 2 issues with score 76/100.\n\nPlease inspect the road and confirm action taken.\n\nRegards,\nRoadWatch AI Civic Reporter",
+    "sent_to_authority": false,
+    "delivered_to_authority": false,
+    "read_by_authority": false,
+    "sent_at": null,
+    "delivered_at": null,
+    "read_at": null,
+    "timeline": [
+      {
+        "status": "Filed",
+        "at": "2026-05-20T06:14:57.266722+00:00",
+        "note": "Complaint auto-filed from RoadWatch AI"
+      }
+    ]
   }
 ]

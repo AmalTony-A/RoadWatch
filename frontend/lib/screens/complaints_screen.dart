@@ -112,7 +112,7 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
     final effectiveDistrict = _selectedDistrict == 'AUTO'
         ? (appState.liveSuggestedDistrict ?? 'AUTO')
         : _selectedDistrict;
-    final roadOptions = appState.searchRoadsForDistrict(effectiveDistrict, '');
+    final roadOptions = appState.roadsForDistrict(effectiveDistrict);
     final selectedRoad = appState.selectedRoadNetwork;
     final liveDistrict = appState.liveSuggestedDistrict;
 
@@ -220,7 +220,7 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
-                color: theme.cardTheme.shadowColor ?? Colors.black.withOpacity(0.05),
+                color: theme.cardTheme.shadowColor ?? Colors.black.withValues(alpha: 0.05),
                 blurRadius: 18,
                 offset: const Offset(0, 8),
               ),
@@ -304,14 +304,24 @@ class _ComplaintsScreenState extends State<ComplaintsScreen> {
                       ),
                     )
                     .toList(growable: false),
-                onChanged: (value) {
+                onChanged: (value) async {
                   if (value == null) {
                     return;
                   }
                   final nextDistrict = value;
-                  final nextRoadOptions = appState.searchRoadsForDistrict(nextDistrict == 'AUTO' ? (liveDistrict ?? 'AUTO') : nextDistrict, '');
+                  // Update UI immediately for responsiveness
                   setState(() {
                     _selectedDistrict = nextDistrict;
+                    _selectedRoadKey = null;
+                  });
+
+                  final effectiveDistrict = nextDistrict == 'AUTO' ? (liveDistrict ?? '') : nextDistrict;
+                  if (effectiveDistrict.isEmpty) {
+                    return;
+                  }
+
+                  final nextRoadOptions = await appState.loadRoadsForDistrict(effectiveDistrict);
+                  setState(() {
                     _selectedRoadKey = nextRoadOptions.isNotEmpty ? _roadUniqueKey(nextRoadOptions.first) : null;
                   });
                   if (nextRoadOptions.isNotEmpty) {
@@ -487,7 +497,7 @@ class _CountCard extends StatelessWidget {
         border: Border.all(color: color.withValues(alpha: 0.12)),
         boxShadow: [
           BoxShadow(
-            color: theme.cardTheme.shadowColor ?? Colors.black.withOpacity(0.04),
+            color: theme.cardTheme.shadowColor ?? Colors.black.withValues(alpha: 0.04),
             blurRadius: 14,
             offset: const Offset(0, 6),
           ),
@@ -578,7 +588,7 @@ class _ComplaintTrackerCard extends StatelessWidget {
         border: Border.all(color: theme.dividerTheme.color ?? theme.colorScheme.onSurface.withValues(alpha: 0.12)),
         boxShadow: [
           BoxShadow(
-            color: theme.cardTheme.shadowColor ?? Colors.black.withOpacity(0.05),
+            color: theme.cardTheme.shadowColor ?? Colors.black.withValues(alpha: 0.05),
             blurRadius: 18,
             offset: const Offset(0, 8),
           ),

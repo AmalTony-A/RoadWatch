@@ -49,7 +49,7 @@ Response:
       "bbox": [102, 188, 254, 318]
     }
   ],
-  "model": "demo-mock-detector",
+  "model": "gemini-2.5-flash",
   "inference_ms": 510,
   "score": {
     "road_health_score": 85,

@@ -7,6 +7,8 @@ class LocalStorageService {
   static const _pendingDetectionsKey = 'pending_detections';
   static const _lastKnownLocationKey = 'last_known_location';
   static const _lastScreenIndexKey = 'last_screen_index';
+  static const _tokenKey = 'rw_token';
+  static const _userKey = 'rw_user';
 
   Future<List<Map<String, dynamic>>> getPendingComplaints() async {
     final prefs = await SharedPreferences.getInstance();
@@ -96,5 +98,51 @@ class LocalStorageService {
   Future<int> getLastScreenIndex() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getInt(_lastScreenIndexKey) ?? 0;
+  }
+
+  // ── Auth token ────────────────────────────────────────────────────────────
+
+  Future<String?> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_tokenKey);
+  }
+
+  Future<void> saveToken(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_tokenKey, token);
+  }
+
+  Future<void> clearToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_tokenKey);
+  }
+
+  // ── User payload ──────────────────────────────────────────────────────────
+
+  Future<Map<String, dynamic>?> getUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getString(_userKey);
+    if (raw == null || raw.isEmpty) return null;
+    try {
+      return jsonDecode(raw) as Map<String, dynamic>;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<void> saveUser(Map<String, dynamic> user) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_userKey, jsonEncode(user));
+  }
+
+  Future<void> clearUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_userKey);
+  }
+
+  /// Clears both token and user — call on logout.
+  Future<void> clearAuth() async {
+    await clearToken();
+    await clearUser();
   }
 }

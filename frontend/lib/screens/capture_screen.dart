@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -22,12 +21,12 @@ class _CaptureScreenState extends State<CaptureScreen> {
   final ImagePicker _picker = ImagePicker();
   Uint8List? _selectedImageBytes;
   String? _selectedImageName;
-  String? _selectedDemoAsset;
   String? _selectedRoadKey;
   bool _busy = false;
   String _selectedDistrict = 'ALL';
   String _roadSearchQuery = '';
   bool _autoDistrictApplied = false;
+  int _visibleRoadCount = 10;
 
   String _roadUniqueKey(RoadNetworkItem road) {
     final id = road.id.trim();
@@ -77,11 +76,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
   RoadNetworkItem? _selectedRoad(AppState appState) {
     final key = _selectedRoadKey;
     if (key != null) {
-      for (final road in appState.roadNetwork) {
-        if (_roadUniqueKey(road) == key) {
-          return road;
-        }
-      }
+      return appState.networkRoadByUniqueKey(key);
     }
     return appState.selectedRoadNetwork;
   }
@@ -89,11 +84,12 @@ class _CaptureScreenState extends State<CaptureScreen> {
   Future<void> _pickImage(ImageSource source) async {
     final xfile = await _picker.pickImage(source: source, maxWidth: 2048);
     if (xfile == null) return;
+    if (!mounted) return;
     final bytes = await xfile.readAsBytes();
+    if (!mounted) return;
     setState(() {
       _selectedImageBytes = bytes;
       _selectedImageName = xfile.name;
-      _selectedDemoAsset = null;
     });
     await _runDetectionIfReady(context.read<AppState>());
   }
@@ -122,21 +118,6 @@ class _CaptureScreenState extends State<CaptureScreen> {
     }
   }
 
-  Future<void> _runDemo(String imageId) async {
-    setState(() {
-      _selectedImageBytes = null;
-      _selectedImageName = null;
-      _selectedDemoAsset = 'assets/demo/$imageId';
-      _busy = true;
-    });
-    await context.read<AppState>().runDemoDetection(imageId);
-    if (mounted) {
-      setState(() {
-        _busy = false;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final appState = context.watch<AppState>();
@@ -144,13 +125,15 @@ class _CaptureScreenState extends State<CaptureScreen> {
     _syncLiveDistrict(appState);
     final selectedRoad = _selectedRoad(appState);
     final filteredRoads = _filteredRoads(appState);
-    final districtOptions = ['ALL', ...appState.roadNetworkDistricts];
+    final districtOptions = <String>{'ALL', ...appState.roadNetworkDistricts, _selectedDistrict}
+      .where((value) => value.trim().isNotEmpty)
+      .toList()
+      ..sort();
     final analysisMessage = detection == null
       ? null
-      : detection.sceneMessage ??
-        (detection.detections.isEmpty
-          ? 'No visible road issue detected. Please reupload a clearer road photo.'
-          : 'Road issue detected.');
+      : detection.message.isNotEmpty
+          ? detection.message
+          : detection.sceneMessage ?? 'Detection complete.';
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 120),
@@ -278,7 +261,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
                 children: [
                   Expanded(
                     child: DropdownButtonFormField<String>(
-                      value: _selectedDistrict,
+                      initialValue: _selectedDistrict,
                       decoration: InputDecoration(
                         labelText: 'District',
                         filled: true,
@@ -297,16 +280,22 @@ class _CaptureScreenState extends State<CaptureScreen> {
                           )
                           .toList(),
                       onChanged: (value) async {
-                        if (value == null) {
-                          return;
-                        }
-                        final nextRoads = appState.roadsForDistrict(value);
+                        if (value == null) return;
+                        // Update UI selection immediately so the district appears
+                        // selected while we fetch roads for it.
                         setState(() {
                           _selectedDistrict = value;
                           _roadSearchQuery = '';
-                          _selectedRoadKey = nextRoads.isNotEmpty ? _roadUniqueKey(nextRoads.first) : null;
+                          _selectedRoadKey = null;
                           _autoDistrictApplied = true;
+                          _visibleRoadCount = 10;
                         });
+
+                        final nextRoads = await appState.loadRoadsForDistrict(value);
+                        setState(() {
+                          _selectedRoadKey = nextRoads.isNotEmpty ? _roadUniqueKey(nextRoads.first) : _selectedRoadKey;
+                        });
+
                         if (nextRoads.isNotEmpty) {
                           appState.selectRoadNetworkItem(nextRoads.first);
                           await _runDetectionIfReady(appState);
@@ -347,48 +336,74 @@ class _CaptureScreenState extends State<CaptureScreen> {
                     border: Border.all(color: AppConfig.safeGreen.withValues(alpha: 0.18)),
                   ),
                   child: Text(
-                    'Live location suggests ${appState.liveSuggestedDistrict}; the road list is pre-filtered for you.',
+                    'Live location suggests ${appState.liveSuggestedDistrict}; the road list is filtered for that district.',
                     style: const TextStyle(color: AppConfig.deepNavy, fontWeight: FontWeight.w600),
                   ),
                 ),
               const SizedBox(height: 12),
-              if (_selectedDistrict == 'ALL')
+              if (_selectedDistrict == 'ALL' && appState.liveSuggestedDistrict == null)
                 const Text(
-                  'All roads are shown below. Pick a district to narrow the list.',
+                  'Select district to load roads for this area.',
                   style: TextStyle(color: AppConfig.skySlate),
                 ),
               const SizedBox(height: 12),
-              if (filteredRoads.isEmpty)
+              if (appState.isLoadingRoadsForDistrict(_selectedDistrict))
+                const Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(12),
+                    child: CircularProgressIndicator(),
+                  ),
+                )
+              else if (filteredRoads.isEmpty)
                 const Text(
-                  'No roads match your search in this district.',
+                  'Select a district to load roads.',
                   style: TextStyle(color: AppConfig.skySlate),
                 )
                 else
                 LayoutBuilder(builder: (context, constraints) {
                   final spacing = 12.0;
-                  final itemWidth = (constraints.maxWidth - spacing) / 2;
+                  final columns = constraints.maxWidth > 700 ? 2 : 1;
                   final selectedKey = _selectedRoadKey ?? (selectedRoad != null ? _roadUniqueKey(selectedRoad) : null);
-                  return Wrap(
-                    spacing: spacing,
-                    runSpacing: spacing,
-                    children: filteredRoads
-                        .map(
-                          (road) => SizedBox(
-                            width: itemWidth,
-                            child: HoverRoadChip(
-                              label: road.name,
-                              selected: selectedKey == _roadUniqueKey(road),
-                              onTap: () {
-                                _selectRoad(appState, road);
-                                _runDetectionIfReady(appState);
-                              },
-                              borderRadius: BorderRadius.circular(999),
-                            ),
-                          ),
-                        )
-                        .toList(),
+                  final visibleRoads = filteredRoads.take(_visibleRoadCount).toList(growable: false);
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: columns,
+                      mainAxisSpacing: spacing,
+                      crossAxisSpacing: spacing,
+                      childAspectRatio: 8.8,
+                    ),
+                    itemCount: visibleRoads.length,
+                    itemBuilder: (context, idx) {
+                      final road = visibleRoads[idx];
+                      return HoverRoadChip(
+                        label: road.name,
+                        selected: selectedKey == _roadUniqueKey(road),
+                        onTap: () {
+                          _selectRoad(appState, road);
+                          _runDetectionIfReady(appState);
+                        },
+                        borderRadius: BorderRadius.circular(999),
+                      );
+                    },
                   );
                 }),
+              if (filteredRoads.length > _visibleRoadCount || appState.hasMoreRoadsForDistrict(_selectedDistrict))
+                Center(
+                  child: TextButton.icon(
+                    onPressed: () async {
+                      if (_selectedDistrict != 'ALL') {
+                        await appState.loadMoreRoadsForDistrict(_selectedDistrict);
+                      }
+                      setState(() {
+                        _visibleRoadCount += 10;
+                      });
+                    },
+                    icon: const Icon(Icons.expand_more_rounded),
+                    label: const Text('Show More'),
+                  ),
+                ),
               if (selectedRoad != null) ...[
                 const SizedBox(height: 12),
                 Container(
@@ -415,42 +430,6 @@ class _CaptureScreenState extends State<CaptureScreen> {
                   ),
                 ),
               ],
-            ],
-          ),
-        ),
-        const SizedBox(height: 10),
-        Container(
-          padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(24),
-            boxShadow: [
-              BoxShadow(
-                color: AppConfig.deepNavy.withValues(alpha: 0.05),
-                blurRadius: 18,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Demo scenes',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: AppConfig.deepNavy),
-              ),
-              const SizedBox(height: 12),
-              SizedBox(
-                height: 120,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    _demoCard('demo_pothole_1.svg', 'Pothole Scene'),
-                    _demoCard('demo_crack_2.svg', 'Crack Scene'),
-                    _demoCard('demo_good_road.svg', 'Good Road'),
-                  ],
-                ),
-              ),
             ],
           ),
         ),
@@ -482,10 +461,10 @@ class _CaptureScreenState extends State<CaptureScreen> {
                   color: const Color(0xFF0D1B2A),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: (_selectedImageBytes == null && _selectedDemoAsset == null)
+                child: _selectedImageBytes == null
                     ? const Center(
                         child: Text(
-                          'No image selected yet.\nCapture, upload, or choose a demo scene.',
+                          'No image selected yet.\nCapture or upload a real road image.',
                           textAlign: TextAlign.center,
                           style: TextStyle(color: Color(0xFFB8C8D9)),
                         ),
@@ -494,14 +473,38 @@ class _CaptureScreenState extends State<CaptureScreen> {
                         borderRadius: BorderRadius.circular(20),
                         child: LayoutBuilder(
                           builder: (context, constraints) {
-                            final aspectRatio = detection != null
-                                ? detection.imageWidth / detection.imageHeight
+                            final imageWidth = detection?.imageWidth.toDouble() ?? 0;
+                            final imageHeight = detection?.imageHeight.toDouble() ?? 0;
+                            final aspectRatio = (imageWidth.isFinite &&
+                                    imageHeight.isFinite &&
+                                    imageWidth > 0 &&
+                                    imageHeight > 0)
+                                ? imageWidth / imageHeight
                                 : 16 / 9;
-                            var previewWidth = constraints.maxWidth;
-                            var previewHeight = previewWidth / aspectRatio;
-                            if (previewHeight > constraints.maxHeight) {
-                              previewHeight = constraints.maxHeight;
-                              previewWidth = previewHeight * aspectRatio;
+                            final safeAspectRatio = aspectRatio.isFinite && aspectRatio > 0 ? aspectRatio : 16 / 9;
+
+                            final maxWidth = constraints.maxWidth.isFinite && constraints.maxWidth > 0
+                                ? constraints.maxWidth
+                                : 320.0;
+                            final maxHeight = constraints.maxHeight.isFinite && constraints.maxHeight > 0
+                                ? constraints.maxHeight
+                                : 240.0;
+
+                            var previewWidth = maxWidth;
+                            var previewHeight = previewWidth / safeAspectRatio;
+                            if (!previewHeight.isFinite || previewHeight <= 0) {
+                              previewHeight = maxHeight;
+                              previewWidth = previewHeight * safeAspectRatio;
+                            } else if (previewHeight > maxHeight) {
+                              previewHeight = maxHeight;
+                              previewWidth = previewHeight * safeAspectRatio;
+                            }
+
+                            if (!previewWidth.isFinite || previewWidth <= 0) {
+                              previewWidth = maxWidth;
+                            }
+                            if (!previewHeight.isFinite || previewHeight <= 0) {
+                              previewHeight = maxHeight;
                             }
 
                             return Center(
@@ -516,52 +519,8 @@ class _CaptureScreenState extends State<CaptureScreen> {
                                         _selectedImageBytes!,
                                         fit: BoxFit.fill,
                                       )
-                                    else if (_selectedDemoAsset != null)
-                                      SvgPicture.asset(
-                                        _selectedDemoAsset!,
-                                        fit: BoxFit.fill,
-                                      ),
-                                    if (detection != null)
-                                      ...detection.detections.map((box) {
-                                        final sourceWidth = detection.imageWidth.toDouble();
-                                        final sourceHeight = detection.imageHeight.toDouble();
-                                        final x1 = box.bbox[0] / sourceWidth * previewWidth;
-                                        final y1 = box.bbox[1] / sourceHeight * previewHeight;
-                                        final x2 = box.bbox[2] / sourceWidth * previewWidth;
-                                        final y2 = box.bbox[3] / sourceHeight * previewHeight;
-                                        final color = box.severity == 'high'
-                                            ? AppConfig.dangerRed
-                                            : box.severity == 'medium'
-                                                ? AppConfig.cautionYellow
-                                                : AppConfig.safeGreen;
-                                        return Positioned(
-                                          left: x1,
-                                          top: y1,
-                                          width: (x2 - x1).clamp(24, previewWidth).toDouble(),
-                                          height: (y2 - y1).clamp(18, previewHeight).toDouble(),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              border: Border.all(color: color, width: 2),
-                                              borderRadius: BorderRadius.circular(8),
-                                            ),
-                                            child: Align(
-                                              alignment: Alignment.topLeft,
-                                              child: Container(
-                                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                                                color: color,
-                                                child: Text(
-                                                  '${box.label} ${box.severity}',
-                                                  style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 9,
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      }),
+                                    else
+                                      const ColoredBox(color: Color(0xFF0D1B2A)),
                                   ],
                                 ),
                               ),
@@ -603,13 +562,9 @@ class _CaptureScreenState extends State<CaptureScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  detection.sceneStatus == 'not_road'
-                      ? 'Please upload a clear road photo for analysis.'
-                      : detection.sceneStatus == 'no_issue'
-                          ? 'No road damage was found. Reupload a clearer image if the damage is still visible.'
-                          : detection.sceneStatus == 'uncertain'
-                              ? 'The image is not clear enough. Please retake and upload a sharper road photo.'
-                              : 'Road damage detected on the selected road.',
+                  detection.detected
+                      ? '${detection.damageType ?? 'Road damage'} detected with ${detection.confidence}% confidence.'
+                      : 'No damage detected.',
                   style: const TextStyle(color: AppConfig.skySlate),
                 ),
                 const SizedBox(height: 12),
@@ -618,60 +573,17 @@ class _CaptureScreenState extends State<CaptureScreen> {
                   style: const TextStyle(fontWeight: FontWeight.w700, color: AppConfig.deepNavy),
                 ),
                 const SizedBox(height: 8),
-                if (detection.sceneStatus == 'not_road')
-                  const Text(
-                    'This does not look like a road photo. Please upload a proper road image for analysis.',
-                    style: TextStyle(color: AppConfig.dangerRed, fontWeight: FontWeight.w700),
-                  )
-                else if (detection.sceneStatus == 'no_issue')
-                  const Text(
-                    'No road issue was found. If damage is visible, reupload a clearer photo.',
-                    style: TextStyle(color: AppConfig.cautionYellow, fontWeight: FontWeight.w700),
-                  )
-                else if (detection.detections.isEmpty)
-                  const Text('No potholes or cracks detected in this image.'),
-                ...detection.detections.map(
-                  (box) => Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF8FAFC),
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 10,
-                            width: 10,
-                            decoration: BoxDecoration(
-                              color: box.severity == 'high'
-                                  ? AppConfig.dangerRed
-                                  : box.severity == 'medium'
-                                      ? AppConfig.cautionYellow
-                                      : AppConfig.safeGreen,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Text(
-                              '${box.label.toUpperCase()} (${box.severity}) - confidence ${(box.confidence * 100).toStringAsFixed(0)}%',
-                              style: const TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                Text(
+                  detection.explanation.isNotEmpty ? detection.explanation : detection.message,
+                  style: const TextStyle(color: AppConfig.skySlate),
                 ),
                 const SizedBox(height: 8),
-                if (detection.sceneStatus == 'issue_detected' && detection.detections.isNotEmpty)
+                if (detection.detected)
                   ElevatedButton.icon(
                     onPressed: () {
                       context.read<AppState>().fileComplaint(
                             description:
-                                'AI detected ${detection.detections.length} issues with score ${detection.score.roadHealthScore}/100.',
+                                'AI detected ${detection.damageType ?? 'road damage'} with ${detection.confidence}% confidence.',
                             imageRef: detection.imageId,
                           );
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -683,7 +595,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
                   )
                 else
                   const Text(
-                    'Upload a proper road image with visible damage to generate a complaint.',
+                    'Upload a real road image with visible damage to generate a complaint.',
                     style: TextStyle(color: AppConfig.skySlate),
                   ),
               ],
@@ -696,57 +608,5 @@ class _CaptureScreenState extends State<CaptureScreen> {
     );
   }
 
-  Widget _demoCard(String imageId, String label) {
-    final selected = _selectedDemoAsset == 'assets/demo/$imageId';
-    return GestureDetector(
-      onTap: () => _runDemo(imageId),
-      child: Container(
-        width: 140,
-        margin: const EdgeInsets.only(right: 10),
-        decoration: BoxDecoration(
-          color: selected ? AppConfig.deepNavy : Colors.white,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-            color: selected ? AppConfig.deepNavy : const Color(0xFFDCE4EE),
-            width: selected ? 1.6 : 1,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: AppConfig.deepNavy.withValues(alpha: selected ? 0.12 : 0.05),
-              blurRadius: 12,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: ColoredBox(
-                    color: const Color(0xFFF8FAFC),
-                    child: Center(
-                      child: SvgPicture.asset('assets/demo/$imageId', fit: BoxFit.contain),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                label,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                  color: selected ? Colors.white : AppConfig.deepNavy,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // _demoCard removed (unused)
 }

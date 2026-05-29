@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoadWatch AI - Backend Dashboard</title>
+    <title>RoadWatch AI - System Monitor</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
     <style>
         * {
@@ -14,61 +14,63 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            background: #F8FAFC;
+            color: #243B53;
             line-height: 1.6;
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 24px;
         }
         
         header {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            background: linear-gradient(135deg, #102A43 0%, #1D4E89 100%);
+            padding: 32px 28px;
+            border-radius: 22px;
+            box-shadow: 0 12px 24px rgba(16, 42, 67, 0.16);
+            margin-bottom: 28px;
         }
         
         h1 {
-            font-size: 2em;
-            color: #667eea;
-            margin-bottom: 10px;
+            font-size: 2.2em;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 8px;
         }
         
         .header-subtitle {
-            color: #666;
-            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1em;
         }
         
         .tabs {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            border-bottom: 2px solid #eee;
+            gap: 12px;
+            margin-top: 24px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.14);
         }
         
         .tab-button {
             padding: 12px 24px;
             background: none;
             border: none;
-            font-size: 1em;
+            font-size: 0.95em;
+            font-weight: 600;
             cursor: pointer;
             border-bottom: 3px solid transparent;
             transition: all 0.3s;
-            color: #666;
+            color: rgba(255, 255, 255, 0.82);
         }
         
         .tab-button.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
+            color: #2A9D8F;
+            border-bottom-color: #2A9D8F;
         }
         
         .tab-button:hover {
-            color: #667eea;
+            color: #2A9D8F;
         }
         
         .tab-content {
@@ -81,60 +83,71 @@
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
         
         .stat-card {
             background: white;
-            padding: 24px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 28px;
+            border-radius: 22px;
+            box-shadow: 0 6px 12px rgba(16, 42, 67, 0.06);
+            border: 1px solid #D8E1EB;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            box-shadow: 0 12px 24px rgba(16, 42, 67, 0.12);
+            transform: translateY(-2px);
         }
         
         .stat-card h3 {
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 10px;
+            color: #243B53;
+            font-size: 0.85em;
+            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
+            font-weight: 600;
         }
         
         .stat-value {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #667eea;
+            font-size: 2.8em;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 4px;
         }
         
         .stat-subtext {
-            color: #999;
-            font-size: 0.85em;
-            margin-top: 8px;
+            color: #7A91A8;
+            font-size: 0.9em;
         }
         
         .chart-container {
             background: white;
-            padding: 24px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            padding: 28px;
+            border-radius: 22px;
+            box-shadow: 0 6px 12px rgba(16, 42, 67, 0.06);
+            border: 1px solid #D8E1EB;
+            margin-bottom: 28px;
             position: relative;
-            height: 400px;
+            height: 380px;
         }
         
         .activity-log {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 22px;
+            box-shadow: 0 6px 12px rgba(16, 42, 67, 0.06);
+            border: 1px solid #D8E1EB;
             overflow: hidden;
         }
         
         .activity-item {
-            padding: 16px 24px;
-            border-bottom: 1px solid #eee;
+            padding: 18px 28px;
+            border-bottom: 1px solid #D8E1EB;
             display: flex;
-            gap: 16px;
+            gap: 18px;
+            align-items: center;
         }
         
         .activity-item:last-child {
@@ -143,37 +156,42 @@
         
         .activity-type {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: 600;
-            min-width: 120px;
+            font-size: 0.75em;
+            font-weight: 700;
+            min-width: 100px;
             text-align: center;
         }
         
+        .activity-type.chat {
+            background: #E3F2FD;
+            color: #102A43;
+        }
+        
         .activity-type.complaint {
-            background: #fef3cd;
-            color: #856404;
+            background: #FFF3E0;
+            color: #F0A202;
         }
         
         .activity-type.detection {
-            background: #d1ecf1;
-            color: #0c5460;
+            background: #E0F2F1;
+            color: #2A9D8F;
         }
         
         .activity-type.prediction {
-            background: #d4edda;
-            color: #155724;
+            background: #E8F5E9;
+            color: #2A9D8F;
         }
         
         .activity-type.upload {
-            background: #e7d4f5;
-            color: #721c24;
+            background: #FCE4EC;
+            color: #D64045;
         }
         
         .activity-type.system {
-            background: #f8d7da;
-            color: #721c24;
+            background: #F3E5F5;
+            color: #D64045;
         }
         
         .activity-details {
@@ -181,61 +199,84 @@
         }
         
         .activity-desc {
-            font-weight: 500;
+            font-weight: 600;
+            color: #102A43;
             margin-bottom: 4px;
         }
         
         .activity-time {
-            color: #999;
-            font-size: 0.9em;
+            color: #7A91A8;
+            font-size: 0.85em;
         }
         
-        .refresh-button {
-            background: #667eea;
-            color: white;
-            border: none;
+        .btn {
             padding: 12px 24px;
-            border-radius: 6px;
+            border: none;
+            border-radius: 14px;
             cursor: pointer;
-            font-size: 1em;
-            transition: background 0.3s;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .refresh-button:hover {
-            background: #5568d3;
+        .btn-primary {
+            background: #102A43;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0D1E2E;
+            box-shadow: 0 8px 16px rgba(16, 42, 67, 0.16);
+        }
+        
+        .btn-danger {
+            background: #D64045;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #C23137;
         }
         
         .controls {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 24px;
+            align-items: center;
+            flex-wrap: wrap;
         }
         
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 20px;
         }
         
         .info-box {
             background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 28px;
+            border-radius: 22px;
+            box-shadow: 0 6px 12px rgba(16, 42, 67, 0.06);
+            border: 1px solid #D8E1EB;
         }
         
         .info-box h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
+            color: #102A43;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #D8E1EB;
+            padding-bottom: 12px;
+            font-size: 1.1em;
+            font-weight: 700;
         }
         
         .info-item {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
+            padding: 10px 0;
+            border-bottom: 1px solid #F0F4F8;
         }
         
         .info-item:last-child {
@@ -243,12 +284,42 @@
         }
         
         .info-label {
-            color: #666;
+            color: #7A91A8;
+            font-weight: 500;
         }
         
         .info-value {
+            font-weight: 700;
+            color: #102A43;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
             font-weight: 600;
-            color: #333;
+        }
+        
+        .status-badge.healthy {
+            background: #E8F5E9;
+            color: #2A9D8F;
+        }
+        
+        .status-badge.warning {
+            background: #FFF3E0;
+            color: #F0A202;
+        }
+        
+        .status-badge.error {
+            background: #FFEBEE;
+            color: #D64045;
+        }
+        
+        .last-updated {
+            color: #7A91A8;
+            font-size: 0.9em;
+            font-weight: 500;
         }
         
         @media (max-width: 768px) {
@@ -257,11 +328,15 @@
             }
             
             h1 {
-                font-size: 1.5em;
+                font-size: 1.6em;
             }
             
             .chart-container {
                 height: 300px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -269,48 +344,44 @@
 <body>
     <div class="container">
         <header>
-            <h1>🛣️ RoadWatch AI - Backend Dashboard</h1>
-            <p class="header-subtitle">Real-time system monitoring and activity tracking</p>
+            <h1>🛣️ RoadWatch AI</h1>
+            <p class="header-subtitle">System Monitoring Dashboard</p>
             
             <div class="tabs">
                 <button class="tab-button active" onclick="switchTab('dashboard')">Dashboard</button>
-                <button class="tab-button" onclick="switchTab('activity')">Activity Log</button>
+                <button class="tab-button" onclick="switchTab('chatlogs')">Chat Logs</button>
                 <button class="tab-button" onclick="switchTab('complaints')">Complaints</button>
-                <button class="tab-button" onclick="switchTab('system')">System Info</button>
+                <button class="tab-button" onclick="switchTab('system')">System</button>
             </div>
         </header>
         
         <!-- Dashboard Tab -->
         <div id="dashboard" class="tab-content active">
             <div class="controls">
-                <button class="refresh-button" onclick="refreshDashboard()">🔄 Refresh</button>
-                <span id="last-updated" style="color: white; align-self: center; margin-left: 20px;"></span>
+                <button class="btn btn-primary" onclick="refreshDashboard()">🔄 Refresh</button>
+                <span class="last-updated" id="last-updated"></span>
             </div>
             
             <div class="stats-grid">
                 <div class="stat-card">
                     <h3>Total Complaints</h3>
                     <div class="stat-value" id="total-complaints">0</div>
+                    <div class="stat-subtext" id="complaint-status">Loading...</div>
                 </div>
                 <div class="stat-card">
-                    <h3>Filed / In Progress</h3>
+                    <h3>Complaints Filed</h3>
                     <div class="stat-value" id="filed-complaints">0</div>
+                    <div class="stat-subtext">In Progress</div>
                 </div>
                 <div class="stat-card">
                     <h3>Sent to Authority</h3>
                     <div class="stat-value" id="sent-complaints">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>Delivered</h3>
-                    <div class="stat-value" id="delivered-complaints">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>Read by Authority</h3>
-                    <div class="stat-value" id="read-complaints">0</div>
+                    <div class="stat-subtext">Authority Status</div>
                 </div>
                 <div class="stat-card">
                     <h3>Total Roads</h3>
                     <div class="stat-value" id="total-roads">0</div>
+                    <div class="stat-subtext">Road Network</div>
                 </div>
             </div>
             
@@ -323,40 +394,39 @@
             </div>
         </div>
         
-        <!-- Activity Log Tab -->
-        <div id="activity" class="tab-content">
+        <!-- Chat Logs Tab -->
+        <div id="chatlogs" class="tab-content">
             <div class="controls">
-                <button class="refresh-button" onclick="refreshActivityLog()">🔄 Refresh</button>
-                <button class="refresh-button" style="background: #dc3545;" onclick="clearActivityLog()">Clear Log</button>
+                <button class="btn btn-primary" onclick="refreshChatLogs()">🔄 Refresh</button>
+                <span class="last-updated" id="chat-updated"></span>
             </div>
-            <div id="activity-container" class="activity-log"></div>
+            <div id="chatlogs-container" class="activity-log"></div>
         </div>
         
         <!-- Complaints Tab -->
         <div id="complaints" class="tab-content">
             <div class="controls">
-                <button class="refresh-button" onclick="refreshComplaints()">🔄 Refresh</button>
+                <button class="btn btn-primary" onclick="refreshComplaints()">🔄 Refresh</button>
             </div>
-            <div id="complaints-container"></div>
+            <div id="complaints-container" class="info-grid"></div>
         </div>
         
         <!-- System Info Tab -->
         <div id="system" class="tab-content">
             <div class="controls">
-                <button class="refresh-button" onclick="refreshSystemInfo()">🔄 Refresh</button>
+                <button class="btn btn-primary" onclick="refreshSystemInfo()">🔄 Refresh</button>
             </div>
-            <div id="system-container"></div>
+            <div id="system-container" class="info-grid"></div>
         </div>
     </div>
     
     <script>
         const API_BASE = 'http://localhost:8000';
-        let chartsInitialized = false;
         let complaintsChart = null;
         let activityChart = null;
+        let autoRefreshInterval = null;
         
         function switchTab(tabName) {
-            // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
@@ -364,15 +434,13 @@
                 btn.classList.remove('active');
             });
             
-            // Show selected tab
             document.getElementById(tabName).classList.add('active');
             event.target.classList.add('active');
             
-            // Load data for the tab
             if (tabName === 'dashboard') {
                 refreshDashboard();
-            } else if (tabName === 'activity') {
-                refreshActivityLog();
+            } else if (tabName === 'chatlogs') {
+                refreshChatLogs();
             } else if (tabName === 'complaints') {
                 refreshComplaints();
             } else if (tabName === 'system') {
@@ -380,28 +448,32 @@
             }
         }
         
-        function updateLastUpdated() {
-            const now = new Date().toLocaleTimeString();
-            document.getElementById('last-updated').textContent = `Last updated: ${now}`;
+        function updateLastUpdated(elementId = 'last-updated') {
+            const now = new Date().toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: true
+            });
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = `Last updated: ${now}`;
+            }
         }
         
         async function refreshDashboard() {
             try {
-                updateLastUpdated();
+                updateLastUpdated('last-updated');
                 const statsRes = await fetch(`${API_BASE}/admin/dashboard-stats`);
                 const stats = await statsRes.json();
                 
                 document.getElementById('total-complaints').textContent = stats.complaints.total;
                 document.getElementById('filed-complaints').textContent = stats.complaints.filed;
                 document.getElementById('sent-complaints').textContent = stats.complaints.sent;
-                document.getElementById('delivered-complaints').textContent = stats.complaints.delivered;
-                document.getElementById('read-complaints').textContent = stats.complaints.read;
                 document.getElementById('total-roads').textContent = stats.data_counts.road_network_items;
                 
-                // Update complaints chart
                 updateComplaintsChart(stats.complaints);
                 
-                // Update activity stats chart
                 const activityStatsRes = await fetch(`${API_BASE}/admin/activity-stats`);
                 const activityStats = await activityStatsRes.json();
                 updateActivityChart(activityStats);
@@ -422,15 +494,15 @@
                 data: {
                     labels: ['Filed', 'Sent', 'Delivered', 'Read'],
                     datasets: [{
-                        data: [data.filed, data.sent, data.delivered, data.read],
+                        data: [data.filed || 0, data.sent || 0, data.delivered || 0, data.read || 0],
                         backgroundColor: [
-                            '#ffc107',
-                            '#17a2b8',
-                            '#28a745',
-                            '#667eea'
+                            '#F0A202',
+                            '#102A43',
+                            '#2A9D8F',
+                            '#1D4E89'
                         ],
-                        borderColor: '#fff',
-                        borderWidth: 2
+                        borderColor: '#F8FAFC',
+                        borderWidth: 3
                     }]
                 },
                 options: {
@@ -438,11 +510,17 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            position: 'bottom'
+                            position: 'bottom',
+                            labels: {
+                                font: { weight: '600', size: 12 },
+                                color: '#243B53'
+                            }
                         },
                         title: {
                             display: true,
-                            text: 'Complaints Status Distribution'
+                            text: 'Complaints Status Distribution',
+                            font: { weight: '700', size: 14 },
+                            color: '#102A43'
                         }
                     }
                 }
@@ -456,8 +534,8 @@
                 activityChart.destroy();
             }
             
-            const types = Object.keys(data.by_type);
-            const counts = Object.values(data.by_type);
+            const types = Object.keys(data.by_type || {});
+            const counts = Object.values(data.by_type || {});
             
             activityChart = new Chart(ctx, {
                 type: 'bar',
@@ -466,9 +544,10 @@
                     datasets: [{
                         label: 'Activity Count',
                         data: counts,
-                        backgroundColor: '#667eea',
-                        borderColor: '#5568d3',
-                        borderWidth: 1
+                        backgroundColor: '#102A43',
+                        borderColor: '#1D4E89',
+                        borderWidth: 1,
+                        borderRadius: 8
                     }]
                 },
                 options: {
@@ -480,14 +559,28 @@
                         },
                         title: {
                             display: true,
-                            text: 'Activities by Type'
+                            text: 'Activities by Type',
+                            font: { weight: '700', size: 14 },
+                            color: '#102A43'
                         }
                     },
                     scales: {
                         y: {
                             beginAtZero: true,
                             ticks: {
-                                stepSize: 1
+                                stepSize: 1,
+                                color: '#7A91A8'
+                            },
+                            grid: {
+                                color: '#D8E1EB'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#7A91A8'
+                            },
+                            grid: {
+                                display: false
                             }
                         }
                     }
@@ -495,46 +588,48 @@
             });
         }
         
-        async function refreshActivityLog() {
+        async function refreshChatLogs() {
             try {
-                updateLastUpdated();
-                const res = await fetch(`${API_BASE}/admin/activity-log?limit=100`);
+                updateLastUpdated('chat-updated');
+                const res = await fetch(`${API_BASE}/admin/chat-logs?limit=50`);
                 const data = await res.json();
                 
-                const container = document.getElementById('activity-container');
-                if (data.activities.length === 0) {
-                    container.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">No activities logged yet</div>';
+                const container = document.getElementById('chatlogs-container');
+                if (!data.items || data.items.length === 0) {
+                    container.innerHTML = '<div style="padding: 60px 40px; text-align: center; color: #7A91A8; grid-column: 1/-1;">📭 No chat messages yet</div>';
                     return;
                 }
                 
-                container.innerHTML = data.activities.map(activity => `
+                container.innerHTML = data.items.map((entry, idx) => `
                     <div class="activity-item">
-                        <span class="activity-type ${activity.type.toLowerCase()}">${activity.type}</span>
+                        <span class="activity-type chat">💬 Chat</span>
                         <div class="activity-details">
-                            <div class="activity-desc">${activity.description}</div>
-                            <div class="activity-time">${new Date(activity.timestamp).toLocaleString()}</div>
+                            <div class="activity-desc">"${entry.query.substring(0, 60)}${entry.query.length > 60 ? '...' : ''}"</div>
+                            <div class="activity-time">${new Date(entry.timestamp).toLocaleString()}</div>
+                            <div style="font-size: 0.85em; color: #102A43; margin-top: 4px;">
+                                📍 Road: ${entry.road_id || 'N/A'} | 🤖 Source: ${entry.response.source || 'unknown'}
+                            </div>
                         </div>
                     </div>
                 `).join('');
             } catch (error) {
-                console.error('Error refreshing activity log:', error);
+                console.error('Error refreshing chat logs:', error);
+                document.getElementById('chatlogs-container').innerHTML = `<div style="padding: 40px; color: #D64045;">Error loading chat logs</div>`;
             }
         }
         
         async function refreshComplaints() {
             try {
-                updateLastUpdated();
                 const res = await fetch(`${API_BASE}/admin/complaints-breakdown`);
                 const data = await res.json();
                 
                 const container = document.getElementById('complaints-container');
                 
-                let html = '<div class="info-grid">';
+                let html = '';
                 
-                // Overall stats
                 html += `
                     <div class="info-box">
-                        <h3>Overall Statistics</h3>
+                        <h3>📊 Overall Statistics</h3>
                         <div class="info-item">
                             <span class="info-label">Total Complaints</span>
                             <span class="info-value">${data.total}</span>
@@ -542,9 +637,8 @@
                     </div>
                 `;
                 
-                // By status
-                if (Object.keys(data.by_status).length > 0) {
-                    html += '<div class="info-box"><h3>By Status</h3>';
+                if (Object.keys(data.by_status || {}).length > 0) {
+                    html += '<div class="info-box"><h3>📋 By Status</h3>';
                     for (const [status, count] of Object.entries(data.by_status)) {
                         html += `
                             <div class="info-item">
@@ -556,52 +650,47 @@
                     html += '</div>';
                 }
                 
-                // By sent status
                 html += `
                     <div class="info-box">
-                        <h3>Sent to Authority</h3>
+                        <h3>✈️ Sent to Authority</h3>
                         <div class="info-item">
                             <span class="info-label">Sent</span>
-                            <span class="info-value">${data.by_sent_status.sent}</span>
+                            <span class="info-value status-badge healthy">${data.by_sent_status?.sent || 0}</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Not Sent</span>
-                            <span class="info-value">${data.by_sent_status.not_sent}</span>
+                            <span class="info-value status-badge warning">${data.by_sent_status?.not_sent || 0}</span>
                         </div>
                     </div>
                 `;
                 
-                // By delivery
                 html += `
                     <div class="info-box">
-                        <h3>Delivery Status</h3>
+                        <h3>📦 Delivery Status</h3>
                         <div class="info-item">
                             <span class="info-label">Delivered</span>
-                            <span class="info-value">${data.by_delivery.delivered}</span>
+                            <span class="info-value status-badge healthy">${data.by_delivery?.delivered || 0}</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Not Delivered</span>
-                            <span class="info-value">${data.by_delivery.not_delivered}</span>
+                            <span class="info-value status-badge warning">${data.by_delivery?.not_delivered || 0}</span>
                         </div>
                     </div>
                 `;
                 
-                // By read
                 html += `
                     <div class="info-box">
-                        <h3>Read Status</h3>
+                        <h3>👁️ Read Status</h3>
                         <div class="info-item">
                             <span class="info-label">Read by Authority</span>
-                            <span class="info-value">${data.by_read.read}</span>
+                            <span class="info-value status-badge healthy">${data.by_read?.read || 0}</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Not Read</span>
-                            <span class="info-value">${data.by_read.not_read}</span>
+                            <span class="info-value status-badge error">${data.by_read?.not_read || 0}</span>
                         </div>
                     </div>
                 `;
-                
-                html += '</div>';
                 
                 container.innerHTML = html;
             } catch (error) {
@@ -611,73 +700,79 @@
         
         async function refreshSystemInfo() {
             try {
-                updateLastUpdated();
-                const sysRes = await fetch(`${API_BASE}/admin/system-info`);
-                const system = await sysRes.json();
+                const [sysRes, roadRes, healthRes] = await Promise.all([
+                    fetch(`${API_BASE}/admin/system-info`),
+                    fetch(`${API_BASE}/admin/road-network-stats`),
+                    fetch(`${API_BASE}/health`)
+                ]);
                 
-                const roadRes = await fetch(`${API_BASE}/admin/road-network-stats`);
+                const system = await sysRes.json();
                 const roads = await roadRes.json();
+                const health = await healthRes.json();
                 
                 const container = document.getElementById('system-container');
                 
-                let html = '<div class="info-grid">';
+                let html = '';
                 
+                const dbStatus = system.database_connected ? 'healthy' : 'error';
                 html += `
                     <div class="info-box">
-                        <h3>System Status</h3>
+                        <h3>🏥 System Status</h3>
+                        <div class="info-item">
+                            <span class="info-label">API Health</span>
+                            <span class="info-value"><span class="status-badge healthy">✓ Running</span></span>
+                        </div>
                         <div class="info-item">
                             <span class="info-label">Demo Mode</span>
-                            <span class="info-value">${system.demo_mode ? 'ON' : 'OFF'}</span>
+                            <span class="info-value">${system.demo_mode ? '✓ ON' : '✗ OFF'}</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Database</span>
                             <span class="info-value">${system.database_type}</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-label">Connected</span>
-                            <span class="info-value" style="color: ${system.database_connected ? '#28a745' : '#dc3545'};">
-                                ${system.database_connected ? '✓ Yes' : '✗ No'}
-                            </span>
+                            <span class="info-label">DB Connected</span>
+                            <span class="info-value"><span class="status-badge ${dbStatus}">${system.database_connected ? '✓ Yes' : '✗ No'}</span></span>
                         </div>
                     </div>
                 `;
                 
                 html += `
                     <div class="info-box">
-                        <h3>Data Sources</h3>
+                        <h3>📊 Data Overview</h3>
                         <div class="info-item">
                             <span class="info-label">Roads</span>
-                            <span class="info-value">${system.data_sources.roads}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Budgets</span>
-                            <span class="info-value">${system.data_sources.budgets}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Road Network</span>
-                            <span class="info-value">${system.data_sources.road_network}</span>
+                            <span class="info-value">${health.dataset_counts.roads}</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Complaints</span>
-                            <span class="info-value">${system.data_sources.complaints}</span>
+                            <span class="info-value">${health.dataset_counts.complaints}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Budgets</span>
+                            <span class="info-value">${health.dataset_counts.budgets}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Network Items</span>
+                            <span class="info-value">${health.dataset_counts.network_items}</span>
                         </div>
                     </div>
                 `;
                 
                 html += `
                     <div class="info-box">
-                        <h3>Road Network Statistics</h3>
+                        <h3>🛣️ Road Network Stats</h3>
                         <div class="info-item">
                             <span class="info-label">Total Roads</span>
                             <span class="info-value">${roads.total_roads}</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-label">Total Length (km)</span>
-                            <span class="info-value">${roads.total_length_km.toFixed(0)}</span>
+                            <span class="info-label">Total Length</span>
+                            <span class="info-value">${roads.total_length_km.toFixed(0)} km</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-label">Total Budget (Cr)</span>
-                            <span class="info-value">₹${roads.total_budget_crore.toFixed(0)}</span>
+                            <span class="info-label">Total Budget</span>
+                            <span class="info-value">₹${roads.total_budget_crore.toFixed(0)} Cr</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Districts</span>
@@ -686,20 +781,19 @@
                     </div>
                 `;
                 
-                if (roads.districts.length > 0) {
+                if (roads.districts && roads.districts.length > 0) {
                     html += `
                         <div class="info-box">
-                            <h3>Districts Covered</h3>
-                            ${roads.districts.map(d => `
+                            <h3>🗺️ Districts Covered</h3>
+                            ${roads.districts.slice(0, 8).map(d => `
                                 <div class="info-item">
                                     <span class="info-label">📍 ${d}</span>
                                 </div>
                             `).join('')}
+                            ${roads.districts.length > 8 ? `<div class="info-item" style="padding-top: 10px; border-top: 1px solid #D8E1EB; margin-top: 8px;"><span class="info-label">+ ${roads.districts.length - 8} more...</span></div>` : ''}
                         </div>
                     `;
                 }
-                
-                html += '</div>';
                 
                 container.innerHTML = html;
             } catch (error) {
@@ -707,29 +801,10 @@
             }
         }
         
-        async function clearActivityLog() {
-            if (!confirm('Are you sure you want to clear the activity log?')) {
-                return;
-            }
-            
-            try {
-                const res = await fetch(`${API_BASE}/admin/clear-activity-log`, {
-                    method: 'POST'
-                });
-                
-                if (res.ok) {
-                    alert('Activity log cleared');
-                    refreshActivityLog();
-                }
-            } catch (error) {
-                console.error('Error clearing activity log:', error);
-            }
-        }
-        
-        // Initial load
         window.addEventListener('load', () => {
             refreshDashboard();
-            setInterval(refreshDashboard, 30000); // Refresh every 30 seconds
+            // Auto-refresh every 30 seconds
+            autoRefreshInterval = setInterval(refreshDashboard, 30000);
         });
     </script>
 </body>

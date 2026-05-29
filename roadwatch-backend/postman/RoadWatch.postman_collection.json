@@ -1,0 +1,143 @@
+{
+  "info": {
+    "_postman_id": "f1d2bda6-1cf5-4d54-8c20-3e7efc4ff2d4",
+    "name": "RoadWatch Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "RoadWatch API collection for auth, reports, admin analytics, and Flutter compatibility routes."
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://127.0.0.1:8000" },
+    { "key": "token", "value": "" },
+    { "key": "reportId", "value": "" },
+    { "key": "resetToken", "value": "" },
+    { "key": "imageId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/signup", "host": ["{{baseUrl}}"], "path": ["api", "auth", "signup"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Demo User\" ,\n  \"email\": \"demo2@roadwatch.local\",\n  \"password\": \"User@12345\",\n  \"phone\": \"9876543210\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"demo@roadwatch.local\",\n  \"password\": \"User@12345\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/profile", "host": ["{{baseUrl}}"], "path": ["api", "auth", "profile"] }
+          }
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/forgot-password", "host": ["{{baseUrl}}"], "path": ["api", "auth", "forgot-password"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"demo@roadwatch.local\"\n}" }
+          }
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/reset-password", "host": ["{{baseUrl}}"], "path": ["api", "auth", "reset-password"] },
+            "body": { "mode": "raw", "raw": "{\n  \"token\": \"{{resetToken}}\",\n  \"newPassword\": \"User@12345\"\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Create Report",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/api/reports", "host": ["{{baseUrl}}"], "path": ["api", "reports"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Pothole near signal\",\n  \"description\": \"Deep pothole near the junction causing two-wheeler issues.\",\n  \"category\": \"Pothole\",\n  \"lat\": 12.99,\n  \"lng\": 80.23,\n  \"roadId\": \"road-001\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Reports",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/api/reports", "host": ["{{baseUrl}}"], "path": ["api", "reports"] }
+          }
+        },
+        {
+          "name": "Update Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": { "raw": "{{baseUrl}}/api/reports/{{reportId}}/status", "host": ["{{baseUrl}}"], "path": ["api", "reports", "{{reportId}}", "status"] },
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"In Progress\",\n  \"note\": \"Inspection scheduled\"\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/dashboard-stats", "host": ["{{baseUrl}}"], "path": ["api", "admin", "dashboard-stats"] }
+          }
+        },
+        {
+          "name": "Activity Log",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/activity-log?limit=50", "host": ["{{baseUrl}}"], "path": ["api", "admin", "activity-log"], "query": [{ "key": "limit", "value": "50" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Flutter Compatibility",
+      "item": [
+        { "name": "Health", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/health", "host": ["{{baseUrl}}"], "path": ["health"] } } },
+        { "name": "Road Data", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/get-road-data", "host": ["{{baseUrl}}"], "path": ["get-road-data"] } } },
+        { "name": "Budget Data", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/get-budget-data", "host": ["{{baseUrl}}"], "path": ["get-budget-data"] } } },
+        { "name": "Road Network", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/get-road-network-data", "host": ["{{baseUrl}}"], "path": ["get-road-network-data"] } } },
+        { "name": "Complaints", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/complaints", "host": ["{{baseUrl}}"], "path": ["complaints"] } } },
+        { "name": "Upload Image", "request": { "method": "POST", "body": { "mode": "formdata", "formdata": [ { "key": "file", "type": "file", "src": [] }, { "key": "road_id", "value": "road-001", "type": "text" } ] }, "url": { "raw": "{{baseUrl}}/upload-image", "host": ["{{baseUrl}}"], "path": ["upload-image"] } } },
+        { "name": "Generate Complaint", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/generate-complaint", "host": ["{{baseUrl}}"], "path": ["generate-complaint"] }, "body": { "mode": "raw", "raw": "{\n  \"road_id\": \"road-001\",\n  \"description\": \"Roadside potholes near the bus stop.\",\n  \"image_ref\": \"demo_pothole_1.jpg\",\n  \"location\": { \"lat\": 12.9946, \"lng\": 80.2371 }\n}" } } },
+        { "name": "Predict Risk", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/predict-risk", "host": ["{{baseUrl}}"], "path": ["predict-risk"] }, "body": { "mode": "raw", "raw": "{\n  \"road_id\": \"road-001\",\n  \"weather_index\": 0.8,\n  \"traffic_index\": 0.6,\n  \"complaint_count_30d\": 7\n}" } } }
+      ]
+    }
+  ]
+}

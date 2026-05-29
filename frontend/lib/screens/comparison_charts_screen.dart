@@ -20,25 +20,16 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
   @override
   Widget build(BuildContext context) {
     final appState = context.watch<AppState>();
-    final roads = appState.roadNetwork;
+    final districts = appState.roadNetworkDistricts;
 
-    // Get list of districts from roads
-    final districtSet = <String>{};
-    for (final road in roads) {
-      districtSet.addAll(road.districts);
-    }
-    final districts = districtSet.toList()..sort();
+    // Use cached aggregates from AppState to avoid heavy recompute.
+    final conditionData = appState.roadNetworkConditionCounts;
+    final typeComparison = appState.roadNetworkTypeCounts;
+    final yearComparison = appState.roadNetworkYearCounts;
 
-    // Calculate condition comparison
-    final conditionData = _getConditionComparison(roads);
-    final typeComparison = _getTypeComparison(roads);
-    final yearComparison = _getYearComparison(roads);
-
-    // Get district-specific data
+    // Get district-specific data (paged/cached) from AppState
     final selectedDistrict = districts.isNotEmpty ? districts[_selectedDistrictIndex % districts.length] : '';
-    final districtRoads = selectedDistrict.isEmpty
-        ? roads
-        : roads.where((r) => r.districts.contains(selectedDistrict)).toList();
+    final districtRoads = selectedDistrict.isEmpty ? appState.roadNetwork : appState.roadsForDistrict(selectedDistrict);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Comparison Analysis')),
@@ -83,13 +74,13 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
             children: [
               _StatCard(
                 'Total Roads',
-                '${roads.length}',
+                '${appState.roadNetwork.length}',
                 Icons.route_rounded,
                 AppConfig.deepNavy,
               ),
               _StatCard(
                 'Total Length',
-                '${roads.fold<int>(0, (sum, r) => sum + r.lengthKm)} km',
+                '${appState.roadNetworkTotalLengthKm} km',
                 Icons.straighten_rounded,
                 AppConfig.skySlate,
               ),
@@ -101,7 +92,7 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
               ),
               _StatCard(
                 'Avg Length/Road',
-                '${(roads.isEmpty ? 0 : roads.fold<int>(0, (sum, r) => sum + r.lengthKm) ~/ roads.length)} km',
+                '${(appState.roadNetwork.isEmpty ? 0 : appState.roadNetworkTotalLengthKm ~/ appState.roadNetwork.length)} km',
                 Icons.show_chart_rounded,
                 AppConfig.cautionYellow,
               ),
@@ -183,27 +174,27 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
           // Budget Distribution
           _SectionCard(
             title: 'Budget Distribution (\u20B9 Crores)',
-            child: Column(
-              children: [
-                ...typeComparison.entries.map((entry) {
-                  final totalBudget = roads
-                      .where((r) => r.type == entry.key)
-                      .fold<int>(0, (sum, r) => sum + r.budgetCrore);
-                  final percentage = roads.isEmpty ? 0.0 : (totalBudget / roads.fold<int>(0, (sum, r) => sum + r.budgetCrore)) * 100;
+                child: Column(
+                  children: [
+                    ...typeComparison.entries.map((entry) {
+                      final roadsOfType = appState.roadsByType(entry.key);
+                      final totalBudget = roadsOfType.fold<int>(0, (sum, r) => sum + r.budgetCrore);
+                      final allBudget = appState.roadNetworkTotalBudget;
+                      final percentage = allBudget == 0 ? 0.0 : (totalBudget / allBudget) * 100;
 
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: _BudgetRow(
-                      label: entry.key,
-                      amount: totalBudget,
-                      percentage: percentage,
-                      color: _getTypeColor(entry.key),
-                      count: entry.value,
-                    ),
-                  );
-                }),
-              ],
-            ),
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: _BudgetRow(
+                          label: entry.key,
+                          amount: totalBudget,
+                          percentage: percentage,
+                          color: _getTypeColor(entry.key),
+                          count: entry.value,
+                        ),
+                      );
+                    }),
+                  ],
+                ),
           ),
 
           const SizedBox(height: 20),
@@ -233,7 +224,7 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
                   '📍',
                   'Most Developed District',
                   selectedDistrict.isNotEmpty
-                      ? '$selectedDistrict has ${districtRoads.length} roads (${((districtRoads.length / roads.length) * 100).toStringAsFixed(1)}% of total)'
+                      ? '$selectedDistrict has ${districtRoads.length} roads (${((districtRoads.length / appState.roadNetwork.length) * 100).toStringAsFixed(1)}% of total)'
                       : 'No district data',
                 ),
               ],
@@ -244,30 +235,7 @@ class _ComparisonChartsScreenState extends State<ComparisonChartsScreen> {
     );
   }
 
-  Map<String, int> _getConditionComparison(List<RoadNetworkItem> roads) {
-    return {
-      'Good': roads.where((r) => r.condition == 'Good').length,
-      'Moderate': roads.where((r) => r.condition == 'Moderate').length,
-      'Poor': roads.where((r) => r.condition == 'Poor').length,
-    };
-  }
-
-  Map<String, int> _getTypeComparison(List<RoadNetworkItem> roads) {
-    return {
-      'NH': roads.where((r) => r.type == 'NH').length,
-      'SH': roads.where((r) => r.type == 'SH').length,
-      'MDR': roads.where((r) => r.type == 'MDR').length,
-    };
-  }
-
-  Map<String, int> _getYearComparison(List<RoadNetworkItem> roads) {
-    final yearMap = <String, int>{};
-    for (final road in roads) {
-      final decade = '${(road.year ~/ 10) * 10}s';
-      yearMap[decade] = (yearMap[decade] ?? 0) + 1;
-    }
-    return yearMap;
-  }
+  // _getConditionComparison removed (unused)
 
   Widget _buildConditionChart(Map<String, int> data) {
     final total = data.values.fold<int>(0, (sum, val) => sum + val);

@@ -18,32 +18,27 @@ class _AccountabilityScreenState extends State<AccountabilityScreen> {
   @override
   Widget build(BuildContext context) {
     final appState = context.watch<AppState>();
-    final roads = appState.roadNetwork;
 
-    // Calculate efficiency metrics
-    final roadsWithBudgetAndIssues = roads
-        .map((road) => {
-          'road': road,
-          'budgetCrore': road.budgetCrore,
-          'issueCount': road.issues.length,
-          'efficiency': road.budgetCrore > 0 ? road.issues.length / (road.budgetCrore / 10) : 0.0,
-          'budgetPerKm': road.lengthKm > 0 ? (road.budgetCrore * 10000000 / road.lengthKm) : 0,
-        })
-        .toList();
+    // Use AppState cached accountability aggregates to avoid scanning roadNetwork here
+    final totalBudget = appState.roadNetworkTotalBudget;
+    final avgIssuesPerRoad = appState.roadNetworkAvgIssuesPerRoad;
+    final roadsWithIssues = appState.roadNetworkRoadsWithIssues;
+    final totalRoads = appState.roadNetwork.length;
+    final totalKm = appState.roadNetworkTotalLengthKm;
 
-    // Sort by selected metric
+    List<Map<String, dynamic>> roadsWithBudgetAndIssues;
     switch (_selectedSort) {
-      case 'budget':
-        roadsWithBudgetAndIssues.sort((a, b) => (b['budgetCrore'] as int).compareTo(a['budgetCrore'] as int));
       case 'issues':
-        roadsWithBudgetAndIssues.sort((a, b) => (b['issueCount'] as int).compareTo(a['issueCount'] as int));
+        roadsWithBudgetAndIssues = appState.topRoadsByIssues(15);
+        break;
       case 'efficiency':
-        roadsWithBudgetAndIssues.sort((a, b) => (b['efficiency'] as double).compareTo(a['efficiency'] as double));
+        roadsWithBudgetAndIssues = appState.topRoadsByEfficiency(15);
+        break;
+      case 'budget':
+      default:
+        roadsWithBudgetAndIssues = appState.topRoadsByBudget(15);
+        break;
     }
-
-    final totalBudget = roads.fold<int>(0, (sum, road) => sum + road.budgetCrore);
-    final avgIssuesPerRoad = roads.isEmpty ? 0 : roads.fold<int>(0, (sum, road) => sum + road.issues.length) ~/ roads.length;
-    final roadsWithIssues = roads.where((r) => r.issues.isNotEmpty).length;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Public Accountability')),
@@ -106,7 +101,7 @@ class _AccountabilityScreenState extends State<AccountabilityScreen> {
               ),
               _MetricCard(
                 'Problem Rate',
-                '${((roadsWithIssues / roads.length) * 100).toStringAsFixed(1)}%',
+                '${((totalRoads == 0) ? 0.0 : ((roadsWithIssues / totalRoads) * 100)).toStringAsFixed(1)}%',
                 Icons.trending_down_rounded,
                 AppConfig.safeGreen,
               ),
@@ -274,13 +269,13 @@ class _AccountabilityScreenState extends State<AccountabilityScreen> {
                 _InsightItem(
                   '⚠️',
                   'Problem Concentration',
-                  '$roadsWithIssues roads (${((roadsWithIssues / roads.length) * 100).toStringAsFixed(1)}%) have reported issues needing urgent attention.',
+                  '$roadsWithIssues roads (${(totalRoads == 0) ? '0.0' : ((roadsWithIssues / totalRoads) * 100).toStringAsFixed(1)}%) have reported issues needing urgent attention.',
                 ),
                 const SizedBox(height: 12),
                 _InsightItem(
                   '💰',
                   'Budget Efficiency',
-                  'Average budget allocation is \u20B9${((totalBudget * 10000000) / roads.fold<int>(0, (sum, r) => sum + r.lengthKm)).toStringAsFixed(0)}/km across all roads.',
+                  'Average budget allocation is \u20B9${(totalKm == 0 ? '0' : ((totalBudget * 10000000) / totalKm).toStringAsFixed(0))}/km across all roads.',
                 ),
               ],
             ),

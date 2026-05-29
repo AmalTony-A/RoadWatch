@@ -425,7 +425,10 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
   _BudgetSummary _buildSummaryForSelection(AppState appState) {
     final selectedRoads = _roadsForCategory(appState);
     final periodMultiplier = _periodMultiplier();
-    final projectedSpendCrore = selectedRoads.fold<double>(0, (sum, road) => sum + road.budgetCrore.toDouble());
+    // Avoid folding entire network when category is 'All' by using cached total
+    final projectedSpendCrore = (_selectedCategory == 'All')
+        ? appState.roadNetworkTotalBudget.toDouble()
+        : selectedRoads.fold<double>(0, (sum, road) => sum + road.budgetCrore.toDouble());
     final adjustedProjected = (projectedSpendCrore * periodMultiplier).round();
 
     if (selectedRoads.isEmpty) {
@@ -439,7 +442,9 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
       );
     }
 
-    final averageHealthScore = selectedRoads.fold<double>(0, (sum, road) => sum + road.healthScore.toDouble()) / selectedRoads.length;
+    final averageHealthScore = (_selectedCategory == 'All')
+      ? appState.roadNetworkAvgHealthScore.toDouble()
+      : (selectedRoads.isEmpty ? 0.0 : selectedRoads.fold<double>(0, (sum, road) => sum + road.healthScore.toDouble()) / selectedRoads.length);
     final categoryFactor = _categoryBaseFactor();
     final healthFactor = (100 - averageHealthScore) / 250; // better roads need slightly less extra funding
     final requiredBudgetCrore = (adjustedProjected * (categoryFactor + healthFactor)).round();
@@ -458,13 +463,13 @@ class _BudgetForecastingScreenState extends State<BudgetForecastingScreen> {
   List<RoadNetworkItem> _roadsForCategory(AppState appState) {
     switch (_selectedCategory) {
       case 'NH':
-        return appState.roadNetwork.where((item) => item.isNationalHighway).toList(growable: false);
+        return appState.roadsByType('NH');
       case 'SH':
-        return appState.roadNetwork.where((item) => item.isStateHighway).toList(growable: false);
+        return appState.roadsByType('SH');
       case 'MDR':
-        return appState.roadNetwork.where((item) => item.isDistrictRoad).toList(growable: false);
+        return appState.roadsByType('MDR');
       default:
-        return List<RoadNetworkItem>.from(appState.roadNetwork, growable: false);
+        return appState.roadNetwork;
     }
   }
 

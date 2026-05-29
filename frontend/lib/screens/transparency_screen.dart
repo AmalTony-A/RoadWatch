@@ -15,26 +15,13 @@ class TransparencyScreen extends StatefulWidget {
 }
 
 class _TransparencyScreenState extends State<TransparencyScreen> {
-  static const int _roadRowsStep = 4;
-  final GlobalKey _scoreSectionKey = GlobalKey();
   String _selectedDistrict = 'ALL';
   String _roadSearchQuery = '';
   String? _selectedRoadId;
   bool _showDetails = false;
-  int _visibleRoadRows = _roadRowsStep;
-
-  void _resetRoadRows() {
-    _visibleRoadRows = _roadRowsStep;
-  }
-
-  void _showMoreRoadRows() {
-    setState(() {
-      _visibleRoadRows += _roadRowsStep;
-    });
-  }
 
   String _roadUniqueKey(RoadNetworkItem road) {
-    final id = (road.id ?? '').trim();
+    final id = road.id.trim();
     if (id.isNotEmpty) return '${id}_${road.name.trim()}';
     return '${road.name.trim()}_${road.route.trim()}_${road.districts.join('|')}';
   }
@@ -61,7 +48,6 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
         _roadSearchQuery = '';
         _selectedRoadId = suggestedRoads.isNotEmpty ? _dropdownValueForRoad(suggestedRoads.first) : null;
         _showDetails = suggestedRoads.isNotEmpty;
-        _resetRoadRows();
       });
       if (suggestedRoads.isNotEmpty) {
         appState.selectRoadNetworkItem(suggestedRoads.first);
@@ -82,7 +68,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
   }
 
   String _dropdownValueForRoad(RoadNetworkItem road) {
-    final id = (road.id ?? '').trim();
+    final id = road.id.trim();
     if (id.isNotEmpty) return id;
     return _roadUniqueKey(road);
   }
@@ -110,8 +96,14 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
     final appState = context.watch<AppState>();
     _autoSelectDistrict(appState);
 
-    final districtOptions = ['ALL', ...appState.roadNetworkDistricts];
-    final filteredRoads = _uniqueRoadsById(appState.searchRoadsForDistrict(_selectedDistrict, _roadSearchQuery));
+    final districtOptions = <String>{'ALL', ...appState.roadNetworkDistricts, _selectedDistrict}
+      .where((value) => value.trim().isNotEmpty)
+      .toList()
+      ..sort();
+    final canShowRoads = _selectedDistrict != 'ALL' || appState.liveSuggestedDistrict != null;
+    final filteredRoads = canShowRoads
+        ? _uniqueRoadsById(appState.searchRoadsForDistrict(_selectedDistrict, _roadSearchQuery))
+        : const <RoadNetworkItem>[];
     final selectedRoad = _selectedRoad(filteredRoads);
     final formatter = NumberFormat.currency(locale: 'en_IN', symbol: 'INR ', decimalDigits: 0);
 
@@ -165,7 +157,7 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                   children: [
                     Expanded(
                       child: DropdownButtonFormField<String>(
-                        value: _selectedDistrict,
+                        initialValue: _selectedDistrict,
                         decoration: InputDecoration(
                           labelText: 'District',
                           filled: true,
@@ -183,17 +175,32 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                               ),
                             )
                             .toList(),
-                        onChanged: (value) {
-                          if (value == null) {
+                        onChanged: (value) async {
+                          if (value == null) return;
+                          if (value == 'ALL') {
+                            setState(() {
+                              _selectedDistrict = value;
+                              _roadSearchQuery = '';
+                              _selectedRoadId = null;
+                              _showDetails = false;
+                            });
                             return;
                           }
-                          final nextRoads = appState.roadsForDistrict(value);
+
+                          // Set selected district immediately for responsive UI.
                           setState(() {
                             _selectedDistrict = value;
                             _roadSearchQuery = '';
-                            _selectedRoadId = nextRoads.isNotEmpty ? nextRoads.first.id : null;
+                            _selectedRoadId = null;
+                            _showDetails = false;
+                          });
+
+                          final nextRoads = await appState.loadRoadsForDistrict(value);
+                          setState(() {
+                            _selectedRoadId = nextRoads.isNotEmpty ? _dropdownValueForRoad(nextRoads.first) : _selectedRoadId;
                             _showDetails = nextRoads.isNotEmpty;
                           });
+
                           if (nextRoads.isNotEmpty) {
                             appState.selectRoadNetworkItem(nextRoads.first);
                           }
@@ -240,20 +247,32 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                     ),
                   ),
                 const SizedBox(height: 12),
-                if (_selectedDistrict == 'ALL')
+                if (_selectedDistrict == 'ALL' && appState.liveSuggestedDistrict == null)
                   const Text(
-                    'All roads are shown below. Pick a district to narrow the list.',
+                    'Select district to load roads for this area.',
                     style: TextStyle(color: AppConfig.skySlate),
                   ),
                 const SizedBox(height: 12),
-                if (filteredRoads.isEmpty)
+                if (!canShowRoads)
+                  const Text(
+                    'Select a district to load roads.',
+                    style: TextStyle(color: AppConfig.skySlate),
+                  )
+                else if (appState.isLoadingRoadsForDistrict(_selectedDistrict))
+                  const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(12),
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                else if (filteredRoads.isEmpty)
                   const Text(
                     'No roads match your search in this district.',
                     style: TextStyle(color: AppConfig.skySlate),
                   )
                 else
                   DropdownButtonFormField<String>(
-                    value: selectedRoad != null ? _dropdownValueForRoad(selectedRoad) : null,
+                    initialValue: selectedRoad != null ? _dropdownValueForRoad(selectedRoad) : null,
                     decoration: InputDecoration(
                       labelText: _selectedDistrict == 'ALL' ? 'All roads' : 'Roads in $_selectedDistrict',
                       filled: true,
@@ -278,6 +297,17 @@ class _TransparencyScreenState extends State<TransparencyScreen> {
                       }
                     },
                   ),
+                  if (canShowRoads && appState.hasMoreRoadsForDistrict(_selectedDistrict))
+                    Center(
+                      child: TextButton.icon(
+                        onPressed: () async {
+                          await appState.loadMoreRoadsForDistrict(_selectedDistrict);
+                        },
+                        icon: const Icon(Icons.expand_more_rounded),
+                        label: const Text('Show More'),
+                      ),
+                    ),
+                  const SizedBox(height: 14),
                 const SizedBox(height: 14),
                 LayoutBuilder(builder: (context, constraints) {
                   final spacing = 10.0;

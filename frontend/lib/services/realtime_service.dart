@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../config/app_config.dart';
@@ -30,6 +31,12 @@ class RealtimeService {
     void Function(Map<String, dynamic>) onUpdate, {
     void Function(bool connected)? onStatusChanged,
   }) {
+    if (kIsWeb) {
+      _shouldReconnect = false;
+      _connected = false;
+      onStatusChanged?.call(false);
+      return;
+    }
     _shouldReconnect = true;
     unawaited(_closeCurrentConnection());
     _startConnection(onUpdate, onStatusChanged: onStatusChanged);

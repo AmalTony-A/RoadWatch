@@ -16,43 +16,35 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   @override
   Widget build(BuildContext context) {
     final appState = context.watch<AppState>();
-    final roads = appState.roadNetwork;
     final theme = Theme.of(context);
 
-    // Calculate statistics
-    final goodRoads = roads.where((r) => r.condition == 'Good').length;
-    final moderateRoads = roads.where((r) => r.condition == 'Moderate').length;
-    final poorRoads = roads.where((r) => r.condition == 'Poor').length;
+    final goodRoads = appState.roadNetworkConditionCounts['Good'] ?? 0;
+    final moderateRoads = appState.roadNetworkConditionCounts['Moderate'] ?? 0;
+    final poorRoads = appState.roadNetworkConditionCounts['Poor'] ?? 0;
 
-    final nhRoads = roads.where((r) => r.type == 'NH').length;
-    final shRoads = roads.where((r) => r.type == 'SH').length;
-    final mdrRoads = roads.where((r) => r.type == 'MDR').length;
+    final nhRoads = appState.roadNetworkTypeCounts['NH'] ?? 0;
+    final shRoads = appState.roadNetworkTypeCounts['SH'] ?? 0;
+    final mdrRoads = appState.roadNetworkTypeCounts['MDR'] ?? 0;
 
-    final totalBudget = roads.fold<int>(0, (sum, road) => sum + road.budgetCrore);
-    final totalKm = roads.fold<int>(0, (sum, road) => sum + road.lengthKm);
-    final avgScore = roads.isEmpty ? 0 : roads.fold<int>(0, (sum, road) => sum + road.healthScore) ~/ roads.length;
+    final totalBudget = appState.roadNetworkTotalBudget;
+    final totalKm = appState.roadNetworkTotalLengthKm;
+    final avgScore = appState.roadNetworkAvgHealthScore;
 
-    final nhBudget = roads.where((r) => r.type == 'NH').fold<int>(0, (sum, road) => sum + road.budgetCrore);
-    final shBudget = roads.where((r) => r.type == 'SH').fold<int>(0, (sum, road) => sum + road.budgetCrore);
-    final mdrBudget = roads.where((r) => r.type == 'MDR').fold<int>(0, (sum, road) => sum + road.budgetCrore);
+    final nhBudget = appState.roadsByType('NH').fold<int>(0, (sum, road) => sum + road.budgetCrore);
+    final shBudget = appState.roadsByType('SH').fold<int>(0, (sum, road) => sum + road.budgetCrore);
+    final mdrBudget = appState.roadsByType('MDR').fold<int>(0, (sum, road) => sum + road.budgetCrore);
 
-    // District breakdown
+    // District breakdown computed per-district using AppState roadsForDistrict to avoid scanning full list repeatedly
     final districtStats = <String, Map<String, int>>{};
-    for (final road in roads) {
-      for (final district in road.districts) {
-        if (!districtStats.containsKey(district)) {
-          districtStats[district] = {'count': 0, 'budget': 0, 'good': 0, 'moderate': 0, 'poor': 0};
-        }
-        districtStats[district]!['count'] = districtStats[district]!['count']! + 1;
-        districtStats[district]!['budget'] = districtStats[district]!['budget']! + road.budgetCrore;
-        if (road.condition == 'Good') {
-          districtStats[district]!['good'] = districtStats[district]!['good']! + 1;
-        } else if (road.condition == 'Moderate') {
-          districtStats[district]!['moderate'] = districtStats[district]!['moderate']! + 1;
-        } else {
-          districtStats[district]!['poor'] = districtStats[district]!['poor']! + 1;
-        }
-      }
+    for (final district in appState.roadNetworkDistricts) {
+      final roadsForDistrict = appState.roadsForDistrict(district);
+      if (roadsForDistrict.isEmpty) continue;
+      final count = roadsForDistrict.length;
+      final budget = roadsForDistrict.fold<int>(0, (s, r) => s + r.budgetCrore);
+      final good = roadsForDistrict.where((r) => r.condition == 'Good').length;
+      final moderate = roadsForDistrict.where((r) => r.condition == 'Moderate').length;
+      final poor = roadsForDistrict.where((r) => r.condition == 'Poor').length;
+      districtStats[district] = {'count': count, 'budget': budget, 'good': good, 'moderate': moderate, 'poor': poor};
     }
 
     final topDistricts = districtStats.entries.toList()
@@ -96,7 +88,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             spacing: 12,
             runSpacing: 12,
             children: [
-              _MetricCard('Total Roads', '${roads.length}', Icons.route_rounded, AppConfig.deepNavy),
+              _MetricCard('Total Roads', '${appState.roadNetwork.length}', Icons.route_rounded, AppConfig.deepNavy),
               _MetricCard('Total km', '$totalKm', Icons.straighten_rounded, AppConfig.safeGreen),
               _MetricCard('Avg Health', '$avgScore/100', Icons.favorite_rounded, AppConfig.cautionYellow),
               _MetricCard('Budget', '\u20B9${(totalBudget / 100).toStringAsFixed(0)}Cr', Icons.attach_money_rounded, AppConfig.dangerRed),

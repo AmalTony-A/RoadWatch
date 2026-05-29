@@ -26,7 +26,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
-    final roadName = state.selectedRoad?.name ?? 'selected road';
+    final roadName = context.select<AppState, String?>((value) => value.selectedAssistantRoadName) ?? 'No road selected';
 
     return Column(
       children: [

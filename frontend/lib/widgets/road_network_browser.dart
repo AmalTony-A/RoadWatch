@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -15,13 +16,17 @@ class RoadNetworkBrowser extends StatefulWidget {
 
 class _RoadNetworkBrowserState extends State<RoadNetworkBrowser> {
   String _query = '';
+  String _debouncedQuery = '';
+  Timer? _debounce;
   String _selectedType = 'ALL';
   String _selectedCondition = 'ALL';
+  int _visibleRoadCount = 10;
 
   @override
   Widget build(BuildContext context) {
     final roads = context.watch<AppState>().roadNetwork;
-    final filtered = roads.where(_matchesFilters).toList();
+    // Use debounced query to avoid rebuilding on every keystroke
+    final filtered = roads.where((r) => _matchesFiltersWithQuery(r, _debouncedQuery)).toList();
     final formatter = NumberFormat.currency(locale: 'en_IN', symbol: 'INR ', decimalDigits: 0);
     final totalKm = roads.fold<int>(0, (sum, item) => sum + item.lengthKm);
     final nhCount = roads.where((item) => item.isNationalHighway).length;
@@ -111,7 +116,7 @@ class _RoadNetworkBrowserState extends State<RoadNetworkBrowser> {
             child: Column(
               children: [
                 TextField(
-                  onChanged: (value) => setState(() => _query = value),
+                  onChanged: (value) => _onQueryChanged(value),
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.search_rounded),
                     hintText: 'Search by road, district, route, contractor, or issue',
@@ -147,10 +152,13 @@ class _RoadNetworkBrowserState extends State<RoadNetworkBrowser> {
                     alignment: Alignment.centerLeft,
                     child: TextButton.icon(
                       onPressed: () {
+                        _debounce?.cancel();
                         setState(() {
                           _query = '';
+                          _debouncedQuery = '';
                           _selectedType = 'ALL';
                           _selectedCondition = 'ALL';
+                          _visibleRoadCount = 10;
                         });
                       },
                       icon: const Icon(Icons.clear_all_rounded),
@@ -198,23 +206,42 @@ class _RoadNetworkBrowserState extends State<RoadNetworkBrowser> {
                         : 1;
                 final spacing = 12.0;
                 final cardWidth = (constraints.maxWidth - spacing * (columns - 1)) / columns;
-                return Wrap(
-                  spacing: spacing,
-                  runSpacing: spacing,
-                  children: filtered
-                      .map(
-                        (item) => SizedBox(
-                          width: cardWidth,
-                          child: _RoadCard(
-                            item: item,
-                            formatter: formatter,
-                            onTap: () => _showRoadDetail(context, item.id),
-                          ),
-                        ),
-                      )
-                      .toList(),
+                final itemCount = filtered.length > _visibleRoadCount ? _visibleRoadCount : filtered.length;
+                return GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: columns,
+                    crossAxisSpacing: spacing,
+                    mainAxisSpacing: spacing,
+                    childAspectRatio: cardWidth / 160,
+                  ),
+                  itemCount: itemCount,
+                  itemBuilder: (context, index) {
+                    final item = filtered[index];
+                    return _RoadCard(
+                      item: item,
+                      formatter: formatter,
+                      onTap: () => _showRoadDetail(context, item.id),
+                    );
+                  },
                 );
               },
+            ),
+          if (filtered.length > _visibleRoadCount)
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 12),
+                child: TextButton.icon(
+                  onPressed: () {
+                    setState(() {
+                      _visibleRoadCount += 10;
+                    });
+                  },
+                  icon: const Icon(Icons.expand_more_rounded),
+                  label: const Text('Show More'),
+                ),
+              ),
             ),
         ],
       ),
@@ -429,19 +456,36 @@ class _RoadNetworkBrowserState extends State<RoadNetworkBrowser> {
     );
   }
 
-  bool _matchesFilters(RoadNetworkItem item) {
-    final query = _query.trim().toLowerCase();
-    final matchesQuery = query.isEmpty ||
-        item.name.toLowerCase().contains(query) ||
-        item.route.toLowerCase().contains(query) ||
-        item.contractor.toLowerCase().contains(query) ||
-        item.condition.toLowerCase().contains(query) ||
-        item.districts.any((district) => district.toLowerCase().contains(query)) ||
-        item.issues.any((issue) => issue.toLowerCase().contains(query));
+  bool _matchesFiltersWithQuery(RoadNetworkItem item, String query) {
+    final q = query.trim().toLowerCase();
+    final matchesQuery = q.isEmpty ||
+        item.name.toLowerCase().contains(q) ||
+        item.route.toLowerCase().contains(q) ||
+        item.contractor.toLowerCase().contains(q) ||
+        item.condition.toLowerCase().contains(q) ||
+        item.districts.any((district) => district.toLowerCase().contains(q)) ||
+        item.issues.any((issue) => issue.toLowerCase().contains(q));
 
     final matchesType = _selectedType == 'ALL' || item.type == _selectedType;
     final matchesCondition = _selectedCondition == 'ALL' || item.condition == _selectedCondition;
     return matchesQuery && matchesType && matchesCondition;
+  }
+
+  void _onQueryChanged(String value) {
+    _query = value;
+    _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 300), () {
+      if (!mounted) return;
+      setState(() {
+        _debouncedQuery = _query;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    super.dispose();
   }
 }
 

@@ -22,7 +22,7 @@ class DamageDetectionService:
         self.settings = settings
         self.repository = repository
         self.model = None
-        self.model_name = "demo-mock-detector"
+        self.model_name = "vision-detector"
         self._load_model()
 
     def _load_model(self):
@@ -78,13 +78,12 @@ class DamageDetectionService:
             except Exception:
                 pass
 
-        fallback = self._synthetic_detection(image_path)
         inference_ms = int((time.perf_counter() - start) * 1000)
-        scene_assessment = self._scene_assessment(path_obj, fallback)
+        scene_assessment = self._scene_assessment(path_obj, [])
         return {
             "image_id": image_id,
             "road_id": road_id,
-            "detections": fallback,
+            "detections": [],
             "model": self.model_name,
             "inference_ms": inference_ms,
             "image_width": image_width,

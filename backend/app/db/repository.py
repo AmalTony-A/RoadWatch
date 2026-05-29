@@ -57,6 +57,12 @@ class DataRepository:
         self._demo_detections: dict[str, Any] = self._load_json(
             data_root / "demo_detections.json"
         )
+
+        # Load contractors data
+        contractors_path = data_root / "mock_contractors.json"
+        self._contractors: list[dict[str, Any]] = (
+            self._load_json(contractors_path) if contractors_path.exists() else []
+        )
         self._init_mongo()
 
     @staticmethod
@@ -181,6 +187,17 @@ class DataRepository:
         all_items = self.get_budgets()
         start = (page - 1) * limit
         return all_items[start:start + limit]
+    def get_contractors(self) -> list[dict[str, Any]]:
+        """Get all contractors."""
+        return self._contractors if self._contractors else []
+    
+    def get_contractor_by_id(self, contractor_id: str) -> dict[str, Any] | None:
+        """Get a specific contractor by ID."""
+        for contractor in self.get_contractors():
+            if contractor.get("id") == contractor_id:
+                return contractor
+        return None
+
 
     def get_road_network(self) -> list[dict[str, Any]]:
         order = {"NH": 0, "SH": 1, "MDR": 2}

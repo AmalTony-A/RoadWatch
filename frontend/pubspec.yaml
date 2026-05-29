@@ -35,3 +35,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/demo/
+    - assets/complete_road_data.json

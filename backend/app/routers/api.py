@@ -7,7 +7,8 @@ from pathlib import Path
 from typing import Annotated
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, WebSocket, WebSocketDisconnect, Request
+import json
 
 from app.db.repository import DataRepository
 from app.routers.admin import log_activity
@@ -27,8 +28,6 @@ from app.services.container import (
     get_prediction_service,
     get_repository,
 )
-from app.services.detection import DamageDetectionService
-from app.services.prediction import RiskPredictionService
 from app.services.scoring import calculate_road_health_score
 
 router = APIRouter(tags=["RoadWatch AI"])
@@ -62,6 +61,8 @@ realtime_hub = RealtimeUpdateHub()
 
 UPLOADS_DIR = Path(__file__).resolve().parent.parent / "uploads"
 UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+LOGS_DIR = Path(__file__).resolve().parents[2] / "logs"
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 @router.get("/health")
@@ -380,14 +381,43 @@ def predict_risk(
 @router.post("/chat", response_model=ChatResponse)
 def chat(
     payload: ChatRequest,
+    request: Request,
 ):
     try:
+        origin = request.headers.get('origin') or request.client.host
+        logger.info('Chat request from %s: %s', origin, (payload.query or '')[:200])
         chatbot = get_chatbot_service()
         answer = chatbot.ask(
             query=payload.query,
             road_id=payload.road_id,
             history=[item.model_dump() for item in payload.history],
         )
+        logger.info('Chat answered (len=%d)', len((answer.get('answer') or '').strip()))
+        # Persist chat record to logs/chat_history.jsonl
+        try:
+            record = {
+                "timestamp": datetime.now(UTC).isoformat(),
+                "origin": origin,
+                "query": payload.query,
+                "road_id": payload.road_id,
+                "history": [item.model_dump() for item in payload.history],
+                "response": answer,
+            }
+            path = LOGS_DIR / "chat_history.jsonl"
+            with path.open("a", encoding="utf-8") as fh:
+                fh.write(json.dumps(record, ensure_ascii=False) + "\n")
+        except Exception as exc:
+            logger.exception("Failed to persist chat record")
+            try:
+                import traceback
+
+                err_path = LOGS_DIR / "chat_write_error.log"
+                with err_path.open("a", encoding="utf-8") as ef:
+                    ef.write(datetime.now(UTC).isoformat() + " - " + str(exc) + "\n")
+                    ef.write(traceback.format_exc() + "\n")
+            except Exception:
+                pass
+
         return ChatResponse(**answer)
     except Exception as exc:
         logger.exception("Chat endpoint failed.")
@@ -427,6 +457,30 @@ def mark_complaint_read(
     complaints: Annotated[ComplaintService, Depends(get_complaint_service)],
 ):
     complaint = complaints.mark_read(complaint_id)
+    @router.get("/contractors")
+    def list_contractors(
+        repository: Annotated[DataRepository, Depends(get_repository)],
+        page: int = Query(1, ge=1),
+        limit: int = Query(50, ge=1, le=200),
+    ):
+        """Get list of contractors."""
+        contractors = repository.get_contractors()
+        start = (page - 1) * limit
+        return contractors[start : start + limit]
+
+
+    @router.get("/contractors/{contractor_id}")
+    def get_contractor(
+        contractor_id: str,
+        repository: Annotated[DataRepository, Depends(get_repository)],
+    ):
+        """Get a specific contractor by ID."""
+        contractor = repository.get_contractor_by_id(contractor_id)
+        if not contractor:
+            raise HTTPException(status_code=404, detail="Contractor not found")
+        return contractor
+
+
     if not complaint:
         raise HTTPException(status_code=404, detail=f"Complaint not found: {complaint_id}")
     return complaint

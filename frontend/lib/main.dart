@@ -6,6 +6,7 @@ import 'config/app_config.dart';
 import 'providers/app_state.dart';
 import 'features/map/map_provider.dart';
 import 'screens/shell_screen.dart';
+import 'screens/login_screen.dart';
 import 'screens/complaint_detail_screen.dart';
 import 'services/api_service.dart';
 import 'services/connectivity_service.dart';
@@ -13,6 +14,7 @@ import 'services/local_storage_service.dart';
 import 'services/location_service.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const RoadWatchApp());
 }
 
@@ -41,7 +43,7 @@ class RoadWatchApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: AppConfig.appName,
             theme: _buildTheme(appState.isDarkMode),
-            home: const ShellScreen(),
+            home: const AuthGate(),
             onGenerateRoute: (settings) {
               // Simple route parsing for complaint detail: /complaint/<id>
               final name = settings.name ?? '';
@@ -141,6 +143,77 @@ class RoadWatchApp extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
           textStyle: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.w700),
+        ),
+      ),
+    );
+  }
+}
+
+// ─── Auth Gate ───────────────────────────────────────────────────────────────
+/// Shown as the initial route. Reads [rw_token] from SharedPreferences once,
+/// then navigates to [ShellScreen] (authenticated) or [LoginScreen] (not).
+/// On browser refresh the stored token is re-read so the session is preserved.
+class AuthGate extends StatefulWidget {
+  const AuthGate({super.key});
+
+  @override
+  State<AuthGate> createState() => _AuthGateState();
+}
+
+class _AuthGateState extends State<AuthGate> {
+  @override
+  void initState() {
+    super.initState();
+    _check();
+  }
+
+  Future<void> _check() async {
+    final appState = context.read<AppState>();
+    final authenticated = await appState.checkAuth();
+    if (!mounted) return;
+    if (authenticated) {
+      // Replace with shell — user is logged in
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const ShellScreen()),
+      );
+    } else {
+      // Replace with login
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Splash while checking auth
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF0D2137), Color(0xFF1D4E89), Color(0xFF2B6CB0)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: const Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.route_rounded, color: Colors.white, size: 56),
+              SizedBox(height: 20),
+              Text(
+                'RoadWatch AI',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              SizedBox(height: 28),
+              CircularProgressIndicator(color: Colors.white54, strokeWidth: 2),
+            ],
+          ),
         ),
       ),
     );

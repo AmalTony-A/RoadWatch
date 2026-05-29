@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     groq_model: str = "llama-3.1-8b-instant"
 
     google_api_key: str | None = None
-    google_model: str = "gemini-flash-latest"
+    google_model: str = "gemini-2.5-flash"
 
     frontend_origin: str = "*"
 

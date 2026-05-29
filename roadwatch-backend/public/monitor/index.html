@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RoadWatch Backend Monitor</title>
+  <style>
+    body{font-family:Inter,system-ui,Segoe UI,Arial;margin:0;background:#f6f8fa;color:#0b1a2b}
+    header{padding:16px;background:#102a43;color:white}
+    .container{padding:16px}
+    .card{background:white;padding:12px;border-radius:8px;box-shadow:0 1px 3px rgba(2,6,23,0.08);margin-bottom:12px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .col{flex:1;min-width:220px}
+    pre{white-space:pre-wrap}
+    button{padding:8px 12px;border-radius:6px;border:1px solid #ddd;background:#fff}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>RoadWatch Backend Monitor</h1>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col card" id="health">
+        <h3>Health</h3>
+        <pre id="healthContent">Loading...</pre>
+        <button id="refreshHealth">Refresh</button>
+      </div>
+      <div class="col card" id="system">
+        <h3>System Info</h3>
+        <pre id="systemContent">Loading...</pre>
+        <button id="refreshSystem">Refresh</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col card">
+        <h3>Dashboard Stats</h3>
+        <pre id="dashboard">Loading...</pre>
+        <button id="refreshDashboard">Refresh</button>
+      </div>
+      <div class="col card">
+        <h3>Recent Activity</h3>
+        <pre id="activity">Loading...</pre>
+        <button id="refreshActivity">Refresh</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col card">
+        <h3>Metrics (/metrics)</h3>
+        <pre id="metrics">If available, Prometheus metrics will be shown here.</pre>
+        <button id="refreshMetrics">Refresh</button>
+      </div>
+      <div class="col card">
+        <h3>Manual Actions</h3>
+        <button id="seedDb">Seed DB (server-side)</button>
+        <button id="clearLogs">Clear Activity Logs</button>
+        <p id="actionResult"></p>
+      </div>
+    </div>
+  </div>
+  <script src="monitor.js"></script>
+</body>
+</html>

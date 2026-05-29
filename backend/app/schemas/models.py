@@ -150,6 +150,9 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
     cited_data: dict[str, str | int | float | None]
+    source: str | None = None
+    confidence: float | None = None
+    llm: str | None = None
 
 
 class HealthOverview(BaseModel):

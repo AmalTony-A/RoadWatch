@@ -9,23 +9,14 @@ import '../widgets/trend_chart.dart';
 class IntelligenceScreen extends StatelessWidget {
   const IntelligenceScreen({super.key});
 
-  String _roadNameFor(AppState state, String roadId) {
-    for (final road in state.roads) {
-      if (road.id == roadId) {
-        return road.name;
-      }
-    }
-    for (final road in state.roadNetwork) {
-      if (road.id == roadId) {
-        return road.name;
-      }
-    }
-    return roadId;
-  }
-
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
+    // Build a quick id->name map to avoid repeated linear scans of roadNetwork
+    final Map<String, String> roadNameMap = {
+      for (final r in state.roads) r.id: r.name,
+      for (final r in state.roadNetwork) r.id: r.name,
+    };
     final trends = state.intelligence['damage_trends'] as List<dynamic>? ?? [];
     final repairFrequency = state.intelligence['repair_frequency'] as List<dynamic>? ?? [];
     final predictionText = state.intelligence['prediction_text'] as String? ??
@@ -153,7 +144,7 @@ class IntelligenceScreen extends StatelessWidget {
           rows: repairFrequency
               .map((row) {
                 final roadId = row['road_id'].toString();
-                final roadName = _roadNameFor(state, roadId);
+                final roadName = roadNameMap[roadId] ?? roadId;
                 return [roadName, row['repairs_last_12m'].toString()];
               })
               .toList(),
