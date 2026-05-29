@@ -172,6 +172,19 @@ if (promClient) {
   });
 }
 
+app.get('/health', (_req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'RoadWatch AI',
+  });
+});
+
+app.get('/', (_req, res) => {
+  res.json({
+    message: 'RoadWatch AI Backend Running',
+  });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/reports', reportRoutes);
