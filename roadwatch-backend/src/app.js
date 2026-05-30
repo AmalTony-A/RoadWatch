@@ -41,6 +41,8 @@ const allowedOrigins = new Set([
   // prefer localhost hostname in defaults to avoid cross-site cookie issues in tests
   'http://localhost:5173',
   'http://127.0.0.1:5173',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
   ...(config.corsOrigins || []),
 ]);
 
@@ -69,24 +71,11 @@ const uploadDir = path.resolve(
 app.use(helmet());
 
 // CORS must run before routes so browser preflight receives the headers.
-app.use(cors({
+const corsOptions = {
   origin(origin, callback) {
     if (!origin) {
       callback(null, true);
       return;
-    }
-
-    // Allow common local development origins (localhost, 127.0.0.1, IPv6 ::1)
-    if (config.env !== 'production') {
-      try {
-        const lowered = origin.toLowerCase();
-        if (lowered.includes('localhost') || lowered.includes('127.0.0.1') || lowered.includes('::1')) {
-          callback(null, true);
-          return;
-        }
-      } catch (e) {
-        // fallthrough to allowedOrigins check
-      }
     }
 
     if (allowedOrigins.has(origin)) {
@@ -94,24 +83,27 @@ app.use(cors({
       return;
     }
 
-    callback(new Error(`CORS blocked for origin: ${origin}`));
-  },
-  credentials: true,
-  optionsSuccessStatus: 200,
-}));
-
-app.options('*', cors({
-  origin(origin, callback) {
-    if (!origin || allowedOrigins.has(origin)) {
-      callback(null, true);
-      return;
+    // Allow local dev hostnames even if a port or alias was not listed.
+    try {
+      const lowered = origin.toLowerCase();
+      if (lowered.includes('localhost') || lowered.includes('127.0.0.1') || lowered.includes('::1')) {
+        callback(null, true);
+        return;
+      }
+    } catch (e) {
+      // fall through to rejection below
     }
 
     callback(new Error(`CORS blocked for origin: ${origin}`));
   },
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token'],
   optionsSuccessStatus: 200,
-}));
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Rate limiting
 app.use(rateLimit({
