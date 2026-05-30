@@ -1,0 +1,16 @@
+{
+  "images": [
+    {
+      "id": "demo_pothole_1.svg",
+      "label": "High severity pothole cluster"
+    },
+    {
+      "id": "demo_crack_2.svg",
+      "label": "Road crack near junction"
+    },
+    {
+      "id": "demo_good_road.svg",
+      "label": "Healthy road baseline"
+    }
+  ]
+}
