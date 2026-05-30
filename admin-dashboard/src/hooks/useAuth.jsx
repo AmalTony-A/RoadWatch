@@ -3,8 +3,34 @@ import { api, API_BASE, configureApi } from '../lib/api'
 
 const AuthContext = createContext(null)
 
+const TOKEN_KEY = 'token'
+const CSRF_KEY = 'csrfToken'
+
+function readToken() {
+  if (typeof window === 'undefined') return ''
+  return window.localStorage.getItem(TOKEN_KEY) || window.localStorage.getItem('rw_token') || ''
+}
+
+function storeAuth(token, csrfToken) {
+  if (typeof window === 'undefined') return
+  if (token) {
+    window.localStorage.setItem(TOKEN_KEY, token)
+    window.localStorage.setItem('rw_token', token)
+  }
+  if (csrfToken) {
+    window.localStorage.setItem(CSRF_KEY, csrfToken)
+  }
+}
+
+function clearAuth() {
+  if (typeof window === 'undefined') return
+  window.localStorage.removeItem(TOKEN_KEY)
+  window.localStorage.removeItem(CSRF_KEY)
+  window.localStorage.removeItem('rw_token')
+}
+
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState(() => sessionStorage.getItem('rw_token'))
+  const [token, setToken] = useState(() => readToken())
   const [authError, setAuthError] = useState('')
   const [loading, setLoading] = useState(false)
   const cleanupRef = useRef(null)
@@ -12,19 +38,18 @@ export function AuthProvider({ children }) {
   useLayoutEffect(() => {
     cleanupRef.current?.()
     cleanupRef.current = configureApi({
-      tokenProvider: () => sessionStorage.getItem('rw_token'),
       refreshToken: async () => {
         const res = await api.post('/api/auth/refresh', {})
         const nextToken = res.data?.token
         if (!nextToken) {
           throw new Error('Unable to refresh session')
         }
-        sessionStorage.setItem('rw_token', nextToken)
+        storeAuth(nextToken, res.data?.csrfToken || '')
         setToken(nextToken)
         return nextToken
       },
       onAuthFailure: () => {
-        sessionStorage.removeItem('rw_token')
+        clearAuth()
         setToken(null)
       },
     })
@@ -44,7 +69,7 @@ export function AuthProvider({ children }) {
       const t = res.data?.token
       if (!t) throw new Error('Backend did not return a token')
 
-      sessionStorage.setItem('rw_token', t)
+      storeAuth(t, res.data?.csrfToken || '')
       setToken(t)
       return t
 
@@ -58,10 +83,11 @@ export function AuthProvider({ children }) {
   }
 
   const logout = () => {
-    sessionStorage.removeItem('rw_token')
-    setToken(null)
     setAuthError('')
-    api.post('/api/auth/logout').catch(() => {})
+    api.post('/api/auth/logout').catch(() => {}).finally(() => {
+      clearAuth()
+      setToken(null)
+    })
   }
 
   const value = useMemo(() => ({

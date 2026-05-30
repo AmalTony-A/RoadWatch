@@ -8,36 +8,37 @@ export const api = axios.create({
   withCredentials: true,
 })
 
-function readCookie(name) {
-  if (typeof document === 'undefined') return ''
-  const match = document.cookie.split('; ').find((entry) => entry.startsWith(`${name}=`))
-  return match ? decodeURIComponent(match.split('=').slice(1).join('=')) : ''
+function readStoredValue(...keys) {
+  if (typeof window === 'undefined') return ''
+  for (const key of keys) {
+    const value = window.localStorage.getItem(key)
+    if (value) return value
+  }
+  return ''
 }
 
 function isAuthEndpoint(url = '') {
   return ['/api/auth/login', '/api/auth/signup', '/api/auth/refresh', '/api/auth/logout', '/api/auth/csrf-token'].some((path) => url.includes(path))
 }
 
+api.interceptors.request.use((config) => {
+  const token = readStoredValue('token', 'rw_token')
+  const csrfToken = readStoredValue('csrfToken', 'csrf_token')
+
+  config.headers = config.headers || {}
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+
+  if (csrfToken) {
+    config.headers['X-CSRF-Token'] = csrfToken
+  }
+
+  return config
+})
+
 export function configureApi({ tokenProvider, refreshToken, onAuthFailure } = {}) {
-  const requestInterceptor = api.interceptors.request.use((config) => {
-    const token = tokenProvider?.()
-    if (token) {
-      config.headers = config.headers || {}
-      config.headers.Authorization = `Bearer ${token}`
-    }
-
-    const method = String(config.method || 'get').toLowerCase()
-    if (!['get', 'head', 'options'].includes(method) && !isAuthEndpoint(config.url || '')) {
-      const csrfToken = readCookie('csrf_token')
-      if (csrfToken) {
-        config.headers = config.headers || {}
-        config.headers['X-CSRF-Token'] = csrfToken
-      }
-    }
-
-    return config
-  })
-
   const responseInterceptor = api.interceptors.response.use(
     (response) => response,
     async (error) => {
@@ -67,7 +68,6 @@ export function configureApi({ tokenProvider, refreshToken, onAuthFailure } = {}
   )
 
   return () => {
-    api.interceptors.request.eject(requestInterceptor)
     api.interceptors.response.eject(responseInterceptor)
   }
 }
