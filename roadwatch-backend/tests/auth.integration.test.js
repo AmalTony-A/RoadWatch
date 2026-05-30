@@ -38,6 +38,17 @@ describe('Auth integration', () => {
     expect(response.headers['set-cookie'].join(';')).toContain('refresh_token=');
   });
 
+  test('health endpoint returns ok status', async () => {
+    const response = await request(app)
+      .get('/health')
+      .expect(200);
+
+    expect(response.body).toEqual({
+      status: 'ok',
+      service: 'RoadWatch AI',
+    });
+  });
+
   test('refresh rotates the access session', async () => {
     const agent = request.agent(app);
     const login = await agent

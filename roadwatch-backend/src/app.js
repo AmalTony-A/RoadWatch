@@ -37,6 +37,20 @@ const app = express();
 
 app.set('trust proxy', 1);
 
+app.use((req, _res, next) => {
+  if (logger && logger.info) {
+    logger.info(
+      {
+        method: req.method,
+        path: req.path,
+        origin: req.headers.origin || '',
+      },
+      'incoming request'
+    );
+  }
+  next();
+});
+
 const allowedOrigins = new Set([
   // prefer localhost hostname in defaults to avoid cross-site cookie issues in tests
   'http://localhost:5173',
@@ -73,6 +87,9 @@ app.use(helmet());
 // CORS must run before routes so browser preflight receives the headers.
 const corsOptions = {
   origin(origin, callback) {
+    if (logger && logger.info) {
+      logger.info({ origin: origin || '' }, 'cors origin check');
+    }
     if (!origin) {
       callback(null, true);
       return;
