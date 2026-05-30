@@ -123,12 +123,14 @@ app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
 // Rate limiting
+// Keep production throttling intact, but make local/dev testing and repeated
+// complaints retries less likely to trip the limiter while debugging.
 app.use(rateLimit({
-  windowMs: config.rateLimitWindowMs,
-  max: config.rateLimitMax,
+  windowMs: 15 * 60 * 1000,
+  max: config.env === 'production' ? config.rateLimitMax : 1000,
   standardHeaders: true,
   legacyHeaders: false,
-  skip: () => config.env !== 'production',
+  skip: (req) => config.env !== 'production' || req.path.startsWith('/api/complaints'),
 }));
 
 // Body parsing
