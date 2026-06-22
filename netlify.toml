@@ -1,0 +1,24 @@
+[build]
+  base = "frontend"
+  publish = "build/web"
+  command = """
+    set -e
+    if [ ! -d "$HOME/flutter" ]; then
+      git clone --depth 1 -b stable https://github.com/flutter/flutter.git "$HOME/flutter"
+    fi
+    export PATH="$HOME/flutter/bin:$PATH"
+    flutter --version
+    flutter config --no-analytics
+    flutter create --platforms=web .
+    flutter pub get
+    flutter build web --release
+  """
+
+[build.environment]
+  FLUTTER_VERSION = "stable"
+  PUB_CACHE = "/opt/build/cache/.pub-cache"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
